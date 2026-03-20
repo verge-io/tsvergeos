@@ -11,25 +11,25 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { SiteSyncOutgoingService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { SiteSyncOutgoingService } from './service.js';
 
-VergeClient.registerService("siteSyncsOutgoing", SiteSyncOutgoingService);
+VergeClient.registerService('siteSyncsOutgoing', SiteSyncOutgoingService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing outgoing site syncs. */
-    readonly siteSyncsOutgoing: SiteSyncOutgoingService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing outgoing site syncs. */
+		readonly siteSyncsOutgoing: SiteSyncOutgoingService;
+	}
 }
 
-export { SiteSyncOutgoingService } from "./service.js";
+export { SiteSyncOutgoingService } from './service.js';
 export type {
-  SiteSyncOutgoing,
-  SiteSyncOutgoingCreateParams,
-  SiteSyncOutgoingDestinationTier,
-  SiteSyncOutgoingRemoteSnapsStatus,
-  SiteSyncOutgoingState,
-  SiteSyncOutgoingStatus,
-  SiteSyncOutgoingUpdateParams,
-} from "./types.js";
+	SiteSyncOutgoing,
+	SiteSyncOutgoingCreateParams,
+	SiteSyncOutgoingDestinationTier,
+	SiteSyncOutgoingRemoteSnapsStatus,
+	SiteSyncOutgoingState,
+	SiteSyncOutgoingStatus,
+	SiteSyncOutgoingUpdateParams,
+} from './types.js';
