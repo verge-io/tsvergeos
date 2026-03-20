@@ -97,6 +97,11 @@ export interface MutationOptions {
 // ─── Service Infrastructure Types ────────────────────────────────────────────
 // Re-exported here for convenient type-only imports via `tsvergeos/types`.
 
+export type {
+	CrossSiteResult,
+	CrossSiteServices,
+	SiteResource,
+} from './cross-site.js';
 export type { ActionConfig } from './services/base.js';
 export type {
 	SiteConfig,
