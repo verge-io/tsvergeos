@@ -1,6 +1,6 @@
-import type { HttpClient } from "../../http.js";
-import { ReadOnlyService } from "../base.js";
-import type { AlarmType } from "./types.js";
+import type { HttpClient } from '../../http.js';
+import { ReadOnlyService } from '../base.js';
+import type { AlarmType } from './types.js';
 
 /**
  * Service for querying VergeOS alarm type definitions.
@@ -24,7 +24,7 @@ import type { AlarmType } from "./types.js";
  * ```
  */
 export class AlarmTypeService extends ReadOnlyService<AlarmType> {
-  constructor(http: HttpClient) {
-    super(http, "/alarm_types", "AlarmType");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/alarm_types', 'AlarmType');
+	}
 }

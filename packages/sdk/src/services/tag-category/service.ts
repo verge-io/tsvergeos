@@ -1,10 +1,6 @@
-import type { HttpClient } from "../../http.js";
-import { BaseService } from "../base.js";
-import type {
-  TagCategory,
-  TagCategoryCreateParams,
-  TagCategoryUpdateParams,
-} from "./types.js";
+import type { HttpClient } from '../../http.js';
+import { BaseService } from '../base.js';
+import type { TagCategory, TagCategoryCreateParams, TagCategoryUpdateParams } from './types.js';
 
 /**
  * Service for managing VergeOS tag categories.
@@ -35,11 +31,11 @@ import type {
  * ```
  */
 export class TagCategoryService extends BaseService<
-  TagCategory,
-  TagCategoryCreateParams,
-  TagCategoryUpdateParams
+	TagCategory,
+	TagCategoryCreateParams,
+	TagCategoryUpdateParams
 > {
-  constructor(http: HttpClient) {
-    super(http, "/tag_categories", "Tag Category");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/tag_categories', 'Tag Category');
+	}
 }

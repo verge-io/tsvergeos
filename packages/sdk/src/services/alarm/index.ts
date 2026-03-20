@@ -11,22 +11,22 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { AlarmService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { AlarmService } from './service.js';
 
-VergeClient.registerService("alarms", AlarmService);
+VergeClient.registerService('alarms', AlarmService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing alarms. */
-    readonly alarms: AlarmService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing alarms. */
+		readonly alarms: AlarmService;
+	}
 }
 
-export { AlarmService } from "./service.js";
+export { AlarmService } from './service.js';
 export type {
-  Alarm,
-  AlarmLevel,
-  AlarmOwnerType,
-  AlarmUpdateParams,
-} from "./types.js";
+	Alarm,
+	AlarmLevel,
+	AlarmOwnerType,
+	AlarmUpdateParams,
+} from './types.js';

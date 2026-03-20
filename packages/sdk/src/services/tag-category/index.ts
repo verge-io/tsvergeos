@@ -11,21 +11,21 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { TagCategoryService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { TagCategoryService } from './service.js';
 
-VergeClient.registerService("tagCategories", TagCategoryService);
+VergeClient.registerService('tagCategories', TagCategoryService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing tag categories. */
-    readonly tagCategories: TagCategoryService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing tag categories. */
+		readonly tagCategories: TagCategoryService;
+	}
 }
 
-export { TagCategoryService } from "./service.js";
+export { TagCategoryService } from './service.js';
 export type {
-  TagCategory,
-  TagCategoryCreateParams,
-  TagCategoryUpdateParams,
-} from "./types.js";
+	TagCategory,
+	TagCategoryCreateParams,
+	TagCategoryUpdateParams,
+} from './types.js';

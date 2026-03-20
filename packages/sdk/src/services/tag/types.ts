@@ -1,4 +1,4 @@
-import type { FlexKey, Resource } from "../../types.js";
+import type { FlexKey, Resource } from '../../types.js';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -13,20 +13,20 @@ import type { FlexKey, Resource } from "../../types.js";
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface Tag extends Resource {
-  /** Tag display name. Unique, trimmed. */
-  name: string;
+	/** Tag display name. Unique, trimmed. */
+	name: string;
 
-  /** Human-readable description. */
-  description?: string;
+	/** Human-readable description. */
+	description?: string;
 
-  /** FK to the parent tag category. */
-  category: FlexKey;
+	/** FK to the parent tag category. */
+	category: FlexKey;
 
-  /** Timestamp when this tag was created (read-only). */
-  created?: number;
+	/** Timestamp when this tag was created (read-only). */
+	created?: number;
 
-  /** Timestamp when this tag was last modified (read-only). */
-  modified?: number;
+	/** Timestamp when this tag was last modified (read-only). */
+	modified?: number;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -37,14 +37,14 @@ export interface Tag extends Resource {
  * `name` and `category` are required. Tag names must be unique.
  */
 export interface TagCreateParams {
-  /** Tag display name. Must be unique. */
-  name: string;
+	/** Tag display name. Must be unique. */
+	name: string;
 
-  /** FK to the parent tag category. */
-  category: FlexKey;
+	/** FK to the parent tag category. */
+	category: FlexKey;
 
-  /** Human-readable description. */
-  description?: string;
+	/** Human-readable description. */
+	description?: string;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
@@ -56,9 +56,9 @@ export interface TagCreateParams {
  * The `category` FK cannot be updated after creation.
  */
 export interface TagUpdateParams {
-  /** Tag display name. Must be unique. */
-  name?: string;
+	/** Tag display name. Must be unique. */
+	name?: string;
 
-  /** Human-readable description. */
-  description?: string;
+	/** Human-readable description. */
+	description?: string;
 }
