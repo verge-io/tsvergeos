@@ -68,3 +68,4 @@ import "./services/cloud-snapshot-tenant/index.js";
 import "./services/site/index.js";
 import "./services/site-sync-incoming/index.js";
 import "./services/site-sync-outgoing/index.js";
+import "./services/site-sync-profile-period/index.js";
