@@ -46,7 +46,9 @@ describe('VMService', () => {
 
 			await svc.list();
 
-			expect(http.get).toHaveBeenCalledWith('/vms', undefined);
+			expect(http.get).toHaveBeenCalledWith('/vms', {
+				params: { fields: 'most' },
+			});
 		});
 	});
 
@@ -58,7 +60,9 @@ describe('VMService', () => {
 
 			const result = await svc.list();
 
-			expect(http.get).toHaveBeenCalledWith('/vms', undefined);
+			expect(http.get).toHaveBeenCalledWith('/vms', {
+				params: { fields: 'most' },
+			});
 			expect(result).toEqual([sampleVM]);
 		});
 
@@ -69,7 +73,9 @@ describe('VMService', () => {
 
 			const result = await svc.get(42);
 
-			expect(http.get).toHaveBeenCalledWith('/vms/42');
+			expect(http.get).toHaveBeenCalledWith('/vms/42', {
+				params: { fields: 'most' },
+			});
 			expect(result).toEqual(sampleVM);
 		});
 
@@ -84,7 +90,9 @@ describe('VMService', () => {
 			expect(http.post).toHaveBeenCalledWith('/vms', {
 				body: { name: 'test-vm' },
 			});
-			expect(http.get).toHaveBeenCalledWith('/vms/42');
+			expect(http.get).toHaveBeenCalledWith('/vms/42', {
+				params: { fields: 'most' },
+			});
 			expect(result).toEqual(sampleVM);
 		});
 
@@ -102,7 +110,9 @@ describe('VMService', () => {
 			expect(http.put).toHaveBeenCalledWith('/vms/42', {
 				body: { description: 'updated' },
 			});
-			expect(http.get).toHaveBeenCalledWith('/vms/42');
+			expect(http.get).toHaveBeenCalledWith('/vms/42', {
+				params: { fields: 'most' },
+			});
 			expect(result.description).toBe('updated');
 		});
 
