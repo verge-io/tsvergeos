@@ -96,6 +96,7 @@ export default defineConfig({
     "services/alarm/index": "src/services/alarm/index.ts",
     "services/alarm-type/index": "src/services/alarm-type/index.ts",
     "services/tag-category/index": "src/services/tag-category/index.ts",
+    "services/tag/index": "src/services/tag/index.ts",
   },
   format: ["esm", "cjs"],
   dts: true,

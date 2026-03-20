@@ -521,6 +521,11 @@ export type {
 } from "./services/wireguard-peer/types.js";
 export type { WireGuardPeerStatus } from "./services/wireguard-peer-status/types.js";
 export type {
+  Tag,
+  TagCreateParams,
+  TagUpdateParams,
+} from "./services/tag/types.js";
+export type {
   TagCategory,
   TagCategoryCreateParams,
   TagCategoryUpdateParams,
