@@ -139,6 +139,13 @@ export type {
 	CatalogRepositoryUpdateParams,
 } from './services/catalog-repository/types.js';
 export type {
+	Certificate,
+	CertificateCreateParams,
+	CertificateKeyType,
+	CertificateType,
+	CertificateUpdateParams,
+} from './services/certificate/types.js';
+export type {
 	CloudSnapshot,
 	CloudSnapshotCreateParams,
 	CloudSnapshotExpiresType,

@@ -79,6 +79,7 @@ export default defineConfig({
 		'services/tag-category/index': 'src/services/tag-category/index.ts',
 		'services/tag/index': 'src/services/tag/index.ts',
 		'services/tag-member/index': 'src/services/tag-member/index.ts',
+		'services/certificate/index': 'src/services/certificate/index.ts',
 	},
 	format: ['esm', 'cjs'],
 	dts: true,
