@@ -33,6 +33,26 @@
 				"types": "./dist/full.d.cts",
 				"default": "./dist/full.cjs"
 			}
+		},
+		"./services/vm": {
+			"import": {
+				"types": "./dist/services/vm/index.d.ts",
+				"default": "./dist/services/vm/index.js"
+			},
+			"require": {
+				"types": "./dist/services/vm/index.d.cts",
+				"default": "./dist/services/vm/index.cjs"
+			}
+		},
+		"./services/network": {
+			"import": {
+				"types": "./dist/services/network/index.d.ts",
+				"default": "./dist/services/network/index.js"
+			},
+			"require": {
+				"types": "./dist/services/network/index.d.cts",
+				"default": "./dist/services/network/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
