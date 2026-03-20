@@ -72,3 +72,4 @@ import "./services/site-sync-profile-period/index.js";
 import "./services/task/index.js";
 import "./services/alarm/index.js";
 import "./services/alarm-type/index.js";
+import "./services/tag-category/index.js";
