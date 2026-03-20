@@ -36,6 +36,14 @@ export class HttpClient {
 	private readonly fetchImpl: typeof globalThis.fetch;
 	private readonly signal?: AbortSignal;
 
+	/**
+	 * The base URL of the connected server (e.g., `https://my-vergeos.example.com`).
+	 * Excludes the API path prefix.
+	 */
+	get host(): string {
+		return this.baseUrl;
+	}
+
 	constructor(config: ClientConfig) {
 		const host = config.host.replace(/\/+$/, '');
 		this.baseUrl = host.startsWith('http') ? host : `https://${host}`;
