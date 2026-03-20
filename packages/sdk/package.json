@@ -54,6 +54,16 @@
 				"default": "./dist/services/network/index.cjs"
 			}
 		},
+		"./services/machine-drive": {
+			"import": {
+				"types": "./dist/services/machine-drive/index.d.ts",
+				"default": "./dist/services/machine-drive/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-drive/index.d.cts",
+				"default": "./dist/services/machine-drive/index.cjs"
+			}
+		},
 		"./services/machine-snapshot": {
 			"import": {
 				"types": "./dist/services/machine-snapshot/index.d.ts",
