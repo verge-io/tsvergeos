@@ -158,6 +158,24 @@ export type {
 	NetworkAddressUpdateParams,
 } from './services/network-address/types.js';
 export type {
+	DnsRecordType,
+	NetworkDnsRecord,
+	NetworkDnsRecordCreateParams,
+	NetworkDnsRecordUpdateParams,
+} from './services/network-dns-record/types.js';
+export type {
+	NetworkDnsView,
+	NetworkDnsViewCreateParams,
+	NetworkDnsViewUpdateParams,
+} from './services/network-dns-view/types.js';
+export type {
+	DnsZoneNotify,
+	DnsZoneType,
+	NetworkDnsZone,
+	NetworkDnsZoneCreateParams,
+	NetworkDnsZoneUpdateParams,
+} from './services/network-dns-zone/types.js';
+export type {
 	NetworkRule,
 	NetworkRuleCreateParams,
 	NetworkRuleUpdateParams,
