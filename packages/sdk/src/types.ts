@@ -256,6 +256,12 @@ export type {
 	ThemeAccess,
 } from './services/tenant/types.js';
 export type {
+	TenantNode,
+	TenantNodeCreateParams,
+	TenantNodeOnPowerLoss,
+	TenantNodeUpdateParams,
+} from './services/tenant-node/types.js';
+export type {
 	BootOrder,
 	CloudInitDatasource,
 	ConsoleType,
