@@ -55,6 +55,12 @@ export {
 	WritableService,
 } from './services/base.js';
 export type {
+	SiteConfig,
+	SiteManagerOptions,
+	SiteStatus,
+} from './site-manager.js';
+export { SiteManager } from './site-manager.js';
+export type {
 	ApiResponse,
 	ClientConfig,
 	FlexKey,
