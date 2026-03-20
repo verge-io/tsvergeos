@@ -112,6 +112,12 @@ export type {
 // ─── Service Resource Types ──────────────────────────────────────────────────
 
 export type {
+	ExpiresType,
+	MachineSnapshot,
+	MachineSnapshotCreateParams,
+	MachineSnapshotUpdateParams,
+} from './services/machine-snapshot/types.js';
+export type {
 	DnsMode,
 	IpAddressType,
 	Layer2Type,

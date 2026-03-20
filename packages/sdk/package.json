@@ -53,6 +53,16 @@
 				"types": "./dist/services/network/index.d.cts",
 				"default": "./dist/services/network/index.cjs"
 			}
+		},
+		"./services/machine-snapshot": {
+			"import": {
+				"types": "./dist/services/machine-snapshot/index.d.ts",
+				"default": "./dist/services/machine-snapshot/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-snapshot/index.d.cts",
+				"default": "./dist/services/machine-snapshot/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
