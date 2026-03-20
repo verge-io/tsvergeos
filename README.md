@@ -4,7 +4,7 @@ TypeScript SDK for the VergeOS ultraconverged infrastructure platform.
 
 [![npm version](https://img.shields.io/npm/v/tsvergeos)](https://www.npmjs.com/package/tsvergeos)
 [![Node.js 18+](https://img.shields.io/badge/node-18+-blue.svg)](https://nodejs.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Zero runtime dependencies. Tree-shakeable ESM-first output with CJS fallback. Full type coverage. 84 services covering every VergeOS API endpoint.
 
@@ -298,6 +298,10 @@ interface ClientConfig {
 | Python     | `pyvergeos` | [verge-io/pyvergeos](https://github.com/verge-io/pyvergeos) |
 | Go         | `govergeos` | [verge-io/govergeos](https://github.com/verge-io/govergeos) |
 
+## Contributing
+
+By submitting a pull request, you agree to the terms of our [Contributor License Agreement](CLA.md).
+
 ## License
 
-MIT
+Apache License 2.0 — see [LICENSE](LICENSE) for details.
