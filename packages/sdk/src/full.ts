@@ -22,3 +22,4 @@ import "./services/ipsec-phase1/index.js";
 import "./services/ipsec-phase2/index.js";
 import "./services/ipsec-connection/index.js";
 import "./services/machine-stats/index.js";
+import "./services/machine-drive-stats/index.js";
