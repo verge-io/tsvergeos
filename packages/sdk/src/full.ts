@@ -10,3 +10,6 @@ import './services/machine-snapshot/index.js';
 import './services/network-address/index.js';
 import './services/network-rule/index.js';
 import './services/network-rule-alias/index.js';
+import './services/network-dns-view/index.js';
+import './services/network-dns-zone/index.js';
+import './services/network-dns-record/index.js';
