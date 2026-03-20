@@ -11,21 +11,21 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { TenantStorageService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { TenantStorageService } from './service.js';
 
-VergeClient.registerService("tenantStorage", TenantStorageService);
+VergeClient.registerService('tenantStorage', TenantStorageService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing tenant storage allocations. */
-    readonly tenantStorage: TenantStorageService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing tenant storage allocations. */
+		readonly tenantStorage: TenantStorageService;
+	}
 }
 
-export { TenantStorageService } from "./service.js";
+export { TenantStorageService } from './service.js';
 export type {
-  TenantStorage,
-  TenantStorageCreateParams,
-  TenantStorageUpdateParams,
-} from "./types.js";
+	TenantStorage,
+	TenantStorageCreateParams,
+	TenantStorageUpdateParams,
+} from './types.js';

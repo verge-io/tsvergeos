@@ -11,21 +11,21 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { TenantLayer2Service } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { TenantLayer2Service } from './service.js';
 
-VergeClient.registerService("tenantLayer2Networks", TenantLayer2Service);
+VergeClient.registerService('tenantLayer2Networks', TenantLayer2Service);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing tenant Layer 2 network assignments. */
-    readonly tenantLayer2Networks: TenantLayer2Service;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing tenant Layer 2 network assignments. */
+		readonly tenantLayer2Networks: TenantLayer2Service;
+	}
 }
 
-export { TenantLayer2Service } from "./service.js";
+export { TenantLayer2Service } from './service.js';
 export type {
-  TenantLayer2Network,
-  TenantLayer2CreateParams,
-  TenantLayer2UpdateParams,
-} from "./types.js";
+	TenantLayer2CreateParams,
+	TenantLayer2Network,
+	TenantLayer2UpdateParams,
+} from './types.js';

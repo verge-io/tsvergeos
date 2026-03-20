@@ -1,4 +1,4 @@
-import type { FlexKey, Resource } from "../../types.js";
+import type { FlexKey, Resource } from '../../types.js';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -12,31 +12,31 @@ import type { FlexKey, Resource } from "../../types.js";
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface TenantStorage extends Resource {
-  /** Parent tenant (FK to `tenants`). */
-  tenant: FlexKey;
+	/** Parent tenant (FK to `tenants`). */
+	tenant: FlexKey;
 
-  /** Storage tier (FK to `storage_tiers`). Read-only after creation. */
-  tier: FlexKey;
+	/** Storage tier (FK to `storage_tiers`). Read-only after creation. */
+	tier: FlexKey;
 
-  /** Provisioned storage capacity in bytes. Default: `0`. */
-  provisioned?: number;
+	/** Provisioned storage capacity in bytes. Default: `0`. */
+	provisioned?: number;
 
-  /** Used storage in bytes. Default: `0`. */
-  used?: number;
+	/** Used storage in bytes. Default: `0`. */
+	used?: number;
 
-  /** Allocated storage in bytes. Default: `0`. */
-  allocated?: number;
+	/** Allocated storage in bytes. Default: `0`. */
+	allocated?: number;
 
-  // ─── Read-only fields ────────────────────────────────────────────────
+	// ─── Read-only fields ────────────────────────────────────────────────
 
-  /** Used storage as a percentage. Read-only. */
-  used_pct?: number;
+	/** Used storage as a percentage. Read-only. */
+	used_pct?: number;
 
-  /** Last modification timestamp (Unix epoch). Read-only. */
-  last_update?: number;
+	/** Last modification timestamp (Unix epoch). Read-only. */
+	last_update?: number;
 
-  /** Last walk timestamp (Unix epoch). */
-  last_walk?: number;
+	/** Last walk timestamp (Unix epoch). */
+	last_walk?: number;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -47,14 +47,14 @@ export interface TenantStorage extends Resource {
  * `tenant` and `tier` are required. After creation, `tier` becomes read-only.
  */
 export interface TenantStorageCreateParams {
-  /** Parent tenant (FK to `tenants`). Required. */
-  tenant: FlexKey;
+	/** Parent tenant (FK to `tenants`). Required. */
+	tenant: FlexKey;
 
-  /** Storage tier (FK to `storage_tiers`). Required. */
-  tier: FlexKey;
+	/** Storage tier (FK to `storage_tiers`). Required. */
+	tier: FlexKey;
 
-  /** Provisioned storage capacity in bytes. Default: `0`. */
-  provisioned?: number;
+	/** Provisioned storage capacity in bytes. Default: `0`. */
+	provisioned?: number;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
@@ -65,6 +65,6 @@ export interface TenantStorageCreateParams {
  * Only `provisioned` can be changed after creation.
  */
 export interface TenantStorageUpdateParams {
-  /** Provisioned storage capacity in bytes. */
-  provisioned?: number;
+	/** Provisioned storage capacity in bytes. */
+	provisioned?: number;
 }

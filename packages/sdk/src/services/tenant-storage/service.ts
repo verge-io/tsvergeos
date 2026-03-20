@@ -1,11 +1,11 @@
-import type { HttpClient } from "../../http.js";
-import type { FlexKey } from "../../types.js";
-import { BaseService } from "../base.js";
+import type { HttpClient } from '../../http.js';
+import type { FlexKey } from '../../types.js';
+import { BaseService } from '../base.js';
 import type {
-  TenantStorage,
-  TenantStorageCreateParams,
-  TenantStorageUpdateParams,
-} from "./types.js";
+	TenantStorage,
+	TenantStorageCreateParams,
+	TenantStorageUpdateParams,
+} from './types.js';
 
 /**
  * Service for managing VergeOS tenant storage allocations.
@@ -28,21 +28,21 @@ import type {
  * ```
  */
 export class TenantStorageService extends BaseService<
-  TenantStorage,
-  TenantStorageCreateParams,
-  TenantStorageUpdateParams
+	TenantStorage,
+	TenantStorageCreateParams,
+	TenantStorageUpdateParams
 > {
-  constructor(http: HttpClient) {
-    super(http, "/tenant_storage", "Tenant Storage");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/tenant_storage', 'Tenant Storage');
+	}
 
-  /**
-   * List tenant storage allocations for a specific tenant.
-   *
-   * @param tenantKey - The tenant ID to filter by
-   * @returns Array of tenant storage allocations for the specified tenant
-   */
-  async listByTenant(tenantKey: FlexKey): Promise<TenantStorage[]> {
-    return this.list({ filter: `tenant eq ${tenantKey}` });
-  }
+	/**
+	 * List tenant storage allocations for a specific tenant.
+	 *
+	 * @param tenantKey - The tenant ID to filter by
+	 * @returns Array of tenant storage allocations for the specified tenant
+	 */
+	async listByTenant(tenantKey: FlexKey): Promise<TenantStorage[]> {
+		return this.list({ filter: `tenant eq ${tenantKey}` });
+	}
 }
