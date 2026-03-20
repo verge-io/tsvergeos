@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
+import { NotFoundError } from '../../src/errors.js';
 import type { HttpClient } from '../../src/http.js';
 import { TenantService } from '../../src/services/tenant/service.js';
 import type { Tenant } from '../../src/services/tenant/types.js';
@@ -310,6 +311,82 @@ describe('TenantService', () => {
 			});
 
 			await expect(svc.connect(1, { apiKey: 'key' })).rejects.toThrow(/no URL configured/);
+		});
+	});
+
+	describe('deployCrashCart', () => {
+		it('finds Crash Cart recipe and deploys it with tenant ID', async () => {
+			const http = mockHttp();
+			const svc = new TenantService(http);
+			const recipeKey = 'a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2';
+
+			// First call: list vm_recipes filtered by name
+			vi.mocked(http.get).mockResolvedValueOnce([{ $key: recipeKey, name: 'Crash Cart' }]);
+			// Second call: POST to vm_recipe_instances
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.deployCrashCart(1);
+
+			expect(http.get).toHaveBeenCalledWith('/vm_recipes', {
+				params: { filter: "name eq 'Crash Cart'" },
+			});
+			expect(http.post).toHaveBeenCalledWith('/vm_recipe_instances', {
+				body: {
+					recipe: recipeKey,
+					name: 'Crash Cart',
+					answers: { tenant: 1 },
+				},
+			});
+		});
+
+		it('throws NotFoundError when Crash Cart recipe is not available', async () => {
+			const http = mockHttp();
+			const svc = new TenantService(http);
+
+			// Return empty array — no recipe found
+			vi.mocked(http.get).mockResolvedValue([]);
+
+			const err = await svc.deployCrashCart(1).catch((e: unknown) => e);
+
+			expect(err).toBeInstanceOf(NotFoundError);
+			expect((err as Error).message).toMatch(/Crash Cart recipe not found/);
+		});
+	});
+
+	describe('deleteCrashCart', () => {
+		it('finds crash cart VM by name and deletes it', async () => {
+			const http = mockHttp();
+			const svc = new TenantService(http);
+
+			// First call: get tenant by ID
+			vi.mocked(http.get).mockResolvedValueOnce(sampleTenant);
+			// Second call: list VMs filtered by crash cart name
+			vi.mocked(http.get).mockResolvedValueOnce([{ $key: 99, name: 'Crash Cart - test-tenant' }]);
+			// Third call: delete VM
+			vi.mocked(http.del).mockResolvedValueOnce(undefined);
+
+			await svc.deleteCrashCart(1);
+
+			expect(http.get).toHaveBeenCalledWith('/tenants/1', {
+				params: { fields: 'most' },
+			});
+			expect(http.get).toHaveBeenCalledWith('/vms', {
+				params: { filter: "name eq 'Crash Cart - test-tenant'" },
+			});
+			expect(http.del).toHaveBeenCalledWith('/vms/99');
+		});
+
+		it('throws NotFoundError when no crash cart VM exists', async () => {
+			const http = mockHttp();
+			const svc = new TenantService(http);
+
+			vi.mocked(http.get).mockResolvedValueOnce(sampleTenant);
+			vi.mocked(http.get).mockResolvedValueOnce([]); // no VMs found
+
+			const err = await svc.deleteCrashCart(1).catch((e: unknown) => e);
+
+			expect(err).toBeInstanceOf(NotFoundError);
+			expect((err as Error).message).toMatch(/No crash cart VM found/);
 		});
 	});
 
