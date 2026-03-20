@@ -16,3 +16,4 @@ import './services/network-dns-record/index.js';
 import './services/network-host/index.js';
 import './services/wireguard/index.js';
 import './services/wireguard-peer/index.js';
+import './services/wireguard-peer-status/index.js';
