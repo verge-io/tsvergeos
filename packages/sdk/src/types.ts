@@ -98,6 +98,11 @@ export interface MutationOptions {
 // Re-exported here for convenient type-only imports via `tsvergeos/types`.
 
 export type { ActionConfig } from './services/base.js';
+export type {
+	SiteConfig,
+	SiteManagerOptions,
+	SiteStatus,
+} from './site-manager.js';
 
 // ─── Service Resource Types ──────────────────────────────────────────────────
 
