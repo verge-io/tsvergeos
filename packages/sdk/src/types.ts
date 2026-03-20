@@ -260,6 +260,18 @@ export type {
 	VolumeUpdateParams,
 } from './services/volume/types.js';
 export type {
+	BrowseOptions,
+	VolumeBrowserEntry,
+	VolumeBrowserFilter,
+	VolumeBrowserJob,
+	VolumeBrowserParams,
+	VolumeBrowserPasteMode,
+	VolumeBrowserQuery,
+	VolumeBrowserRequest,
+	VolumeBrowserStatus,
+	WaitOptions,
+} from './services/volume-browser/types.js';
+export type {
 	VolumeCIFSShare,
 	VolumeCIFSShareCreateParams,
 	VolumeCIFSShareUpdateParams,

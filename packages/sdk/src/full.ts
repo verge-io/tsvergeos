@@ -32,3 +32,4 @@ import './services/volume-snapshot/index.js';
 import './services/volume-sync/index.js';
 import './services/nas-service/index.js';
 import './services/nas-service-user/index.js';
+import './services/volume-browser/index.js';
