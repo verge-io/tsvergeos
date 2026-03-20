@@ -1,0 +1,9 @@
+
+# Claude Code local files
+.claude/settings.local.json
+.claude/CLAUDE.local.md
+.claude/logs/
+
+# Secrets
+.mcp.json
+.claude/testing.md
