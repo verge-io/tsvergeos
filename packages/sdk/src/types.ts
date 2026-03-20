@@ -243,6 +243,13 @@ export type {
   VolumeCIFSShareUpdateParams,
 } from "./services/volume-cifs-share/types.js";
 export type {
+  NfsDataAccess,
+  NfsSquash,
+  VolumeNFSShare,
+  VolumeNFSShareCreateParams,
+  VolumeNFSShareUpdateParams,
+} from "./services/volume-nfs-share/types.js";
+export type {
   CifsProtocol,
   NfsProtocol,
   ReadAheadKb,
