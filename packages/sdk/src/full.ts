@@ -75,3 +75,4 @@ import './services/alarm-type/index.js';
 import './services/tag-category/index.js';
 import './services/tag/index.js';
 import './services/tag-member/index.js';
+import './services/certificate/index.js';

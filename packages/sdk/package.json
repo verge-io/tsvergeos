@@ -773,6 +773,16 @@
 				"types": "./dist/services/tag-member/index.d.cts",
 				"default": "./dist/services/tag-member/index.cjs"
 			}
+		},
+		"./services/certificate": {
+			"import": {
+				"types": "./dist/services/certificate/index.d.ts",
+				"default": "./dist/services/certificate/index.js"
+			},
+			"require": {
+				"types": "./dist/services/certificate/index.d.cts",
+				"default": "./dist/services/certificate/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
