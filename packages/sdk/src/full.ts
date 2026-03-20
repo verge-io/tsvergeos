@@ -30,3 +30,5 @@ import './services/volume-cifs-share/index.js';
 import './services/volume-nfs-share/index.js';
 import './services/volume-snapshot/index.js';
 import './services/volume-sync/index.js';
+import './services/nas-service/index.js';
+import './services/nas-service-user/index.js';
