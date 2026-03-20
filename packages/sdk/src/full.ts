@@ -50,3 +50,5 @@ import './services/tenant-recipe/index.js';
 import './services/tenant-recipe-instance/index.js';
 import './services/catalog/index.js';
 import './services/catalog-repository/index.js';
+import './services/user/index.js';
+import './services/group/index.js';

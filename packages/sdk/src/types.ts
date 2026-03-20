@@ -140,6 +140,11 @@ export type {
 	VgFileUpdateParams,
 } from './services/file/types.js';
 export type {
+	Group,
+	GroupCreateParams,
+	GroupUpdateParams,
+} from './services/group/types.js';
+export type {
 	IPSec,
 	IPSecCreateParams,
 	IPSecUpdateParams,
@@ -299,6 +304,13 @@ export type {
 	TenantStorageCreateParams,
 	TenantStorageUpdateParams,
 } from './services/tenant-storage/types.js';
+export type {
+	TwoFactorType,
+	User,
+	UserCreateParams,
+	UserType,
+	UserUpdateParams,
+} from './services/user/types.js';
 export type {
 	BootOrder,
 	CloudInitDatasource,

@@ -54,6 +54,8 @@ export default defineConfig({
 		'services/tenant-recipe-instance/index': 'src/services/tenant-recipe-instance/index.ts',
 		'services/catalog/index': 'src/services/catalog/index.ts',
 		'services/catalog-repository/index': 'src/services/catalog-repository/index.ts',
+		'services/user/index': 'src/services/user/index.ts',
+		'services/group/index': 'src/services/group/index.ts',
 	},
 	format: ['esm', 'cjs'],
 	dts: true,
