@@ -1,331 +1,351 @@
 {
-  "name": "tsvergeos",
-  "version": "0.1.0",
-  "description": "TypeScript SDK for the VergeOS ultraconverged infrastructure platform",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
-    },
-    "./types": {
-      "import": {
-        "types": "./dist/types.d.ts",
-        "default": "./dist/types.js"
-      },
-      "require": {
-        "types": "./dist/types.d.cts",
-        "default": "./dist/types.cjs"
-      }
-    },
-    "./full": {
-      "import": {
-        "types": "./dist/full.d.ts",
-        "default": "./dist/full.js"
-      },
-      "require": {
-        "types": "./dist/full.d.cts",
-        "default": "./dist/full.cjs"
-      }
-    },
-    "./services/vm": {
-      "import": {
-        "types": "./dist/services/vm/index.d.ts",
-        "default": "./dist/services/vm/index.js"
-      },
-      "require": {
-        "types": "./dist/services/vm/index.d.cts",
-        "default": "./dist/services/vm/index.cjs"
-      }
-    },
-    "./services/network": {
-      "import": {
-        "types": "./dist/services/network/index.d.ts",
-        "default": "./dist/services/network/index.js"
-      },
-      "require": {
-        "types": "./dist/services/network/index.d.cts",
-        "default": "./dist/services/network/index.cjs"
-      }
-    },
-    "./services/machine-drive": {
-      "import": {
-        "types": "./dist/services/machine-drive/index.d.ts",
-        "default": "./dist/services/machine-drive/index.js"
-      },
-      "require": {
-        "types": "./dist/services/machine-drive/index.d.cts",
-        "default": "./dist/services/machine-drive/index.cjs"
-      }
-    },
-    "./services/machine-device": {
-      "import": {
-        "types": "./dist/services/machine-device/index.d.ts",
-        "default": "./dist/services/machine-device/index.js"
-      },
-      "require": {
-        "types": "./dist/services/machine-device/index.d.cts",
-        "default": "./dist/services/machine-device/index.cjs"
-      }
-    },
-    "./services/machine-nic": {
-      "import": {
-        "types": "./dist/services/machine-nic/index.d.ts",
-        "default": "./dist/services/machine-nic/index.js"
-      },
-      "require": {
-        "types": "./dist/services/machine-nic/index.d.cts",
-        "default": "./dist/services/machine-nic/index.cjs"
-      }
-    },
-    "./services/machine-stats": {
-      "import": {
-        "types": "./dist/services/machine-stats/index.d.ts",
-        "default": "./dist/services/machine-stats/index.js"
-      },
-      "require": {
-        "types": "./dist/services/machine-stats/index.d.cts",
-        "default": "./dist/services/machine-stats/index.cjs"
-      }
-    },
-    "./services/machine-snapshot": {
-      "import": {
-        "types": "./dist/services/machine-snapshot/index.d.ts",
-        "default": "./dist/services/machine-snapshot/index.js"
-      },
-      "require": {
-        "types": "./dist/services/machine-snapshot/index.d.cts",
-        "default": "./dist/services/machine-snapshot/index.cjs"
-      }
-    },
-    "./services/network-address": {
-      "import": {
-        "types": "./dist/services/network-address/index.d.ts",
-        "default": "./dist/services/network-address/index.js"
-      },
-      "require": {
-        "types": "./dist/services/network-address/index.d.cts",
-        "default": "./dist/services/network-address/index.cjs"
-      }
-    },
-    "./services/network-rule": {
-      "import": {
-        "types": "./dist/services/network-rule/index.d.ts",
-        "default": "./dist/services/network-rule/index.js"
-      },
-      "require": {
-        "types": "./dist/services/network-rule/index.d.cts",
-        "default": "./dist/services/network-rule/index.cjs"
-      }
-    },
-    "./services/network-rule-alias": {
-      "import": {
-        "types": "./dist/services/network-rule-alias/index.d.ts",
-        "default": "./dist/services/network-rule-alias/index.js"
-      },
-      "require": {
-        "types": "./dist/services/network-rule-alias/index.d.cts",
-        "default": "./dist/services/network-rule-alias/index.cjs"
-      }
-    },
-    "./services/network-dns-view": {
-      "import": {
-        "types": "./dist/services/network-dns-view/index.d.ts",
-        "default": "./dist/services/network-dns-view/index.js"
-      },
-      "require": {
-        "types": "./dist/services/network-dns-view/index.d.cts",
-        "default": "./dist/services/network-dns-view/index.cjs"
-      }
-    },
-    "./services/network-dns-zone": {
-      "import": {
-        "types": "./dist/services/network-dns-zone/index.d.ts",
-        "default": "./dist/services/network-dns-zone/index.js"
-      },
-      "require": {
-        "types": "./dist/services/network-dns-zone/index.d.cts",
-        "default": "./dist/services/network-dns-zone/index.cjs"
-      }
-    },
-    "./services/network-dns-record": {
-      "import": {
-        "types": "./dist/services/network-dns-record/index.d.ts",
-        "default": "./dist/services/network-dns-record/index.js"
-      },
-      "require": {
-        "types": "./dist/services/network-dns-record/index.d.cts",
-        "default": "./dist/services/network-dns-record/index.cjs"
-      }
-    },
-    "./services/network-host": {
-      "import": {
-        "types": "./dist/services/network-host/index.d.ts",
-        "default": "./dist/services/network-host/index.js"
-      },
-      "require": {
-        "types": "./dist/services/network-host/index.d.cts",
-        "default": "./dist/services/network-host/index.cjs"
-      }
-    },
-    "./services/wireguard": {
-      "import": {
-        "types": "./dist/services/wireguard/index.d.ts",
-        "default": "./dist/services/wireguard/index.js"
-      },
-      "require": {
-        "types": "./dist/services/wireguard/index.d.cts",
-        "default": "./dist/services/wireguard/index.cjs"
-      }
-    },
-    "./services/wireguard-peer": {
-      "import": {
-        "types": "./dist/services/wireguard-peer/index.d.ts",
-        "default": "./dist/services/wireguard-peer/index.js"
-      },
-      "require": {
-        "types": "./dist/services/wireguard-peer/index.d.cts",
-        "default": "./dist/services/wireguard-peer/index.cjs"
-      }
-    },
-    "./services/ipsec": {
-      "import": {
-        "types": "./dist/services/ipsec/index.d.ts",
-        "default": "./dist/services/ipsec/index.js"
-      },
-      "require": {
-        "types": "./dist/services/ipsec/index.d.cts",
-        "default": "./dist/services/ipsec/index.cjs"
-      }
-    },
-    "./services/ipsec-phase1": {
-      "import": {
-        "types": "./dist/services/ipsec-phase1/index.d.ts",
-        "default": "./dist/services/ipsec-phase1/index.js"
-      },
-      "require": {
-        "types": "./dist/services/ipsec-phase1/index.d.cts",
-        "default": "./dist/services/ipsec-phase1/index.cjs"
-      }
-    },
-    "./services/ipsec-phase2": {
-      "import": {
-        "types": "./dist/services/ipsec-phase2/index.d.ts",
-        "default": "./dist/services/ipsec-phase2/index.js"
-      },
-      "require": {
-        "types": "./dist/services/ipsec-phase2/index.d.cts",
-        "default": "./dist/services/ipsec-phase2/index.cjs"
-      }
-    },
-    "./services/ipsec-connection": {
-      "import": {
-        "types": "./dist/services/ipsec-connection/index.d.ts",
-        "default": "./dist/services/ipsec-connection/index.js"
-      },
-      "require": {
-        "types": "./dist/services/ipsec-connection/index.d.cts",
-        "default": "./dist/services/ipsec-connection/index.cjs"
-      }
-    },
-    "./services/machine-drive-stats": {
-      "import": {
-        "types": "./dist/services/machine-drive-stats/index.d.ts",
-        "default": "./dist/services/machine-drive-stats/index.js"
-      },
-      "require": {
-        "types": "./dist/services/machine-drive-stats/index.d.cts",
-        "default": "./dist/services/machine-drive-stats/index.cjs"
-      }
-    },
-    "./services/machine-nic-stats": {
-      "import": {
-        "types": "./dist/services/machine-nic-stats/index.d.ts",
-        "default": "./dist/services/machine-nic-stats/index.js"
-      },
-      "require": {
-        "types": "./dist/services/machine-nic-stats/index.d.cts",
-        "default": "./dist/services/machine-nic-stats/index.cjs"
-      }
-    },
-    "./services/machine-drive-phys": {
-      "import": {
-        "types": "./dist/services/machine-drive-phys/index.d.ts",
-        "default": "./dist/services/machine-drive-phys/index.js"
-      },
-      "require": {
-        "types": "./dist/services/machine-drive-phys/index.d.cts",
-        "default": "./dist/services/machine-drive-phys/index.cjs"
-      }
-    },
-    "./services/volume": {
-      "import": {
-        "types": "./dist/services/volume/index.d.ts",
-        "default": "./dist/services/volume/index.js"
-      },
-      "require": {
-        "types": "./dist/services/volume/index.d.cts",
-        "default": "./dist/services/volume/index.cjs"
-      }
-    },
-    "./services/volume-cifs-share": {
-      "import": {
-        "types": "./dist/services/volume-cifs-share/index.d.ts",
-        "default": "./dist/services/volume-cifs-share/index.js"
-      },
-      "require": {
-        "types": "./dist/services/volume-cifs-share/index.d.cts",
-        "default": "./dist/services/volume-cifs-share/index.cjs"
-      }
-    },
-    "./services/volume-snapshot": {
-      "import": {
-        "types": "./dist/services/volume-snapshot/index.d.ts",
-        "default": "./dist/services/volume-snapshot/index.js"
-      },
-      "require": {
-        "types": "./dist/services/volume-snapshot/index.d.cts",
-        "default": "./dist/services/volume-snapshot/index.cjs"
-      }
-    }
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsup",
-    "test": "vitest run",
-    "test:integration": "vitest run --config vitest.integration.config.ts",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
-    "typecheck": "tsc --noEmit"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.4.0",
-    "@types/node": "^22.0.0",
-    "tsup": "^8.5.0",
-    "typescript": "^5.8.0",
-    "undici": "^7.24.5",
-    "vitest": "^4.1.0"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "license": "MIT",
-  "keywords": [
-    "vergeos",
-    "verge",
-    "sdk",
-    "infrastructure",
-    "hyperconverged"
-  ]
+	"name": "tsvergeos",
+	"version": "0.1.0",
+	"description": "TypeScript SDK for the VergeOS ultraconverged infrastructure platform",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		},
+		"./types": {
+			"import": {
+				"types": "./dist/types.d.ts",
+				"default": "./dist/types.js"
+			},
+			"require": {
+				"types": "./dist/types.d.cts",
+				"default": "./dist/types.cjs"
+			}
+		},
+		"./full": {
+			"import": {
+				"types": "./dist/full.d.ts",
+				"default": "./dist/full.js"
+			},
+			"require": {
+				"types": "./dist/full.d.cts",
+				"default": "./dist/full.cjs"
+			}
+		},
+		"./services/vm": {
+			"import": {
+				"types": "./dist/services/vm/index.d.ts",
+				"default": "./dist/services/vm/index.js"
+			},
+			"require": {
+				"types": "./dist/services/vm/index.d.cts",
+				"default": "./dist/services/vm/index.cjs"
+			}
+		},
+		"./services/network": {
+			"import": {
+				"types": "./dist/services/network/index.d.ts",
+				"default": "./dist/services/network/index.js"
+			},
+			"require": {
+				"types": "./dist/services/network/index.d.cts",
+				"default": "./dist/services/network/index.cjs"
+			}
+		},
+		"./services/machine-drive": {
+			"import": {
+				"types": "./dist/services/machine-drive/index.d.ts",
+				"default": "./dist/services/machine-drive/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-drive/index.d.cts",
+				"default": "./dist/services/machine-drive/index.cjs"
+			}
+		},
+		"./services/machine-device": {
+			"import": {
+				"types": "./dist/services/machine-device/index.d.ts",
+				"default": "./dist/services/machine-device/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-device/index.d.cts",
+				"default": "./dist/services/machine-device/index.cjs"
+			}
+		},
+		"./services/machine-nic": {
+			"import": {
+				"types": "./dist/services/machine-nic/index.d.ts",
+				"default": "./dist/services/machine-nic/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-nic/index.d.cts",
+				"default": "./dist/services/machine-nic/index.cjs"
+			}
+		},
+		"./services/machine-stats": {
+			"import": {
+				"types": "./dist/services/machine-stats/index.d.ts",
+				"default": "./dist/services/machine-stats/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-stats/index.d.cts",
+				"default": "./dist/services/machine-stats/index.cjs"
+			}
+		},
+		"./services/machine-snapshot": {
+			"import": {
+				"types": "./dist/services/machine-snapshot/index.d.ts",
+				"default": "./dist/services/machine-snapshot/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-snapshot/index.d.cts",
+				"default": "./dist/services/machine-snapshot/index.cjs"
+			}
+		},
+		"./services/network-address": {
+			"import": {
+				"types": "./dist/services/network-address/index.d.ts",
+				"default": "./dist/services/network-address/index.js"
+			},
+			"require": {
+				"types": "./dist/services/network-address/index.d.cts",
+				"default": "./dist/services/network-address/index.cjs"
+			}
+		},
+		"./services/network-rule": {
+			"import": {
+				"types": "./dist/services/network-rule/index.d.ts",
+				"default": "./dist/services/network-rule/index.js"
+			},
+			"require": {
+				"types": "./dist/services/network-rule/index.d.cts",
+				"default": "./dist/services/network-rule/index.cjs"
+			}
+		},
+		"./services/network-rule-alias": {
+			"import": {
+				"types": "./dist/services/network-rule-alias/index.d.ts",
+				"default": "./dist/services/network-rule-alias/index.js"
+			},
+			"require": {
+				"types": "./dist/services/network-rule-alias/index.d.cts",
+				"default": "./dist/services/network-rule-alias/index.cjs"
+			}
+		},
+		"./services/network-dns-view": {
+			"import": {
+				"types": "./dist/services/network-dns-view/index.d.ts",
+				"default": "./dist/services/network-dns-view/index.js"
+			},
+			"require": {
+				"types": "./dist/services/network-dns-view/index.d.cts",
+				"default": "./dist/services/network-dns-view/index.cjs"
+			}
+		},
+		"./services/network-dns-zone": {
+			"import": {
+				"types": "./dist/services/network-dns-zone/index.d.ts",
+				"default": "./dist/services/network-dns-zone/index.js"
+			},
+			"require": {
+				"types": "./dist/services/network-dns-zone/index.d.cts",
+				"default": "./dist/services/network-dns-zone/index.cjs"
+			}
+		},
+		"./services/network-dns-record": {
+			"import": {
+				"types": "./dist/services/network-dns-record/index.d.ts",
+				"default": "./dist/services/network-dns-record/index.js"
+			},
+			"require": {
+				"types": "./dist/services/network-dns-record/index.d.cts",
+				"default": "./dist/services/network-dns-record/index.cjs"
+			}
+		},
+		"./services/network-host": {
+			"import": {
+				"types": "./dist/services/network-host/index.d.ts",
+				"default": "./dist/services/network-host/index.js"
+			},
+			"require": {
+				"types": "./dist/services/network-host/index.d.cts",
+				"default": "./dist/services/network-host/index.cjs"
+			}
+		},
+		"./services/wireguard": {
+			"import": {
+				"types": "./dist/services/wireguard/index.d.ts",
+				"default": "./dist/services/wireguard/index.js"
+			},
+			"require": {
+				"types": "./dist/services/wireguard/index.d.cts",
+				"default": "./dist/services/wireguard/index.cjs"
+			}
+		},
+		"./services/wireguard-peer": {
+			"import": {
+				"types": "./dist/services/wireguard-peer/index.d.ts",
+				"default": "./dist/services/wireguard-peer/index.js"
+			},
+			"require": {
+				"types": "./dist/services/wireguard-peer/index.d.cts",
+				"default": "./dist/services/wireguard-peer/index.cjs"
+			}
+		},
+		"./services/ipsec": {
+			"import": {
+				"types": "./dist/services/ipsec/index.d.ts",
+				"default": "./dist/services/ipsec/index.js"
+			},
+			"require": {
+				"types": "./dist/services/ipsec/index.d.cts",
+				"default": "./dist/services/ipsec/index.cjs"
+			}
+		},
+		"./services/ipsec-phase1": {
+			"import": {
+				"types": "./dist/services/ipsec-phase1/index.d.ts",
+				"default": "./dist/services/ipsec-phase1/index.js"
+			},
+			"require": {
+				"types": "./dist/services/ipsec-phase1/index.d.cts",
+				"default": "./dist/services/ipsec-phase1/index.cjs"
+			}
+		},
+		"./services/ipsec-phase2": {
+			"import": {
+				"types": "./dist/services/ipsec-phase2/index.d.ts",
+				"default": "./dist/services/ipsec-phase2/index.js"
+			},
+			"require": {
+				"types": "./dist/services/ipsec-phase2/index.d.cts",
+				"default": "./dist/services/ipsec-phase2/index.cjs"
+			}
+		},
+		"./services/ipsec-connection": {
+			"import": {
+				"types": "./dist/services/ipsec-connection/index.d.ts",
+				"default": "./dist/services/ipsec-connection/index.js"
+			},
+			"require": {
+				"types": "./dist/services/ipsec-connection/index.d.cts",
+				"default": "./dist/services/ipsec-connection/index.cjs"
+			}
+		},
+		"./services/machine-drive-stats": {
+			"import": {
+				"types": "./dist/services/machine-drive-stats/index.d.ts",
+				"default": "./dist/services/machine-drive-stats/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-drive-stats/index.d.cts",
+				"default": "./dist/services/machine-drive-stats/index.cjs"
+			}
+		},
+		"./services/machine-nic-stats": {
+			"import": {
+				"types": "./dist/services/machine-nic-stats/index.d.ts",
+				"default": "./dist/services/machine-nic-stats/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-nic-stats/index.d.cts",
+				"default": "./dist/services/machine-nic-stats/index.cjs"
+			}
+		},
+		"./services/machine-drive-phys": {
+			"import": {
+				"types": "./dist/services/machine-drive-phys/index.d.ts",
+				"default": "./dist/services/machine-drive-phys/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-drive-phys/index.d.cts",
+				"default": "./dist/services/machine-drive-phys/index.cjs"
+			}
+		},
+		"./services/volume": {
+			"import": {
+				"types": "./dist/services/volume/index.d.ts",
+				"default": "./dist/services/volume/index.js"
+			},
+			"require": {
+				"types": "./dist/services/volume/index.d.cts",
+				"default": "./dist/services/volume/index.cjs"
+			}
+		},
+		"./services/volume-cifs-share": {
+			"import": {
+				"types": "./dist/services/volume-cifs-share/index.d.ts",
+				"default": "./dist/services/volume-cifs-share/index.js"
+			},
+			"require": {
+				"types": "./dist/services/volume-cifs-share/index.d.cts",
+				"default": "./dist/services/volume-cifs-share/index.cjs"
+			}
+		},
+		"./services/volume-nfs-share": {
+			"import": {
+				"types": "./dist/services/volume-nfs-share/index.d.ts",
+				"default": "./dist/services/volume-nfs-share/index.js"
+			},
+			"require": {
+				"types": "./dist/services/volume-nfs-share/index.d.cts",
+				"default": "./dist/services/volume-nfs-share/index.cjs"
+			}
+		},
+		"./services/volume-snapshot": {
+			"import": {
+				"types": "./dist/services/volume-snapshot/index.d.ts",
+				"default": "./dist/services/volume-snapshot/index.js"
+			},
+			"require": {
+				"types": "./dist/services/volume-snapshot/index.d.cts",
+				"default": "./dist/services/volume-snapshot/index.cjs"
+			}
+		},
+		"./services/volume-sync": {
+			"import": {
+				"types": "./dist/services/volume-sync/index.d.ts",
+				"default": "./dist/services/volume-sync/index.js"
+			},
+			"require": {
+				"types": "./dist/services/volume-sync/index.d.cts",
+				"default": "./dist/services/volume-sync/index.cjs"
+			}
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsup",
+		"test": "vitest run",
+		"test:integration": "vitest run --config vitest.integration.config.ts",
+		"lint": "biome check .",
+		"lint:fix": "biome check --write .",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.0",
+		"@types/node": "^22.0.0",
+		"tsup": "^8.5.0",
+		"typescript": "^5.8.0",
+		"undici": "^7.24.5",
+		"vitest": "^4.1.0"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"license": "MIT",
+	"keywords": [
+		"vergeos",
+		"verge",
+		"sdk",
+		"infrastructure",
+		"hyperconverged"
+	]
 }
