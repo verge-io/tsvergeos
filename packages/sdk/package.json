@@ -703,6 +703,16 @@
         "types": "./dist/services/site-sync-outgoing/index.d.cts",
         "default": "./dist/services/site-sync-outgoing/index.cjs"
       }
+    },
+    "./services/site-sync-profile-period": {
+      "import": {
+        "types": "./dist/services/site-sync-profile-period/index.d.ts",
+        "default": "./dist/services/site-sync-profile-period/index.js"
+      },
+      "require": {
+        "types": "./dist/services/site-sync-profile-period/index.d.cts",
+        "default": "./dist/services/site-sync-profile-period/index.cjs"
+      }
     }
   },
   "main": "./dist/index.cjs",

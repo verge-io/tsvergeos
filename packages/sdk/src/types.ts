@@ -342,6 +342,11 @@ export type {
   SiteSyncOutgoingUpdateParams,
 } from "./services/site-sync-outgoing/types.js";
 export type {
+  SiteSyncProfilePeriod,
+  SiteSyncProfilePeriodCreateParams,
+  SiteSyncProfilePeriodUpdateParams,
+} from "./services/site-sync-profile-period/types.js";
+export type {
   SnapshotProfile,
   SnapshotProfileCreateParams,
   SnapshotProfileUpdateParams,

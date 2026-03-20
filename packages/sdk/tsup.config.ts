@@ -90,6 +90,8 @@ export default defineConfig({
       "src/services/site-sync-incoming/index.ts",
     "services/site-sync-outgoing/index":
       "src/services/site-sync-outgoing/index.ts",
+    "services/site-sync-profile-period/index":
+      "src/services/site-sync-profile-period/index.ts",
   },
   format: ["esm", "cjs"],
   dts: true,
