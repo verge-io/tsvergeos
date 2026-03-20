@@ -112,6 +112,14 @@ export type {
 // ─── Service Resource Types ──────────────────────────────────────────────────
 
 export type {
+	DriveInterface,
+	DriveMedia,
+	DriveOptimize,
+	MachineDrive,
+	MachineDriveCreateParams,
+	MachineDriveUpdateParams,
+} from './services/machine-drive/types.js';
+export type {
 	ExpiresType,
 	MachineSnapshot,
 	MachineSnapshotCreateParams,
