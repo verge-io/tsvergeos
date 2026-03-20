@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## What This Is
 
@@ -24,8 +24,10 @@ pnpm -F tsvergeos typecheck           # TypeScript type checking (tsc --noEmit)
 ## Architecture
 
 ### Monorepo Layout
-
 - `packages/sdk/` — the `tsvergeos` npm package (core SDK)
+- `examples/dashboards/` — reference dashboard apps (Next.js, React SPAs)
+- `examples/scripts/` — standalone Node.js usage examples
+- `examples/cli/vergectl/` — example CLI tool
 
 ### Service Registration (Tree-Shaking Mechanism)
 
@@ -33,23 +35,18 @@ Services self-register on `VergeClient` via side-effect imports and TypeScript d
 
 ```typescript
 // services/vm/index.ts
-VergeClient.registerService("vms", VMService);
-declare module "tsvergeos" {
-  interface VergeClient {
-    readonly vms: VMService;
-  }
+VergeClient.registerService('vms', VMService);
+declare module 'tsvergeos' {
+  interface VergeClient { readonly vms: VMService; }
 }
 ```
 
-Users opt in to services: `import 'tsvergeos/services/vm'`. Unused services are dead code eliminated. Two convenience barrels exist:
-
-- `import 'tsvergeos'` — curated core (~40 most-used services). Recommended default for dashboards, SPAs, and most apps.
-- `import 'tsvergeos/full'` — all ~84 services. For Node scripts, CLIs, and "I don't care about bundle size" cases.
+Users opt in to services: `import 'tsvergeos/services/vm'`. Unused services are dead code eliminated. `import 'tsvergeos'` registers everything (convenience for Node scripts).
 
 All resource types are re-exported from a top-level barrel for type-only imports with zero bundle impact:
 
 ```typescript
-import type { VM, VMCreateParams, Alarm, Network } from "tsvergeos/types";
+import type { VM, VMCreateParams, Alarm, Network } from 'tsvergeos/types';
 ```
 
 ### Service Hierarchy
@@ -89,14 +86,12 @@ The dedicated endpoint is derived by convention: strip trailing `s`, append `_ac
 ## Code Conventions
 
 ### Naming
-
 - `camelCase` for variables/functions, `PascalCase` for classes, `SCREAMING_SNAKE_CASE` for constants
 - Service classes: `VMService`, interfaces: `VMServiceInterface`
 - Files: `kebab-case.ts`
 - Client properties: `client.vms`, `client.networks`, `client.tenantRecipes`
 
 ### Style
-
 - `const` over `let`, no `var`
 - `async/await` over raw promises
 - Early returns to reduce nesting
@@ -105,30 +100,28 @@ The dedicated endpoint is derived by convention: strip trailing `s`, append `_ac
 - Use the typed error hierarchy (`ApiError`, `NotFoundError`, `AuthError`, etc.) — never throw raw `Error`. Every error class has a corresponding `is*Error()` type guard; use those in catch blocks instead of `instanceof`.
 
 ### Git
-
 - Conventional commits with emoji: `✨ feat:`, `🐛 fix:`, `♻️ refactor:`, `📝 docs:`, `✅ test:`
 - Branches: `feature/<name>`, `fix/<name>`, `refactor/<name>`
 
 ## Reference Materials
 
-- `.claude/reference/PRD.md` — full product requirements with validated architecture
-- `.claude/reference/RESOURCES.md` — index of all development resources (API docs, SDK references, test systems)
-- `.claude/plans/` — validated design documents for major architectural decisions
+- `.Codex/reference/PRD.md` — full product requirements with validated architecture
+- `.Codex/reference/RESOURCES.md` — index of all development resources (API docs, SDK references, test systems)
+- `.Codex/plans/` — validated design documents for major architectural decisions
 - Go SDK at `/Volumes/HOME/projects/govergeos/` — closest precedent, reference for service patterns and ADRs
 - Python SDK at `/Volumes/HOME/projects/pyvergeos/` — broadest service coverage (82 services), filter builder reference
 - VergeOS API docs at `/Users/larry/Development/VergeOS-Docs/docs/api-reference/` — 337 endpoint docs with full field schemas
 
 ## MCP Servers
 
-| Server       | Purpose                                                                       |
-| ------------ | ----------------------------------------------------------------------------- |
-| **Marvin**   | Internal Verge knowledge base — product docs, support articles, release notes |
-| **Context7** | Current docs for external libraries (TypeScript, Vitest, tsup, Biome, etc.)   |
+| Server | Purpose |
+|--------|---------|
+| **Marvin** | Internal Verge knowledge base — product docs, support articles, release notes |
+| **Context7** | Current docs for external libraries (TypeScript, Vitest, tsup, Biome, etc.) |
 
 ## Testing
 
 ### Philosophy
-
 - Unit tests mock the HTTP layer, never the service logic. Tests should verify that services construct the right requests and handle responses correctly.
 - Integration tests hit real VergeOS systems and are the final gate — no service ships without them passing.
 - Tests document behavior. A test name should read as a spec: `"returns NotFoundError when VM does not exist"`, not `"test get error"`.
@@ -136,8 +129,7 @@ The dedicated endpoint is derived by convention: strip trailing `s`, append `_ac
 
 ### Integration Test Systems
 
-Two systems available (credentials in `.claude/testing.md`, gitignored):
-
+Two systems available (credentials in `.Codex/testing.md`, gitignored):
 - **Dev System 1** (`192.168.10.75`) — self-signed cert, tests `verifySsl: false`
 - **Dev System 2** (`asgard.subether.me`) — valid cert, production-like
 
