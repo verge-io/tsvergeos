@@ -35,6 +35,7 @@ export {
 	ValidationError,
 	VergeError,
 } from './errors.js';
+export { HttpClient } from './http.js';
 export type {
 	ApiResponse,
 	ClientConfig,
