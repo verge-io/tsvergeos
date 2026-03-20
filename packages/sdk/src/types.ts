@@ -98,6 +98,19 @@ export interface MutationOptions {
 // Re-exported here for convenient type-only imports via `tsvergeos/types`.
 
 export type {
+	DnsMode,
+	IpAddressType,
+	Layer2Type,
+	Network,
+	NetworkCreateParams,
+	NetworkOnPowerLoss,
+	NetworkType,
+	NetworkUpdateParams,
+	PortMirroringMode,
+	PxeMode,
+	RateLimitType,
+} from './services/network/types.js';
+export type {
 	BootOrder,
 	CloudInitDatasource,
 	ConsoleType,
