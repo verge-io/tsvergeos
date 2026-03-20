@@ -93,3 +93,24 @@ export interface MutationOptions {
 	/** Whether to perform a follow-up GET to return the full resource after mutation. Defaults to `true`. */
 	readBack?: boolean;
 }
+
+// ─── Service Resource Types ──────────────────────────────────────────────────
+// Re-exported here for convenient type-only imports via `tsvergeos/types`.
+
+export type {
+	BootOrder,
+	CloudInitDatasource,
+	ConsoleType,
+	CreatedFrom,
+	MigrationMethod,
+	OnPowerLoss,
+	OSFamily,
+	RTCBase,
+	SoundType,
+	VideoType,
+	VM,
+	VMCloneOptions,
+	VMCreateParams,
+	VMSnapshotOptions,
+	VMUpdateParams,
+} from './services/vm/types.js';

@@ -1,3 +1,4 @@
 // Full service registration barrel — imports all service side-effect modules.
 // Usage: import 'tsvergeos/full';
-export {};
+
+import './services/vm/index.js';
