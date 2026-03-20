@@ -1,4 +1,4 @@
-import type { FlexKey, Resource } from "../../types.js";
+import type { FlexKey, Resource } from '../../types.js';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -12,38 +12,38 @@ import type { FlexKey, Resource } from "../../types.js";
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface IPSecPhase2 extends Resource {
-  /** Parent Phase 1 configuration reference (FK to `vnet_ipsec_phase1s`). Read-only. */
-  phase1: FlexKey;
+	/** Parent Phase 1 configuration reference (FK to `vnet_ipsec_phase1s`). Read-only. */
+	phase1: FlexKey;
 
-  /** Whether this Phase 2 configuration is enabled. Default: `true`. */
-  enabled?: boolean;
+	/** Whether this Phase 2 configuration is enabled. Default: `true`. */
+	enabled?: boolean;
 
-  /** Phase 2 configuration name. Min 1, max 128 characters. Unique. */
-  name: string;
+	/** Phase 2 configuration name. Min 1, max 128 characters. Unique. */
+	name: string;
 
-  /** Human-readable description. */
-  description?: string;
+	/** Human-readable description. */
+	description?: string;
 
-  /** IPSec mode: `tunnel` (subnet-to-subnet) or `transport` (host-to-host). Default: `tunnel`. */
-  mode?: string;
+	/** IPSec mode: `tunnel` (subnet-to-subnet) or `transport` (host-to-host). Default: `tunnel`. */
+	mode?: string;
 
-  /** Local network/subnet in CIDR notation. */
-  local: string;
+	/** Local network/subnet in CIDR notation. */
+	local: string;
 
-  /** Remote network/subnet in CIDR notation. */
-  remote?: string;
+	/** Remote network/subnet in CIDR notation. */
+	remote?: string;
 
-  /** IPSec SA lifetime in seconds. Range: 60–86400. Default: `3600`. */
-  lifetime?: number;
+	/** IPSec SA lifetime in seconds. Range: 60–86400. Default: `3600`. */
+	lifetime?: number;
 
-  /** IPSec protocol: `esp` (encryption) or `ah` (auth only). Default: `esp`. */
-  protocol?: string;
+	/** IPSec protocol: `esp` (encryption) or `ah` (auth only). Default: `esp`. */
+	protocol?: string;
 
-  /** Cipher suites for IPSec SA. Default: `aes128-sha256-modp2048,aes128gcm128-sha256-modp2048`. */
-  ciphers: string;
+	/** Cipher suites for IPSec SA. Default: `aes128-sha256-modp2048,aes128gcm128-sha256-modp2048`. */
+	ciphers: string;
 
-  /** Last modification timestamp (Unix epoch). Read-only. */
-  modified?: number;
+	/** Last modification timestamp (Unix epoch). Read-only. */
+	modified?: number;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -54,35 +54,35 @@ export interface IPSecPhase2 extends Resource {
  * `phase1`, `name`, `local`, and `ciphers` are required.
  */
 export interface IPSecPhase2CreateParams {
-  /** Parent Phase 1 configuration reference (FK to `vnet_ipsec_phase1s`). */
-  phase1: FlexKey;
+	/** Parent Phase 1 configuration reference (FK to `vnet_ipsec_phase1s`). */
+	phase1: FlexKey;
 
-  /** Phase 2 configuration name. Min 1, max 128 characters. Must be unique. */
-  name: string;
+	/** Phase 2 configuration name. Min 1, max 128 characters. Must be unique. */
+	name: string;
 
-  /** Human-readable description. */
-  description?: string;
+	/** Human-readable description. */
+	description?: string;
 
-  /** Whether this Phase 2 is enabled. Default: `true`. */
-  enabled?: boolean;
+	/** Whether this Phase 2 is enabled. Default: `true`. */
+	enabled?: boolean;
 
-  /** IPSec mode: `tunnel` or `transport`. Default: `tunnel`. */
-  mode?: string;
+	/** IPSec mode: `tunnel` or `transport`. Default: `tunnel`. */
+	mode?: string;
 
-  /** Local network/subnet in CIDR notation. */
-  local: string;
+	/** Local network/subnet in CIDR notation. */
+	local: string;
 
-  /** Remote network/subnet in CIDR notation. */
-  remote?: string;
+	/** Remote network/subnet in CIDR notation. */
+	remote?: string;
 
-  /** IPSec SA lifetime in seconds. Range: 60–86400. Default: `3600`. */
-  lifetime?: number;
+	/** IPSec SA lifetime in seconds. Range: 60–86400. Default: `3600`. */
+	lifetime?: number;
 
-  /** IPSec protocol: `esp` or `ah`. Default: `esp`. */
-  protocol?: string;
+	/** IPSec protocol: `esp` or `ah`. Default: `esp`. */
+	protocol?: string;
 
-  /** Cipher suites. Default: `aes128-sha256-modp2048,aes128gcm128-sha256-modp2048`. */
-  ciphers?: string;
+	/** Cipher suites. Default: `aes128-sha256-modp2048,aes128gcm128-sha256-modp2048`. */
+	ciphers?: string;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
@@ -94,30 +94,30 @@ export interface IPSecPhase2CreateParams {
  * Read-only fields (`phase1`, `modified`) are excluded.
  */
 export interface IPSecPhase2UpdateParams {
-  /** Phase 2 configuration name. */
-  name?: string;
+	/** Phase 2 configuration name. */
+	name?: string;
 
-  /** Human-readable description. */
-  description?: string;
+	/** Human-readable description. */
+	description?: string;
 
-  /** Whether this Phase 2 is enabled. */
-  enabled?: boolean;
+	/** Whether this Phase 2 is enabled. */
+	enabled?: boolean;
 
-  /** IPSec mode: `tunnel` or `transport`. */
-  mode?: string;
+	/** IPSec mode: `tunnel` or `transport`. */
+	mode?: string;
 
-  /** Local network/subnet in CIDR notation. */
-  local?: string;
+	/** Local network/subnet in CIDR notation. */
+	local?: string;
 
-  /** Remote network/subnet in CIDR notation. */
-  remote?: string;
+	/** Remote network/subnet in CIDR notation. */
+	remote?: string;
 
-  /** IPSec SA lifetime in seconds. */
-  lifetime?: number;
+	/** IPSec SA lifetime in seconds. */
+	lifetime?: number;
 
-  /** IPSec protocol: `esp` or `ah`. */
-  protocol?: string;
+	/** IPSec protocol: `esp` or `ah`. */
+	protocol?: string;
 
-  /** Cipher suites. */
-  ciphers?: string;
+	/** Cipher suites. */
+	ciphers?: string;
 }

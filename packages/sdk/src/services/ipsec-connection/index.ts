@@ -11,17 +11,17 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { IPSecConnectionService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { IPSecConnectionService } from './service.js';
 
-VergeClient.registerService("ipsecConnections", IPSecConnectionService);
+VergeClient.registerService('ipsecConnections', IPSecConnectionService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for querying IPSec VPN connection status (read-only). */
-    readonly ipsecConnections: IPSecConnectionService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for querying IPSec VPN connection status (read-only). */
+		readonly ipsecConnections: IPSecConnectionService;
+	}
 }
 
-export { IPSecConnectionService } from "./service.js";
-export type { IPSecConnection } from "./types.js";
+export { IPSecConnectionService } from './service.js';
+export type { IPSecConnection } from './types.js';
