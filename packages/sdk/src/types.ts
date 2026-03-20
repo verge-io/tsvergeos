@@ -112,6 +112,13 @@ export type {
 // ─── Service Resource Types ──────────────────────────────────────────────────
 
 export type {
+	ApiKeyExpiresType,
+	UserAPIKey,
+	UserAPIKeyCreateParams,
+	UserAPIKeyCreateResult,
+	UserAPIKeyUpdateParams,
+} from './services/api-key/types.js';
+export type {
 	Catalog,
 	CatalogPublishingScope,
 	CatalogUpdateParams,
@@ -195,6 +202,11 @@ export type {
 } from './services/machine-snapshot/types.js';
 export type { MachineStats } from './services/machine-stats/types.js';
 export type {
+	Member,
+	MemberCreateParams,
+	MemberUpdateParams,
+} from './services/member/types.js';
+export type {
 	NASReadAheadKb,
 	NASService,
 	NASServiceCreateParams,
@@ -264,6 +276,11 @@ export type {
 	NetworkRuleAliasUpdateParams,
 	PublishingScope,
 } from './services/network-rule-alias/types.js';
+export type {
+	Permission,
+	PermissionCreateParams,
+	PermissionUpdateParams,
+} from './services/permission/types.js';
 export type { StorageTier } from './services/storage-tier/types.js';
 export type { StorageTierStats } from './services/storage-tier-stats/types.js';
 export type {
