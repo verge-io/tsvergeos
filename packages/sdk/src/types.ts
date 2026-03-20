@@ -162,6 +162,17 @@ export type {
 } from './services/machine-snapshot/types.js';
 export type { MachineStats } from './services/machine-stats/types.js';
 export type {
+	NASReadAheadKb,
+	NASService,
+	NASServiceCreateParams,
+	NASServiceUpdateParams,
+} from './services/nas-service/types.js';
+export type {
+	NASServiceUser,
+	NASServiceUserCreateParams,
+	NASServiceUserUpdateParams,
+} from './services/nas-service-user/types.js';
+export type {
 	DnsMode,
 	IpAddressType,
 	Layer2Type,
