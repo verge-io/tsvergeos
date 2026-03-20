@@ -96,7 +96,9 @@ describe('ReadOnlyService', () => {
 
 			const result = await svc.list();
 
-			expect(http.get).toHaveBeenCalledWith('/widgets', undefined);
+			expect(http.get).toHaveBeenCalledWith('/widgets', {
+				params: { fields: 'most' },
+			});
 			expect(result).toEqual(data);
 		});
 
@@ -115,6 +117,7 @@ describe('ReadOnlyService', () => {
 			expect(http.get).toHaveBeenCalledWith('/widgets', {
 				params: {
 					filter: "name eq 'test'",
+					fields: 'most',
 					limit: 10,
 					offset: 5,
 					sort: '-name',
@@ -136,7 +139,9 @@ describe('ReadOnlyService', () => {
 
 			const result = await svc.get(42);
 
-			expect(http.get).toHaveBeenCalledWith('/widgets/42');
+			expect(http.get).toHaveBeenCalledWith('/widgets/42', {
+				params: { fields: 'most' },
+			});
 			expect(result).toEqual(resource);
 		});
 
@@ -179,7 +184,7 @@ describe('ReadOnlyService', () => {
 			const result = await svc.getByName('target');
 
 			expect(http.get).toHaveBeenCalledWith('/widgets', {
-				params: { filter: "name eq 'target'" },
+				params: { filter: "name eq 'target'", fields: 'most' },
 			});
 			expect(result).toEqual(resource);
 		});
@@ -234,13 +239,13 @@ describe('ReadOnlyService', () => {
 			// Verify pagination calls
 			expect(http.get).toHaveBeenCalledTimes(3);
 			expect(http.get).toHaveBeenNthCalledWith(1, '/widgets', {
-				params: { limit: 2, offset: 0 },
+				params: { fields: 'most', limit: 2, offset: 0 },
 			});
 			expect(http.get).toHaveBeenNthCalledWith(2, '/widgets', {
-				params: { limit: 2, offset: 2 },
+				params: { fields: 'most', limit: 2, offset: 2 },
 			});
 			expect(http.get).toHaveBeenNthCalledWith(3, '/widgets', {
-				params: { limit: 2, offset: 4 },
+				params: { fields: 'most', limit: 2, offset: 4 },
 			});
 		});
 
@@ -278,6 +283,7 @@ describe('ReadOnlyService', () => {
 			expect(http.get).toHaveBeenCalledWith('/widgets', {
 				params: {
 					filter: "status eq 'active'",
+					fields: 'most',
 					sort: 'name',
 					limit: 5,
 					offset: 0,
@@ -305,7 +311,9 @@ describe('WritableService', () => {
 			expect(http.put).toHaveBeenCalledWith('/widgets/5', {
 				body: { name: 'updated' },
 			});
-			expect(http.get).toHaveBeenCalledWith('/widgets/5');
+			expect(http.get).toHaveBeenCalledWith('/widgets/5', {
+				params: { fields: 'most' },
+			});
 			expect(result).toEqual(updated);
 		});
 
@@ -418,7 +426,9 @@ describe('BaseService', () => {
 			expect(http.post).toHaveBeenCalledWith('/widgets', {
 				body: { name: 'new', description: 'fresh' },
 			});
-			expect(http.get).toHaveBeenCalledWith('/widgets/100');
+			expect(http.get).toHaveBeenCalledWith('/widgets/100', {
+				params: { fields: 'most' },
+			});
 			expect(result).toEqual(created);
 		});
 
@@ -443,7 +453,9 @@ describe('BaseService', () => {
 
 			const result = await svc.list();
 
-			expect(http.get).toHaveBeenCalledWith('/widgets', undefined);
+			expect(http.get).toHaveBeenCalledWith('/widgets', {
+				params: { fields: 'most' },
+			});
 			expect(result).toEqual([]);
 		});
 

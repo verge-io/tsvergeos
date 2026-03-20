@@ -86,7 +86,11 @@ export class ReadOnlyService<T extends Resource> {
 	 * @returns Array of matching resources
 	 */
 	async list(options?: ListOptions): Promise<T[]> {
-		const params = serializeListOptions(options);
+		const merged = { ...options };
+		if (merged.fields === undefined) {
+			merged.fields = 'most';
+		}
+		const params = serializeListOptions(merged);
 		return this.http.get<T[]>(this.resource, params ? { params } : undefined);
 	}
 
@@ -99,7 +103,9 @@ export class ReadOnlyService<T extends Resource> {
 	 */
 	async get(key: FlexKey): Promise<T> {
 		try {
-			return await this.http.get<T>(`${this.resource}/${key}`);
+			return await this.http.get<T>(`${this.resource}/${key}`, {
+				params: { fields: 'most' },
+			});
 		} catch (err) {
 			if (err instanceof ApiError && err.statusCode === 404) {
 				throw new NotFoundError(this.displayName, key);
