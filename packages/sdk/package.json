@@ -64,6 +64,16 @@
 				"default": "./dist/services/machine-drive/index.cjs"
 			}
 		},
+		"./services/machine-nic": {
+			"import": {
+				"types": "./dist/services/machine-nic/index.d.ts",
+				"default": "./dist/services/machine-nic/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-nic/index.d.cts",
+				"default": "./dist/services/machine-nic/index.cjs"
+			}
+		},
 		"./services/machine-snapshot": {
 			"import": {
 				"types": "./dist/services/machine-snapshot/index.d.ts",

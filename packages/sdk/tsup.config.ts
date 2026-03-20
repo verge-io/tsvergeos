@@ -8,6 +8,7 @@ export default defineConfig({
 		'services/vm/index': 'src/services/vm/index.ts',
 		'services/network/index': 'src/services/network/index.ts',
 		'services/machine-drive/index': 'src/services/machine-drive/index.ts',
+		'services/machine-nic/index': 'src/services/machine-nic/index.ts',
 		'services/machine-snapshot/index': 'src/services/machine-snapshot/index.ts',
 	},
 	format: ['esm', 'cjs'],

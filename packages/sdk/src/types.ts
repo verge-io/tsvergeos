@@ -120,6 +120,12 @@ export type {
 	MachineDriveUpdateParams,
 } from './services/machine-drive/types.js';
 export type {
+	MachineNIC,
+	MachineNICCreateParams,
+	MachineNICUpdateParams,
+	NicInterface,
+} from './services/machine-nic/types.js';
+export type {
 	ExpiresType,
 	MachineSnapshot,
 	MachineSnapshotCreateParams,
