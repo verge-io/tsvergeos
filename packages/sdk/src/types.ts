@@ -132,6 +132,14 @@ export type {
 	CatalogRepositoryUpdateParams,
 } from './services/catalog-repository/types.js';
 export type {
+	CloudSnapshot,
+	CloudSnapshotCreateParams,
+	CloudSnapshotExpiresType,
+	CloudSnapshotImmutableStatus,
+	CloudSnapshotStatus,
+	CloudSnapshotUpdateParams,
+} from './services/cloud-snapshot/types.js';
+export type {
 	Cluster,
 	ClusterCreateParams,
 	ClusterUpdateParams,
