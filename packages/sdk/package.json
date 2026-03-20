@@ -423,6 +423,16 @@
 				"types": "./dist/services/tenant/index.d.cts",
 				"default": "./dist/services/tenant/index.cjs"
 			}
+		},
+		"./services/tenant-node": {
+			"import": {
+				"types": "./dist/services/tenant-node/index.d.ts",
+				"default": "./dist/services/tenant-node/index.js"
+			},
+			"require": {
+				"types": "./dist/services/tenant-node/index.d.cts",
+				"default": "./dist/services/tenant-node/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
