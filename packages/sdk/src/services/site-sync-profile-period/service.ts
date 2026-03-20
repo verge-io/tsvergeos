@@ -1,11 +1,11 @@
-import type { HttpClient } from "../../http.js";
-import type { FlexKey, ListOptions } from "../../types.js";
-import { BaseService } from "../base.js";
+import type { HttpClient } from '../../http.js';
+import type { FlexKey, ListOptions } from '../../types.js';
+import { BaseService } from '../base.js';
 import type {
-  SiteSyncProfilePeriod,
-  SiteSyncProfilePeriodCreateParams,
-  SiteSyncProfilePeriodUpdateParams,
-} from "./types.js";
+	SiteSyncProfilePeriod,
+	SiteSyncProfilePeriodCreateParams,
+	SiteSyncProfilePeriodUpdateParams,
+} from './types.js';
 
 /**
  * Service for managing VergeOS site sync profile periods.
@@ -29,29 +29,27 @@ import type {
  * ```
  */
 export class SiteSyncProfilePeriodService extends BaseService<
-  SiteSyncProfilePeriod,
-  SiteSyncProfilePeriodCreateParams,
-  SiteSyncProfilePeriodUpdateParams
+	SiteSyncProfilePeriod,
+	SiteSyncProfilePeriodCreateParams,
+	SiteSyncProfilePeriodUpdateParams
 > {
-  constructor(http: HttpClient) {
-    super(http, "/site_syncs_outgoing_profile_periods", "Profile Period");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/site_syncs_outgoing_profile_periods', 'Profile Period');
+	}
 
-  /**
-   * List profile periods belonging to a specific outgoing sync.
-   *
-   * @param syncKey - The outgoing sync ID to filter by
-   * @param options - Additional list options (fields, sort, limit, etc.)
-   * @returns Array of profile periods for the given outgoing sync
-   */
-  async listByOutgoingSync(
-    syncKey: FlexKey,
-    options?: ListOptions,
-  ): Promise<SiteSyncProfilePeriod[]> {
-    const syncFilter = `site_syncs_outgoing eq ${syncKey}`;
-    const filter = options?.filter
-      ? `(${options.filter}) and ${syncFilter}`
-      : syncFilter;
-    return this.list({ ...options, filter });
-  }
+	/**
+	 * List profile periods belonging to a specific outgoing sync.
+	 *
+	 * @param syncKey - The outgoing sync ID to filter by
+	 * @param options - Additional list options (fields, sort, limit, etc.)
+	 * @returns Array of profile periods for the given outgoing sync
+	 */
+	async listByOutgoingSync(
+		syncKey: FlexKey,
+		options?: ListOptions,
+	): Promise<SiteSyncProfilePeriod[]> {
+		const syncFilter = `site_syncs_outgoing eq ${syncKey}`;
+		const filter = options?.filter ? `(${options.filter}) and ${syncFilter}` : syncFilter;
+		return this.list({ ...options, filter });
+	}
 }
