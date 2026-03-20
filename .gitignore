@@ -7,3 +7,12 @@
 # Secrets
 .mcp.json
 .claude/testing.md
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# TypeScript build info
+*.tsbuildinfo
