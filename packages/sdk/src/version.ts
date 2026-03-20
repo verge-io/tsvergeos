@@ -1,12 +1,12 @@
-import { REQUIRED_MAJOR_VERSION } from "./constants.js";
-import { UnsupportedVersionError } from "./errors.js";
-import type { HttpClient } from "./http.js";
+import { REQUIRED_MAJOR_VERSION } from './constants.js';
+import { UnsupportedVersionError } from './errors.js';
+import type { HttpClient } from './http.js';
 
 /**
  * Response shape from the VergeOS `/version.json` endpoint.
  */
 interface VersionResponse {
-  version: string;
+	version: string;
 }
 
 /**
@@ -19,19 +19,19 @@ interface VersionResponse {
  * @returns The major version as an integer, or `0` if unparseable
  */
 export const parseVersion = (v: string): number => {
-  // Strip optional "v" prefix
-  let cleaned = v.startsWith("v") ? v.slice(1) : v;
+	// Strip optional "v" prefix
+	let cleaned = v.startsWith('v') ? v.slice(1) : v;
 
-  // Strip dash-suffixed pre-release tags (e.g., "26.0.0-beta1" → "26.0.0")
-  const dashIdx = cleaned.indexOf("-");
-  if (dashIdx !== -1) {
-    cleaned = cleaned.slice(0, dashIdx);
-  }
+	// Strip dash-suffixed pre-release tags (e.g., "26.0.0-beta1" → "26.0.0")
+	const dashIdx = cleaned.indexOf('-');
+	if (dashIdx !== -1) {
+		cleaned = cleaned.slice(0, dashIdx);
+	}
 
-  // Split on dot and parse first segment
-  const parts = cleaned.split(".");
-  const major = Number.parseInt(parts[0] as string, 10);
-  return Number.isNaN(major) ? 0 : major;
+	// Split on dot and parse first segment
+	const parts = cleaned.split('.');
+	const major = Number.parseInt(parts[0] as string, 10);
+	return Number.isNaN(major) ? 0 : major;
 };
 
 /**
@@ -43,16 +43,13 @@ export const parseVersion = (v: string): number => {
  * @throws {@link UnsupportedVersionError} if the major version is not 26
  */
 export const checkServerVersion = async (http: HttpClient): Promise<string> => {
-  const resp = await http.getAbsolute<VersionResponse>("/version.json");
-  const rawVersion = resp.version;
-  const major = parseVersion(rawVersion);
+	const resp = await http.getAbsolute<VersionResponse>('/version.json');
+	const rawVersion = resp.version;
+	const major = parseVersion(rawVersion);
 
-  if (major !== REQUIRED_MAJOR_VERSION) {
-    throw new UnsupportedVersionError(
-      rawVersion,
-      `${REQUIRED_MAJOR_VERSION}.x`,
-    );
-  }
+	if (major !== REQUIRED_MAJOR_VERSION) {
+		throw new UnsupportedVersionError(rawVersion, `${REQUIRED_MAJOR_VERSION}.x`);
+	}
 
-  return rawVersion;
+	return rawVersion;
 };

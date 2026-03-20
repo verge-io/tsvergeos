@@ -1,3 +1,4 @@
+export { VergeClient } from './client.js';
 export {
 	API_BASE_PATH,
 	API_VERSION,
