@@ -287,6 +287,36 @@ describe('CrossSiteReadProxy', () => {
 	});
 
 	// -----------------------------------------------------------------------
+	// Single site (edge case: not just multi-site)
+	// -----------------------------------------------------------------------
+
+	describe('single site fan-out', () => {
+		it('works correctly with only one site registered', async () => {
+			const eastVms = [
+				{ $key: 1, name: 'vm-east-1' },
+				{ $key: 2, name: 'vm-east-2' },
+			];
+			const eastClient = makeClientWithService('dc-east', 'vms', eastVms);
+
+			const clients = new Map([['dc-east', eastClient]]);
+
+			const proxy = new CrossSiteReadProxy(
+				() => clients,
+				() => {},
+			) as CrossSiteReadProxy & CrossSiteServices;
+
+			const result = await (
+				proxy as unknown as Record<string, { list: () => Promise<unknown> }>
+			).vms.list();
+
+			expect(result.data).toHaveLength(2);
+			expect(result.data[0]).toEqual({ site: 'dc-east', resource: eastVms[0] });
+			expect(result.data[1]).toEqual({ site: 'dc-east', resource: eastVms[1] });
+			expect(result.errors).toHaveLength(0);
+		});
+	});
+
+	// -----------------------------------------------------------------------
 	// Empty sites map
 	// -----------------------------------------------------------------------
 

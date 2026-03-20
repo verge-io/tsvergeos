@@ -47,6 +47,28 @@ function makeConfig(
 	};
 }
 
+/** Create a mock VergeClient with a mock service that has a list() method. */
+function makeClientWithService(
+	name: string,
+	serviceName: string,
+	listResult: unknown[],
+): VergeClient {
+	const fetchMock = vi.fn<typeof globalThis.fetch>();
+	const client = new VergeClient({
+		host: `https://${name}.example.com`,
+		apiKey: 'test-api-key',
+		fetch: fetchMock,
+		timeout: 0,
+		retries: 0,
+	});
+
+	(client as unknown as Record<string, unknown>)[serviceName] = {
+		list: vi.fn().mockResolvedValue(listResult),
+	};
+
+	return client;
+}
+
 // ---------------------------------------------------------------------------
 // Tests
 // ---------------------------------------------------------------------------
@@ -362,6 +384,124 @@ describe('SiteManager', () => {
 		it('timeout is undefined when not set', () => {
 			const manager = new SiteManager();
 			expect(manager.timeout).toBeUndefined();
+		});
+	});
+
+	// -----------------------------------------------------------------------
+	// Edge cases (Plan 12b, Task 2)
+	// -----------------------------------------------------------------------
+
+	describe('edge cases', () => {
+		it('status() after removeSite no longer includes removed site', () => {
+			const manager = new SiteManager();
+			manager.addSite('dc-east', makeClient());
+			manager.addSite('dc-west', makeClient());
+
+			expect(manager.status().has('dc-east')).toBe(true);
+
+			manager.removeSite('dc-east');
+
+			expect(manager.status().has('dc-east')).toBe(false);
+			expect(manager.status().has('dc-west')).toBe(true);
+			expect(manager.status().size).toBe(1);
+		});
+
+		it('concurrent addSite calls with same name — second one should fail', async () => {
+			const manager = new SiteManager();
+			const config1 = makeConfig('https://site1.example.com');
+			const config2 = makeConfig('https://site2.example.com');
+
+			// Both will try to register "dc-east"
+			(config1.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce(
+				mockResponse(200, { version: '26.1.0' }),
+			);
+			(config2.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce(
+				mockResponse(200, { version: '26.1.0' }),
+			);
+
+			// _ensureUniqueName is called synchronously before the async path,
+			// so the second call should throw synchronously
+			const promise1 = manager.addSite({ ...config1, name: 'dc-east' });
+			expect(() => manager.addSite({ ...config2, name: 'dc-east' })).toThrow(ValidationError);
+
+			await promise1;
+			expect(manager.sites().size).toBe(1);
+		});
+
+		it('tagged query with no matching tags returns empty via fan-out', async () => {
+			const eastVms = [{ $key: 1, name: 'vm-east' }];
+			const eastClient = makeClientWithService('dc-east', 'vms', eastVms);
+			const manager = new SiteManager();
+			manager.addSite('dc-east', eastClient, ['production']);
+
+			const result = await (
+				manager.tagged('nonexistent-tag') as unknown as Record<
+					string,
+					{ list: () => Promise<unknown> }
+				>
+			).vms.list();
+
+			expect(result.data).toEqual([]);
+			expect(result.errors).toEqual([]);
+		});
+
+		it('adding a site after creating CrossSiteReadProxy includes it in next query', async () => {
+			const eastVms = [{ $key: 1, name: 'vm-east' }];
+			const westVms = [{ $key: 2, name: 'vm-west' }];
+
+			const eastClient = makeClientWithService('dc-east', 'vms', eastVms);
+			const westClient = makeClientWithService('dc-west', 'vms', westVms);
+
+			const manager = new SiteManager();
+			manager.addSite('dc-east', eastClient);
+
+			// manager.all creates a fresh proxy each time (getter),
+			// but the proxy's _getClients callback captures manager state lazily
+			const result1 = await (
+				manager.all as unknown as Record<string, { list: () => Promise<unknown> }>
+			).vms.list();
+			expect(result1.data).toHaveLength(1);
+
+			// Add second site
+			manager.addSite('dc-west', westClient);
+
+			// Next query should include the new site
+			const result2 = await (
+				manager.all as unknown as Record<string, { list: () => Promise<unknown> }>
+			).vms.list();
+			expect(result2.data).toHaveLength(2);
+			expect(result2.data.map((d: { site: string }) => d.site).sort()).toEqual([
+				'dc-east',
+				'dc-west',
+			]);
+		});
+
+		it('removing a site during iteration does not crash', async () => {
+			const eastVms = [{ $key: 1, name: 'vm-east' }];
+			const westVms = [{ $key: 2, name: 'vm-west' }];
+
+			const eastClient = makeClientWithService('dc-east', 'vms', eastVms);
+			const westClient = makeClientWithService('dc-west', 'vms', westVms);
+
+			const manager = new SiteManager();
+			manager.addSite('dc-east', eastClient);
+			manager.addSite('dc-west', westClient);
+
+			// Get the proxy (captures getClientsForSites lazily)
+			const proxy = manager.all;
+
+			// Remove a site — proxy already has the clients snapshot from getClientsForSites()
+			// which is called at query time, so this tests that removal is safe
+			manager.removeSite('dc-west');
+
+			const result = await (
+				proxy as unknown as Record<string, { list: () => Promise<unknown> }>
+			).vms.list();
+
+			// Should only have dc-east since dc-west was removed before the query
+			expect(result.data).toHaveLength(1);
+			expect(result.data[0].site).toBe('dc-east');
+			expect(result.errors).toHaveLength(0);
 		});
 	});
 });

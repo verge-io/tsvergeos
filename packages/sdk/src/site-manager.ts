@@ -74,6 +74,9 @@ export class SiteManager {
 	/** Status snapshots keyed by site name. */
 	private readonly _status = new Map<string, SiteStatus>();
 
+	/** Names currently being connected (async addSite in progress). */
+	private readonly _pending = new Set<string>();
+
 	/** Default timeout for fan-out operations. */
 	private readonly _timeout: number | undefined;
 
@@ -127,10 +130,18 @@ export class SiteManager {
 		// Async overload: addSite(config)
 		const config = configOrName;
 		this._ensureUniqueName(config.name);
+		this._pending.add(config.name);
 
-		return VergeClient.connect(config).then((client) => {
-			this._registerSite(config.name, client, config.tags);
-		});
+		return VergeClient.connect(config).then(
+			(client) => {
+				this._pending.delete(config.name);
+				this._registerSite(config.name, client, config.tags);
+			},
+			(error) => {
+				this._pending.delete(config.name);
+				throw error;
+			},
+		);
 	}
 
 	/**
@@ -284,10 +295,10 @@ export class SiteManager {
 	}
 
 	/**
-	 * Check for duplicate site names and throw if found.
+	 * Check for duplicate site names (registered or pending) and throw if found.
 	 */
 	private _ensureUniqueName(name: string): void {
-		if (this._clients.has(name)) {
+		if (this._clients.has(name) || this._pending.has(name)) {
 			throw new ValidationError(`Site '${name}' is already registered`, 'name');
 		}
 	}
