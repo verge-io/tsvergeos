@@ -52,6 +52,8 @@ export default defineConfig({
 		'services/vm-recipe-instance/index': 'src/services/vm-recipe-instance/index.ts',
 		'services/tenant-recipe/index': 'src/services/tenant-recipe/index.ts',
 		'services/tenant-recipe-instance/index': 'src/services/tenant-recipe-instance/index.ts',
+		'services/catalog/index': 'src/services/catalog/index.ts',
+		'services/catalog-repository/index': 'src/services/catalog-repository/index.ts',
 	},
 	format: ['esm', 'cjs'],
 	dts: true,

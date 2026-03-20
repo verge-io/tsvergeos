@@ -111,6 +111,19 @@ export type {
 
 // ─── Service Resource Types ──────────────────────────────────────────────────
 
+export type {
+	Catalog,
+	CatalogPublishingScope,
+	CatalogUpdateParams,
+} from './services/catalog/types.js';
+export type {
+	CatalogMaxTier,
+	CatalogRepository,
+	CatalogRepositoryCreateParams,
+	CatalogRepositoryOverrideScope,
+	CatalogRepositoryType,
+	CatalogRepositoryUpdateParams,
+} from './services/catalog-repository/types.js';
 export type { ClusterTier } from './services/cluster-tier/types.js';
 export type { ClusterTierStats } from './services/cluster-tier-stats/types.js';
 export type {
