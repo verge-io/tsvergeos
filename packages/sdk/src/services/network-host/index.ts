@@ -11,22 +11,22 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { NetworkHostService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { NetworkHostService } from './service.js';
 
-VergeClient.registerService("networkHosts", NetworkHostService);
+VergeClient.registerService('networkHosts', NetworkHostService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing DNS/DHCP host overrides on virtual networks. */
-    readonly networkHosts: NetworkHostService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing DNS/DHCP host overrides on virtual networks. */
+		readonly networkHosts: NetworkHostService;
+	}
 }
 
-export { NetworkHostService } from "./service.js";
+export { NetworkHostService } from './service.js';
 export type {
-  HostType,
-  NetworkHost,
-  NetworkHostCreateParams,
-  NetworkHostUpdateParams,
-} from "./types.js";
+	HostType,
+	NetworkHost,
+	NetworkHostCreateParams,
+	NetworkHostUpdateParams,
+} from './types.js';

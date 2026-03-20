@@ -1,9 +1,9 @@
-import type { FlexKey, Resource } from "../../types.js";
+import type { FlexKey, Resource } from '../../types.js';
 
 // ─── Enums ──────────────────────────────────────────────────────────────────
 
 /** Host override type — `host` for a single hostname, `domain` for a whole domain. */
-export type HostType = "host" | "domain";
+export type HostType = 'host' | 'domain';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -17,17 +17,17 @@ export type HostType = "host" | "domain";
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface NetworkHost extends Resource {
-  /** Parent network reference (FK to `vnets`). */
-  vnet: FlexKey;
+	/** Parent network reference (FK to `vnets`). */
+	vnet: FlexKey;
 
-  /** Host override type. */
-  type?: HostType;
+	/** Host override type. */
+	type?: HostType;
 
-  /** Hostname or domain name. */
-  host: string;
+	/** Hostname or domain name. */
+	host: string;
 
-  /** IP address mapped to the hostname. */
-  ip: string;
+	/** IP address mapped to the hostname. */
+	ip: string;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -38,17 +38,17 @@ export interface NetworkHost extends Resource {
  * `vnet`, `host`, and `ip` are required.
  */
 export interface NetworkHostCreateParams {
-  /** Parent network reference (FK to `vnets`). */
-  vnet: FlexKey;
+	/** Parent network reference (FK to `vnets`). */
+	vnet: FlexKey;
 
-  /** Host override type. Defaults to `'host'`. */
-  type?: HostType;
+	/** Host override type. Defaults to `'host'`. */
+	type?: HostType;
 
-  /** Hostname or domain name. */
-  host: string;
+	/** Hostname or domain name. */
+	host: string;
 
-  /** IP address mapped to the hostname. */
-  ip: string;
+	/** IP address mapped to the hostname. */
+	ip: string;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
@@ -59,15 +59,15 @@ export interface NetworkHostCreateParams {
  * All fields are optional — only provided fields are changed.
  */
 export interface NetworkHostUpdateParams {
-  /** Parent network reference (FK to `vnets`). */
-  vnet?: FlexKey;
+	/** Parent network reference (FK to `vnets`). */
+	vnet?: FlexKey;
 
-  /** Host override type. */
-  type?: HostType;
+	/** Host override type. */
+	type?: HostType;
 
-  /** Hostname or domain name. */
-  host?: string;
+	/** Hostname or domain name. */
+	host?: string;
 
-  /** IP address mapped to the hostname. */
-  ip?: string;
+	/** IP address mapped to the hostname. */
+	ip?: string;
 }
