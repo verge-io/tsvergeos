@@ -45,6 +45,8 @@ export default defineConfig({
 		'services/wireguard-peer-status/index': 'src/services/wireguard-peer-status/index.ts',
 		'services/tenant/index': 'src/services/tenant/index.ts',
 		'services/tenant-node/index': 'src/services/tenant-node/index.ts',
+		'services/tenant-storage/index': 'src/services/tenant-storage/index.ts',
+		'services/tenant-snapshot/index': 'src/services/tenant-snapshot/index.ts',
 	},
 	format: ['esm', 'cjs'],
 	dts: true,
