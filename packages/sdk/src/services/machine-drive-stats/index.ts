@@ -11,17 +11,17 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { MachineDriveStatsService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { MachineDriveStatsService } from './service.js';
 
-VergeClient.registerService("machineDriveStats", MachineDriveStatsService);
+VergeClient.registerService('machineDriveStats', MachineDriveStatsService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for querying machine drive I/O statistics (read-only). */
-    readonly machineDriveStats: MachineDriveStatsService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for querying machine drive I/O statistics (read-only). */
+		readonly machineDriveStats: MachineDriveStatsService;
+	}
 }
 
-export { MachineDriveStatsService } from "./service.js";
-export type { MachineDriveStats } from "./types.js";
+export { MachineDriveStatsService } from './service.js';
+export type { MachineDriveStats } from './types.js';

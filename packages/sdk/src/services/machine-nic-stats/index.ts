@@ -11,17 +11,17 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { MachineNicStatsService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { MachineNicStatsService } from './service.js';
 
-VergeClient.registerService("machineNicStats", MachineNicStatsService);
+VergeClient.registerService('machineNicStats', MachineNicStatsService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for querying machine NIC traffic statistics (read-only). */
-    readonly machineNicStats: MachineNicStatsService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for querying machine NIC traffic statistics (read-only). */
+		readonly machineNicStats: MachineNicStatsService;
+	}
 }
 
-export { MachineNicStatsService } from "./service.js";
-export type { MachineNicStats } from "./types.js";
+export { MachineNicStatsService } from './service.js';
+export type { MachineNicStats } from './types.js';

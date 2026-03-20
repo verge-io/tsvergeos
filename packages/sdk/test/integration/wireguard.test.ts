@@ -44,7 +44,8 @@ describeIf('WireGuard VPN integration', () => {
 			return; // No WireGuard interfaces to test with
 		}
 
-		const wg = interfaces[0]!;
+		const wg = interfaces[0];
+		if (!wg) return;
 		await delay();
 		const peers = await client.wireguardPeers.listByWireGuard(wg.$key);
 		expect(Array.isArray(peers)).toBe(true);
@@ -62,7 +63,8 @@ describeIf('WireGuard VPN integration', () => {
 			return; // No WireGuard interfaces to test with
 		}
 
-		const wg = interfaces[0]!;
+		const wg = interfaces[0];
+		if (!wg) return;
 		await delay();
 		const byNetwork = await client.wireguard.listByNetwork(wg.vnet);
 		expect(Array.isArray(byNetwork)).toBe(true);
@@ -88,7 +90,8 @@ describeIf('WireGuard VPN integration', () => {
 			return; // No peers to test with
 		}
 
-		const peer = peers[0]!;
+		const peer = peers[0];
+		if (!peer) return;
 		try {
 			await delay();
 			const status = await client.wireguardPeerStatus.getByPeer(peer.$key);
@@ -108,7 +111,8 @@ describeIf('WireGuard VPN integration', () => {
 			return; // No peers to test with
 		}
 
-		const peer = peers[0]!;
+		const peer = peers[0];
+		if (!peer) return;
 		await delay();
 		const config = await client.wireguardPeers.getConfig(peer.$key);
 		// Config may be undefined if autogenerate_peer was false
