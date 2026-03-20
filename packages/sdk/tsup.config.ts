@@ -5,6 +5,8 @@ export default defineConfig({
 		index: 'src/index.ts',
 		types: 'src/types.ts',
 		full: 'src/full.ts',
+		'services/vm/index': 'src/services/vm/index.ts',
+		'services/network/index': 'src/services/network/index.ts',
 	},
 	format: ['esm', 'cjs'],
 	dts: true,

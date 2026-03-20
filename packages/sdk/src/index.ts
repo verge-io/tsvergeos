@@ -1,54 +1,59 @@
-export { VergeClient } from "./client.js";
+// ─── Service Registrations (side-effect imports) ────────────────────────────
+// Importing this module auto-registers all services on VergeClient.
+import './services/vm/index.js';
+import './services/network/index.js';
+
+export { VergeClient } from './client.js';
 export {
-  API_BASE_PATH,
-  API_VERSION,
-  DEFAULT_PAGE_SIZE,
-  DEFAULT_RETRIES,
-  DEFAULT_RETRY_BACKOFF,
-  DEFAULT_TIMEOUT,
-  ENV_PREFIX,
-  MAX_PAGE_SIZE,
-  REQUIRED_MAJOR_VERSION,
-  SDK_VERSION,
-  TASK_POLL_INTERVAL,
-  TASK_WAIT_TIMEOUT,
-  UPLOAD_CHUNK_SIZE,
-} from "./constants.js";
+	API_BASE_PATH,
+	API_VERSION,
+	DEFAULT_PAGE_SIZE,
+	DEFAULT_RETRIES,
+	DEFAULT_RETRY_BACKOFF,
+	DEFAULT_TIMEOUT,
+	ENV_PREFIX,
+	MAX_PAGE_SIZE,
+	REQUIRED_MAJOR_VERSION,
+	SDK_VERSION,
+	TASK_POLL_INTERVAL,
+	TASK_WAIT_TIMEOUT,
+	UPLOAD_CHUNK_SIZE,
+} from './constants.js';
 export {
-  ApiError,
-  AuthError,
-  ConflictError,
-  isApiError,
-  isAuthError,
-  isConflictError,
-  isNotFoundError,
-  isSiteError,
-  isTaskError,
-  isTaskTimeoutError,
-  isUnsupportedVersionError,
-  isValidationError,
-  isVergeError,
-  NotFoundError,
-  SiteError,
-  TaskError,
-  TaskTimeoutError,
-  UnsupportedVersionError,
-  ValidationError,
-  VergeError,
-} from "./errors.js";
-export { Filter, buildFilter } from "./filter.js";
+	ApiError,
+	AuthError,
+	ConflictError,
+	isApiError,
+	isAuthError,
+	isConflictError,
+	isNotFoundError,
+	isSiteError,
+	isTaskError,
+	isTaskTimeoutError,
+	isUnsupportedVersionError,
+	isValidationError,
+	isVergeError,
+	NotFoundError,
+	SiteError,
+	TaskError,
+	TaskTimeoutError,
+	UnsupportedVersionError,
+	ValidationError,
+	VergeError,
+} from './errors.js';
 export type {
-  BuildFilterValue,
-  FilterValue,
-  OperatorObject,
-} from "./filter.js";
-export { HttpClient } from "./http.js";
+	BuildFilterValue,
+	FilterValue,
+	OperatorObject,
+} from './filter.js';
+export { buildFilter, Filter } from './filter.js';
+export { HttpClient } from './http.js';
 export type {
-  ApiResponse,
-  ClientConfig,
-  FlexKey,
-  ListAllOptions,
-  ListOptions,
-  MutationOptions,
-  Resource,
-} from "./types.js";
+	ApiResponse,
+	ClientConfig,
+	FlexKey,
+	ListAllOptions,
+	ListOptions,
+	MutationOptions,
+	Resource,
+} from './types.js';
