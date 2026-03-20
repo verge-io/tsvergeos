@@ -34,3 +34,5 @@ import './services/nas-service/index.js';
 import './services/nas-service-user/index.js';
 import './services/volume-browser/index.js';
 import './services/file/index.js';
+import './services/storage-tier/index.js';
+import './services/storage-tier-stats/index.js';

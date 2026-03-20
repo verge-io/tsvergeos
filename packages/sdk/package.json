@@ -353,6 +353,26 @@
 				"types": "./dist/services/file/index.d.cts",
 				"default": "./dist/services/file/index.cjs"
 			}
+		},
+		"./services/storage-tier": {
+			"import": {
+				"types": "./dist/services/storage-tier/index.d.ts",
+				"default": "./dist/services/storage-tier/index.js"
+			},
+			"require": {
+				"types": "./dist/services/storage-tier/index.d.cts",
+				"default": "./dist/services/storage-tier/index.cjs"
+			}
+		},
+		"./services/storage-tier-stats": {
+			"import": {
+				"types": "./dist/services/storage-tier-stats/index.d.ts",
+				"default": "./dist/services/storage-tier-stats/index.js"
+			},
+			"require": {
+				"types": "./dist/services/storage-tier-stats/index.d.cts",
+				"default": "./dist/services/storage-tier-stats/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",

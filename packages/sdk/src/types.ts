@@ -239,6 +239,8 @@ export type {
 	NetworkRuleAliasUpdateParams,
 	PublishingScope,
 } from './services/network-rule-alias/types.js';
+export type { StorageTier } from './services/storage-tier/types.js';
+export type { StorageTierStats } from './services/storage-tier-stats/types.js';
 export type {
 	BootOrder,
 	CloudInitDatasource,
