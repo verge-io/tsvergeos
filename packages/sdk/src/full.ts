@@ -73,3 +73,4 @@ import "./services/task/index.js";
 import "./services/alarm/index.js";
 import "./services/alarm-type/index.js";
 import "./services/tag-category/index.js";
+import "./services/tag/index.js";

@@ -753,6 +753,16 @@
         "types": "./dist/services/tag-category/index.d.cts",
         "default": "./dist/services/tag-category/index.cjs"
       }
+    },
+    "./services/tag": {
+      "import": {
+        "types": "./dist/services/tag/index.d.ts",
+        "default": "./dist/services/tag/index.js"
+      },
+      "require": {
+        "types": "./dist/services/tag/index.d.cts",
+        "default": "./dist/services/tag/index.cjs"
+      }
     }
   },
   "main": "./dist/index.cjs",
