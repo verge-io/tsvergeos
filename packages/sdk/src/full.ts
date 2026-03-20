@@ -80,3 +80,7 @@ import './services/webhook-url/index.js';
 import './services/webhook/index.js';
 import './services/cloud-init/index.js';
 import './services/resource-group/index.js';
+import './services/update-settings/index.js';
+import './services/update-source/index.js';
+import './services/update-branch/index.js';
+import './services/update-source-package/index.js';
