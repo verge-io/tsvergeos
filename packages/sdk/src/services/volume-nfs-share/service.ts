@@ -1,11 +1,11 @@
-import type { HttpClient } from "../../http.js";
-import type { ListOptions } from "../../types.js";
-import { BaseService } from "../base.js";
+import type { HttpClient } from '../../http.js';
+import type { ListOptions } from '../../types.js';
+import { BaseService } from '../base.js';
 import type {
-  VolumeNFSShare,
-  VolumeNFSShareCreateParams,
-  VolumeNFSShareUpdateParams,
-} from "./types.js";
+	VolumeNFSShare,
+	VolumeNFSShareCreateParams,
+	VolumeNFSShareUpdateParams,
+} from './types.js';
 
 /**
  * Service for managing VergeOS NFS shares.
@@ -29,38 +29,33 @@ import type {
  * ```
  */
 export class VolumeNFSShareService extends BaseService<
-  VolumeNFSShare,
-  VolumeNFSShareCreateParams,
-  VolumeNFSShareUpdateParams
+	VolumeNFSShare,
+	VolumeNFSShareCreateParams,
+	VolumeNFSShareUpdateParams
 > {
-  constructor(http: HttpClient) {
-    super(http, "/volume_nfs_shares", "NFS Share");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/volume_nfs_shares', 'NFS Share');
+	}
 
-  /**
-   * List NFS shares belonging to a specific volume.
-   *
-   * Convenience method that filters by the `volume` foreign key.
-   * The volume key is a 40-character SHA1 hash string, which is
-   * properly quoted in the filter expression.
-   *
-   * @param volumeKey - The parent volume's SHA1 key
-   * @param options - Additional list options (filter, sort, fields, pagination)
-   * @returns Array of NFS shares for the specified volume
-   */
-  async listByVolume(
-    volumeKey: string,
-    options?: ListOptions,
-  ): Promise<VolumeNFSShare[]> {
-    const volumeFilter = `volume eq '${volumeKey}'`;
-    const existingFilter = options?.filter;
-    const combinedFilter = existingFilter
-      ? `${volumeFilter} and ${existingFilter}`
-      : volumeFilter;
+	/**
+	 * List NFS shares belonging to a specific volume.
+	 *
+	 * Convenience method that filters by the `volume` foreign key.
+	 * The volume key is a 40-character SHA1 hash string, which is
+	 * properly quoted in the filter expression.
+	 *
+	 * @param volumeKey - The parent volume's SHA1 key
+	 * @param options - Additional list options (filter, sort, fields, pagination)
+	 * @returns Array of NFS shares for the specified volume
+	 */
+	async listByVolume(volumeKey: string, options?: ListOptions): Promise<VolumeNFSShare[]> {
+		const volumeFilter = `volume eq '${volumeKey}'`;
+		const existingFilter = options?.filter;
+		const combinedFilter = existingFilter ? `${volumeFilter} and ${existingFilter}` : volumeFilter;
 
-    return this.list({
-      ...options,
-      filter: combinedFilter,
-    });
-  }
+		return this.list({
+			...options,
+			filter: combinedFilter,
+		});
+	}
 }

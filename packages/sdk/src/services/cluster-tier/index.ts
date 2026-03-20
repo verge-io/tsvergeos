@@ -11,17 +11,17 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { ClusterTierService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { ClusterTierService } from './service.js';
 
-VergeClient.registerService("clusterTiers", ClusterTierService);
+VergeClient.registerService('clusterTiers', ClusterTierService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for querying cluster tier capacity and cost data (read-only). */
-    readonly clusterTiers: ClusterTierService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for querying cluster tier capacity and cost data (read-only). */
+		readonly clusterTiers: ClusterTierService;
+	}
 }
 
-export { ClusterTierService } from "./service.js";
-export type { ClusterTier } from "./types.js";
+export { ClusterTierService } from './service.js';
+export type { ClusterTier } from './types.js';

@@ -11,21 +11,21 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { VolumeCIFSShareService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { VolumeCIFSShareService } from './service.js';
 
-VergeClient.registerService("volumeCifsShares", VolumeCIFSShareService);
+VergeClient.registerService('volumeCifsShares', VolumeCIFSShareService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing CIFS shares. */
-    readonly volumeCifsShares: VolumeCIFSShareService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing CIFS shares. */
+		readonly volumeCifsShares: VolumeCIFSShareService;
+	}
 }
 
-export { VolumeCIFSShareService } from "./service.js";
+export { VolumeCIFSShareService } from './service.js';
 export type {
-  VolumeCIFSShare,
-  VolumeCIFSShareCreateParams,
-  VolumeCIFSShareUpdateParams,
-} from "./types.js";
+	VolumeCIFSShare,
+	VolumeCIFSShareCreateParams,
+	VolumeCIFSShareUpdateParams,
+} from './types.js';

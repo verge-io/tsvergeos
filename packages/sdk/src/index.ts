@@ -25,7 +25,19 @@ import './services/machine-drive-stats/index.js';
 import './services/machine-nic-stats/index.js';
 import './services/machine-drive-phys/index.js';
 import './services/volume/index.js';
+import './services/volume-cifs-share/index.js';
+import './services/volume-nfs-share/index.js';
 import './services/volume-snapshot/index.js';
+import './services/volume-sync/index.js';
+import './services/nas-service/index.js';
+import './services/nas-service-user/index.js';
+import './services/volume-browser/index.js';
+import './services/file/index.js';
+import './services/storage-tier/index.js';
+import './services/storage-tier-stats/index.js';
+import './services/cluster-tier/index.js';
+import './services/cluster-tier-stats/index.js';
+import './services/cluster-tier-status/index.js';
 
 export { VergeClient } from './client.js';
 export {

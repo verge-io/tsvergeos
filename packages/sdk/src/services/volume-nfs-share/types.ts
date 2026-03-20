@@ -1,12 +1,12 @@
-import type { FlexKey, Resource } from "../../types.js";
+import type { FlexKey, Resource } from '../../types.js';
 
 // ─── Enum Types ─────────────────────────────────────────────────────────────
 
 /** NFS squash mode controlling user ID mapping. */
-export type NfsSquash = "root_squash" | "all_squash" | "no_root_squash";
+export type NfsSquash = 'root_squash' | 'all_squash' | 'no_root_squash';
 
 /** NFS data access mode. */
-export type NfsDataAccess = "ro" | "rw";
+export type NfsDataAccess = 'ro' | 'rw';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -20,62 +20,62 @@ export type NfsDataAccess = "ro" | "rw";
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface VolumeNFSShare extends Resource {
-  /** Share ID — 40-character SHA1 hash. Read-only. */
-  id: string;
+	/** Share ID — 40-character SHA1 hash. Read-only. */
+	id: string;
 
-  /** Share display name. Min 1, max 128 characters. Unique. */
-  name: string;
+	/** Share display name. Min 1, max 128 characters. Unique. */
+	name: string;
 
-  /** Parent volume reference (FK to `volumes`). Read-only after create. */
-  volume: string;
+	/** Parent volume reference (FK to `volumes`). Read-only after create. */
+	volume: string;
 
-  /** Human-readable description. Max 2048 characters. */
-  description?: string;
+	/** Human-readable description. Max 2048 characters. */
+	description?: string;
 
-  /** Whether the share is enabled. Default: `true`. */
-  enabled?: boolean;
+	/** Whether the share is enabled. Default: `true`. */
+	enabled?: boolean;
 
-  /** Creation timestamp (Unix epoch, uint32). Read-only. */
-  created?: number;
+	/** Creation timestamp (Unix epoch, uint32). Read-only. */
+	created?: number;
 
-  /** Last modification timestamp (Unix epoch, uint32). Read-only. */
-  modified?: number;
+	/** Last modification timestamp (Unix epoch, uint32). Read-only. */
+	modified?: number;
 
-  /** Path within the volume to share. */
-  share_path?: string;
+	/** Path within the volume to share. */
+	share_path?: string;
 
-  /** Allowed hosts (comma-delimited string). */
-  allowed_hosts?: string;
+	/** Allowed hosts (comma-delimited string). */
+	allowed_hosts?: string;
 
-  /** Whether all hosts are allowed. */
-  allow_all?: boolean;
+	/** Whether all hosts are allowed. */
+	allow_all?: boolean;
 
-  /** Unique filesystem ID for NFS exports. */
-  fsid?: string;
+	/** Unique filesystem ID for NFS exports. */
+	fsid?: string;
 
-  /** Anonymous UID for unmapped users. */
-  anonuid?: string;
+	/** Anonymous UID for unmapped users. */
+	anonuid?: string;
 
-  /** Anonymous GID for unmapped groups. */
-  anongid?: string;
+	/** Anonymous GID for unmapped groups. */
+	anongid?: string;
 
-  /** Whether to disable ACL support. */
-  no_acl?: boolean;
+	/** Whether to disable ACL support. */
+	no_acl?: boolean;
 
-  /** Whether to allow connections from non-privileged ports. */
-  insecure?: boolean;
+	/** Whether to allow connections from non-privileged ports. */
+	insecure?: boolean;
 
-  /** Whether to allow async NFS operations. */
-  async?: boolean;
+	/** Whether to allow async NFS operations. */
+	async?: boolean;
 
-  /** User ID squashing mode. Default: `root_squash`. */
-  squash?: NfsSquash;
+	/** User ID squashing mode. Default: `root_squash`. */
+	squash?: NfsSquash;
 
-  /** Data access mode. Default: `ro`. */
-  data_access?: NfsDataAccess;
+	/** Data access mode. Default: `ro`. */
+	data_access?: NfsDataAccess;
 
-  /** Share status reference (FK to `volume_share_status`). Read-only. */
-  status?: FlexKey;
+	/** Share status reference (FK to `volume_share_status`). Read-only. */
+	status?: FlexKey;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -87,50 +87,50 @@ export interface VolumeNFSShare extends Resource {
  * `modified`, `status`) are excluded.
  */
 export interface VolumeNFSShareCreateParams {
-  /** Share display name. Min 1, max 128 characters. Must be unique. */
-  name: string;
+	/** Share display name. Min 1, max 128 characters. Must be unique. */
+	name: string;
 
-  /** Parent volume reference (FK to `volumes`). SHA1 string key. Required. */
-  volume: string;
+	/** Parent volume reference (FK to `volumes`). SHA1 string key. Required. */
+	volume: string;
 
-  /** Human-readable description. Max 2048 characters. */
-  description?: string;
+	/** Human-readable description. Max 2048 characters. */
+	description?: string;
 
-  /** Whether the share is enabled. Default: `true`. */
-  enabled?: boolean;
+	/** Whether the share is enabled. Default: `true`. */
+	enabled?: boolean;
 
-  /** Path within the volume to share. */
-  share_path?: string;
+	/** Path within the volume to share. */
+	share_path?: string;
 
-  /** Allowed hosts (comma-delimited string). */
-  allowed_hosts?: string;
+	/** Allowed hosts (comma-delimited string). */
+	allowed_hosts?: string;
 
-  /** Whether all hosts are allowed. */
-  allow_all?: boolean;
+	/** Whether all hosts are allowed. */
+	allow_all?: boolean;
 
-  /** Unique filesystem ID for NFS exports. */
-  fsid?: string;
+	/** Unique filesystem ID for NFS exports. */
+	fsid?: string;
 
-  /** Anonymous UID for unmapped users. */
-  anonuid?: string;
+	/** Anonymous UID for unmapped users. */
+	anonuid?: string;
 
-  /** Anonymous GID for unmapped groups. */
-  anongid?: string;
+	/** Anonymous GID for unmapped groups. */
+	anongid?: string;
 
-  /** Whether to disable ACL support. */
-  no_acl?: boolean;
+	/** Whether to disable ACL support. */
+	no_acl?: boolean;
 
-  /** Whether to allow connections from non-privileged ports. */
-  insecure?: boolean;
+	/** Whether to allow connections from non-privileged ports. */
+	insecure?: boolean;
 
-  /** Whether to allow async NFS operations. */
-  async?: boolean;
+	/** Whether to allow async NFS operations. */
+	async?: boolean;
 
-  /** User ID squashing mode. Default: `root_squash`. */
-  squash?: NfsSquash;
+	/** User ID squashing mode. Default: `root_squash`. */
+	squash?: NfsSquash;
 
-  /** Data access mode. Default: `ro`. */
-  data_access?: NfsDataAccess;
+	/** Data access mode. Default: `ro`. */
+	data_access?: NfsDataAccess;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
@@ -142,45 +142,45 @@ export interface VolumeNFSShareCreateParams {
  * Read-only fields (`id`, `volume`, `created`, `modified`, `status`) are excluded.
  */
 export interface VolumeNFSShareUpdateParams {
-  /** Share display name. Min 1, max 128 characters. Must be unique. */
-  name?: string;
+	/** Share display name. Min 1, max 128 characters. Must be unique. */
+	name?: string;
 
-  /** Human-readable description. Max 2048 characters. */
-  description?: string;
+	/** Human-readable description. Max 2048 characters. */
+	description?: string;
 
-  /** Whether the share is enabled. */
-  enabled?: boolean;
+	/** Whether the share is enabled. */
+	enabled?: boolean;
 
-  /** Path within the volume to share. */
-  share_path?: string;
+	/** Path within the volume to share. */
+	share_path?: string;
 
-  /** Allowed hosts (comma-delimited string). */
-  allowed_hosts?: string;
+	/** Allowed hosts (comma-delimited string). */
+	allowed_hosts?: string;
 
-  /** Whether all hosts are allowed. */
-  allow_all?: boolean;
+	/** Whether all hosts are allowed. */
+	allow_all?: boolean;
 
-  /** Unique filesystem ID for NFS exports. */
-  fsid?: string;
+	/** Unique filesystem ID for NFS exports. */
+	fsid?: string;
 
-  /** Anonymous UID for unmapped users. */
-  anonuid?: string;
+	/** Anonymous UID for unmapped users. */
+	anonuid?: string;
 
-  /** Anonymous GID for unmapped groups. */
-  anongid?: string;
+	/** Anonymous GID for unmapped groups. */
+	anongid?: string;
 
-  /** Whether to disable ACL support. */
-  no_acl?: boolean;
+	/** Whether to disable ACL support. */
+	no_acl?: boolean;
 
-  /** Whether to allow connections from non-privileged ports. */
-  insecure?: boolean;
+	/** Whether to allow connections from non-privileged ports. */
+	insecure?: boolean;
 
-  /** Whether to allow async NFS operations. */
-  async?: boolean;
+	/** Whether to allow async NFS operations. */
+	async?: boolean;
 
-  /** User ID squashing mode. */
-  squash?: NfsSquash;
+	/** User ID squashing mode. */
+	squash?: NfsSquash;
 
-  /** Data access mode. */
-  data_access?: NfsDataAccess;
+	/** Data access mode. */
+	data_access?: NfsDataAccess;
 }
