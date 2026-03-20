@@ -11,24 +11,24 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { ClusterService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { ClusterService } from './service.js';
 
-VergeClient.registerService("clusters", ClusterService);
+VergeClient.registerService('clusters', ClusterService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing VergeOS clusters. */
-    readonly clusters: ClusterService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing VergeOS clusters. */
+		readonly clusters: ClusterService;
+	}
 }
 
-export { ClusterService } from "./service.js";
+export { ClusterService } from './service.js';
 export type {
-  Cluster,
-  ClusterCreateParams,
-  ClusterUpdateParams,
-  CpuType,
-  EnergyPerfPolicy,
-  ScalingGovernor,
-} from "./types.js";
+	Cluster,
+	ClusterCreateParams,
+	ClusterUpdateParams,
+	CpuType,
+	EnergyPerfPolicy,
+	ScalingGovernor,
+} from './types.js';
