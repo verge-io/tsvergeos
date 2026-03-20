@@ -5,7 +5,7 @@ import type { System, SystemUpdateParams, VersionInfo } from './types.js';
  * Service for accessing VergeOS system information.
  *
  * This is a custom singleton service — the system endpoint (`/api/v4/system`)
- * always has exactly one row (key `1`). It also provides access to the
+ * always has exactly one row (key `self`). It also provides access to the
  * lightweight `/version.json` endpoint.
  *
  * @example
@@ -47,12 +47,12 @@ export class SystemService {
 	/**
 	 * Get the full system record.
 	 *
-	 * The system is a singleton — there is always exactly one row with key `1`.
+	 * The system is a singleton — there is always exactly one row with key `self`.
 	 *
 	 * @returns The system record with all fields
 	 */
 	async get(): Promise<System> {
-		return this.http.get<System>('/system/1');
+		return this.http.get<System>('/system/self');
 	}
 
 	/**
@@ -62,7 +62,7 @@ export class SystemService {
 	 * @returns The updated system record
 	 */
 	async update(params: SystemUpdateParams): Promise<System> {
-		await this.http.put('/system/1', { body: params });
+		await this.http.put('/system/self', { body: params });
 		return this.get();
 	}
 

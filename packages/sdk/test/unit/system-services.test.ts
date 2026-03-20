@@ -114,20 +114,20 @@ describe('SystemService', () => {
 	});
 
 	describe('get', () => {
-		it('fetches /system/1 (singleton)', async () => {
+		it('fetches /system/self (singleton)', async () => {
 			const http = mockHttp();
 			const svc = new SystemService(http);
 			vi.mocked(http.get).mockResolvedValueOnce(sampleSystem);
 
 			const result = await svc.get();
 
-			expect(http.get).toHaveBeenCalledWith('/system/1');
+			expect(http.get).toHaveBeenCalledWith('/system/self');
 			expect(result).toEqual(sampleSystem);
 		});
 	});
 
 	describe('update', () => {
-		it('PUTs to /system/1 and does read-back', async () => {
+		it('PUTs to /system/self and does read-back', async () => {
 			const http = mockHttp();
 			const svc = new SystemService(http);
 			vi.mocked(http.put).mockResolvedValueOnce(undefined);
@@ -138,7 +138,7 @@ describe('SystemService', () => {
 
 			const result = await svc.update({ cloud_name: 'Updated Cloud' });
 
-			expect(http.put).toHaveBeenCalledWith('/system/1', {
+			expect(http.put).toHaveBeenCalledWith('/system/self', {
 				body: { cloud_name: 'Updated Cloud' },
 			});
 			expect(result.cloud_name).toBe('Updated Cloud');
