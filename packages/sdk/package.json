@@ -543,6 +543,36 @@
 				"types": "./dist/services/group/index.d.cts",
 				"default": "./dist/services/group/index.cjs"
 			}
+		},
+		"./services/member": {
+			"import": {
+				"types": "./dist/services/member/index.d.ts",
+				"default": "./dist/services/member/index.js"
+			},
+			"require": {
+				"types": "./dist/services/member/index.d.cts",
+				"default": "./dist/services/member/index.cjs"
+			}
+		},
+		"./services/api-key": {
+			"import": {
+				"types": "./dist/services/api-key/index.d.ts",
+				"default": "./dist/services/api-key/index.js"
+			},
+			"require": {
+				"types": "./dist/services/api-key/index.d.cts",
+				"default": "./dist/services/api-key/index.cjs"
+			}
+		},
+		"./services/permission": {
+			"import": {
+				"types": "./dist/services/permission/index.d.ts",
+				"default": "./dist/services/permission/index.js"
+			},
+			"require": {
+				"types": "./dist/services/permission/index.d.cts",
+				"default": "./dist/services/permission/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
