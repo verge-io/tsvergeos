@@ -743,6 +743,16 @@
         "types": "./dist/services/alarm-type/index.d.cts",
         "default": "./dist/services/alarm-type/index.cjs"
       }
+    },
+    "./services/tag-category": {
+      "import": {
+        "types": "./dist/services/tag-category/index.d.ts",
+        "default": "./dist/services/tag-category/index.js"
+      },
+      "require": {
+        "types": "./dist/services/tag-category/index.d.cts",
+        "default": "./dist/services/tag-category/index.cjs"
+      }
     }
   },
   "main": "./dist/index.cjs",

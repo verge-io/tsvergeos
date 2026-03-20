@@ -112,6 +112,13 @@ export type {
 // ─── Service Resource Types ──────────────────────────────────────────────────
 
 export type {
+  Alarm,
+  AlarmLevel,
+  AlarmOwnerType,
+  AlarmUpdateParams,
+} from "./services/alarm/types.js";
+export type { AlarmType } from "./services/alarm-type/types.js";
+export type {
   ApiKeyExpiresType,
   UserAPIKey,
   UserAPIKeyCreateParams,
@@ -374,13 +381,6 @@ export type {
   TaskWaitOptions,
 } from "./services/task/types.js";
 export type {
-  Alarm,
-  AlarmLevel,
-  AlarmOwnerType,
-  AlarmUpdateParams,
-} from "./services/alarm/types.js";
-export type { AlarmType } from "./services/alarm-type/types.js";
-export type {
   Tenant,
   TenantCloneOptions,
   TenantCreateParams,
@@ -520,3 +520,8 @@ export type {
   WireGuardPeerUpdateParams,
 } from "./services/wireguard-peer/types.js";
 export type { WireGuardPeerStatus } from "./services/wireguard-peer-status/types.js";
+export type {
+  TagCategory,
+  TagCategoryCreateParams,
+  TagCategoryUpdateParams,
+} from "./services/tag-category/types.js";
