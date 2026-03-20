@@ -1,81 +1,84 @@
 // ─── Service Registrations (side-effect imports) ────────────────────────────
 // Importing this module auto-registers all services on VergeClient.
-import './services/vm/index.js';
-import './services/network/index.js';
-import './services/machine-drive/index.js';
-import './services/machine-device/index.js';
-import './services/machine-nic/index.js';
-import './services/machine-snapshot/index.js';
+import "./services/vm/index.js";
+import "./services/network/index.js";
+import "./services/machine-drive/index.js";
+import "./services/machine-device/index.js";
+import "./services/machine-nic/index.js";
+import "./services/machine-snapshot/index.js";
+import "./services/network-address/index.js";
+import "./services/network-rule/index.js";
+import "./services/network-rule-alias/index.js";
 
-export { VergeClient } from './client.js';
+export { VergeClient } from "./client.js";
 export {
-	API_BASE_PATH,
-	API_VERSION,
-	DEFAULT_PAGE_SIZE,
-	DEFAULT_RETRIES,
-	DEFAULT_RETRY_BACKOFF,
-	DEFAULT_TIMEOUT,
-	ENV_PREFIX,
-	MAX_PAGE_SIZE,
-	REQUIRED_MAJOR_VERSION,
-	SDK_VERSION,
-	TASK_POLL_INTERVAL,
-	TASK_WAIT_TIMEOUT,
-	UPLOAD_CHUNK_SIZE,
-} from './constants.js';
+  API_BASE_PATH,
+  API_VERSION,
+  DEFAULT_PAGE_SIZE,
+  DEFAULT_RETRIES,
+  DEFAULT_RETRY_BACKOFF,
+  DEFAULT_TIMEOUT,
+  ENV_PREFIX,
+  MAX_PAGE_SIZE,
+  REQUIRED_MAJOR_VERSION,
+  SDK_VERSION,
+  TASK_POLL_INTERVAL,
+  TASK_WAIT_TIMEOUT,
+  UPLOAD_CHUNK_SIZE,
+} from "./constants.js";
 export type {
-	CrossSiteResult,
-	CrossSiteServices,
-	SiteResource,
-} from './cross-site.js';
-export { CrossSiteReadProxy } from './cross-site.js';
+  CrossSiteResult,
+  CrossSiteServices,
+  SiteResource,
+} from "./cross-site.js";
+export { CrossSiteReadProxy } from "./cross-site.js";
 export {
-	ApiError,
-	AuthError,
-	ConflictError,
-	isApiError,
-	isAuthError,
-	isConflictError,
-	isNotFoundError,
-	isSiteError,
-	isTaskError,
-	isTaskTimeoutError,
-	isUnsupportedVersionError,
-	isValidationError,
-	isVergeError,
-	NotFoundError,
-	SiteError,
-	TaskError,
-	TaskTimeoutError,
-	UnsupportedVersionError,
-	ValidationError,
-	VergeError,
-} from './errors.js';
+  ApiError,
+  AuthError,
+  ConflictError,
+  isApiError,
+  isAuthError,
+  isConflictError,
+  isNotFoundError,
+  isSiteError,
+  isTaskError,
+  isTaskTimeoutError,
+  isUnsupportedVersionError,
+  isValidationError,
+  isVergeError,
+  NotFoundError,
+  SiteError,
+  TaskError,
+  TaskTimeoutError,
+  UnsupportedVersionError,
+  ValidationError,
+  VergeError,
+} from "./errors.js";
 export type {
-	BuildFilterValue,
-	FilterValue,
-	OperatorObject,
-} from './filter.js';
-export { buildFilter, Filter } from './filter.js';
-export { HttpClient } from './http.js';
-export type { ActionConfig } from './services/base.js';
+  BuildFilterValue,
+  FilterValue,
+  OperatorObject,
+} from "./filter.js";
+export { buildFilter, Filter } from "./filter.js";
+export { HttpClient } from "./http.js";
+export type { ActionConfig } from "./services/base.js";
 export {
-	BaseService,
-	ReadOnlyService,
-	WritableService,
-} from './services/base.js';
+  BaseService,
+  ReadOnlyService,
+  WritableService,
+} from "./services/base.js";
 export type {
-	SiteConfig,
-	SiteManagerOptions,
-	SiteStatus,
-} from './site-manager.js';
-export { SiteManager } from './site-manager.js';
+  SiteConfig,
+  SiteManagerOptions,
+  SiteStatus,
+} from "./site-manager.js";
+export { SiteManager } from "./site-manager.js";
 export type {
-	ApiResponse,
-	ClientConfig,
-	FlexKey,
-	ListAllOptions,
-	ListOptions,
-	MutationOptions,
-	Resource,
-} from './types.js';
+  ApiResponse,
+  ClientConfig,
+  FlexKey,
+  ListAllOptions,
+  ListOptions,
+  MutationOptions,
+  Resource,
+} from "./types.js";

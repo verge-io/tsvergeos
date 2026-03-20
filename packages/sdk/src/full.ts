@@ -9,3 +9,4 @@ import "./services/machine-device/index.js";
 import "./services/machine-snapshot/index.js";
 import "./services/network-address/index.js";
 import "./services/network-rule/index.js";
+import "./services/network-rule-alias/index.js";

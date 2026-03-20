@@ -113,6 +113,16 @@
         "types": "./dist/services/network-rule/index.d.cts",
         "default": "./dist/services/network-rule/index.cjs"
       }
+    },
+    "./services/network-rule-alias": {
+      "import": {
+        "types": "./dist/services/network-rule-alias/index.d.ts",
+        "default": "./dist/services/network-rule-alias/index.js"
+      },
+      "require": {
+        "types": "./dist/services/network-rule-alias/index.d.cts",
+        "default": "./dist/services/network-rule-alias/index.cjs"
+      }
     }
   },
   "main": "./dist/index.cjs",

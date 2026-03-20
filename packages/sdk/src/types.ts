@@ -168,6 +168,12 @@ export type {
   RuleProtocol,
 } from "./services/network-rule/types.js";
 export type {
+  NetworkRuleAlias,
+  NetworkRuleAliasCreateParams,
+  NetworkRuleAliasUpdateParams,
+  PublishingScope,
+} from "./services/network-rule-alias/types.js";
+export type {
   BootOrder,
   CloudInitDatasource,
   ConsoleType,
