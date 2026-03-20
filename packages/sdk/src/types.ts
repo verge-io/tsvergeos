@@ -249,6 +249,13 @@ export type {
 export type { StorageTier } from './services/storage-tier/types.js';
 export type { StorageTierStats } from './services/storage-tier-stats/types.js';
 export type {
+	Tenant,
+	TenantCloneOptions,
+	TenantCreateParams,
+	TenantUpdateParams,
+	ThemeAccess,
+} from './services/tenant/types.js';
+export type {
 	BootOrder,
 	CloudInitDatasource,
 	ConsoleType,

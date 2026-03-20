@@ -39,3 +39,4 @@ import './services/storage-tier-stats/index.js';
 import './services/cluster-tier/index.js';
 import './services/cluster-tier-stats/index.js';
 import './services/cluster-tier-status/index.js';
+import './services/tenant/index.js';
