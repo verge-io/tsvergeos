@@ -112,6 +112,14 @@ export type {
 // ─── Service Resource Types ──────────────────────────────────────────────────
 
 export type {
+	FilePreferredTier,
+	FileUploadOptions,
+	VgFile,
+	VgFileCreateParams,
+	VgFileType,
+	VgFileUpdateParams,
+} from './services/file/types.js';
+export type {
 	IPSec,
 	IPSecCreateParams,
 	IPSecUpdateParams,

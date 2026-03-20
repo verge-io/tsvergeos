@@ -343,6 +343,16 @@
 				"types": "./dist/services/volume-browser/index.d.cts",
 				"default": "./dist/services/volume-browser/index.cjs"
 			}
+		},
+		"./services/file": {
+			"import": {
+				"types": "./dist/services/file/index.d.ts",
+				"default": "./dist/services/file/index.js"
+			},
+			"require": {
+				"types": "./dist/services/file/index.d.cts",
+				"default": "./dist/services/file/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",

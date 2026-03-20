@@ -120,6 +120,73 @@ export class HttpClient {
 	}
 
 	/**
+	 * Perform a raw PUT request with a non-JSON body (e.g., binary upload).
+	 *
+	 * Unlike {@link put}, this method sends the body as-is without JSON serialization,
+	 * using the specified content type. Used for file upload chunks.
+	 *
+	 * @param path - API path relative to `/api/v4/`
+	 * @param body - Raw request body (e.g., `Uint8Array`)
+	 * @param contentType - MIME type of the body (e.g., `'application/octet-stream'`)
+	 * @param queryParams - Optional query string parameters as key-value pairs
+	 */
+	async putRaw(
+		path: string,
+		body: Uint8Array | ArrayBuffer | string,
+		contentType: string,
+		queryParams?: Record<string, string>,
+	): Promise<void> {
+		const url = this.buildRawUrl(path, queryParams);
+		const signal = this.buildSignal();
+
+		const headers: Record<string, string> = {
+			Authorization: this.authHeader,
+			'Content-Type': contentType,
+			'User-Agent': `tsvergeos/${SDK_VERSION}`,
+			Connection: 'close',
+		};
+
+		const init: RequestInit = { method: 'PUT', headers, signal, body };
+
+		const response = await this.fetchImpl(url, init);
+
+		if (!response.ok) {
+			throw await this.buildError(response, url);
+		}
+	}
+
+	/**
+	 * Perform a raw GET request returning the full `Response` object.
+	 *
+	 * Unlike {@link get}, this method does not parse JSON. The caller is
+	 * responsible for reading and closing the response body. Used for
+	 * file downloads.
+	 *
+	 * @param path - API path relative to `/api/v4/`
+	 * @param queryParams - Optional query string parameters as key-value pairs
+	 * @returns The raw `Response` object
+	 */
+	async getRaw(path: string, queryParams?: Record<string, string>): Promise<Response> {
+		const url = this.buildRawUrl(path, queryParams);
+		const signal = this.buildSignal();
+
+		const headers: Record<string, string> = {
+			Authorization: this.authHeader,
+			'User-Agent': `tsvergeos/${SDK_VERSION}`,
+		};
+
+		const init: RequestInit = { method: 'GET', headers, signal };
+
+		const response = await this.fetchImpl(url, init);
+
+		if (!response.ok) {
+			throw await this.buildError(response, url);
+		}
+
+		return response;
+	}
+
+	/**
 	 * Core request method with retry logic, timeout, and error mapping.
 	 */
 	private async request<T>(
@@ -179,6 +246,18 @@ export class HttpClient {
 			throw lastError;
 		}
 		throw new ApiError(0, url, `Request failed after ${this.retries + 1} attempts`);
+	}
+
+	/**
+	 * Build a URL for raw (non-JSON) requests with simple key-value query params.
+	 */
+	private buildRawUrl(path: string, queryParams?: Record<string, string>): string {
+		const base = `${this.baseUrl}${API_BASE_PATH}${path}`;
+		if (!queryParams) return base;
+
+		const params = new URLSearchParams(queryParams);
+		const qs = params.toString();
+		return qs ? `${base}?${qs}` : base;
 	}
 
 	/**
