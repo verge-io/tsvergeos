@@ -152,6 +152,16 @@ export type {
 	RateLimitType,
 } from './services/network/types.js';
 export type {
+	NetworkRule,
+	NetworkRuleCreateParams,
+	NetworkRuleUpdateParams,
+	RuleAction,
+	RuleDirection,
+	RuleInterface,
+	RulePin,
+	RuleProtocol,
+} from './services/network-rule/types.js';
+export type {
 	BootOrder,
 	CloudInitDatasource,
 	ConsoleType,
