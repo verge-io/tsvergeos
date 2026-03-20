@@ -28,6 +28,8 @@ export default defineConfig({
 		'services/machine-drive-stats/index': 'src/services/machine-drive-stats/index.ts',
 		'services/machine-nic-stats/index': 'src/services/machine-nic-stats/index.ts',
 		'services/machine-drive-phys/index': 'src/services/machine-drive-phys/index.ts',
+		'services/volume/index': 'src/services/volume/index.ts',
+		'services/volume-snapshot/index': 'src/services/volume-snapshot/index.ts',
 	},
 	format: ['esm', 'cjs'],
 	dts: true,

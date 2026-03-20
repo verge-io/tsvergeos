@@ -263,6 +263,26 @@
 				"types": "./dist/services/machine-drive-phys/index.d.cts",
 				"default": "./dist/services/machine-drive-phys/index.cjs"
 			}
+		},
+		"./services/volume": {
+			"import": {
+				"types": "./dist/services/volume/index.d.ts",
+				"default": "./dist/services/volume/index.js"
+			},
+			"require": {
+				"types": "./dist/services/volume/index.d.cts",
+				"default": "./dist/services/volume/index.cjs"
+			}
+		},
+		"./services/volume-snapshot": {
+			"import": {
+				"types": "./dist/services/volume-snapshot/index.d.ts",
+				"default": "./dist/services/volume-snapshot/index.js"
+			},
+			"require": {
+				"types": "./dist/services/volume-snapshot/index.d.cts",
+				"default": "./dist/services/volume-snapshot/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
