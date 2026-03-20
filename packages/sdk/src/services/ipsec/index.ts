@@ -11,17 +11,17 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { IPSecService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { IPSecService } from './service.js';
 
-VergeClient.registerService("ipsec", IPSecService);
+VergeClient.registerService('ipsec', IPSecService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing IPSec VPN configurations on virtual networks. */
-    readonly ipsec: IPSecService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing IPSec VPN configurations on virtual networks. */
+		readonly ipsec: IPSecService;
+	}
 }
 
-export { IPSecService } from "./service.js";
-export type { IPSec, IPSecCreateParams, IPSecUpdateParams } from "./types.js";
+export { IPSecService } from './service.js';
+export type { IPSec, IPSecCreateParams, IPSecUpdateParams } from './types.js';

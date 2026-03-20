@@ -11,21 +11,21 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { IPSecPhase2Service } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { IPSecPhase2Service } from './service.js';
 
-VergeClient.registerService("ipsecPhase2s", IPSecPhase2Service);
+VergeClient.registerService('ipsecPhase2s', IPSecPhase2Service);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing IPSec Phase 2 (child SA) configurations. */
-    readonly ipsecPhase2s: IPSecPhase2Service;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing IPSec Phase 2 (child SA) configurations. */
+		readonly ipsecPhase2s: IPSecPhase2Service;
+	}
 }
 
-export { IPSecPhase2Service } from "./service.js";
+export { IPSecPhase2Service } from './service.js';
 export type {
-  IPSecPhase2,
-  IPSecPhase2CreateParams,
-  IPSecPhase2UpdateParams,
-} from "./types.js";
+	IPSecPhase2,
+	IPSecPhase2CreateParams,
+	IPSecPhase2UpdateParams,
+} from './types.js';
