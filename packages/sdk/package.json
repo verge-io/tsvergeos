@@ -413,6 +413,16 @@
 				"types": "./dist/services/wireguard-peer-status/index.d.cts",
 				"default": "./dist/services/wireguard-peer-status/index.cjs"
 			}
+		},
+		"./services/tenant": {
+			"import": {
+				"types": "./dist/services/tenant/index.d.ts",
+				"default": "./dist/services/tenant/index.js"
+			},
+			"require": {
+				"types": "./dist/services/tenant/index.d.cts",
+				"default": "./dist/services/tenant/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",

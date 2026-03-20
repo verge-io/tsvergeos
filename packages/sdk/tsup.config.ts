@@ -43,6 +43,7 @@ export default defineConfig({
 		'services/cluster-tier-stats/index': 'src/services/cluster-tier-stats/index.ts',
 		'services/cluster-tier-status/index': 'src/services/cluster-tier-status/index.ts',
 		'services/wireguard-peer-status/index': 'src/services/wireguard-peer-status/index.ts',
+		'services/tenant/index': 'src/services/tenant/index.ts',
 	},
 	format: ['esm', 'cjs'],
 	dts: true,
