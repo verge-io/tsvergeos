@@ -523,6 +523,26 @@
 				"types": "./dist/services/catalog-repository/index.d.cts",
 				"default": "./dist/services/catalog-repository/index.cjs"
 			}
+		},
+		"./services/user": {
+			"import": {
+				"types": "./dist/services/user/index.d.ts",
+				"default": "./dist/services/user/index.js"
+			},
+			"require": {
+				"types": "./dist/services/user/index.d.cts",
+				"default": "./dist/services/user/index.cjs"
+			}
+		},
+		"./services/group": {
+			"import": {
+				"types": "./dist/services/group/index.d.ts",
+				"default": "./dist/services/group/index.js"
+			},
+			"require": {
+				"types": "./dist/services/group/index.d.cts",
+				"default": "./dist/services/group/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
