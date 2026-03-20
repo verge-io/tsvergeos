@@ -36,6 +36,7 @@ export default defineConfig({
 		'services/nas-service/index': 'src/services/nas-service/index.ts',
 		'services/nas-service-user/index': 'src/services/nas-service-user/index.ts',
 		'services/volume-browser/index': 'src/services/volume-browser/index.ts',
+		'services/file/index': 'src/services/file/index.ts',
 	},
 	format: ['esm', 'cjs'],
 	dts: true,
