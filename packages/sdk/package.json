@@ -713,6 +713,16 @@
 				"types": "./dist/services/site-sync-profile-period/index.d.cts",
 				"default": "./dist/services/site-sync-profile-period/index.cjs"
 			}
+		},
+		"./services/task": {
+			"import": {
+				"types": "./dist/services/task/index.d.ts",
+				"default": "./dist/services/task/index.js"
+			},
+			"require": {
+				"types": "./dist/services/task/index.d.cts",
+				"default": "./dist/services/task/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
