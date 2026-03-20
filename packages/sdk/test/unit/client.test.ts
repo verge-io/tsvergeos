@@ -219,6 +219,53 @@ describe('VergeClient', () => {
 			const client = VergeClient.fromEnv();
 			expect(client).toBeDefined();
 		});
+
+		it('ignores invalid VERGEOS_TIMEOUT values', () => {
+			process.env = {
+				...originalEnv,
+				VERGEOS_HOST: 'https://env-host.example.com',
+				VERGEOS_API_KEY: 'key',
+				VERGEOS_TIMEOUT: 'not-a-number',
+			};
+
+			const client = VergeClient.fromEnv();
+			expect(client).toBeDefined();
+		});
+	});
+
+	// ---------------------------------------------------------------------------
+	// connectFromEnv() static factory
+	// ---------------------------------------------------------------------------
+
+	describe('connectFromEnv()', () => {
+		const originalEnv = process.env;
+
+		afterEach(() => {
+			process.env = originalEnv;
+		});
+
+		it('reads env vars and performs version check', async () => {
+			const fetchMock = vi.fn<typeof globalThis.fetch>();
+			fetchMock.mockResolvedValueOnce(mockResponse(200, { version: '26.1.0' }));
+
+			// Temporarily override globalThis.fetch for connectFromEnv
+			const origFetch = globalThis.fetch;
+			globalThis.fetch = fetchMock;
+
+			process.env = {
+				...originalEnv,
+				VERGEOS_HOST: 'https://env-host.example.com',
+				VERGEOS_API_KEY: 'env-api-key',
+			};
+
+			try {
+				const client = await VergeClient.connectFromEnv();
+				expect(client.serverVersion).toBe('26.1.0');
+				expect(client.host).toBe('https://env-host.example.com');
+			} finally {
+				globalThis.fetch = origFetch;
+			}
+		});
 	});
 
 	// ---------------------------------------------------------------------------

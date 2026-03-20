@@ -124,6 +124,30 @@ describe('ReadOnlyService', () => {
 				},
 			});
 		});
+
+		it('uses explicit fields when provided instead of default most', async () => {
+			const http = mockHttp();
+			const svc = new TestReadOnlyService(http);
+			vi.mocked(http.get).mockResolvedValueOnce([]);
+
+			await svc.list({ fields: ['name', '$key'] });
+
+			expect(http.get).toHaveBeenCalledWith('/widgets', {
+				params: { fields: ['name', '$key'] },
+			});
+		});
+
+		it('allows fields string override', async () => {
+			const http = mockHttp();
+			const svc = new TestReadOnlyService(http);
+			vi.mocked(http.get).mockResolvedValueOnce([]);
+
+			await svc.list({ fields: 'all' });
+
+			expect(http.get).toHaveBeenCalledWith('/widgets', {
+				params: { fields: 'all' },
+			});
+		});
 	});
 
 	describe('get()', () => {
@@ -138,6 +162,24 @@ describe('ReadOnlyService', () => {
 			vi.mocked(http.get).mockResolvedValueOnce(resource);
 
 			const result = await svc.get(42);
+
+			expect(http.get).toHaveBeenCalledWith('/widgets/42', {
+				params: { fields: 'most' },
+			});
+			expect(result).toEqual(resource);
+		});
+
+		it('accepts string FlexKey', async () => {
+			const http = mockHttp();
+			const svc = new TestReadOnlyService(http);
+			const resource: TestResource = {
+				$key: 42,
+				name: 'foo',
+				description: 'bar',
+			};
+			vi.mocked(http.get).mockResolvedValueOnce(resource);
+
+			const result = await svc.get('42');
 
 			expect(http.get).toHaveBeenCalledWith('/widgets/42', {
 				params: { fields: 'most' },
@@ -288,6 +330,38 @@ describe('ReadOnlyService', () => {
 					limit: 5,
 					offset: 0,
 				},
+			});
+		});
+
+		it('clamps pageSize to MAX_PAGE_SIZE', async () => {
+			const http = mockHttp();
+			const svc = new TestReadOnlyService(http);
+			vi.mocked(http.get).mockResolvedValueOnce([]); // empty page → done
+
+			const items: TestResource[] = [];
+			for await (const item of svc.listAll({ pageSize: 5000 })) {
+				items.push(item);
+			}
+
+			// MAX_PAGE_SIZE is 1000, so limit should be clamped
+			expect(http.get).toHaveBeenCalledWith('/widgets', {
+				params: { fields: 'most', limit: 1000, offset: 0 },
+			});
+		});
+
+		it('uses DEFAULT_PAGE_SIZE when no pageSize specified', async () => {
+			const http = mockHttp();
+			const svc = new TestReadOnlyService(http);
+			vi.mocked(http.get).mockResolvedValueOnce([]); // empty page → done
+
+			const items: TestResource[] = [];
+			for await (const item of svc.listAll()) {
+				items.push(item);
+			}
+
+			// DEFAULT_PAGE_SIZE is 100
+			expect(http.get).toHaveBeenCalledWith('/widgets', {
+				params: { fields: 'most', limit: 100, offset: 0 },
 			});
 		});
 	});
