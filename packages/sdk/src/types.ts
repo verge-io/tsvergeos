@@ -225,3 +225,4 @@ export type {
 	WireGuardPeerFirewallConfig,
 	WireGuardPeerUpdateParams,
 } from './services/wireguard-peer/types.js';
+export type { WireGuardPeerStatus } from './services/wireguard-peer-status/types.js';
