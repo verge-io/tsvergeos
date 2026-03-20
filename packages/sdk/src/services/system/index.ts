@@ -1,0 +1,14 @@
+import { VergeClient } from '../../client.js';
+import { SystemService } from './service.js';
+
+VergeClient.registerService('system', SystemService);
+
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for accessing VergeOS system information and version data. */
+		readonly system: SystemService;
+	}
+}
+
+export { SystemService } from './service.js';
+export type { System, SystemUpdateParams, VersionInfo } from './types.js';
