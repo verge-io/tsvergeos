@@ -1,8 +1,8 @@
-import { NotFoundError } from "../../errors.js";
-import type { HttpClient } from "../../http.js";
-import type { FlexKey } from "../../types.js";
-import { ReadOnlyService } from "../base.js";
-import type { MachineNicStats } from "./types.js";
+import { NotFoundError } from '../../errors.js';
+import type { HttpClient } from '../../http.js';
+import type { FlexKey } from '../../types.js';
+import { ReadOnlyService } from '../base.js';
+import type { MachineNicStats } from './types.js';
 
 /**
  * Service for querying VergeOS machine NIC statistics.
@@ -22,29 +22,29 @@ import type { MachineNicStats } from "./types.js";
  * ```
  */
 export class MachineNicStatsService extends ReadOnlyService<MachineNicStats> {
-  constructor(http: HttpClient) {
-    super(http, "/machine_nic_stats", "Machine NIC Stats");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/machine_nic_stats', 'Machine NIC Stats');
+	}
 
-  /**
-   * Get statistics for a specific NIC.
-   *
-   * Filters by `parent_nic eq {nicKey}` and returns the first matching result.
-   * Throws {@link NotFoundError} if no stats entry exists for the given NIC.
-   *
-   * @param nicKey - The key of the machine NIC to look up stats for.
-   * @returns The machine NIC stats resource.
-   * @throws {@link NotFoundError} If no stats exist for the specified NIC.
-   */
-  async getByNic(nicKey: FlexKey): Promise<MachineNicStats> {
-    const results = await this.list({
-      filter: `parent_nic eq ${nicKey}`,
-    });
+	/**
+	 * Get statistics for a specific NIC.
+	 *
+	 * Filters by `parent_nic eq {nicKey}` and returns the first matching result.
+	 * Throws {@link NotFoundError} if no stats entry exists for the given NIC.
+	 *
+	 * @param nicKey - The key of the machine NIC to look up stats for.
+	 * @returns The machine NIC stats resource.
+	 * @throws {@link NotFoundError} If no stats exist for the specified NIC.
+	 */
+	async getByNic(nicKey: FlexKey): Promise<MachineNicStats> {
+		const results = await this.list({
+			filter: `parent_nic eq ${nicKey}`,
+		});
 
-    if (results.length === 0) {
-      throw new NotFoundError(this.displayName, nicKey);
-    }
+		if (results.length === 0) {
+			throw new NotFoundError(this.displayName, nicKey);
+		}
 
-    return results[0] as MachineNicStats;
-  }
+		return results[0] as MachineNicStats;
+	}
 }

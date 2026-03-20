@@ -45,7 +45,8 @@ describeIf('IPSec VPN integration', () => {
 			return; // No IPSec configs to test with
 		}
 
-		const ipsecConfig = configs[0]!;
+		const ipsecConfig = configs[0];
+		if (!ipsecConfig) return;
 		await delay();
 		const phase1s = await client.ipsecPhase1s.listByIPSec(ipsecConfig.$key);
 		expect(Array.isArray(phase1s)).toBe(true);
@@ -71,7 +72,8 @@ describeIf('IPSec VPN integration', () => {
 			return; // No Phase 1 entries to test with
 		}
 
-		const phase1 = phase1s[0]!;
+		const phase1 = phase1s[0];
+		if (!phase1) return;
 		await delay();
 		const phase2s = await client.ipsecPhase2s.listByPhase1(phase1.$key);
 		expect(Array.isArray(phase2s)).toBe(true);
@@ -97,7 +99,8 @@ describeIf('IPSec VPN integration', () => {
 			return; // No IPSec configs to test with
 		}
 
-		const ipsecConfig = configs[0]!;
+		const ipsecConfig = configs[0];
+		if (!ipsecConfig) return;
 		await delay();
 		const connections = await client.ipsecConnections.listByNetwork(ipsecConfig.vnet);
 		expect(Array.isArray(connections)).toBe(true);
@@ -110,7 +113,8 @@ describeIf('IPSec VPN integration', () => {
 			return; // No Phase 1 entries to test with
 		}
 
-		const phase1 = phase1s[0]!;
+		const phase1 = phase1s[0];
+		if (!phase1) return;
 		await delay();
 		const connections = await client.ipsecConnections.listByPhase1(phase1.$key);
 		expect(Array.isArray(connections)).toBe(true);

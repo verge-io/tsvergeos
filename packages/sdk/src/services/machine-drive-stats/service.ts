@@ -1,8 +1,8 @@
-import { NotFoundError } from "../../errors.js";
-import type { HttpClient } from "../../http.js";
-import type { FlexKey } from "../../types.js";
-import { ReadOnlyService } from "../base.js";
-import type { MachineDriveStats } from "./types.js";
+import { NotFoundError } from '../../errors.js';
+import type { HttpClient } from '../../http.js';
+import type { FlexKey } from '../../types.js';
+import { ReadOnlyService } from '../base.js';
+import type { MachineDriveStats } from './types.js';
 
 /**
  * Service for querying VergeOS machine drive statistics.
@@ -25,42 +25,42 @@ import type { MachineDriveStats } from "./types.js";
  * ```
  */
 export class MachineDriveStatsService extends ReadOnlyService<MachineDriveStats> {
-  constructor(http: HttpClient) {
-    super(http, "/machine_drive_stats", "Machine Drive Stats");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/machine_drive_stats', 'Machine Drive Stats');
+	}
 
-  /**
-   * Get statistics for a specific drive.
-   *
-   * Filters by `parent_drive eq {driveKey}` and returns the first matching result.
-   * Throws {@link NotFoundError} if no stats entry exists for the given drive.
-   *
-   * @param driveKey - The key of the machine drive to look up stats for.
-   * @returns The machine drive stats resource.
-   * @throws {@link NotFoundError} If no stats exist for the specified drive.
-   */
-  async getByDrive(driveKey: FlexKey): Promise<MachineDriveStats> {
-    const results = await this.list({
-      filter: `parent_drive eq ${driveKey}`,
-    });
+	/**
+	 * Get statistics for a specific drive.
+	 *
+	 * Filters by `parent_drive eq {driveKey}` and returns the first matching result.
+	 * Throws {@link NotFoundError} if no stats entry exists for the given drive.
+	 *
+	 * @param driveKey - The key of the machine drive to look up stats for.
+	 * @returns The machine drive stats resource.
+	 * @throws {@link NotFoundError} If no stats exist for the specified drive.
+	 */
+	async getByDrive(driveKey: FlexKey): Promise<MachineDriveStats> {
+		const results = await this.list({
+			filter: `parent_drive eq ${driveKey}`,
+		});
 
-    if (results.length === 0) {
-      throw new NotFoundError(this.displayName, driveKey);
-    }
+		if (results.length === 0) {
+			throw new NotFoundError(this.displayName, driveKey);
+		}
 
-    return results[0] as MachineDriveStats;
-  }
+		return results[0] as MachineDriveStats;
+	}
 
-  /**
-   * List statistics for physical drives only.
-   *
-   * Filters by `physical eq true` to return only physical (non-virtual) drive stats.
-   *
-   * @returns Array of physical drive stats resources.
-   */
-  async listPhysical(): Promise<MachineDriveStats[]> {
-    return this.list({
-      filter: "physical eq true",
-    });
-  }
+	/**
+	 * List statistics for physical drives only.
+	 *
+	 * Filters by `physical eq true` to return only physical (non-virtual) drive stats.
+	 *
+	 * @returns Array of physical drive stats resources.
+	 */
+	async listPhysical(): Promise<MachineDriveStats[]> {
+		return this.list({
+			filter: 'physical eq true',
+		});
+	}
 }
