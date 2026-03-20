@@ -1,12 +1,12 @@
-import type { HttpClient } from "../../http.js";
-import type { FlexKey, ListOptions } from "../../types.js";
-import { BaseService } from "../base.js";
+import type { HttpClient } from '../../http.js';
+import type { FlexKey, ListOptions } from '../../types.js';
+import { BaseService } from '../base.js';
 import type {
-  AddressType,
-  NetworkAddress,
-  NetworkAddressCreateParams,
-  NetworkAddressUpdateParams,
-} from "./types.js";
+	AddressType,
+	NetworkAddress,
+	NetworkAddressCreateParams,
+	NetworkAddressUpdateParams,
+} from './types.js';
 
 /**
  * Service for managing VergeOS network addresses.
@@ -36,94 +36,81 @@ import type {
  * ```
  */
 export class NetworkAddressService extends BaseService<
-  NetworkAddress,
-  NetworkAddressCreateParams,
-  NetworkAddressUpdateParams
+	NetworkAddress,
+	NetworkAddressCreateParams,
+	NetworkAddressUpdateParams
 > {
-  constructor(http: HttpClient) {
-    super(http, "/vnet_addresses", "Network Address");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/vnet_addresses', 'Network Address');
+	}
 
-  /**
-   * List addresses belonging to a specific network.
-   *
-   * Convenience method that filters by the `vnet` foreign key.
-   *
-   * @param vnetKey - The parent network ID
-   * @param options - Additional list options (filter, sort, fields, pagination)
-   * @returns Array of addresses for the specified network
-   */
-  async listByNetwork(
-    vnetKey: FlexKey,
-    options?: ListOptions,
-  ): Promise<NetworkAddress[]> {
-    const vnetFilter = `vnet eq ${vnetKey}`;
-    const existingFilter = options?.filter;
-    const combinedFilter = existingFilter
-      ? `${vnetFilter} and ${existingFilter}`
-      : vnetFilter;
+	/**
+	 * List addresses belonging to a specific network.
+	 *
+	 * Convenience method that filters by the `vnet` foreign key.
+	 *
+	 * @param vnetKey - The parent network ID
+	 * @param options - Additional list options (filter, sort, fields, pagination)
+	 * @returns Array of addresses for the specified network
+	 */
+	async listByNetwork(vnetKey: FlexKey, options?: ListOptions): Promise<NetworkAddress[]> {
+		const vnetFilter = `vnet eq ${vnetKey}`;
+		const existingFilter = options?.filter;
+		const combinedFilter = existingFilter ? `${vnetFilter} and ${existingFilter}` : vnetFilter;
 
-    return this.list({
-      ...options,
-      filter: combinedFilter,
-    });
-  }
+		return this.list({
+			...options,
+			filter: combinedFilter,
+		});
+	}
 
-  /**
-   * List addresses of a specific type belonging to a network.
-   *
-   * Convenience method that filters by both `vnet` and `type`.
-   *
-   * @param vnetKey - The parent network ID
-   * @param type - The address type to filter by
-   * @param options - Additional list options (filter, sort, fields, pagination)
-   * @returns Array of addresses matching the type for the specified network
-   */
-  async listByType(
-    vnetKey: FlexKey,
-    type: AddressType,
-    options?: ListOptions,
-  ): Promise<NetworkAddress[]> {
-    const typeFilter = `type eq '${type}'`;
-    return this.listByNetwork(vnetKey, {
-      ...options,
-      filter: options?.filter
-        ? `${typeFilter} and ${options.filter}`
-        : typeFilter,
-    });
-  }
+	/**
+	 * List addresses of a specific type belonging to a network.
+	 *
+	 * Convenience method that filters by both `vnet` and `type`.
+	 *
+	 * @param vnetKey - The parent network ID
+	 * @param type - The address type to filter by
+	 * @param options - Additional list options (filter, sort, fields, pagination)
+	 * @returns Array of addresses matching the type for the specified network
+	 */
+	async listByType(
+		vnetKey: FlexKey,
+		type: AddressType,
+		options?: ListOptions,
+	): Promise<NetworkAddress[]> {
+		const typeFilter = `type eq '${type}'`;
+		return this.listByNetwork(vnetKey, {
+			...options,
+			filter: options?.filter ? `${typeFilter} and ${options.filter}` : typeFilter,
+		});
+	}
 
-  /**
-   * Find an address by IP within a specific network.
-   *
-   * @param vnetKey - The parent network ID
-   * @param ip - The IP address to search for
-   * @returns The matching address, or `undefined` if not found
-   */
-  async getByIP(
-    vnetKey: FlexKey,
-    ip: string,
-  ): Promise<NetworkAddress | undefined> {
-    const results = await this.listByNetwork(vnetKey, {
-      filter: `ip eq '${ip}'`,
-    });
-    return results[0];
-  }
+	/**
+	 * Find an address by IP within a specific network.
+	 *
+	 * @param vnetKey - The parent network ID
+	 * @param ip - The IP address to search for
+	 * @returns The matching address, or `undefined` if not found
+	 */
+	async getByIP(vnetKey: FlexKey, ip: string): Promise<NetworkAddress | undefined> {
+		const results = await this.listByNetwork(vnetKey, {
+			filter: `ip eq '${ip}'`,
+		});
+		return results[0];
+	}
 
-  /**
-   * Find an address by MAC address within a specific network.
-   *
-   * @param vnetKey - The parent network ID
-   * @param mac - The MAC address to search for
-   * @returns The matching address, or `undefined` if not found
-   */
-  async getByMAC(
-    vnetKey: FlexKey,
-    mac: string,
-  ): Promise<NetworkAddress | undefined> {
-    const results = await this.listByNetwork(vnetKey, {
-      filter: `mac eq '${mac}'`,
-    });
-    return results[0];
-  }
+	/**
+	 * Find an address by MAC address within a specific network.
+	 *
+	 * @param vnetKey - The parent network ID
+	 * @param mac - The MAC address to search for
+	 * @returns The matching address, or `undefined` if not found
+	 */
+	async getByMAC(vnetKey: FlexKey, mac: string): Promise<NetworkAddress | undefined> {
+		const results = await this.listByNetwork(vnetKey, {
+			filter: `mac eq '${mac}'`,
+		});
+		return results[0];
+	}
 }

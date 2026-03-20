@@ -11,22 +11,22 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { NetworkAddressService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { NetworkAddressService } from './service.js';
 
-VergeClient.registerService("networkAddresses", NetworkAddressService);
+VergeClient.registerService('networkAddresses', NetworkAddressService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing network addresses (DHCP leases, static IPs, aliases, etc.). */
-    readonly networkAddresses: NetworkAddressService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing network addresses (DHCP leases, static IPs, aliases, etc.). */
+		readonly networkAddresses: NetworkAddressService;
+	}
 }
 
-export { NetworkAddressService } from "./service.js";
+export { NetworkAddressService } from './service.js';
 export type {
-  AddressType,
-  NetworkAddress,
-  NetworkAddressCreateParams,
-  NetworkAddressUpdateParams,
-} from "./types.js";
+	AddressType,
+	NetworkAddress,
+	NetworkAddressCreateParams,
+	NetworkAddressUpdateParams,
+} from './types.js';

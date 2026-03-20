@@ -1,9 +1,9 @@
-import type { FlexKey, Resource } from "../../types.js";
+import type { FlexKey, Resource } from '../../types.js';
 
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Publishing scope for a rule alias. Controls visibility across tenants. */
-export type PublishingScope = "private" | "global" | "tenant" | "none";
+export type PublishingScope = 'private' | 'global' | 'tenant' | 'none';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -18,23 +18,23 @@ export type PublishingScope = "private" | "global" | "tenant" | "none";
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface NetworkRuleAlias extends Resource {
-  /** Alias display name. Min 1, max 128 characters. Unique. */
-  name: string;
+	/** Alias display name. Min 1, max 128 characters. Unique. */
+	name: string;
 
-  /** SHA1 hash identifier. Read-only. Min/max 40 characters. Unique. */
-  id?: string;
+	/** SHA1 hash identifier. Read-only. Min/max 40 characters. Unique. */
+	id?: string;
 
-  /** Comma-delimited list of addresses (IPs, CIDRs, or other alias references). */
-  value: string;
+	/** Comma-delimited list of addresses (IPs, CIDRs, or other alias references). */
+	value: string;
 
-  /** Publishing scope controlling visibility. Default: `private`. */
-  publishing_scope?: PublishingScope;
+	/** Publishing scope controlling visibility. Default: `private`. */
+	publishing_scope?: PublishingScope;
 
-  /** Owner reference. Read-only. */
-  owner?: FlexKey;
+	/** Owner reference. Read-only. */
+	owner?: FlexKey;
 
-  /** Human-readable description. Max 2048 characters. */
-  description?: string;
+	/** Human-readable description. Max 2048 characters. */
+	description?: string;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -45,17 +45,17 @@ export interface NetworkRuleAlias extends Resource {
  * `name` and `value` are required per the API schema.
  */
 export interface NetworkRuleAliasCreateParams {
-  /** Alias display name. Min 1, max 128 characters. Must be unique. */
-  name: string;
+	/** Alias display name. Min 1, max 128 characters. Must be unique. */
+	name: string;
 
-  /** Comma-delimited list of addresses (IPs, CIDRs, or other alias references). */
-  value: string;
+	/** Comma-delimited list of addresses (IPs, CIDRs, or other alias references). */
+	value: string;
 
-  /** Publishing scope controlling visibility. Default: `private`. */
-  publishing_scope?: PublishingScope;
+	/** Publishing scope controlling visibility. Default: `private`. */
+	publishing_scope?: PublishingScope;
 
-  /** Human-readable description. Max 2048 characters. */
-  description?: string;
+	/** Human-readable description. Max 2048 characters. */
+	description?: string;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
@@ -67,15 +67,15 @@ export interface NetworkRuleAliasCreateParams {
  * Read-only fields (`id`, `owner`) are excluded.
  */
 export interface NetworkRuleAliasUpdateParams {
-  /** Alias display name. Min 1, max 128 characters. Must be unique. */
-  name?: string;
+	/** Alias display name. Min 1, max 128 characters. Must be unique. */
+	name?: string;
 
-  /** Comma-delimited list of addresses (IPs, CIDRs, or other alias references). */
-  value?: string;
+	/** Comma-delimited list of addresses (IPs, CIDRs, or other alias references). */
+	value?: string;
 
-  /** Publishing scope controlling visibility. */
-  publishing_scope?: PublishingScope;
+	/** Publishing scope controlling visibility. */
+	publishing_scope?: PublishingScope;
 
-  /** Human-readable description. Max 2048 characters. */
-  description?: string;
+	/** Human-readable description. Max 2048 characters. */
+	description?: string;
 }
