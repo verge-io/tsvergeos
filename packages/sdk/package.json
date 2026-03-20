@@ -233,6 +233,26 @@
         "types": "./dist/services/ipsec-connection/index.d.cts",
         "default": "./dist/services/ipsec-connection/index.cjs"
       }
+    },
+    "./services/machine-drive-stats": {
+      "import": {
+        "types": "./dist/services/machine-drive-stats/index.d.ts",
+        "default": "./dist/services/machine-drive-stats/index.js"
+      },
+      "require": {
+        "types": "./dist/services/machine-drive-stats/index.d.cts",
+        "default": "./dist/services/machine-drive-stats/index.cjs"
+      }
+    },
+    "./services/machine-nic-stats": {
+      "import": {
+        "types": "./dist/services/machine-nic-stats/index.d.ts",
+        "default": "./dist/services/machine-nic-stats/index.js"
+      },
+      "require": {
+        "types": "./dist/services/machine-nic-stats/index.d.cts",
+        "default": "./dist/services/machine-nic-stats/index.cjs"
+      }
     }
   },
   "main": "./dist/index.cjs",

@@ -244,3 +244,4 @@ export type {
 export type { WireGuardPeerStatus } from "./services/wireguard-peer-status/types.js";
 export type { MachineStats } from "./services/machine-stats/types.js";
 export type { MachineDriveStats } from "./services/machine-drive-stats/types.js";
+export type { MachineNicStats } from "./services/machine-nic-stats/types.js";
