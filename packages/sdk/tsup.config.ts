@@ -13,6 +13,8 @@ export default defineConfig({
     "services/machine-snapshot/index": "src/services/machine-snapshot/index.ts",
     "services/network-address/index": "src/services/network-address/index.ts",
     "services/network-rule/index": "src/services/network-rule/index.ts",
+    "services/network-rule-alias/index":
+      "src/services/network-rule-alias/index.ts",
   },
   format: ["esm", "cjs"],
   dts: true,
