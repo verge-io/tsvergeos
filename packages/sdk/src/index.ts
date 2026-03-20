@@ -48,6 +48,12 @@ export type {
 } from './filter.js';
 export { buildFilter, Filter } from './filter.js';
 export { HttpClient } from './http.js';
+export type { ActionConfig } from './services/base.js';
+export {
+	BaseService,
+	ReadOnlyService,
+	WritableService,
+} from './services/base.js';
 export type {
 	ApiResponse,
 	ClientConfig,

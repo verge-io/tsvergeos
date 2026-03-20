@@ -94,8 +94,12 @@ export interface MutationOptions {
 	readBack?: boolean;
 }
 
-// ─── Service Resource Types ──────────────────────────────────────────────────
+// ─── Service Infrastructure Types ────────────────────────────────────────────
 // Re-exported here for convenient type-only imports via `tsvergeos/types`.
+
+export type { ActionConfig } from './services/base.js';
+
+// ─── Service Resource Types ──────────────────────────────────────────────────
 
 export type {
 	DnsMode,
