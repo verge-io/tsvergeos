@@ -11,22 +11,22 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { NetworkRuleAliasService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { NetworkRuleAliasService } from './service.js';
 
-VergeClient.registerService("networkRuleAliases", NetworkRuleAliasService);
+VergeClient.registerService('networkRuleAliases', NetworkRuleAliasService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing network rule aliases (global named address groups). */
-    readonly networkRuleAliases: NetworkRuleAliasService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing network rule aliases (global named address groups). */
+		readonly networkRuleAliases: NetworkRuleAliasService;
+	}
 }
 
-export { NetworkRuleAliasService } from "./service.js";
+export { NetworkRuleAliasService } from './service.js';
 export type {
-  NetworkRuleAlias,
-  NetworkRuleAliasCreateParams,
-  NetworkRuleAliasUpdateParams,
-  PublishingScope,
-} from "./types.js";
+	NetworkRuleAlias,
+	NetworkRuleAliasCreateParams,
+	NetworkRuleAliasUpdateParams,
+	PublishingScope,
+} from './types.js';

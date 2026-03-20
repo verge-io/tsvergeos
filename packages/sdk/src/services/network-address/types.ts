@@ -1,14 +1,9 @@
-import type { FlexKey, Resource } from "../../types.js";
+import type { FlexKey, Resource } from '../../types.js';
 
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Network address type: DHCP lease, static assignment, IP alias, proxy ARP, or virtual IP. */
-export type AddressType =
-  | "dynamic"
-  | "static"
-  | "ipalias"
-  | "proxy"
-  | "virtual";
+export type AddressType = 'dynamic' | 'static' | 'ipalias' | 'proxy' | 'virtual';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -22,32 +17,32 @@ export type AddressType =
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface NetworkAddress extends Resource {
-  /** Parent network reference (FK to `vnets`). */
-  vnet: FlexKey;
+	/** Parent network reference (FK to `vnets`). */
+	vnet: FlexKey;
 
-  /** MAC address associated with this entry. */
-  mac?: string;
+	/** MAC address associated with this entry. */
+	mac?: string;
 
-  /** IP address. */
-  ip?: string;
+	/** IP address. */
+	ip?: string;
 
-  /** Address type. */
-  type: AddressType;
+	/** Address type. */
+	type: AddressType;
 
-  /** Hostname associated with this address. */
-  hostname?: string;
+	/** Hostname associated with this address. */
+	hostname?: string;
 
-  /** Expiration timestamp (Unix epoch, unsigned 32-bit). */
-  expiration?: number;
+	/** Expiration timestamp (Unix epoch, unsigned 32-bit). */
+	expiration?: number;
 
-  /** Owner reference. */
-  owner?: FlexKey;
+	/** Owner reference. */
+	owner?: FlexKey;
 
-  /** Hardware vendor string (trimmed). */
-  vendor?: string;
+	/** Hardware vendor string (trimmed). */
+	vendor?: string;
 
-  /** Human-readable description. Max 2048 characters. */
-  description?: string;
+	/** Human-readable description. Max 2048 characters. */
+	description?: string;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -58,32 +53,32 @@ export interface NetworkAddress extends Resource {
  * `vnet` and `type` are required per the API schema.
  */
 export interface NetworkAddressCreateParams {
-  /** Parent network reference (FK to `vnets`). */
-  vnet: FlexKey;
+	/** Parent network reference (FK to `vnets`). */
+	vnet: FlexKey;
 
-  /** MAC address. */
-  mac?: string;
+	/** MAC address. */
+	mac?: string;
 
-  /** IP address. */
-  ip?: string;
+	/** IP address. */
+	ip?: string;
 
-  /** Address type. */
-  type: AddressType;
+	/** Address type. */
+	type: AddressType;
 
-  /** Hostname. */
-  hostname?: string;
+	/** Hostname. */
+	hostname?: string;
 
-  /** Expiration timestamp (Unix epoch, unsigned 32-bit). */
-  expiration?: number;
+	/** Expiration timestamp (Unix epoch, unsigned 32-bit). */
+	expiration?: number;
 
-  /** Owner reference. */
-  owner?: FlexKey;
+	/** Owner reference. */
+	owner?: FlexKey;
 
-  /** Hardware vendor string. */
-  vendor?: string;
+	/** Hardware vendor string. */
+	vendor?: string;
 
-  /** Human-readable description. Max 2048 characters. */
-  description?: string;
+	/** Human-readable description. Max 2048 characters. */
+	description?: string;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
@@ -94,27 +89,27 @@ export interface NetworkAddressCreateParams {
  * All fields are optional — only provided fields are changed.
  */
 export interface NetworkAddressUpdateParams {
-  /** MAC address. */
-  mac?: string;
+	/** MAC address. */
+	mac?: string;
 
-  /** IP address. */
-  ip?: string;
+	/** IP address. */
+	ip?: string;
 
-  /** Address type. */
-  type?: AddressType;
+	/** Address type. */
+	type?: AddressType;
 
-  /** Hostname. */
-  hostname?: string;
+	/** Hostname. */
+	hostname?: string;
 
-  /** Expiration timestamp (Unix epoch, unsigned 32-bit). */
-  expiration?: number;
+	/** Expiration timestamp (Unix epoch, unsigned 32-bit). */
+	expiration?: number;
 
-  /** Owner reference. */
-  owner?: FlexKey;
+	/** Owner reference. */
+	owner?: FlexKey;
 
-  /** Hardware vendor string. */
-  vendor?: string;
+	/** Hardware vendor string. */
+	vendor?: string;
 
-  /** Human-readable description. Max 2048 characters. */
-  description?: string;
+	/** Human-readable description. Max 2048 characters. */
+	description?: string;
 }

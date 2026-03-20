@@ -1,10 +1,10 @@
-import type { HttpClient } from "../../http.js";
-import { BaseService } from "../base.js";
+import type { HttpClient } from '../../http.js';
+import { BaseService } from '../base.js';
 import type {
-  NetworkRuleAlias,
-  NetworkRuleAliasCreateParams,
-  NetworkRuleAliasUpdateParams,
-} from "./types.js";
+	NetworkRuleAlias,
+	NetworkRuleAliasCreateParams,
+	NetworkRuleAliasUpdateParams,
+} from './types.js';
 
 /**
  * Service for managing VergeOS network rule aliases.
@@ -41,11 +41,11 @@ import type {
  * ```
  */
 export class NetworkRuleAliasService extends BaseService<
-  NetworkRuleAlias,
-  NetworkRuleAliasCreateParams,
-  NetworkRuleAliasUpdateParams
+	NetworkRuleAlias,
+	NetworkRuleAliasCreateParams,
+	NetworkRuleAliasUpdateParams
 > {
-  constructor(http: HttpClient) {
-    super(http, "/vnet_rule_aliases", "Network Rule Alias");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/vnet_rule_aliases', 'Network Rule Alias');
+	}
 }
