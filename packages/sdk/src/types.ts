@@ -273,6 +273,11 @@ export type {
 	TenantRecipeUpdateParams,
 } from './services/tenant-recipe/types.js';
 export type {
+	TenantRecipeInstance,
+	TenantRecipeInstanceCreateParams,
+	TenantRecipeInstanceUpdateParams,
+} from './services/tenant-recipe-instance/types.js';
+export type {
 	TenantSnapshot,
 	TenantSnapshotUpdateParams,
 } from './services/tenant-snapshot/types.js';
@@ -309,6 +314,11 @@ export type {
 	VMRecipeDeployOptions,
 	VMRecipeUpdateParams,
 } from './services/vm-recipe/types.js';
+export type {
+	VMRecipeInstance,
+	VMRecipeInstanceCreateParams,
+	VMRecipeInstanceUpdateParams,
+} from './services/vm-recipe-instance/types.js';
 export type {
 	CifsProtocol,
 	NfsProtocol,

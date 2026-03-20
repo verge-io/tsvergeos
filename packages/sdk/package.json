@@ -483,6 +483,26 @@
 				"types": "./dist/services/tenant-recipe/index.d.cts",
 				"default": "./dist/services/tenant-recipe/index.cjs"
 			}
+		},
+		"./services/vm-recipe-instance": {
+			"import": {
+				"types": "./dist/services/vm-recipe-instance/index.d.ts",
+				"default": "./dist/services/vm-recipe-instance/index.js"
+			},
+			"require": {
+				"types": "./dist/services/vm-recipe-instance/index.d.cts",
+				"default": "./dist/services/vm-recipe-instance/index.cjs"
+			}
+		},
+		"./services/tenant-recipe-instance": {
+			"import": {
+				"types": "./dist/services/tenant-recipe-instance/index.d.ts",
+				"default": "./dist/services/tenant-recipe-instance/index.js"
+			},
+			"require": {
+				"types": "./dist/services/tenant-recipe-instance/index.d.cts",
+				"default": "./dist/services/tenant-recipe-instance/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",

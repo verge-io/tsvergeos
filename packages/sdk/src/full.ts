@@ -45,4 +45,6 @@ import './services/tenant-storage/index.js';
 import './services/tenant-snapshot/index.js';
 import './services/tenant-layer2/index.js';
 import './services/vm-recipe/index.js';
+import './services/vm-recipe-instance/index.js';
 import './services/tenant-recipe/index.js';
+import './services/tenant-recipe-instance/index.js';
