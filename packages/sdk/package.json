@@ -433,6 +433,26 @@
 				"types": "./dist/services/tenant-node/index.d.cts",
 				"default": "./dist/services/tenant-node/index.cjs"
 			}
+		},
+		"./services/tenant-storage": {
+			"import": {
+				"types": "./dist/services/tenant-storage/index.d.ts",
+				"default": "./dist/services/tenant-storage/index.js"
+			},
+			"require": {
+				"types": "./dist/services/tenant-storage/index.d.cts",
+				"default": "./dist/services/tenant-storage/index.cjs"
+			}
+		},
+		"./services/tenant-snapshot": {
+			"import": {
+				"types": "./dist/services/tenant-snapshot/index.d.ts",
+				"default": "./dist/services/tenant-snapshot/index.js"
+			},
+			"require": {
+				"types": "./dist/services/tenant-snapshot/index.d.cts",
+				"default": "./dist/services/tenant-snapshot/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
