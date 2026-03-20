@@ -238,6 +238,17 @@ export type {
 	VMUpdateParams,
 } from './services/vm/types.js';
 export type {
+	CifsProtocol,
+	NfsProtocol,
+	ReadAheadKb,
+	Volume,
+	VolumeCreateParams,
+	VolumeFsType,
+	VolumeOptimize,
+	VolumePreferredTier,
+	VolumeUpdateParams,
+} from './services/volume/types.js';
+export type {
 	WireGuard,
 	WireGuardCreateParams,
 	WireGuardUpdateParams,
