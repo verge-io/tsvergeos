@@ -1,10 +1,11 @@
 // Full service registration barrel — imports all service side-effect modules.
 // Usage: import 'tsvergeos/full';
 
-import './services/vm/index.js';
-import './services/network/index.js';
-import './services/machine-drive/index.js';
-import './services/machine-nic/index.js';
-import './services/machine-device/index.js';
-import './services/machine-snapshot/index.js';
-import './services/network-rule/index.js';
+import "./services/vm/index.js";
+import "./services/network/index.js";
+import "./services/machine-drive/index.js";
+import "./services/machine-nic/index.js";
+import "./services/machine-device/index.js";
+import "./services/machine-snapshot/index.js";
+import "./services/network-address/index.js";
+import "./services/network-rule/index.js";
