@@ -179,6 +179,10 @@ describe('Public API exports', () => {
 				'VergeClient',
 				'HttpClient',
 				'Filter',
+				// Base service classes
+				'ReadOnlyService',
+				'WritableService',
+				'BaseService',
 				// Functions
 				'buildFilter',
 				// Error classes
