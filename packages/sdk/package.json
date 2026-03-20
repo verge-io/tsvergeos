@@ -313,6 +313,36 @@
 				"types": "./dist/services/volume-sync/index.d.cts",
 				"default": "./dist/services/volume-sync/index.cjs"
 			}
+		},
+		"./services/nas-service": {
+			"import": {
+				"types": "./dist/services/nas-service/index.d.ts",
+				"default": "./dist/services/nas-service/index.js"
+			},
+			"require": {
+				"types": "./dist/services/nas-service/index.d.cts",
+				"default": "./dist/services/nas-service/index.cjs"
+			}
+		},
+		"./services/nas-service-user": {
+			"import": {
+				"types": "./dist/services/nas-service-user/index.d.ts",
+				"default": "./dist/services/nas-service-user/index.js"
+			},
+			"require": {
+				"types": "./dist/services/nas-service-user/index.d.cts",
+				"default": "./dist/services/nas-service-user/index.cjs"
+			}
+		},
+		"./services/volume-browser": {
+			"import": {
+				"types": "./dist/services/volume-browser/index.d.ts",
+				"default": "./dist/services/volume-browser/index.js"
+			},
+			"require": {
+				"types": "./dist/services/volume-browser/index.d.cts",
+				"default": "./dist/services/volume-browser/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
