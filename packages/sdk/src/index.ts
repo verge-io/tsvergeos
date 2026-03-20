@@ -19,6 +19,12 @@ export {
 	TASK_WAIT_TIMEOUT,
 	UPLOAD_CHUNK_SIZE,
 } from './constants.js';
+export type {
+	CrossSiteResult,
+	CrossSiteServices,
+	SiteResource,
+} from './cross-site.js';
+export { CrossSiteReadProxy } from './cross-site.js';
 export {
 	ApiError,
 	AuthError,

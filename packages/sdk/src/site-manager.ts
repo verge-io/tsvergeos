@@ -1,4 +1,6 @@
 import { VergeClient } from './client.js';
+import type { CrossSiteServices } from './cross-site.js';
+import { CrossSiteReadProxy } from './cross-site.js';
 import { NotFoundError, ValidationError } from './errors.js';
 import type { ClientConfig } from './types.js';
 
@@ -181,6 +183,46 @@ export class SiteManager {
 	 */
 	getTags(name: string): string[] {
 		return this._tags.get(name) ?? [];
+	}
+
+	/**
+	 * Get a {@link CrossSiteReadProxy} that fans out read queries across all registered sites.
+	 *
+	 * Only exposes `list()` for each service — mutations must go through a named site.
+	 *
+	 * @example
+	 * ```typescript
+	 * const result = await manager.all.vms.list();
+	 * for (const item of result.data) {
+	 *   console.log(`${item.site}: ${item.resource.name}`);
+	 * }
+	 * ```
+	 */
+	get all(): CrossSiteReadProxy & CrossSiteServices {
+		return new CrossSiteReadProxy(
+			() => this.getClientsForSites(),
+			(name, update) => this.updateSiteStatus(name, update),
+		) as CrossSiteReadProxy & CrossSiteServices;
+	}
+
+	/**
+	 * Get a {@link CrossSiteReadProxy} that fans out read queries across sites matching the given tag.
+	 *
+	 * Only exposes `list()` for each service — mutations must go through a named site.
+	 *
+	 * @param tag - The tag to filter sites by
+	 * @returns A proxy that queries only sites with the specified tag
+	 *
+	 * @example
+	 * ```typescript
+	 * const result = await manager.tagged('production').vms.list();
+	 * ```
+	 */
+	tagged(tag: string): CrossSiteReadProxy & CrossSiteServices {
+		return new CrossSiteReadProxy(
+			() => this.getClientsByTag(tag),
+			(name, update) => this.updateSiteStatus(name, update),
+		) as CrossSiteReadProxy & CrossSiteServices;
 	}
 
 	/**

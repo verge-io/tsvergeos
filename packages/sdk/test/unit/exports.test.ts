@@ -180,6 +180,7 @@ describe('Public API exports', () => {
 				'HttpClient',
 				'Filter',
 				'SiteManager',
+				'CrossSiteReadProxy',
 				// Base service classes
 				'ReadOnlyService',
 				'WritableService',
