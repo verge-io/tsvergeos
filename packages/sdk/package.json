@@ -213,6 +213,16 @@
         "types": "./dist/services/ipsec-phase2/index.d.cts",
         "default": "./dist/services/ipsec-phase2/index.cjs"
       }
+    },
+    "./services/ipsec-connection": {
+      "import": {
+        "types": "./dist/services/ipsec-connection/index.d.ts",
+        "default": "./dist/services/ipsec-connection/index.js"
+      },
+      "require": {
+        "types": "./dist/services/ipsec-connection/index.d.cts",
+        "default": "./dist/services/ipsec-connection/index.cjs"
+      }
     }
   },
   "main": "./dist/index.cjs",

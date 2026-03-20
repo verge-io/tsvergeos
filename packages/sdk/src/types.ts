@@ -241,3 +241,4 @@ export type {
   IPSecPhase2CreateParams,
   IPSecPhase2UpdateParams,
 } from "./services/ipsec-phase2/types.js";
+export type { IPSecConnection } from "./services/ipsec-connection/types.js";

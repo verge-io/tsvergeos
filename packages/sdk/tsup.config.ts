@@ -25,6 +25,7 @@ export default defineConfig({
     "services/ipsec/index": "src/services/ipsec/index.ts",
     "services/ipsec-phase1/index": "src/services/ipsec-phase1/index.ts",
     "services/ipsec-phase2/index": "src/services/ipsec-phase2/index.ts",
+    "services/ipsec-connection/index": "src/services/ipsec-connection/index.ts",
   },
   format: ["esm", "cjs"],
   dts: true,

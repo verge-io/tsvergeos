@@ -20,3 +20,4 @@ import "./services/wireguard-peer-status/index.js";
 import "./services/ipsec/index.js";
 import "./services/ipsec-phase1/index.js";
 import "./services/ipsec-phase2/index.js";
+import "./services/ipsec-connection/index.js";
