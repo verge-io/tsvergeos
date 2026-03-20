@@ -1,4 +1,4 @@
-import type { Resource } from "../../types.js";
+import type { Resource } from '../../types.js';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -12,29 +12,29 @@ import type { Resource } from "../../types.js";
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface SiteSyncProfilePeriod extends Resource {
-  /** Foreign key to the parent outgoing sync. */
-  site_syncs_outgoing?: number;
+	/** Foreign key to the parent outgoing sync. */
+	site_syncs_outgoing?: number;
 
-  /** Foreign key to the snapshot profile period. */
-  profile_period?: number;
+	/** Foreign key to the snapshot profile period. */
+	profile_period?: number;
 
-  /** Foreign key to the schedule task. Read-only. */
-  schedule_task?: number;
+	/** Foreign key to the schedule task. Read-only. */
+	schedule_task?: number;
 
-  /** Foreign key to the task. Read-only. */
-  task?: number;
+	/** Foreign key to the task. Read-only. */
+	task?: number;
 
-  /** Remote retention in seconds. */
-  retention?: number;
+	/** Remote retention in seconds. */
+	retention?: number;
 
-  /** Sync priority (0+). */
-  priority?: number;
+	/** Sync priority (0+). */
+	priority?: number;
 
-  /** Whether to prevent the snapshot from expiring. */
-  do_not_expire?: boolean;
+	/** Whether to prevent the snapshot from expiring. */
+	do_not_expire?: boolean;
 
-  /** Prefix added to the snapshot name on the destination. */
-  destination_prefix?: string;
+	/** Prefix added to the snapshot name on the destination. */
+	destination_prefix?: string;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -45,23 +45,23 @@ export interface SiteSyncProfilePeriod extends Resource {
  * `site_syncs_outgoing`, `profile_period`, and `retention` are required.
  */
 export interface SiteSyncProfilePeriodCreateParams {
-  /** Foreign key to the parent outgoing sync. Required. */
-  site_syncs_outgoing: number;
+	/** Foreign key to the parent outgoing sync. Required. */
+	site_syncs_outgoing: number;
 
-  /** Foreign key to the snapshot profile period. Required. */
-  profile_period: number;
+	/** Foreign key to the snapshot profile period. Required. */
+	profile_period: number;
 
-  /** Remote retention in seconds. Required. */
-  retention: number;
+	/** Remote retention in seconds. Required. */
+	retention: number;
 
-  /** Sync priority (0+). */
-  priority?: number;
+	/** Sync priority (0+). */
+	priority?: number;
 
-  /** Whether to prevent the snapshot from expiring. */
-  do_not_expire?: boolean;
+	/** Whether to prevent the snapshot from expiring. */
+	do_not_expire?: boolean;
 
-  /** Prefix added to the snapshot name on the destination. */
-  destination_prefix?: string;
+	/** Prefix added to the snapshot name on the destination. */
+	destination_prefix?: string;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
@@ -72,15 +72,15 @@ export interface SiteSyncProfilePeriodCreateParams {
  * All fields are optional — only provided fields are changed.
  */
 export interface SiteSyncProfilePeriodUpdateParams {
-  /** Remote retention in seconds. */
-  retention?: number;
+	/** Remote retention in seconds. */
+	retention?: number;
 
-  /** Sync priority (0+). */
-  priority?: number;
+	/** Sync priority (0+). */
+	priority?: number;
 
-  /** Whether to prevent the snapshot from expiring. */
-  do_not_expire?: boolean;
+	/** Whether to prevent the snapshot from expiring. */
+	do_not_expire?: boolean;
 
-  /** Prefix added to the snapshot name on the destination. */
-  destination_prefix?: string;
+	/** Prefix added to the snapshot name on the destination. */
+	destination_prefix?: string;
 }

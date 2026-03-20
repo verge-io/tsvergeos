@@ -11,17 +11,17 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { TagService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { TagService } from './service.js';
 
-VergeClient.registerService("tags", TagService);
+VergeClient.registerService('tags', TagService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing tags. */
-    readonly tags: TagService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing tags. */
+		readonly tags: TagService;
+	}
 }
 
-export { TagService } from "./service.js";
-export type { Tag, TagCreateParams, TagUpdateParams } from "./types.js";
+export { TagService } from './service.js';
+export type { Tag, TagCreateParams, TagUpdateParams } from './types.js';
