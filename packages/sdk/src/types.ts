@@ -452,6 +452,18 @@ export type {
 	TenantStorageCreateParams,
 	TenantStorageUpdateParams,
 } from './services/tenant-storage/types.js';
+export type { UpdateBranch } from './services/update-branch/types.js';
+export type {
+	UpdateSettings,
+	UpdateSettingsUpdateParams,
+} from './services/update-settings/types.js';
+export type {
+	UpdateSource,
+	UpdateSourceAction,
+	UpdateSourceCreateParams,
+	UpdateSourceUpdateParams,
+} from './services/update-source/types.js';
+export type { UpdateSourcePackage } from './services/update-source-package/types.js';
 export type {
 	TwoFactorType,
 	User,
