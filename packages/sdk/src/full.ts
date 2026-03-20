@@ -66,3 +66,4 @@ import './services/cloud-snapshot/index.js';
 import './services/cloud-snapshot-vm/index.js';
 import './services/cloud-snapshot-tenant/index.js';
 import './services/site/index.js';
+import './services/site-sync-incoming/index.js';

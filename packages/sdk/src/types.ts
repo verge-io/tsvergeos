@@ -325,6 +325,14 @@ export type {
 	SiteUpdateParams,
 } from './services/site/types.js';
 export type {
+	SiteSyncIncoming,
+	SiteSyncIncomingCreateParams,
+	SiteSyncIncomingForceTier,
+	SiteSyncIncomingState,
+	SiteSyncIncomingStatus,
+	SiteSyncIncomingUpdateParams,
+} from './services/site-sync-incoming/types.js';
+export type {
 	SnapshotProfile,
 	SnapshotProfileCreateParams,
 	SnapshotProfileUpdateParams,
