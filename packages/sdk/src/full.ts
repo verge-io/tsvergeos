@@ -25,3 +25,4 @@ import './services/machine-stats/index.js';
 import './services/machine-drive-stats/index.js';
 import './services/machine-nic-stats/index.js';
 import './services/machine-drive-phys/index.js';
+import './services/volume/index.js';
