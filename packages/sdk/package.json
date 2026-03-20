@@ -673,6 +673,16 @@
 				"types": "./dist/services/cloud-snapshot-tenant/index.d.cts",
 				"default": "./dist/services/cloud-snapshot-tenant/index.cjs"
 			}
+		},
+		"./services/site": {
+			"import": {
+				"types": "./dist/services/site/index.d.ts",
+				"default": "./dist/services/site/index.js"
+			},
+			"require": {
+				"types": "./dist/services/site/index.d.cts",
+				"default": "./dist/services/site/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",

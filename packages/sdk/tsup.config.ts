@@ -69,6 +69,7 @@ export default defineConfig({
 		'services/cloud-snapshot/index': 'src/services/cloud-snapshot/index.ts',
 		'services/cloud-snapshot-vm/index': 'src/services/cloud-snapshot-vm/index.ts',
 		'services/cloud-snapshot-tenant/index': 'src/services/cloud-snapshot-tenant/index.ts',
+		'services/site/index': 'src/services/site/index.ts',
 	},
 	format: ['esm', 'cjs'],
 	dts: true,

@@ -316,6 +316,15 @@ export type {
 	SettingUpdateParams,
 } from './services/settings/types.js';
 export type {
+	Site,
+	SiteAuthenticationStatus,
+	SiteConfigMode,
+	SiteConnectionStatus,
+	SiteCreateParams,
+	SiteManagementMode,
+	SiteUpdateParams,
+} from './services/site/types.js';
+export type {
 	SnapshotProfile,
 	SnapshotProfileCreateParams,
 	SnapshotProfileUpdateParams,
