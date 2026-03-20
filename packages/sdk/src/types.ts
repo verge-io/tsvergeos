@@ -112,6 +112,13 @@ export type {
 // ─── Service Resource Types ──────────────────────────────────────────────────
 
 export type {
+	DeviceType,
+	MachineDevice,
+	MachineDeviceCreateParams,
+	MachineDeviceUpdateParams,
+	MachineType,
+} from './services/machine-device/types.js';
+export type {
 	DriveInterface,
 	DriveMedia,
 	DriveOptimize,
