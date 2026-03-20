@@ -63,3 +63,5 @@ import './services/log/index.js';
 import './services/snapshot-profile/index.js';
 import './services/snapshot-profile-period/index.js';
 import './services/cloud-snapshot/index.js';
+import './services/cloud-snapshot-vm/index.js';
+import './services/cloud-snapshot-tenant/index.js';

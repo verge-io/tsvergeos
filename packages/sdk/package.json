@@ -653,6 +653,26 @@
 				"types": "./dist/services/cloud-snapshot/index.d.cts",
 				"default": "./dist/services/cloud-snapshot/index.cjs"
 			}
+		},
+		"./services/cloud-snapshot-vm": {
+			"import": {
+				"types": "./dist/services/cloud-snapshot-vm/index.d.ts",
+				"default": "./dist/services/cloud-snapshot-vm/index.js"
+			},
+			"require": {
+				"types": "./dist/services/cloud-snapshot-vm/index.d.cts",
+				"default": "./dist/services/cloud-snapshot-vm/index.cjs"
+			}
+		},
+		"./services/cloud-snapshot-tenant": {
+			"import": {
+				"types": "./dist/services/cloud-snapshot-tenant/index.d.ts",
+				"default": "./dist/services/cloud-snapshot-tenant/index.js"
+			},
+			"require": {
+				"types": "./dist/services/cloud-snapshot-tenant/index.d.cts",
+				"default": "./dist/services/cloud-snapshot-tenant/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",

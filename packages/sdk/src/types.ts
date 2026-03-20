@@ -140,6 +140,14 @@ export type {
 	CloudSnapshotUpdateParams,
 } from './services/cloud-snapshot/types.js';
 export type {
+	CloudSnapshotTenant,
+	CloudSnapshotTenantStatus,
+} from './services/cloud-snapshot-tenant/types.js';
+export type {
+	CloudSnapshotVM,
+	CloudSnapshotVMStatus,
+} from './services/cloud-snapshot-vm/types.js';
+export type {
 	Cluster,
 	ClusterCreateParams,
 	ClusterUpdateParams,
