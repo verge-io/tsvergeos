@@ -59,6 +59,8 @@ export default defineConfig({
 		'services/member/index': 'src/services/member/index.ts',
 		'services/api-key/index': 'src/services/api-key/index.ts',
 		'services/permission/index': 'src/services/permission/index.ts',
+		'services/system/index': 'src/services/system/index.ts',
+		'services/settings/index': 'src/services/settings/index.ts',
 	},
 	format: ['esm', 'cjs'],
 	dts: true,

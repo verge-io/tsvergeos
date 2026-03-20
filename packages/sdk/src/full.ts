@@ -55,3 +55,5 @@ import './services/group/index.js';
 import './services/member/index.js';
 import './services/api-key/index.js';
 import './services/permission/index.js';
+import './services/system/index.js';
+import './services/settings/index.js';

@@ -281,8 +281,17 @@ export type {
 	PermissionCreateParams,
 	PermissionUpdateParams,
 } from './services/permission/types.js';
+export type {
+	Setting,
+	SettingUpdateParams,
+} from './services/settings/types.js';
 export type { StorageTier } from './services/storage-tier/types.js';
 export type { StorageTierStats } from './services/storage-tier-stats/types.js';
+export type {
+	System,
+	SystemUpdateParams,
+	VersionInfo,
+} from './services/system/types.js';
 export type {
 	Tenant,
 	TenantCloneOptions,

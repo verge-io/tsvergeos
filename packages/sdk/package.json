@@ -573,6 +573,26 @@
 				"types": "./dist/services/permission/index.d.cts",
 				"default": "./dist/services/permission/index.cjs"
 			}
+		},
+		"./services/system": {
+			"import": {
+				"types": "./dist/services/system/index.d.ts",
+				"default": "./dist/services/system/index.js"
+			},
+			"require": {
+				"types": "./dist/services/system/index.d.cts",
+				"default": "./dist/services/system/index.cjs"
+			}
+		},
+		"./services/settings": {
+			"import": {
+				"types": "./dist/services/settings/index.d.ts",
+				"default": "./dist/services/settings/index.js"
+			},
+			"require": {
+				"types": "./dist/services/settings/index.d.cts",
+				"default": "./dist/services/settings/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
