@@ -249,6 +249,12 @@ export type {
 	VolumeUpdateParams,
 } from './services/volume/types.js';
 export type {
+	VolumeSnapshot,
+	VolumeSnapshotCreateParams,
+	VolumeSnapshotExpiresType,
+	VolumeSnapshotUpdateParams,
+} from './services/volume-snapshot/types.js';
+export type {
 	WireGuard,
 	WireGuardCreateParams,
 	WireGuardUpdateParams,
