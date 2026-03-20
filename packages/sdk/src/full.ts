@@ -48,3 +48,5 @@ import './services/vm-recipe/index.js';
 import './services/vm-recipe-instance/index.js';
 import './services/tenant-recipe/index.js';
 import './services/tenant-recipe-instance/index.js';
+import './services/catalog/index.js';
+import './services/catalog-repository/index.js';

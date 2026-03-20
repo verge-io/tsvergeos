@@ -503,6 +503,26 @@
 				"types": "./dist/services/tenant-recipe-instance/index.d.cts",
 				"default": "./dist/services/tenant-recipe-instance/index.cjs"
 			}
+		},
+		"./services/catalog": {
+			"import": {
+				"types": "./dist/services/catalog/index.d.ts",
+				"default": "./dist/services/catalog/index.js"
+			},
+			"require": {
+				"types": "./dist/services/catalog/index.d.cts",
+				"default": "./dist/services/catalog/index.cjs"
+			}
+		},
+		"./services/catalog-repository": {
+			"import": {
+				"types": "./dist/services/catalog-repository/index.d.ts",
+				"default": "./dist/services/catalog-repository/index.js"
+			},
+			"require": {
+				"types": "./dist/services/catalog-repository/index.d.cts",
+				"default": "./dist/services/catalog-repository/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",
