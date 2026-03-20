@@ -373,6 +373,46 @@
 				"types": "./dist/services/storage-tier-stats/index.d.cts",
 				"default": "./dist/services/storage-tier-stats/index.cjs"
 			}
+		},
+		"./services/cluster-tier": {
+			"import": {
+				"types": "./dist/services/cluster-tier/index.d.ts",
+				"default": "./dist/services/cluster-tier/index.js"
+			},
+			"require": {
+				"types": "./dist/services/cluster-tier/index.d.cts",
+				"default": "./dist/services/cluster-tier/index.cjs"
+			}
+		},
+		"./services/cluster-tier-stats": {
+			"import": {
+				"types": "./dist/services/cluster-tier-stats/index.d.ts",
+				"default": "./dist/services/cluster-tier-stats/index.js"
+			},
+			"require": {
+				"types": "./dist/services/cluster-tier-stats/index.d.cts",
+				"default": "./dist/services/cluster-tier-stats/index.cjs"
+			}
+		},
+		"./services/cluster-tier-status": {
+			"import": {
+				"types": "./dist/services/cluster-tier-status/index.d.ts",
+				"default": "./dist/services/cluster-tier-status/index.js"
+			},
+			"require": {
+				"types": "./dist/services/cluster-tier-status/index.d.cts",
+				"default": "./dist/services/cluster-tier-status/index.cjs"
+			}
+		},
+		"./services/wireguard-peer-status": {
+			"import": {
+				"types": "./dist/services/wireguard-peer-status/index.d.ts",
+				"default": "./dist/services/wireguard-peer-status/index.js"
+			},
+			"require": {
+				"types": "./dist/services/wireguard-peer-status/index.d.cts",
+				"default": "./dist/services/wireguard-peer-status/index.cjs"
+			}
 		}
 	},
 	"main": "./dist/index.cjs",

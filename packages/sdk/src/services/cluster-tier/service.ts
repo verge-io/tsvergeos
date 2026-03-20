@@ -1,7 +1,7 @@
-import type { HttpClient } from "../../http.js";
-import type { FlexKey } from "../../types.js";
-import { ReadOnlyService } from "../base.js";
-import type { ClusterTier } from "./types.js";
+import type { HttpClient } from '../../http.js';
+import type { FlexKey } from '../../types.js';
+import { ReadOnlyService } from '../base.js';
+import type { ClusterTier } from './types.js';
 
 /**
  * Service for querying VergeOS cluster tiers.
@@ -22,19 +22,19 @@ import type { ClusterTier } from "./types.js";
  * ```
  */
 export class ClusterTierService extends ReadOnlyService<ClusterTier> {
-  constructor(http: HttpClient) {
-    super(http, "/cluster_tiers", "Cluster Tier");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/cluster_tiers', 'Cluster Tier');
+	}
 
-  /**
-   * List cluster tiers for a specific cluster.
-   *
-   * @param clusterKey - The key of the cluster to filter by.
-   * @returns Array of cluster tiers for the given cluster.
-   */
-  async listByCluster(clusterKey: FlexKey): Promise<ClusterTier[]> {
-    return this.list({
-      filter: `cluster eq ${clusterKey}`,
-    });
-  }
+	/**
+	 * List cluster tiers for a specific cluster.
+	 *
+	 * @param clusterKey - The key of the cluster to filter by.
+	 * @returns Array of cluster tiers for the given cluster.
+	 */
+	async listByCluster(clusterKey: FlexKey): Promise<ClusterTier[]> {
+		return this.list({
+			filter: `cluster eq ${clusterKey}`,
+		});
+	}
 }

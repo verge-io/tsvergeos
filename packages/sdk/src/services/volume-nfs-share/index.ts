@@ -11,23 +11,23 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { VolumeNFSShareService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { VolumeNFSShareService } from './service.js';
 
-VergeClient.registerService("volumeNfsShares", VolumeNFSShareService);
+VergeClient.registerService('volumeNfsShares', VolumeNFSShareService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for managing NFS shares. */
-    readonly volumeNfsShares: VolumeNFSShareService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for managing NFS shares. */
+		readonly volumeNfsShares: VolumeNFSShareService;
+	}
 }
 
-export { VolumeNFSShareService } from "./service.js";
+export { VolumeNFSShareService } from './service.js';
 export type {
-  VolumeNFSShare,
-  VolumeNFSShareCreateParams,
-  VolumeNFSShareUpdateParams,
-  NfsSquash,
-  NfsDataAccess,
-} from "./types.js";
+	NfsDataAccess,
+	NfsSquash,
+	VolumeNFSShare,
+	VolumeNFSShareCreateParams,
+	VolumeNFSShareUpdateParams,
+} from './types.js';

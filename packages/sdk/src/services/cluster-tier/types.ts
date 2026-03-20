@@ -1,4 +1,4 @@
-import type { FlexKey, Resource } from "../../types.js";
+import type { FlexKey, Resource } from '../../types.js';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -15,18 +15,18 @@ import type { FlexKey, Resource } from "../../types.js";
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface ClusterTier extends Resource {
-  /** FK to the parent cluster. */
-  cluster?: FlexKey;
+	/** FK to the parent cluster. */
+	cluster?: FlexKey;
 
-  /** Tier number (0-5). */
-  tier?: number;
+	/** Tier number (0-5). */
+	tier?: number;
 
-  /** Human-readable tier description. */
-  description?: string;
+	/** Human-readable tier description. */
+	description?: string;
 
-  /** Cost per GB for this tier. */
-  cost_per_gb?: number;
+	/** Cost per GB for this tier. */
+	cost_per_gb?: number;
 
-  /** Price per GB for this tier. */
-  price_per_gb?: number;
+	/** Price per GB for this tier. */
+	price_per_gb?: number;
 }
