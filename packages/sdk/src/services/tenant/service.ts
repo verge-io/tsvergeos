@@ -1,7 +1,7 @@
 import { VergeClient } from '../../client.js';
-import { ValidationError } from '../../errors.js';
+import { NotFoundError, ValidationError } from '../../errors.js';
 import type { HttpClient } from '../../http.js';
-import type { ClientConfig, FlexKey } from '../../types.js';
+import type { ClientConfig, FlexKey, Resource } from '../../types.js';
 import { BaseService } from '../base.js';
 import type {
 	Tenant,
@@ -137,5 +137,87 @@ export class TenantService extends BaseService<Tenant, TenantCreateParams, Tenan
 			host: tenant.url,
 			...config,
 		} as ClientConfig);
+	}
+
+	/**
+	 * Deploy a crash cart VM for emergency tenant access.
+	 *
+	 * The crash cart is a utility VM deployed from the "Crash Cart" marketplace
+	 * recipe that provides browser-based access to a tenant's VergeOS UI via its
+	 * core internal network — bypassing external networking entirely.
+	 *
+	 * Internally: finds the "Crash Cart" VM recipe and deploys it with the
+	 * tenant ID as an answer parameter.
+	 *
+	 * @param key - The tenant ID to deploy the crash cart for
+	 * @throws {@link NotFoundError} if the "Crash Cart" recipe is not available
+	 *
+	 * @example
+	 * ```typescript
+	 * // Deploy a crash cart for emergency access
+	 * await client.tenants.deployCrashCart(1);
+	 * ```
+	 */
+	async deployCrashCart(key: FlexKey): Promise<void> {
+		// Find the "Crash Cart" VM recipe
+		const recipes = await this.http.get<Resource[]>('/vm_recipes', {
+			params: { filter: "name eq 'Crash Cart'" },
+		});
+
+		if (recipes.length === 0) {
+			throw new NotFoundError(
+				'VM Recipe',
+				'Crash Cart',
+				'Crash Cart recipe not found — ensure it is downloaded from the marketplace',
+			);
+		}
+
+		// Deploy the recipe with the tenant as an answer
+		// biome-ignore lint: length already checked above
+		const recipe = recipes[0]!;
+		await this.http.post('/vm_recipe_instances', {
+			body: {
+				recipe: recipe.$key,
+				name: 'Crash Cart',
+				answers: { tenant: key },
+			},
+		});
+	}
+
+	/**
+	 * Delete a crash cart VM for a tenant.
+	 *
+	 * Finds the VM named "Crash Cart - {tenant_name}" and deletes it.
+	 *
+	 * @param key - The tenant ID whose crash cart should be deleted
+	 * @throws {@link NotFoundError} if no crash cart VM is found for the tenant
+	 *
+	 * @example
+	 * ```typescript
+	 * // Remove the crash cart when emergency access is no longer needed
+	 * await client.tenants.deleteCrashCart(1);
+	 * ```
+	 */
+	async deleteCrashCart(key: FlexKey): Promise<void> {
+		// Get the tenant to find its name
+		const tenant = await this.get(key);
+		const crashCartName = `Crash Cart - ${tenant.name}`;
+
+		// Find the crash cart VM
+		const vms = await this.http.get<Resource[]>('/vms', {
+			params: { filter: `name eq '${crashCartName}'` },
+		});
+
+		if (vms.length === 0) {
+			throw new NotFoundError(
+				'VM',
+				crashCartName,
+				`No crash cart VM found for tenant "${tenant.name}"`,
+			);
+		}
+
+		// biome-ignore lint: length already checked above
+		const crashCartVm = vms[0]!;
+		await this.http.del(`/vms/${crashCartVm.$key}`);
 	}
 }
