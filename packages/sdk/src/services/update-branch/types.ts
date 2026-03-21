@@ -1,4 +1,4 @@
-import type { Resource } from '../../types.js';
+import type { Resource } from "../../types.js";
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -10,12 +10,12 @@ import type { Resource } from '../../types.js';
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface UpdateBranch extends Resource {
-	/** Unique branch identifier. */
-	name?: string;
+  /** Unique branch identifier. */
+  name?: string;
 
-	/** Human-readable branch description (display field). */
-	description?: string;
+  /** Human-readable branch description (display field). */
+  description?: string;
 
-	/** Creation timestamp. Read-only. */
-	created?: string;
+  /** Creation timestamp (Unix epoch). Read-only. */
+  created?: number;
 }
