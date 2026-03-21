@@ -11,20 +11,17 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { VnetMonitorStatsHistoryShortService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { VnetMonitorStatsHistoryShortService } from './service.js';
 
-VergeClient.registerService(
-  "vnetMonitorStatsHistoryShort",
-  VnetMonitorStatsHistoryShortService,
-);
+VergeClient.registerService('vnetMonitorStatsHistoryShort', VnetMonitorStatsHistoryShortService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for querying short-term vnet monitor statistics (read-only). */
-    readonly vnetMonitorStatsHistoryShort: VnetMonitorStatsHistoryShortService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for querying short-term vnet monitor statistics (read-only). */
+		readonly vnetMonitorStatsHistoryShort: VnetMonitorStatsHistoryShortService;
+	}
 }
 
-export { VnetMonitorStatsHistoryShortService } from "./service.js";
-export type { VnetMonitorStatsHistoryShort } from "./types.js";
+export { VnetMonitorStatsHistoryShortService } from './service.js';
+export type { VnetMonitorStatsHistoryShort } from './types.js';

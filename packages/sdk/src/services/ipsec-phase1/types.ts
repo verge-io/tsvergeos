@@ -3,19 +3,19 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** IKE version for key exchange. */
-export type IPSecKeyExchange = 'ikev1' | 'ikev2' | 'ike';
+export type IPSecKeyExchange = 'ikev1' | 'ikev2' | 'ike' | (string & {});
 
 /** IPSec Phase 1 authentication method. */
-export type IPSecAuth = 'psk' | 'pubkey';
+export type IPSecAuth = 'psk' | 'pubkey' | (string & {});
 
 /** IKEv1 negotiation mode. */
-export type IPSecNegotiation = 'main' | 'aggressive';
+export type IPSecNegotiation = 'main' | 'aggressive' | (string & {});
 
 /** IPSec connection startup behavior. */
-export type IPSecAuto = 'add' | 'route' | 'start';
+export type IPSecAuto = 'add' | 'route' | 'start' | (string & {});
 
 /** Dead peer detection action. */
-export type IPSecDpdAction = 'none' | 'clear' | 'hold' | 'restart';
+export type IPSecDpdAction = 'none' | 'clear' | 'hold' | 'restart' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

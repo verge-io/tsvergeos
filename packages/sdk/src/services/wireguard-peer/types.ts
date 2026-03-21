@@ -3,7 +3,7 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Firewall configuration mode for a WireGuard peer. */
-export type WireGuardPeerFirewallConfig = 'site-to-site' | 'remote-user' | 'none';
+export type WireGuardPeerFirewallConfig = 'site-to-site' | 'remote-user' | 'none' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

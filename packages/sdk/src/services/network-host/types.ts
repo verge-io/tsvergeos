@@ -3,7 +3,7 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── Enums ──────────────────────────────────────────────────────────────────
 
 /** Host override type — `host` for a single hostname, `domain` for a whole domain. */
-export type HostType = 'host' | 'domain';
+export type HostType = 'host' | 'domain' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

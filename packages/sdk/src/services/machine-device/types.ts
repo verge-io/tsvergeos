@@ -22,7 +22,8 @@ export type DeviceType =
 	| 'node_sriov_nic_devices'
 	| 'node_pci_devices'
 	| 'node_host_gpu_devices'
-	| 'node_nvidia_vgpu_devices';
+	| 'node_nvidia_vgpu_devices'
+	| (string & {});
 
 /**
  * Machine type — the type of machine a device is attached to.

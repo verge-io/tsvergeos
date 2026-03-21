@@ -3,7 +3,7 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Snapshot expiration policy. */
-export type ExpiresType = 'never' | 'date';
+export type ExpiresType = 'never' | 'date' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

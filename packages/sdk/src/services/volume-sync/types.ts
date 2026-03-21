@@ -9,13 +9,14 @@ export type VolumeSyncDestinationDelete =
 	| 'delete-before'
 	| 'delete-during'
 	| 'delete-delay'
-	| 'delete-after';
+	| 'delete-after'
+	| (string & {});
 
 /** Sync method used for data transfer. */
-export type VolumeSyncMethod = 'rsync' | 'ysync';
+export type VolumeSyncMethod = 'rsync' | 'ysync' | (string & {});
 
 /** Preferred storage tier (1–5). */
-export type VolumeSyncPreferredTier = '1' | '2' | '3' | '4' | '5';
+export type VolumeSyncPreferredTier = '1' | '2' | '3' | '4' | '5' | (string & {});
 
 /** Volume sync type. Read-only. */
 export type VolumeSyncType = 'volsync' | 'vmimport';

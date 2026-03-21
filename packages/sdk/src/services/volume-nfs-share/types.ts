@@ -3,10 +3,10 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── Enum Types ─────────────────────────────────────────────────────────────
 
 /** NFS squash mode controlling user ID mapping. */
-export type NfsSquash = 'root_squash' | 'all_squash' | 'no_root_squash';
+export type NfsSquash = 'root_squash' | 'all_squash' | 'no_root_squash' | (string & {});
 
 /** NFS data access mode. */
-export type NfsDataAccess = 'ro' | 'rw';
+export type NfsDataAccess = 'ro' | 'rw' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

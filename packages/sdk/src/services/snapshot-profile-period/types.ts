@@ -3,13 +3,29 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Snapshot period frequency. */
-export type PeriodFrequency = 'custom' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly';
+export type PeriodFrequency =
+	| 'custom'
+	| 'hourly'
+	| 'daily'
+	| 'weekly'
+	| 'monthly'
+	| 'yearly'
+	| (string & {});
 
 /** Day of week for scheduling. */
-export type PeriodDayOfWeek = 'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'any';
+export type PeriodDayOfWeek =
+	| 'sun'
+	| 'mon'
+	| 'tue'
+	| 'wed'
+	| 'thu'
+	| 'fri'
+	| 'sat'
+	| 'any'
+	| (string & {});
 
 /** Maximum storage tier for snapshot storage (string digits). */
-export type PeriodMaxTier = '1' | '2' | '3' | '4' | '5';
+export type PeriodMaxTier = '1' | '2' | '3' | '4' | '5' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

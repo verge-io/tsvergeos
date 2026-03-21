@@ -6,7 +6,7 @@ import type { FlexKey, Resource } from '../../types.js';
 export type UserType = 'normal' | 'api' | 'vdi' | 'site_sync' | 'site_user';
 
 /** Two-factor authentication method. */
-export type TwoFactorType = 'email' | 'authenticator';
+export type TwoFactorType = 'email' | 'authenticator' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

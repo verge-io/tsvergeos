@@ -3,7 +3,16 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ──────────────────────────────────────────────────
 
 /** Read-ahead buffer size in kilobytes (string values). */
-export type NASReadAheadKb = '0' | '64' | '128' | '256' | '512' | '1024' | '2048' | '4096';
+export type NASReadAheadKb =
+	| '0'
+	| '64'
+	| '128'
+	| '256'
+	| '512'
+	| '1024'
+	| '2048'
+	| '4096'
+	| (string & {});
 
 // ─── Resource Type ──────────────────────────────────────────────────────────
 

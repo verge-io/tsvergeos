@@ -11,25 +11,26 @@ export type NetworkType =
 	| 'core'
 	| 'physical'
 	| 'port_mirror'
-	| 'vpn';
+	| 'vpn'
+	| (string & {});
 
 /** Layer 2 encapsulation type. */
-export type Layer2Type = 'vlan' | 'vxlan' | 'none' | 'bond' | 'bond_slave';
+export type Layer2Type = 'vlan' | 'vxlan' | 'none' | 'bond' | 'bond_slave' | (string & {});
 
 /** DNS service mode for the network router. */
-export type DnsMode = 'disabled' | 'simple' | 'bind' | 'network';
+export type DnsMode = 'disabled' | 'simple' | 'bind' | 'network' | (string & {});
 
 /** IP address assignment method. */
-export type IpAddressType = 'static' | 'dynamic' | 'bgp' | 'none';
+export type IpAddressType = 'static' | 'dynamic' | 'bgp' | 'none' | (string & {});
 
 /** Behavior when host power is restored after an outage. */
-export type NetworkOnPowerLoss = 'power_on' | 'last_state' | 'leave_off';
+export type NetworkOnPowerLoss = 'power_on' | 'last_state' | 'leave_off' | (string & {});
 
 /** Port mirroring mode. */
-export type PortMirroringMode = 'off' | 'east_west' | 'north_south';
+export type PortMirroringMode = 'off' | 'east_west' | 'north_south' | (string & {});
 
 /** PXE boot mode. */
-export type PxeMode = 'none' | 'ybos' | 'custom';
+export type PxeMode = 'none' | 'ybos' | 'custom' | (string & {});
 
 /** Rate limit unit type. */
 export type RateLimitType =
@@ -48,7 +49,8 @@ export type RateLimitType =
 	| 'second'
 	| 'minute'
 	| 'hour'
-	| 'day';
+	| 'day'
+	| (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

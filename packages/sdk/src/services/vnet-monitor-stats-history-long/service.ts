@@ -1,7 +1,7 @@
-import type { HttpClient } from "../../http.js";
-import type { FlexKey, ListOptions } from "../../types.js";
-import { ReadOnlyService } from "../base.js";
-import type { VnetMonitorStatsHistoryLong } from "./types.js";
+import type { HttpClient } from '../../http.js';
+import type { FlexKey, ListOptions } from '../../types.js';
+import { ReadOnlyService } from '../base.js';
+import type { VnetMonitorStatsHistoryLong } from './types.js';
 
 /**
  * Service for querying VergeOS vnet monitor stats history (long-term).
@@ -23,30 +23,26 @@ import type { VnetMonitorStatsHistoryLong } from "./types.js";
  * ```
  */
 export class VnetMonitorStatsHistoryLongService extends ReadOnlyService<VnetMonitorStatsHistoryLong> {
-  constructor(http: HttpClient) {
-    super(
-      http,
-      "/vnet_monitor_stats_history_long",
-      "Vnet Monitor Stats History Long",
-    );
-  }
+	constructor(http: HttpClient) {
+		super(http, '/vnet_monitor_stats_history_long', 'Vnet Monitor Stats History Long');
+	}
 
-  /**
-   * List stats history entries for a specific vnet.
-   *
-   * Filters by `vnet eq {vnetKey}` and merges with any additional list options.
-   *
-   * @param vnetKey - The key of the vnet to look up stats for.
-   * @param options - Additional list options (fields, sort, limit, etc.).
-   * @returns An array of vnet monitor stats history entries.
-   */
-  async listByVnet(
-    vnetKey: FlexKey,
-    options?: ListOptions,
-  ): Promise<VnetMonitorStatsHistoryLong[]> {
-    return this.list({
-      ...options,
-      filter: `vnet eq ${vnetKey}`,
-    });
-  }
+	/**
+	 * List stats history entries for a specific vnet.
+	 *
+	 * Filters by `vnet eq {vnetKey}` and merges with any additional list options.
+	 *
+	 * @param vnetKey - The key of the vnet to look up stats for.
+	 * @param options - Additional list options (fields, sort, limit, etc.).
+	 * @returns An array of vnet monitor stats history entries.
+	 */
+	async listByVnet(
+		vnetKey: FlexKey,
+		options?: ListOptions,
+	): Promise<VnetMonitorStatsHistoryLong[]> {
+		return this.list({
+			...options,
+			filter: `vnet eq ${vnetKey}`,
+		});
+	}
 }
