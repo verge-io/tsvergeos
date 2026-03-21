@@ -47,7 +47,59 @@ describe('VMService', () => {
 			await svc.list();
 
 			expect(http.get).toHaveBeenCalledWith('/vms', {
-				params: { fields: 'most' },
+				params: expect.objectContaining({ fields: expect.any(Object) }),
+			});
+		});
+	});
+
+	describe('default fields', () => {
+		it('list() sends defaultFields including cross-resource joins', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.get).mockResolvedValueOnce([sampleVM]);
+
+			await svc.list();
+
+			const call = vi.mocked(http.get).mock.calls[0];
+			const fields = (call[1] as Record<string, unknown>).params as Record<string, unknown>;
+			expect(fields.fields).toEqual(
+				expect.arrayContaining([
+					'$key',
+					'name',
+					'machine#status#status as status',
+					'machine#status#running as running',
+					'machine#status#node as node_key',
+					'machine#status#node#name as node_name',
+				]),
+			);
+		});
+
+		it('get() sends defaultFields including cross-resource joins', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.get).mockResolvedValueOnce(sampleVM);
+
+			await svc.get(42);
+
+			const call = vi.mocked(http.get).mock.calls[0];
+			const fields = (call[1] as Record<string, unknown>).params as Record<string, unknown>;
+			expect(fields.fields).toEqual(
+				expect.arrayContaining([
+					'machine#status#status as status',
+					'machine#status#running as running',
+				]),
+			);
+		});
+
+		it('user-provided fields override defaultFields', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.get).mockResolvedValueOnce([sampleVM]);
+
+			await svc.list({ fields: 'all' });
+
+			expect(http.get).toHaveBeenCalledWith('/vms', {
+				params: { fields: 'all' },
 			});
 		});
 	});
@@ -60,9 +112,7 @@ describe('VMService', () => {
 
 			const result = await svc.list();
 
-			expect(http.get).toHaveBeenCalledWith('/vms', {
-				params: { fields: 'most' },
-			});
+			expect(http.get).toHaveBeenCalledWith('/vms', expect.any(Object));
 			expect(result).toEqual([sampleVM]);
 		});
 
@@ -73,9 +123,7 @@ describe('VMService', () => {
 
 			const result = await svc.get(42);
 
-			expect(http.get).toHaveBeenCalledWith('/vms/42', {
-				params: { fields: 'most' },
-			});
+			expect(http.get).toHaveBeenCalledWith('/vms/42', expect.any(Object));
 			expect(result).toEqual(sampleVM);
 		});
 
@@ -91,7 +139,7 @@ describe('VMService', () => {
 				body: { name: 'test-vm' },
 			});
 			expect(http.get).toHaveBeenCalledWith('/vms/42', {
-				params: { fields: 'most' },
+				params: expect.objectContaining({ fields: expect.any(Object) }),
 			});
 			expect(result).toEqual(sampleVM);
 		});
@@ -111,7 +159,7 @@ describe('VMService', () => {
 				body: { description: 'updated' },
 			});
 			expect(http.get).toHaveBeenCalledWith('/vms/42', {
-				params: { fields: 'most' },
+				params: expect.objectContaining({ fields: expect.any(Object) }),
 			});
 			expect(result.description).toBe('updated');
 		});

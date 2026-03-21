@@ -27,9 +27,53 @@ import type { Network, NetworkCreateParams, NetworkUpdateParams } from './types.
  * await client.networks.powerOff(net.$key);
  * ```
  */
+/**
+ * Default fields for Network list/get requests.
+ *
+ * Includes cross-resource joins from the machine status table so that
+ * power state is reliably populated without consumers needing to manually
+ * fan out to `machineStatuses`.
+ *
+ * @internal
+ */
+const NETWORK_DEFAULT_FIELDS = [
+	'$key',
+	'name',
+	'description',
+	'enabled',
+	'type',
+	'layer2_type',
+	'layer2_id',
+	'network',
+	'ipaddress',
+	'gateway',
+	'mtu',
+	'dhcp_enabled',
+	'dhcp_start',
+	'dhcp_stop',
+	'dns',
+	'domain',
+	'need_fw_apply',
+	'need_dns_apply',
+	'need_proxy_apply',
+	'need_restart',
+	'on_power_loss',
+	'interface_vnet',
+	'proxy_enabled',
+	'machine',
+	'cluster',
+	'cluster_failover',
+	'preferred_node',
+	'ha_group',
+	// Cross-resource joins — populates power state reliably
+	'machine#status#powerstate as powerstate',
+	'machine#status#status as status',
+];
+
 export class NetworkService extends BaseService<Network, NetworkCreateParams, NetworkUpdateParams> {
 	constructor(http: HttpClient) {
 		super(http, '/vnets', 'Network');
+		this.defaultFields = NETWORK_DEFAULT_FIELDS;
 	}
 
 	/**

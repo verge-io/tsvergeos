@@ -319,6 +319,11 @@ export interface Network extends Resource {
 
 	/** User who created this network. Read-only. */
 	creator?: string;
+
+	// ─── Joined status fields (from machine#status) ─────────────────────
+
+	/** Machine status value (joined from machine_status). Present in default list/get responses. */
+	status?: string;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────

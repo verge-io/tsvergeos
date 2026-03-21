@@ -494,7 +494,7 @@ describe('TenantNodeService', () => {
 			const result = await svc.list();
 
 			expect(http.get).toHaveBeenCalledWith('/tenant_nodes', {
-				params: { fields: 'most' },
+				params: expect.objectContaining({ fields: expect.any(Object) }),
 			});
 			expect(result).toEqual([sampleTenantNode]);
 		});
@@ -507,7 +507,7 @@ describe('TenantNodeService', () => {
 			const result = await svc.get(10);
 
 			expect(http.get).toHaveBeenCalledWith('/tenant_nodes/10', {
-				params: { fields: 'most' },
+				params: expect.objectContaining({ fields: expect.any(Object) }),
 			});
 			expect(result).toEqual(sampleTenantNode);
 		});
@@ -524,7 +524,7 @@ describe('TenantNodeService', () => {
 				body: { tenant: 1, cpu_cores: 4, ram: 16384 },
 			});
 			expect(http.get).toHaveBeenCalledWith('/tenant_nodes/10', {
-				params: { fields: 'most' },
+				params: expect.objectContaining({ fields: expect.any(Object) }),
 			});
 			expect(result).toEqual(sampleTenantNode);
 		});
@@ -706,7 +706,7 @@ describe('TenantNodeService', () => {
 			const result = await svc.listByTenant(1);
 
 			expect(http.get).toHaveBeenCalledWith('/tenant_nodes', {
-				params: { fields: 'most', filter: 'tenant eq 1' },
+				params: expect.objectContaining({ filter: 'tenant eq 1' }),
 			});
 			expect(result).toEqual([sampleTenantNode]);
 		});

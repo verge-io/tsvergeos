@@ -24,6 +24,38 @@ import type { TenantNode, TenantNodeCreateParams, TenantNodeUpdateParams } from 
  * await client.tenantNodes.powerOn(42);
  * ```
  */
+/**
+ * Default fields for TenantNode list/get requests.
+ *
+ * Includes cross-resource joins from the machine status table so that
+ * power state is reliably populated without consumers needing to manually
+ * fan out to `machineStatuses`.
+ *
+ * @internal
+ */
+const TENANT_NODE_DEFAULT_FIELDS = [
+	'$key',
+	'name',
+	'description',
+	'enabled',
+	'tenant',
+	'nodeid',
+	'cpu_cores',
+	'ram',
+	'cluster',
+	'cluster_failover',
+	'preferred_node',
+	'ha_group',
+	'on_power_loss',
+	'is_snapshot',
+	'machine',
+	'created',
+	'modified',
+	// Cross-resource joins — populates power state reliably
+	'machine#status#powerstate as powerstate',
+	'machine#status#status as status',
+];
+
 export class TenantNodeService extends BaseService<
 	TenantNode,
 	TenantNodeCreateParams,
@@ -31,6 +63,7 @@ export class TenantNodeService extends BaseService<
 > {
 	constructor(http: HttpClient) {
 		super(http, '/tenant_nodes', 'Tenant Node');
+		this.defaultFields = TENANT_NODE_DEFAULT_FIELDS;
 	}
 
 	/**

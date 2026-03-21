@@ -86,6 +86,11 @@ export interface TenantNode extends Resource {
 
 	/** User who created this node. Read-only. */
 	creator?: string;
+
+	// ─── Joined status fields (from machine#status) ─────────────────────
+
+	/** Machine status value (joined from machine_status). Present in default list/get responses. */
+	status?: string;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────

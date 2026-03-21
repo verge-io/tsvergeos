@@ -49,7 +49,7 @@ describe('NetworkService', () => {
 			await svc.list();
 
 			expect(http.get).toHaveBeenCalledWith('/vnets', {
-				params: { fields: 'most' },
+				params: expect.objectContaining({ fields: expect.any(Object) }),
 			});
 		});
 	});
@@ -63,7 +63,7 @@ describe('NetworkService', () => {
 			const result = await svc.list();
 
 			expect(http.get).toHaveBeenCalledWith('/vnets', {
-				params: { fields: 'most' },
+				params: expect.objectContaining({ fields: expect.any(Object) }),
 			});
 			expect(result).toEqual([sampleNetwork]);
 		});
@@ -76,7 +76,7 @@ describe('NetworkService', () => {
 			const result = await svc.get(10);
 
 			expect(http.get).toHaveBeenCalledWith('/vnets/10', {
-				params: { fields: 'most' },
+				params: expect.objectContaining({ fields: expect.any(Object) }),
 			});
 			expect(result).toEqual(sampleNetwork);
 		});
@@ -96,7 +96,7 @@ describe('NetworkService', () => {
 				body: { name: 'test-network', type: 'internal' },
 			});
 			expect(http.get).toHaveBeenCalledWith('/vnets/10', {
-				params: { fields: 'most' },
+				params: expect.objectContaining({ fields: expect.any(Object) }),
 			});
 			expect(result).toEqual(sampleNetwork);
 		});
@@ -116,7 +116,7 @@ describe('NetworkService', () => {
 				body: { description: 'updated' },
 			});
 			expect(http.get).toHaveBeenCalledWith('/vnets/10', {
-				params: { fields: 'most' },
+				params: expect.objectContaining({ fields: expect.any(Object) }),
 			});
 			expect(result.description).toBe('updated');
 		});
