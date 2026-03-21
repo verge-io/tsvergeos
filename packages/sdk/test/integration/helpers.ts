@@ -23,10 +23,10 @@ export function hasCredentials(): boolean {
 
 /**
  * Check whether multi-site integration test credentials are configured.
- * Returns true if both system 1 and system 2 env vars are set.
+ * Returns true if at least 2 systems have credentials.
  */
 export function hasMultiSiteCredentials(): boolean {
-	return hasCredentials() && Boolean(process.env.VERGEOS_HOST_2 && process.env.VERGEOS_API_KEY_2);
+	return discoverSites().length >= 2;
 }
 
 /**
@@ -87,6 +87,51 @@ export async function createTestHttpClient(): Promise<HttpClient> {
 // ─── Multi-Site Helpers ──────────────────────────────────────────────────────
 
 /**
+ * Discovered site credentials from environment variables.
+ */
+export interface SiteEnv {
+	/** Numeric suffix (1 for VERGEOS_HOST, 2 for VERGEOS_HOST_2, etc.) */
+	index: number;
+	host: string;
+	apiKey: string;
+	verifySsl: boolean;
+}
+
+/**
+ * Discover all configured test sites from environment variables.
+ *
+ * Looks for VERGEOS_HOST + VERGEOS_API_KEY (site 1),
+ * then VERGEOS_HOST_2 + VERGEOS_API_KEY_2, VERGEOS_HOST_3, etc.
+ *
+ * @returns Array of discovered site credentials, sorted by index
+ */
+export function discoverSites(): SiteEnv[] {
+	const sites: SiteEnv[] = [];
+
+	// Site 1: no suffix
+	if (process.env.VERGEOS_HOST && process.env.VERGEOS_API_KEY) {
+		sites.push({
+			index: 1,
+			host: process.env.VERGEOS_HOST,
+			apiKey: process.env.VERGEOS_API_KEY,
+			verifySsl: process.env.VERGEOS_VERIFY_SSL?.toLowerCase() !== 'false',
+		});
+	}
+
+	// Sites 2+: numbered suffix
+	for (let i = 2; i <= 10; i++) {
+		const host = process.env[`VERGEOS_HOST_${i}`];
+		const apiKey = process.env[`VERGEOS_API_KEY_${i}`];
+		if (host && apiKey) {
+			const verifySsl = process.env[`VERGEOS_VERIFY_SSL_${i}`]?.toLowerCase() !== 'false';
+			sites.push({ index: i, host, apiKey, verifySsl });
+		}
+	}
+
+	return sites;
+}
+
+/**
  * Build a SiteConfig for a named site with custom fetch for self-signed certs.
  *
  * @param name - Unique site name for SiteManager registration
@@ -107,35 +152,26 @@ export async function createSiteConfig(
 }
 
 /**
- * Build a SiteConfig for dev system 1 from VERGEOS_HOST env vars.
+ * Build SiteConfigs for all discovered test sites.
  *
- * @param name - Site name (e.g., "dev-local")
- * @param tags - Optional tags
+ * @param namer - Function to generate a site name from its index (default: "site-1", "site-2", etc.)
+ * @param tagger - Function to generate tags for a site from its index (default: ["dev"])
  */
-export async function createSite1Config(name: string, tags?: string[]): Promise<SiteConfig> {
-	const host = process.env.VERGEOS_HOST;
-	const apiKey = process.env.VERGEOS_API_KEY;
-	if (!host || !apiKey) {
-		throw new Error('Site 1 credentials not configured. Set VERGEOS_HOST and VERGEOS_API_KEY.');
-	}
-	const verifySsl = process.env.VERGEOS_VERIFY_SSL?.toLowerCase() !== 'false';
-	return createSiteConfig(name, host, apiKey, verifySsl, tags);
-}
+export async function createAllSiteConfigs(
+	namer?: (env: SiteEnv) => string,
+	tagger?: (env: SiteEnv) => string[],
+): Promise<SiteConfig[]> {
+	const sites = discoverSites();
+	const defaultNamer = (env: SiteEnv) => `site-${env.index}`;
+	const defaultTagger = (_env: SiteEnv) => ['dev'];
 
-/**
- * Build a SiteConfig for dev system 2 from VERGEOS_HOST_2 env vars.
- *
- * @param name - Site name (e.g., "dev-public")
- * @param tags - Optional tags
- */
-export async function createSite2Config(name: string, tags?: string[]): Promise<SiteConfig> {
-	const host = process.env.VERGEOS_HOST_2;
-	const apiKey = process.env.VERGEOS_API_KEY_2;
-	if (!host || !apiKey) {
-		throw new Error('Site 2 credentials not configured. Set VERGEOS_HOST_2 and VERGEOS_API_KEY_2.');
+	const configs: SiteConfig[] = [];
+	for (const site of sites) {
+		const name = (namer ?? defaultNamer)(site);
+		const tags = (tagger ?? defaultTagger)(site);
+		configs.push(await createSiteConfig(name, site.host, site.apiKey, site.verifySsl, tags));
 	}
-	// Site 2 has a valid cert — always verify
-	return createSiteConfig(name, host, apiKey, true, tags);
+	return configs;
 }
 
 // ─── Internal ────────────────────────────────────────────────────────────────
