@@ -1,5 +1,6 @@
 import { describe } from 'vitest';
 import { HttpClient } from '../../src/http.js';
+import type { SiteConfig } from '../../src/site-manager.js';
 import type { ClientConfig } from '../../src/types.js';
 
 /**
@@ -13,7 +14,7 @@ export function delay(ms = 50): Promise<void> {
 }
 
 /**
- * Check whether integration test credentials are configured via environment variables.
+ * Check whether single-site integration test credentials are configured.
  * Returns true if VERGEOS_HOST and VERGEOS_API_KEY are set.
  */
 export function hasCredentials(): boolean {
@@ -21,13 +22,27 @@ export function hasCredentials(): boolean {
 }
 
 /**
- * Skip a test suite if integration test credentials are not configured.
+ * Check whether multi-site integration test credentials are configured.
+ * Returns true if both system 1 and system 2 env vars are set.
+ */
+export function hasMultiSiteCredentials(): boolean {
+	return hasCredentials() && Boolean(process.env.VERGEOS_HOST_2 && process.env.VERGEOS_API_KEY_2);
+}
+
+/**
+ * Skip a test suite if single-site credentials are not configured.
  * Use as: `const describeIf = skipIfNoCredentials();` then `describeIf(...)`.
- *
- * @returns `describe` if credentials are set, `describe.skip` if not
  */
 export function skipIfNoCredentials(): typeof describe | typeof describe.skip {
 	return hasCredentials() ? describe : describe.skip;
+}
+
+/**
+ * Skip a test suite if multi-site credentials are not configured.
+ * Use as: `const describeIf = skipIfNoMultiSiteCredentials();` then `describeIf(...)`.
+ */
+export function skipIfNoMultiSiteCredentials(): typeof describe | typeof describe.skip {
+	return hasMultiSiteCredentials() ? describe : describe.skip;
 }
 
 /**
@@ -55,15 +70,92 @@ export async function createClientConfig(): Promise<ClientConfig> {
 
 	const verifySsl = process.env.VERGEOS_VERIFY_SSL?.toLowerCase() !== 'false';
 
+	return buildConfig(host, apiKey, verifySsl);
+}
+
+/**
+ * Create an HttpClient configured from environment variables.
+ * Convenience wrapper around {@link createClientConfig}.
+ *
+ * @returns An HttpClient ready for integration testing
+ */
+export async function createTestHttpClient(): Promise<HttpClient> {
+	const config = await createClientConfig();
+	return new HttpClient(config);
+}
+
+// ─── Multi-Site Helpers ──────────────────────────────────────────────────────
+
+/**
+ * Build a SiteConfig for a named site with custom fetch for self-signed certs.
+ *
+ * @param name - Unique site name for SiteManager registration
+ * @param host - Server URL
+ * @param apiKey - API key
+ * @param verifySsl - Whether to verify SSL certificates
+ * @param tags - Optional tags for grouping
+ */
+export async function createSiteConfig(
+	name: string,
+	host: string,
+	apiKey: string,
+	verifySsl: boolean,
+	tags?: string[],
+): Promise<SiteConfig> {
+	const base = await buildConfig(host, apiKey, verifySsl);
+	return { ...base, name, tags };
+}
+
+/**
+ * Build a SiteConfig for dev system 1 from VERGEOS_HOST env vars.
+ *
+ * @param name - Site name (e.g., "dev-local")
+ * @param tags - Optional tags
+ */
+export async function createSite1Config(name: string, tags?: string[]): Promise<SiteConfig> {
+	const host = process.env.VERGEOS_HOST;
+	const apiKey = process.env.VERGEOS_API_KEY;
+	if (!host || !apiKey) {
+		throw new Error('Site 1 credentials not configured. Set VERGEOS_HOST and VERGEOS_API_KEY.');
+	}
+	const verifySsl = process.env.VERGEOS_VERIFY_SSL?.toLowerCase() !== 'false';
+	return createSiteConfig(name, host, apiKey, verifySsl, tags);
+}
+
+/**
+ * Build a SiteConfig for dev system 2 from VERGEOS_HOST_2 env vars.
+ *
+ * @param name - Site name (e.g., "dev-public")
+ * @param tags - Optional tags
+ */
+export async function createSite2Config(name: string, tags?: string[]): Promise<SiteConfig> {
+	const host = process.env.VERGEOS_HOST_2;
+	const apiKey = process.env.VERGEOS_API_KEY_2;
+	if (!host || !apiKey) {
+		throw new Error('Site 2 credentials not configured. Set VERGEOS_HOST_2 and VERGEOS_API_KEY_2.');
+	}
+	// Site 2 has a valid cert — always verify
+	return createSiteConfig(name, host, apiKey, true, tags);
+}
+
+// ─── Internal ────────────────────────────────────────────────────────────────
+
+/**
+ * Build a ClientConfig with optional custom fetch for self-signed certs.
+ */
+async function buildConfig(
+	host: string,
+	apiKey: string,
+	verifySsl: boolean,
+): Promise<ClientConfig> {
 	const config: ClientConfig = {
 		host,
 		apiKey,
 		verifySsl,
-		retries: 0, // No retries in tests for faster feedback
+		retries: 0,
 	};
 
 	if (!verifySsl) {
-		// Use undici Agent with rejectUnauthorized: false for self-signed certs
 		const { Agent, fetch: undiciFetch } = await import('undici');
 		const dispatcher = new Agent({
 			connect: { rejectUnauthorized: false },
@@ -79,15 +171,4 @@ export async function createClientConfig(): Promise<ClientConfig> {
 	}
 
 	return config;
-}
-
-/**
- * Create an HttpClient configured from environment variables.
- * Convenience wrapper around {@link createClientConfig}.
- *
- * @returns An HttpClient ready for integration testing
- */
-export async function createTestHttpClient(): Promise<HttpClient> {
-	const config = await createClientConfig();
-	return new HttpClient(config);
 }
