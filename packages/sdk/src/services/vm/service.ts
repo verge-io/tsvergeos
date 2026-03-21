@@ -1,13 +1,14 @@
-import type { HttpClient } from '../../http.js';
-import type { FlexKey } from '../../types.js';
-import { BaseService } from '../base.js';
+import type { HttpClient } from "../../http.js";
+import type { FlexKey } from "../../types.js";
+import { BaseService } from "../base.js";
 import type {
-	VM,
-	VMCloneOptions,
-	VMCreateParams,
-	VMSnapshotOptions,
-	VMUpdateParams,
-} from './types.js';
+  VM,
+  VMCloneOptions,
+  VMCreateParams,
+  VMMigrateOptions,
+  VMSnapshotOptions,
+  VMUpdateParams,
+} from "./types.js";
 
 /**
  * Service for managing VergeOS virtual machines.
@@ -34,108 +35,128 @@ import type {
  * ```
  */
 export class VMService extends BaseService<VM, VMCreateParams, VMUpdateParams> {
-	constructor(http: HttpClient) {
-		super(http, '/vms', 'VM');
-	}
+  constructor(http: HttpClient) {
+    super(http, "/vms", "VM");
+  }
 
-	/**
-	 * Power on a virtual machine.
-	 *
-	 * @param key - The VM ID
-	 */
-	async powerOn(key: FlexKey): Promise<void> {
-		await this.dispatchAction('poweron', key);
-	}
+  /**
+   * Power on a virtual machine.
+   *
+   * @param key - The VM ID
+   */
+  async powerOn(key: FlexKey): Promise<void> {
+    await this.dispatchAction("poweron", key);
+  }
 
-	/**
-	 * Gracefully power off a virtual machine via ACPI shutdown signal.
-	 *
-	 * Sends an ACPI shutdown signal at the hardware level. For guest-agent-mediated
-	 * shutdown, use {@link guestShutdown} instead.
-	 *
-	 * @param key - The VM ID
-	 */
-	async powerOff(key: FlexKey): Promise<void> {
-		await this.dispatchAction('poweroff', key);
-	}
+  /**
+   * Gracefully power off a virtual machine via ACPI shutdown signal.
+   *
+   * Sends an ACPI shutdown signal at the hardware level.
+   *
+   * @param key - The VM ID
+   */
+  async powerOff(key: FlexKey): Promise<void> {
+    await this.dispatchAction("poweroff", key);
+  }
 
-	/**
-	 * Force power off a virtual machine (like pulling the plug).
-	 *
-	 * Use {@link powerOff} for a graceful ACPI shutdown instead.
-	 *
-	 * @param key - The VM ID
-	 */
-	async kill(key: FlexKey): Promise<void> {
-		await this.dispatchAction('kill', key);
-	}
+  /**
+   * Force power off a virtual machine (like pulling the plug).
+   *
+   * Use {@link powerOff} for a graceful ACPI shutdown instead.
+   *
+   * @param key - The VM ID
+   */
+  async kill(key: FlexKey): Promise<void> {
+    await this.dispatchAction("kill", key);
+  }
 
-	/**
-	 * Hard reset a virtual machine.
-	 *
-	 * @param key - The VM ID
-	 */
-	async reset(key: FlexKey): Promise<void> {
-		await this.dispatchAction('reset', key);
-	}
+  /**
+   * Hard reset a virtual machine (equivalent to pressing the reset button).
+   *
+   * For a graceful ACPI reboot, use {@link gracefulReboot} instead.
+   *
+   * @param key - The VM ID
+   */
+  async reset(key: FlexKey): Promise<void> {
+    await this.dispatchAction("reset", key);
+  }
 
-	/**
-	 * Reboot a virtual machine via the QEMU guest agent.
-	 *
-	 * Requires `guest_agent: true` on the VM.
-	 *
-	 * @param key - The VM ID
-	 */
-	async guestReboot(key: FlexKey): Promise<void> {
-		await this.dispatchAction('guestreset', key);
-	}
+  /**
+   * Gracefully reboot a virtual machine via ACPI.
+   *
+   * Sends an ACPI reboot signal. For a hard reset (like pressing the
+   * reset button), use {@link reset} instead.
+   *
+   * @param key - The VM ID
+   */
+  async gracefulReboot(key: FlexKey): Promise<void> {
+    await this.dispatchAction("reset", key, { graceful: true });
+  }
 
-	/**
-	 * Shut down a virtual machine via the QEMU guest agent.
-	 *
-	 * Sends a shutdown command through the guest agent to the OS.
-	 * Requires `guest_agent: true` on the VM. For ACPI-level shutdown,
-	 * use {@link powerOff} instead.
-	 *
-	 * @param key - The VM ID
-	 */
-	async guestShutdown(key: FlexKey): Promise<void> {
-		await this.dispatchAction('guestshutdown', key);
-	}
+  /**
+   * Hibernate a virtual machine via ACPI.
+   *
+   * The guest OS must support ACPI hibernate.
+   *
+   * @param key - The VM ID
+   */
+  async hibernate(key: FlexKey): Promise<void> {
+    await this.dispatchAction("hibernate", key);
+  }
 
-	/**
-	 * Clone a virtual machine.
-	 *
-	 * @param key - The VM ID to clone
-	 * @param options - Clone options (name, preserve_macs)
-	 */
-	async clone(key: FlexKey, options?: VMCloneOptions): Promise<void> {
-		await this.dispatchAction('clone', key, options as Record<string, unknown> | undefined);
-	}
+  /**
+   * Migrate a virtual machine to another node.
+   *
+   * @param key - The VM ID
+   * @param options - Migration options. Pass `preferred_node` to target a
+   *   specific node, or `preferred_node: null` to auto-select the node
+   *   with the least RAM usage.
+   */
+  async migrate(key: FlexKey, options: VMMigrateOptions): Promise<void> {
+    await this.dispatchAction(
+      "migrate",
+      key,
+      options as Record<string, unknown>,
+    );
+  }
 
-	/**
-	 * Create a quiesced snapshot of a virtual machine.
-	 *
-	 * @param key - The VM ID to snapshot
-	 * @param options - Snapshot options (name, quiesce)
-	 */
-	async snapshot(key: FlexKey, options?: VMSnapshotOptions): Promise<void> {
-		await this.dispatchAction(
-			'quiesce_snapshot',
-			key,
-			options as Record<string, unknown> | undefined,
-		);
-	}
+  /**
+   * Clone a virtual machine.
+   *
+   * @param key - The VM ID to clone
+   * @param options - Clone options (name, preserve_macs)
+   */
+  async clone(key: FlexKey, options?: VMCloneOptions): Promise<void> {
+    await this.dispatchAction(
+      "clone",
+      key,
+      options as Record<string, unknown> | undefined,
+    );
+  }
 
-	/**
-	 * Get the web console URL for a virtual machine.
-	 *
-	 * Constructs the URL locally — no API call is made.
-	 *
-	 * @param key - The VM ID
-	 * @returns The full console URL (e.g., `https://host/#/vm-console/42`)
-	 */
-	getConsoleURL(key: FlexKey): string {
-		return `${this.http.host}/#/vm-console/${key}`;
-	}
+  /**
+   * Create a quiesced snapshot of a virtual machine.
+   *
+   * @param key - The VM ID to snapshot
+   * @param options - Snapshot options (name, quiesce)
+   */
+  async snapshot(key: FlexKey, options?: VMSnapshotOptions): Promise<void> {
+    await this.dispatchAction(
+      "quiesce_snapshot",
+      key,
+      options as Record<string, unknown> | undefined,
+    );
+  }
+
+  /**
+   * Get the web console URL for a virtual machine.
+   *
+   * Constructs the URL locally — no API call is made.
+   *
+   * @param key - The VM ID
+   * @returns The full console URL (e.g., `https://host/#/vm-console/42`)
+   */
+  getConsoleURL(key: FlexKey): string {
+    return `${this.http.host}/#/vm-console/${key}`;
+  }
 }
