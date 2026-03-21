@@ -9,6 +9,7 @@ import {
   ApiError,
   AuthError,
   ConflictError,
+  isVergeError,
   NotFoundError,
   ValidationError,
 } from "./errors.js";
@@ -241,11 +242,7 @@ export class HttpClient {
         lastError = await this.buildError(response, url);
       } catch (err) {
         // If it's already one of our errors (from handleErrorResponse), rethrow immediately
-        if (
-          err instanceof ApiError ||
-          err instanceof AuthError ||
-          err instanceof NotFoundError
-        ) {
+        if (isVergeError(err)) {
           throw err;
         }
         // Network error or abort — eligible for retry (except AbortError)
