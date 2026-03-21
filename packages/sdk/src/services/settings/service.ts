@@ -1,4 +1,5 @@
 import { NotFoundError } from '../../errors.js';
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey } from '../../types.js';
 import { WritableService } from '../base.js';
@@ -51,7 +52,9 @@ export class SettingsService extends WritableService<Setting, SettingUpdateParam
 	 * @throws {@link NotFoundError} if no setting with that key exists
 	 */
 	async getByKey(key: string): Promise<Setting> {
-		const results = await this.list({ filter: `key eq '${key}'` });
+		const results = await this.list({
+			filter: `key eq ${quoteFilterString(key)}`,
+		});
 		if (results.length === 0) {
 			throw new NotFoundError('Setting', key);
 		}

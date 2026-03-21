@@ -1,4 +1,5 @@
 import { ApiError, NotFoundError } from '../../errors.js';
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey, ListOptions } from '../../types.js';
 import { BaseService } from '../base.js';
@@ -49,7 +50,9 @@ export class CertificateService extends BaseService<
 	 * @throws {@link NotFoundError} if no certificate with that domain exists
 	 */
 	async getByDomain(domain: string): Promise<Certificate> {
-		const results = await this.list({ filter: `domain eq '${domain}'` });
+		const results = await this.list({
+			filter: `domain eq ${quoteFilterString(domain)}`,
+		});
 		if (results.length === 0) {
 			throw new NotFoundError(this.displayName, domain);
 		}
@@ -103,7 +106,7 @@ export class CertificateService extends BaseService<
 	async listByType(type: CertificateType, options?: ListOptions): Promise<Certificate[]> {
 		return this.list({
 			...options,
-			filter: `type eq '${type}'`,
+			filter: `type eq ${quoteFilterString(type)}`,
 		});
 	}
 

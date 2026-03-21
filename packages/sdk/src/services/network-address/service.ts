@@ -1,3 +1,4 @@
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey, ListOptions } from '../../types.js';
 import { BaseService } from '../base.js';
@@ -79,7 +80,7 @@ export class NetworkAddressService extends BaseService<
 		type: AddressType,
 		options?: ListOptions,
 	): Promise<NetworkAddress[]> {
-		const typeFilter = `type eq '${type}'`;
+		const typeFilter = `type eq ${quoteFilterString(type)}`;
 		return this.listByNetwork(vnetKey, {
 			...options,
 			filter: options?.filter ? `${typeFilter} and ${options.filter}` : typeFilter,
@@ -95,7 +96,7 @@ export class NetworkAddressService extends BaseService<
 	 */
 	async getByIP(vnetKey: FlexKey, ip: string): Promise<NetworkAddress | undefined> {
 		const results = await this.listByNetwork(vnetKey, {
-			filter: `ip eq '${ip}'`,
+			filter: `ip eq ${quoteFilterString(ip)}`,
 		});
 		return results[0];
 	}
@@ -109,7 +110,7 @@ export class NetworkAddressService extends BaseService<
 	 */
 	async getByMAC(vnetKey: FlexKey, mac: string): Promise<NetworkAddress | undefined> {
 		const results = await this.listByNetwork(vnetKey, {
-			filter: `mac eq '${mac}'`,
+			filter: `mac eq ${quoteFilterString(mac)}`,
 		});
 		return results[0];
 	}

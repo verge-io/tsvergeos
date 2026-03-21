@@ -1,3 +1,4 @@
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey, ListOptions } from '../../types.js';
 import { BaseService } from '../base.js';
@@ -66,7 +67,7 @@ export class TagMemberService extends BaseService<TagMember, TagMemberCreatePara
 	 * @returns Array of tag members for the specified resource
 	 */
 	async listByMember(member: string, options?: ListOptions): Promise<TagMember[]> {
-		const memberFilter = `member eq '${member}'`;
+		const memberFilter = `member eq ${quoteFilterString(member)}`;
 		const existingFilter = options?.filter;
 		const combinedFilter = existingFilter ? `${memberFilter} and ${existingFilter}` : memberFilter;
 
@@ -101,7 +102,7 @@ export class TagMemberService extends BaseService<TagMember, TagMemberCreatePara
 	 */
 	async unassign(tagKey: FlexKey, member: string): Promise<void> {
 		const matches = await this.list({
-			filter: `tag eq ${tagKey} and member eq '${member}'`,
+			filter: `tag eq ${tagKey} and member eq ${quoteFilterString(member)}`,
 		});
 
 		const first = matches[0];

@@ -260,5 +260,21 @@ const buildFilter = (conditions: Record<string, BuildFilterValue>): string => {
 	return parts.join(' and ');
 };
 
+/**
+ * Escape and single-quote a string value for safe embedding in a filter expression.
+ *
+ * Prevents filter injection by escaping single quotes before wrapping.
+ * Use this instead of manual template-literal quoting in filter strings.
+ *
+ * @example
+ * ```typescript
+ * const filter = `name eq ${quoteFilterString(userInput)}`;
+ * // userInput = "O'Brien" → "name eq 'O''Brien'"
+ * ```
+ */
+const quoteFilterString = (value: string): string => {
+	return `'${String(value).replace(/'/g, "''")}'`;
+};
+
 export type { BuildFilterValue, FilterValue, OperatorObject };
-export { buildFilter, Filter };
+export { buildFilter, Filter, quoteFilterString };

@@ -1,4 +1,5 @@
 import { NotFoundError } from '../../errors.js';
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey, MutationOptions } from '../../types.js';
 import { WritableService } from '../base.js';
@@ -100,7 +101,7 @@ export class APIKeyService extends WritableService<UserAPIKey, UserAPIKeyUpdateP
 	 */
 	async getByUserAndName(userKey: FlexKey, name: string): Promise<UserAPIKey> {
 		const results = await this.list({
-			filter: `user eq ${userKey} and name eq '${name}'`,
+			filter: `user eq ${userKey} and name eq ${quoteFilterString(name)}`,
 		});
 		if (results.length === 0) {
 			throw new NotFoundError('API Key', name);

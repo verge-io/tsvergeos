@@ -1,4 +1,5 @@
 import { ApiError, NotFoundError } from '../../errors.js';
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey, ListOptions } from '../../types.js';
 import { ReadOnlyService } from '../base.js';
@@ -78,7 +79,7 @@ export class WebhookService extends ReadOnlyService<Webhook> {
 	async listByStatus(status: WebhookStatus, options?: ListOptions): Promise<Webhook[]> {
 		return this.list({
 			...options,
-			filter: `status eq '${status}'`,
+			filter: `status eq ${quoteFilterString(status)}`,
 		});
 	}
 

@@ -1,3 +1,4 @@
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey, ListOptions } from '../../types.js';
 import { BaseService } from '../base.js';
@@ -76,7 +77,7 @@ export class NetworkDnsZoneService extends BaseService<
 	 */
 	async getByDomain(viewKey: FlexKey, domain: string): Promise<NetworkDnsZone | undefined> {
 		const results = await this.listByView(viewKey, {
-			filter: `domain eq '${domain}'`,
+			filter: `domain eq ${quoteFilterString(domain)}`,
 		});
 		return results[0];
 	}
