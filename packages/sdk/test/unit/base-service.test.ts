@@ -52,6 +52,13 @@ class TestReadOnlyService extends ReadOnlyService<TestResource> {
 	}
 }
 
+class TestReadOnlyServiceWithDefaults extends ReadOnlyService<TestResource> {
+	constructor(http: HttpClient) {
+		super(http, '/widgets', 'Widget');
+		this.defaultFields = ['$key', 'name', 'description', 'machine#status#status as status'];
+	}
+}
+
 class TestWritableService extends WritableService<TestResource, TestUpdateParams> {
 	constructor(http: HttpClient, actionConfig?: ActionConfig) {
 		super(http, '/widgets', 'Widget', actionConfig);
@@ -596,5 +603,218 @@ describe('BaseService', () => {
 				body: { widget: 1, action: 'poweron' },
 			});
 		});
+	});
+});
+
+describe('defaultFields', () => {
+	describe('list()', () => {
+		it('uses defaultFields when no user fields option provided', async () => {
+			const http = mockHttp();
+			const svc = new TestReadOnlyServiceWithDefaults(http);
+			vi.mocked(http.get).mockResolvedValueOnce([]);
+
+			await svc.list();
+
+			expect(http.get).toHaveBeenCalledWith('/widgets', {
+				params: {
+					fields: ['$key', 'name', 'description', 'machine#status#status as status'],
+				},
+			});
+		});
+
+		it('user-provided fields overrides defaultFields', async () => {
+			const http = mockHttp();
+			const svc = new TestReadOnlyServiceWithDefaults(http);
+			vi.mocked(http.get).mockResolvedValueOnce([]);
+
+			await svc.list({ fields: 'all' });
+
+			expect(http.get).toHaveBeenCalledWith('/widgets', {
+				params: { fields: 'all' },
+			});
+		});
+
+		it('user-provided fields array overrides defaultFields', async () => {
+			const http = mockHttp();
+			const svc = new TestReadOnlyServiceWithDefaults(http);
+			vi.mocked(http.get).mockResolvedValueOnce([]);
+
+			await svc.list({ fields: ['name'] });
+
+			expect(http.get).toHaveBeenCalledWith('/widgets', {
+				params: { fields: ['name'] },
+			});
+		});
+	});
+
+	describe('get()', () => {
+		it('uses defaultFields when defined', async () => {
+			const http = mockHttp();
+			const svc = new TestReadOnlyServiceWithDefaults(http);
+			vi.mocked(http.get).mockResolvedValueOnce({
+				$key: 1,
+				name: 'a',
+				description: 'b',
+			});
+
+			await svc.get(1);
+
+			expect(http.get).toHaveBeenCalledWith('/widgets/1', {
+				params: {
+					fields: ['$key', 'name', 'description', 'machine#status#status as status'],
+				},
+			});
+		});
+
+		it('falls back to most when no defaultFields defined', async () => {
+			const http = mockHttp();
+			const svc = new TestReadOnlyService(http);
+			vi.mocked(http.get).mockResolvedValueOnce({
+				$key: 1,
+				name: 'a',
+				description: 'b',
+			});
+
+			await svc.get(1);
+
+			expect(http.get).toHaveBeenCalledWith('/widgets/1', {
+				params: { fields: 'most' },
+			});
+		});
+	});
+});
+
+describe('FK normalization', () => {
+	it('collapses $key-based FK objects to scalar in list()', async () => {
+		const http = mockHttp();
+		const svc = new TestReadOnlyService(http);
+		vi.mocked(http.get).mockResolvedValueOnce([
+			{
+				$key: 1,
+				name: 'a',
+				description: 'd',
+				cluster: { $key: 3, name: 'default' },
+			},
+		]);
+
+		const result = await svc.list();
+
+		expect((result[0] as Record<string, unknown>).cluster).toBe(3);
+	});
+
+	it('collapses id-based FK objects to scalar', async () => {
+		const http = mockHttp();
+		const svc = new TestReadOnlyService(http);
+		vi.mocked(http.get).mockResolvedValueOnce([
+			{
+				$key: 1,
+				name: 'a',
+				description: 'd',
+				node: { id: 'abc', name: 'node1' },
+			},
+		]);
+
+		const result = await svc.list();
+
+		expect((result[0] as Record<string, unknown>).node).toBe('abc');
+	});
+
+	it('collapses arrays of FK objects', async () => {
+		const http = mockHttp();
+		const svc = new TestReadOnlyService(http);
+		vi.mocked(http.get).mockResolvedValueOnce([
+			{
+				$key: 1,
+				name: 'a',
+				description: 'd',
+				nodes: [
+					{ $key: 10, name: 'n1' },
+					{ $key: 20, name: 'n2' },
+				],
+			},
+		]);
+
+		const result = await svc.list();
+
+		expect((result[0] as Record<string, unknown>).nodes).toEqual([10, 20]);
+	});
+
+	it('leaves scalars, null, and plain objects untouched', async () => {
+		const http = mockHttp();
+		const svc = new TestReadOnlyService(http);
+		vi.mocked(http.get).mockResolvedValueOnce([
+			{
+				$key: 1,
+				name: 'a',
+				description: 'd',
+				count: 5,
+				empty: null,
+				meta: { foo: 'bar' },
+			},
+		]);
+
+		const result = await svc.list();
+		const item = result[0] as Record<string, unknown>;
+
+		expect(item.count).toBe(5);
+		expect(item.empty).toBeNull();
+		expect(item.meta).toEqual({ foo: 'bar' });
+	});
+
+	it('does not modify root $key', async () => {
+		const http = mockHttp();
+		const svc = new TestReadOnlyService(http);
+		vi.mocked(http.get).mockResolvedValueOnce([{ $key: 42, name: 'a', description: 'd' }]);
+
+		const result = await svc.list();
+
+		expect(result[0].$key).toBe(42);
+	});
+
+	it('normalizes FKs in get() responses', async () => {
+		const http = mockHttp();
+		const svc = new TestReadOnlyService(http);
+		vi.mocked(http.get).mockResolvedValueOnce({
+			$key: 1,
+			name: 'a',
+			description: 'd',
+			cluster: { $key: 3, name: 'default' },
+		});
+
+		const result = await svc.get(1);
+
+		expect((result as Record<string, unknown>).cluster).toBe(3);
+	});
+
+	it('collapses id-based array elements', async () => {
+		const http = mockHttp();
+		const svc = new TestReadOnlyService(http);
+		vi.mocked(http.get).mockResolvedValueOnce([
+			{
+				$key: 1,
+				name: 'a',
+				description: 'd',
+				tags: [
+					{ id: 't1', label: 'a' },
+					{ id: 't2', label: 'b' },
+				],
+			},
+		]);
+
+		const result = await svc.list();
+
+		expect((result[0] as Record<string, unknown>).tags).toEqual(['t1', 't2']);
+	});
+
+	it('leaves array scalars untouched', async () => {
+		const http = mockHttp();
+		const svc = new TestReadOnlyService(http);
+		vi.mocked(http.get).mockResolvedValueOnce([
+			{ $key: 1, name: 'a', description: 'd', ports: [80, 443] },
+		]);
+
+		const result = await svc.list();
+
+		expect((result[0] as Record<string, unknown>).ports).toEqual([80, 443]);
 	});
 });
