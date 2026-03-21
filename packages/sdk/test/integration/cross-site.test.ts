@@ -3,9 +3,9 @@ import type { CrossSiteResult } from '../../src/cross-site.js';
 import { SiteManager } from '../../src/site-manager.js';
 import type { Resource } from '../../src/types.js';
 import {
-	createSite1Config,
-	createSite2Config,
+	createAllSiteConfigs,
 	delay,
+	discoverSites,
 	skipIfNoMultiSiteCredentials,
 } from './helpers.js';
 import '../../src/services/vm/index.js';
@@ -13,40 +13,37 @@ import '../../src/services/network/index.js';
 import '../../src/services/alarm/index.js';
 
 /**
- * CrossSiteReadProxy integration test using two genuinely different VergeOS systems.
+ * CrossSiteReadProxy integration test using all discovered VergeOS systems.
  *
- * Dev system 1: self-signed cert (verge.example.com)
- * Dev system 2: valid cert (verge.example.com)
- *
- * Validates cross-site fan-out against real, distinct infrastructure:
- * - Aggregated results from both sites with correct site labels
- * - Tag-based filtering returns data from matching sites only
- * - Multiple service types work through the proxy
- *
- * Env vars: VERGEOS_HOST, VERGEOS_API_KEY, VERGEOS_VERIFY_SSL,
- *           VERGEOS_HOST_2, VERGEOS_API_KEY_2
+ * Dynamically discovers all VERGEOS_HOST_N env vars and fans out queries
+ * across every configured system. Validates cross-site aggregation against
+ * real, distinct infrastructure.
  */
 
 const describeIf = skipIfNoMultiSiteCredentials();
+const siteCount = discoverSites().length;
 
-const SITE_LOCAL = 'dev-local';
-const SITE_PUBLIC = 'dev-public';
-
-describeIf('CrossSiteReadProxy integration (two real systems)', () => {
+describeIf(`CrossSiteReadProxy integration (${siteCount} real systems)`, () => {
 	let manager: SiteManager;
+	const siteNames: string[] = [];
 
 	beforeAll(async () => {
 		manager = new SiteManager();
 
-		const config1 = await createSite1Config(SITE_LOCAL, ['local', 'dev']);
-		await manager.addSite(config1);
-		await delay();
+		// Tag site-1 as "first", all sites as "dev"
+		const configs = await createAllSiteConfigs(
+			(env) => `site-${env.index}`,
+			(env) => (env.index === 1 ? ['first', 'dev'] : ['dev']),
+		);
 
-		const config2 = await createSite2Config(SITE_PUBLIC, ['public', 'dev']);
-		await manager.addSite(config2);
-	}, 30_000);
+		for (const config of configs) {
+			await manager.addSite(config);
+			siteNames.push(config.name);
+			await delay();
+		}
+	}, 60_000);
 
-	// ─── Helper to call fan-out list on the proxy ─────────────────────────────
+	// ─── Helpers ──────────────────────────────────────────────────────────────
 
 	async function fanOutList(
 		proxy: ReturnType<typeof manager.all>,
@@ -58,17 +55,17 @@ describeIf('CrossSiteReadProxy integration (two real systems)', () => {
 	}
 
 	/**
-	 * Verify a fan-out result contains data from both sites with no errors.
+	 * Verify fan-out returned data from all registered sites with no errors.
 	 */
-	function expectBothSites(result: CrossSiteResult<Resource>, serviceName: string) {
+	function expectAllSites(result: CrossSiteResult<Resource>, serviceName: string) {
 		expect(result.errors, `${serviceName} fan-out had errors`).toHaveLength(0);
 		expect(result.data.length, `${serviceName} fan-out returned no data`).toBeGreaterThan(0);
 
-		const siteNames = new Set(result.data.map((d) => d.site));
-		expect(siteNames.has(SITE_LOCAL), `${serviceName} missing ${SITE_LOCAL}`).toBe(true);
-		expect(siteNames.has(SITE_PUBLIC), `${serviceName} missing ${SITE_PUBLIC}`).toBe(true);
+		const resultSites = new Set(result.data.map((d) => d.site));
+		for (const name of siteNames) {
+			expect(resultSites.has(name), `${serviceName} missing ${name}`).toBe(true);
+		}
 
-		// Every entry has a valid resource with a $key
 		for (const entry of result.data) {
 			expect(entry.site).toBeTruthy();
 			expect(entry.resource).toBeDefined();
@@ -76,27 +73,25 @@ describeIf('CrossSiteReadProxy integration (two real systems)', () => {
 		}
 	}
 
-	// ─── Fan-out across multiple service types ────────────────────────────────
+	// ─── Fan-out across all sites ─────────────────────────────────────────────
 
-	it('fans out vms.list() across both sites', async () => {
+	it(`fans out vms.list() across all ${siteCount} sites`, async () => {
 		await delay();
 		const result = await fanOutList(manager.all, 'vms');
-		expectBothSites(result, 'vms');
+		expectAllSites(result, 'vms');
 	});
 
-	it('fans out networks.list() across both sites', async () => {
+	it(`fans out networks.list() across all ${siteCount} sites`, async () => {
 		await delay();
 		const result = await fanOutList(manager.all, 'networks');
-		expectBothSites(result, 'networks');
+		expectAllSites(result, 'networks');
 	});
 
-	it('fans out alarms.list() across both sites without errors', async () => {
+	it('fans out alarms.list() across all sites without errors', async () => {
 		await delay();
 		const result = await fanOutList(manager.all, 'alarms');
-		// Alarms may be empty on one or both sites — just verify no errors
 		expect(result.errors).toHaveLength(0);
 
-		// If there are alarms, verify structure
 		for (const entry of result.data) {
 			expect(entry.site).toBeTruthy();
 			expect(entry.resource).toBeDefined();
@@ -106,32 +101,21 @@ describeIf('CrossSiteReadProxy integration (two real systems)', () => {
 
 	// ─── Tag-based filtering ─────────────────────────────────────────────────
 
-	it('tagged("local") returns data only from dev-local', async () => {
+	it('tagged("first") returns data only from site-1', async () => {
 		await delay();
-		const result = await fanOutList(manager.tagged('local'), 'vms');
+		const result = await fanOutList(manager.tagged('first'), 'vms');
 		expect(result.errors).toHaveLength(0);
 		expect(result.data.length).toBeGreaterThan(0);
 
-		const siteNames = new Set(result.data.map((d) => d.site));
-		expect(siteNames.has(SITE_LOCAL)).toBe(true);
-		expect(siteNames.has(SITE_PUBLIC)).toBe(false);
+		const resultSites = new Set(result.data.map((d) => d.site));
+		expect(resultSites.has('site-1')).toBe(true);
+		expect(resultSites.size).toBe(1);
 	});
 
-	it('tagged("public") returns data only from dev-public', async () => {
-		await delay();
-		const result = await fanOutList(manager.tagged('public'), 'vms');
-		expect(result.errors).toHaveLength(0);
-		expect(result.data.length).toBeGreaterThan(0);
-
-		const siteNames = new Set(result.data.map((d) => d.site));
-		expect(siteNames.has(SITE_PUBLIC)).toBe(true);
-		expect(siteNames.has(SITE_LOCAL)).toBe(false);
-	});
-
-	it('tagged("dev") returns data from both sites', async () => {
+	it(`tagged("dev") returns data from all ${siteCount} sites`, async () => {
 		await delay();
 		const result = await fanOutList(manager.tagged('dev'), 'vms');
-		expectBothSites(result, 'tagged-dev vms');
+		expectAllSites(result, 'tagged-dev vms');
 	});
 
 	it('tagged with nonexistent tag returns empty results', async () => {
@@ -143,15 +127,13 @@ describeIf('CrossSiteReadProxy integration (two real systems)', () => {
 
 	// ─── Status after fan-out ────────────────────────────────────────────────
 
-	it('status shows both sites connected after fan-out queries', () => {
+	it('status shows all sites connected after fan-out queries', () => {
 		const statusMap = manager.status();
 
-		const status1 = statusMap.get(SITE_LOCAL);
-		expect(status1?.connected).toBe(true);
-		expect(status1?.lastError).toBeUndefined();
-
-		const status2 = statusMap.get(SITE_PUBLIC);
-		expect(status2?.connected).toBe(true);
-		expect(status2?.lastError).toBeUndefined();
+		for (const name of siteNames) {
+			const status = statusMap.get(name);
+			expect(status?.connected, `${name} not connected`).toBe(true);
+			expect(status?.lastError, `${name} has error`).toBeUndefined();
+		}
 	});
 });
