@@ -1,9 +1,9 @@
-import { isNotFoundError, NotFoundError } from "../../errors.js";
-import { quoteFilterString } from "../../filter.js";
-import type { HttpClient } from "../../http.js";
-import type { FlexKey, ListOptions } from "../../types.js";
-import { ReadOnlyService } from "../base.js";
-import type { Webhook, WebhookStatus } from "./types.js";
+import { isNotFoundError, NotFoundError } from '../../errors.js';
+import { quoteFilterString } from '../../filter.js';
+import type { HttpClient } from '../../http.js';
+import type { FlexKey, ListOptions } from '../../types.js';
+import { ReadOnlyService } from '../base.js';
+import type { Webhook, WebhookStatus } from './types.js';
 
 /**
  * Service for querying VergeOS webhook delivery logs.
@@ -34,81 +34,75 @@ import type { Webhook, WebhookStatus } from "./types.js";
  * ```
  */
 export class WebhookService extends ReadOnlyService<Webhook> {
-  constructor(http: HttpClient) {
-    super(http, "/webhooks", "Webhook");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/webhooks', 'Webhook');
+	}
 
-  /**
-   * Delete a webhook delivery record.
-   *
-   * @param key - The webhook delivery ID
-   * @throws {@link NotFoundError} if the record does not exist
-   */
-  async delete(key: FlexKey): Promise<void> {
-    try {
-      await this.http.del(`${this.resource}/${key}`);
-    } catch (err) {
-      if (isNotFoundError(err)) {
-        throw new NotFoundError(this.displayName, key);
-      }
-      throw err;
-    }
-  }
+	/**
+	 * Delete a webhook delivery record.
+	 *
+	 * @param key - The webhook delivery ID
+	 * @throws {@link NotFoundError} if the record does not exist
+	 */
+	async delete(key: FlexKey): Promise<void> {
+		try {
+			await this.http.del(`${this.resource}/${key}`);
+		} catch (err) {
+			if (isNotFoundError(err)) {
+				throw new NotFoundError(this.displayName, key);
+			}
+			throw err;
+		}
+	}
 
-  /**
-   * List webhook deliveries for a specific webhook URL.
-   *
-   * @param webhookURLKey - The webhook URL ID to filter by
-   * @param options - Additional list options
-   * @returns Array of matching delivery records
-   */
-  async listByWebhookURL(
-    webhookURLKey: FlexKey,
-    options?: ListOptions,
-  ): Promise<Webhook[]> {
-    return this.list({
-      ...options,
-      filter: `webhook_url eq ${webhookURLKey}`,
-    });
-  }
+	/**
+	 * List webhook deliveries for a specific webhook URL.
+	 *
+	 * @param webhookURLKey - The webhook URL ID to filter by
+	 * @param options - Additional list options
+	 * @returns Array of matching delivery records
+	 */
+	async listByWebhookURL(webhookURLKey: FlexKey, options?: ListOptions): Promise<Webhook[]> {
+		return this.list({
+			...options,
+			filter: `webhook_url eq ${webhookURLKey}`,
+		});
+	}
 
-  /**
-   * List webhook deliveries with a specific status.
-   *
-   * @param status - The delivery status to filter by
-   * @param options - Additional list options
-   * @returns Array of matching delivery records
-   */
-  async listByStatus(
-    status: WebhookStatus,
-    options?: ListOptions,
-  ): Promise<Webhook[]> {
-    return this.list({
-      ...options,
-      filter: `status eq ${quoteFilterString(status)}`,
-    });
-  }
+	/**
+	 * List webhook deliveries with a specific status.
+	 *
+	 * @param status - The delivery status to filter by
+	 * @param options - Additional list options
+	 * @returns Array of matching delivery records
+	 */
+	async listByStatus(status: WebhookStatus, options?: ListOptions): Promise<Webhook[]> {
+		return this.list({
+			...options,
+			filter: `status eq ${quoteFilterString(status)}`,
+		});
+	}
 
-  /**
-   * List webhook deliveries that are pending (queued or running).
-   *
-   * @param options - Additional list options
-   * @returns Array of pending delivery records
-   */
-  async listPending(options?: ListOptions): Promise<Webhook[]> {
-    return this.list({
-      ...options,
-      filter: "status eq 'queued' or status eq 'running'",
-    });
-  }
+	/**
+	 * List webhook deliveries that are pending (queued or running).
+	 *
+	 * @param options - Additional list options
+	 * @returns Array of pending delivery records
+	 */
+	async listPending(options?: ListOptions): Promise<Webhook[]> {
+		return this.list({
+			...options,
+			filter: "status eq 'queued' or status eq 'running'",
+		});
+	}
 
-  /**
-   * List webhook deliveries that failed.
-   *
-   * @param options - Additional list options
-   * @returns Array of failed delivery records
-   */
-  async listFailed(options?: ListOptions): Promise<Webhook[]> {
-    return this.listByStatus("error", options);
-  }
+	/**
+	 * List webhook deliveries that failed.
+	 *
+	 * @param options - Additional list options
+	 * @returns Array of failed delivery records
+	 */
+	async listFailed(options?: ListOptions): Promise<Webhook[]> {
+		return this.listByStatus('error', options);
+	}
 }

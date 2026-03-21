@@ -1,4 +1,4 @@
-import type { Resource } from "../../types.js";
+import type { Resource } from '../../types.js';
 
 /**
  * A VergeOS system configuration setting (key-value pair).
@@ -8,14 +8,14 @@ import type { Resource } from "../../types.js";
  * and serves as the logical identifier.
  */
 export interface Setting extends Resource {
-  /** Unique setting key (e.g., `"cloud_name"`). Read-only. */
-  key: string;
-  /** Current value of the setting. */
-  value?: string;
-  /** Default value of the setting. Read-only. */
-  default_value?: string;
-  /** Description of what this setting controls. */
-  description?: string;
+	/** Unique setting key (e.g., `"cloud_name"`). Read-only. */
+	key: string;
+	/** Current value of the setting. */
+	value?: string;
+	/** Default value of the setting. Read-only. */
+	default_value?: string;
+	/** Description of what this setting controls. */
+	description?: string;
 }
 
 /**
@@ -24,8 +24,8 @@ export interface Setting extends Resource {
  * Only `value` and `description` are writable — `key` and `default_value` are read-only.
  */
 export interface SettingUpdateParams {
-  /** New value for the setting. */
-  value?: string;
-  /** Updated description. */
-  description?: string;
+	/** New value for the setting. */
+	value?: string;
+	/** Updated description. */
+	description?: string;
 }
