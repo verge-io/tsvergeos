@@ -1,8 +1,8 @@
-import { NotFoundError } from "../../errors.js";
-import type { HttpClient } from "../../http.js";
-import type { FlexKey } from "../../types.js";
-import { ReadOnlyService } from "../base.js";
-import type { MachineStatus } from "./types.js";
+import { NotFoundError } from '../../errors.js';
+import type { HttpClient } from '../../http.js';
+import type { FlexKey } from '../../types.js';
+import { ReadOnlyService } from '../base.js';
+import type { MachineStatus } from './types.js';
 
 /**
  * Service for querying VergeOS machine runtime status.
@@ -27,29 +27,29 @@ import type { MachineStatus } from "./types.js";
  * ```
  */
 export class MachineStatusService extends ReadOnlyService<MachineStatus> {
-  constructor(http: HttpClient) {
-    super(http, "/machine_status", "Machine Status");
-  }
+	constructor(http: HttpClient) {
+		super(http, '/machine_status', 'Machine Status');
+	}
 
-  /**
-   * Get the runtime status for a specific machine.
-   *
-   * Filters by `machine eq {machineKey}` and returns the first matching result.
-   * Throws {@link NotFoundError} if no status entry exists for the given machine.
-   *
-   * @param machineKey - The key of the machine to look up status for.
-   * @returns The machine status resource.
-   * @throws {@link NotFoundError} If no status exists for the specified machine.
-   */
-  async getByMachine(machineKey: FlexKey): Promise<MachineStatus> {
-    const results = await this.list({
-      filter: `machine eq ${machineKey}`,
-    });
+	/**
+	 * Get the runtime status for a specific machine.
+	 *
+	 * Filters by `machine eq {machineKey}` and returns the first matching result.
+	 * Throws {@link NotFoundError} if no status entry exists for the given machine.
+	 *
+	 * @param machineKey - The key of the machine to look up status for.
+	 * @returns The machine status resource.
+	 * @throws {@link NotFoundError} If no status exists for the specified machine.
+	 */
+	async getByMachine(machineKey: FlexKey): Promise<MachineStatus> {
+		const results = await this.list({
+			filter: `machine eq ${machineKey}`,
+		});
 
-    if (results.length === 0) {
-      throw new NotFoundError(this.displayName, machineKey);
-    }
+		if (results.length === 0) {
+			throw new NotFoundError(this.displayName, machineKey);
+		}
 
-    return results[0] as MachineStatus;
-  }
+		return results[0] as MachineStatus;
+	}
 }
