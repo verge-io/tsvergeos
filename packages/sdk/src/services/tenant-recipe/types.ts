@@ -36,7 +36,7 @@ export interface TenantRecipe extends Resource {
 	preserve_certs?: boolean;
 
 	/** Parent catalog (FK to `catalogs`). */
-	catalog?: FlexKey;
+	catalog: FlexKey;
 
 	/** Recipe status (FK to `recipe_status`). Read-only. */
 	status?: FlexKey;
@@ -93,6 +93,21 @@ export interface TenantRecipeUpdateParams {
 
 	/** Recipe version string. */
 	version?: string;
+
+	/** Recipe build number. */
+	build?: number;
+
+	/** Whether the recipe has been downloaded. */
+	downloaded?: boolean;
+
+	/** Whether an update is available. */
+	update_available?: boolean;
+
+	/** Whether the recipe needs republishing. */
+	needs_republish?: boolean;
+
+	/** Recipe dependencies. */
+	dependencies?: string;
 }
 
 /**

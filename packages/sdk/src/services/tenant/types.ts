@@ -71,6 +71,9 @@ export interface Tenant extends Resource {
 	/** Theme access mode. */
 	theme_access?: ThemeAccess;
 
+	/** Resolved theme access list. Read-only. */
+	resolved_theme_access_list?: string;
+
 	// ─── Read-only fields ────────────────────────────────────────────────
 
 	/** Creation timestamp (Unix epoch). Read-only. */

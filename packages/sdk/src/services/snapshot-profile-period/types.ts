@@ -128,7 +128,8 @@ export interface SnapshotProfilePeriodCreateParams {
  * Parameters for updating an existing snapshot profile period.
  *
  * All fields are optional — only provided fields are changed.
- * Read-only fields (`profile`, `estimated_snapshot_count`) are excluded.
+ * Read-only fields (`estimated_snapshot_count`) are excluded.
+ * Note: `profile` is excluded because it is set at creation and cannot be changed.
  */
 export interface SnapshotProfilePeriodUpdateParams {
 	/** Period display name. */

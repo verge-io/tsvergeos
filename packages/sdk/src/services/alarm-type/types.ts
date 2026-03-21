@@ -21,7 +21,7 @@ export interface AlarmType extends Resource {
 	description?: string;
 
 	/** Default severity level for alarms of this type. */
-	level?: string;
+	level?: 'audit' | 'message' | 'warning' | 'error' | 'critical' | 'summary' | 'debug';
 
 	/** Threshold value that triggers the alarm. */
 	threshold?: number;

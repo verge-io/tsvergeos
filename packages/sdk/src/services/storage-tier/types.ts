@@ -1,4 +1,4 @@
-import type { Resource } from '../../types.js';
+import type { FlexKey, Resource } from '../../types.js';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -38,4 +38,7 @@ export interface StorageTier extends Resource {
 
 	/** Last modified timestamp (Unix epoch). Read-only. */
 	modified?: number;
+
+	/** Tier stats FK (to `storage_tier_stats`). Read-only. */
+	stats?: FlexKey;
 }

@@ -26,4 +26,7 @@ export interface WireGuardPeerStatus extends Resource {
 
 	/** Last update timestamp (Unix epoch). Read-only. */
 	last_update?: number;
+
+	/** Whether bulk update is in progress. */
+	bulk_update?: boolean;
 }

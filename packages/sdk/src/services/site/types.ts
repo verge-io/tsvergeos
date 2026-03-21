@@ -1,4 +1,4 @@
-import type { Resource } from '../../types.js';
+import type { FlexKey, Resource } from '../../types.js';
 
 // ─── String Literal Types ────────────────────────────────────────────────────
 
@@ -124,6 +124,18 @@ export interface Site extends Resource {
 
 	/** Remote user for authentication. Read-only. */
 	remote_user?: string;
+
+	/** Remote authentication token. */
+	remote_token?: string;
+
+	/** User FK (to `users`). Locked. */
+	user?: FlexKey;
+
+	/** Site data FK (to `site_data`). Read-only. */
+	site_data?: FlexKey;
+
+	/** Last log timestamp (Unix epoch microseconds). */
+	last_log_timestamp?: number;
 
 	/** Logo URL (144x36). */
 	logo_url?: string;
