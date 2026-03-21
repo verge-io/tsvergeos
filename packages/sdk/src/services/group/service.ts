@@ -1,4 +1,5 @@
 import type { HttpClient } from '../../http.js';
+import type { FlexKey } from '../../types.js';
 import { BaseService } from '../base.js';
 import type { Group, GroupCreateParams, GroupUpdateParams } from './types.js';
 
@@ -25,5 +26,29 @@ import type { Group, GroupCreateParams, GroupUpdateParams } from './types.js';
 export class GroupService extends BaseService<Group, GroupCreateParams, GroupUpdateParams> {
 	constructor(http: HttpClient) {
 		super(http, '/groups', 'Group');
+	}
+
+	/**
+	 * Apply a tag to a group.
+	 *
+	 * Uses the inline action endpoint: `POST /groups/{key}/tag`.
+	 *
+	 * @param key - The group ID
+	 * @param tag - The tag member reference (e.g., `"tags/123"`)
+	 */
+	async tag(key: FlexKey, tag: string): Promise<void> {
+		await this.inlineAction(key, 'tag', { member: tag });
+	}
+
+	/**
+	 * Remove a tag from a group.
+	 *
+	 * Uses the inline action endpoint: `POST /groups/{key}/untag`.
+	 *
+	 * @param key - The group ID
+	 * @param tag - The tag member reference (e.g., `"tags/123"`)
+	 */
+	async untag(key: FlexKey, tag: string): Promise<void> {
+		await this.inlineAction(key, 'untag', { member: tag });
 	}
 }

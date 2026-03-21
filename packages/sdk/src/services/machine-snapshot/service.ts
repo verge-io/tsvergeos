@@ -58,4 +58,16 @@ export class MachineSnapshotService extends BaseService<
 			filter: combinedFilter,
 		});
 	}
+
+	/**
+	 * Set the expiration timer for a machine snapshot.
+	 *
+	 * Uses the inline action endpoint: `POST /machine_snapshots/{key}/expires_timer`.
+	 *
+	 * @param key - The snapshot ID
+	 * @param expires - Expiration timestamp (Unix epoch seconds). Set to `0` to never expire.
+	 */
+	async expiresTimer(key: FlexKey, expires: number): Promise<void> {
+		await this.inlineAction(key, 'expires_timer', { expires });
+	}
 }
