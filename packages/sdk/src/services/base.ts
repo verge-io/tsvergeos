@@ -71,6 +71,43 @@ function normalizeKey<T extends Resource>(item: T): T {
 }
 
 /**
+ * Shallow FK normalization safety net.
+ *
+ * When the API unexpectedly expands a foreign-key field into a full object
+ * (e.g., `{ cluster: { $key: 3, name: "default" } }` instead of `{ cluster: 3 }`),
+ * this function collapses it back to the scalar key value.
+ *
+ * Only operates on the top level of properties — no recursion, so JSON blob
+ * fields like `meta`, `packages`, and `config` are never corrupted.
+ *
+ * @internal
+ */
+function normalizeForeignKeys<T extends Resource>(item: T): T {
+	const obj = item as Record<string, unknown>;
+	for (const key of Object.keys(obj)) {
+		if (key === '$key') continue;
+		const val = obj[key];
+		if (val !== null && typeof val === 'object' && !Array.isArray(val)) {
+			const record = val as Record<string, unknown>;
+			if ('$key' in record) {
+				obj[key] = record.$key;
+			} else if ('id' in record && typeof record.id !== 'object') {
+				obj[key] = record.id;
+			}
+		} else if (Array.isArray(val)) {
+			obj[key] = val.map((el) => {
+				if (el !== null && typeof el === 'object') {
+					if ('$key' in el) return el.$key;
+					if ('id' in el && typeof el.id !== 'object') return el.id;
+				}
+				return el;
+			});
+		}
+	}
+	return item;
+}
+
+/**
  * Read-only service base class providing list, get, and pagination operations.
  *
  * Extend this class for resources that the SDK should only read — never create,
@@ -87,6 +124,18 @@ export class ReadOnlyService<T extends Resource> {
 
 	/** Human-readable resource name for error messages (e.g., `'VM'`). */
 	protected readonly displayName: string;
+
+	/**
+	 * Per-service default fields for API requests.
+	 *
+	 * When set by a subclass, these fields are used instead of `'most'` for
+	 * `list()` and `get()` calls where the caller does not provide explicit
+	 * `fields`. This enables cross-resource joins (e.g., `machine#status#status`)
+	 * so that derived fields like power state are reliably populated.
+	 *
+	 * User-provided `fields` always take precedence.
+	 */
+	protected defaultFields?: string[];
 
 	/**
 	 * @param http - The HTTP client for making API requests
@@ -108,11 +157,11 @@ export class ReadOnlyService<T extends Resource> {
 	async list(options?: ListOptions): Promise<T[]> {
 		const merged = { ...options };
 		if (merged.fields === undefined) {
-			merged.fields = 'most';
+			merged.fields = this.defaultFields ?? 'most';
 		}
 		const params = serializeListOptions(merged);
 		const items = await this.http.get<T[]>(this.resource, params ? { params } : undefined);
-		return items.map(normalizeKey);
+		return items.map((item) => normalizeForeignKeys(normalizeKey(item)));
 	}
 
 	/**
@@ -123,11 +172,12 @@ export class ReadOnlyService<T extends Resource> {
 	 * @throws {@link NotFoundError} if the resource does not exist
 	 */
 	async get(key: FlexKey): Promise<T> {
+		const fields = this.defaultFields ?? 'most';
 		try {
 			const item = await this.http.get<T>(`${this.resource}/${key}`, {
-				params: { fields: 'most' },
+				params: { fields },
 			});
-			return normalizeKey(item);
+			return normalizeForeignKeys(normalizeKey(item));
 		} catch (err) {
 			if (isNotFoundError(err)) {
 				throw new NotFoundError(this.displayName, key);
