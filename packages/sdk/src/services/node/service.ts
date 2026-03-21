@@ -84,4 +84,103 @@ export class NodeService extends WritableService<Node, NodeUpdateParams> {
 	async maintenanceReboot(key: FlexKey): Promise<void> {
 		await this.dispatchAction('maintenance_reboot', key);
 	}
+
+	/**
+	 * Power on a node.
+	 *
+	 * @param key - The node ID
+	 */
+	async powerOn(key: FlexKey): Promise<void> {
+		await this.dispatchAction('poweron', key);
+	}
+
+	/**
+	 * Power off a node.
+	 *
+	 * @param key - The node ID
+	 */
+	async powerOff(key: FlexKey): Promise<void> {
+		await this.dispatchAction('poweroff', key);
+	}
+
+	/**
+	 * Reset a node.
+	 *
+	 * @param key - The node ID
+	 */
+	async reset(key: FlexKey): Promise<void> {
+		await this.dispatchAction('reset', key);
+	}
+
+	/**
+	 * Refresh node state.
+	 *
+	 * @param key - The node ID
+	 */
+	async refresh(key: FlexKey): Promise<void> {
+		await this.dispatchAction('refresh', key);
+	}
+
+	/**
+	 * Force kill a node.
+	 *
+	 * @param key - The node ID
+	 */
+	async kill(key: FlexKey): Promise<void> {
+		await this.dispatchAction('kill', key);
+	}
+
+	/**
+	 * Refresh cluster status for a node.
+	 *
+	 * @param key - The node ID
+	 */
+	async refreshStatus(key: FlexKey): Promise<void> {
+		await this.dispatchAction('refresh_status', key);
+	}
+
+	/**
+	 * Receive file from provider.
+	 *
+	 * @param key - The node ID
+	 */
+	async receiveFile(key: FlexKey): Promise<void> {
+		await this.dispatchAction('receive_file', key);
+	}
+
+	/**
+	 * Get network interfaces for a node.
+	 *
+	 * @param key - The node ID
+	 */
+	async getInterfaces(key: FlexKey): Promise<void> {
+		await this.dispatchAction('interfaces', key);
+	}
+
+	/**
+	 * Test IPMI connectivity for a node.
+	 *
+	 * @param key - The node ID
+	 */
+	async testIpmi(key: FlexKey): Promise<void> {
+		await this.dispatchAction('ipmi_test', key);
+	}
+
+	/**
+	 * Clear IPMI System Event Log for a node.
+	 *
+	 * @param key - The node ID
+	 */
+	async clearSel(key: FlexKey): Promise<void> {
+		await this.dispatchAction('clear_sel', key);
+	}
+
+	/**
+	 * Refresh fabric status for a node.
+	 *
+	 * @param key - The node ID
+	 */
+	async refreshFabricStatus(key: FlexKey): Promise<void> {
+		await this.dispatchAction('refresh_fabric_status', key);
+	}
 }
