@@ -1,4 +1,4 @@
-import type { FlexKey, Resource } from '../../types.js';
+import type { FlexKey, Resource } from "../../types.js";
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -15,50 +15,50 @@ import type { FlexKey, Resource } from '../../types.js';
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface IPSec extends Resource {
-	/** Parent network reference (FK to `vnets`). Read-only. */
-	vnet: FlexKey;
+  /** Parent network reference (FK to `vnets`). Read-only. */
+  vnet: FlexKey;
 
-	/** Whether IPSec is enabled on this network. Default: `true`. */
-	enabled?: boolean;
+  /** Whether IPSec is enabled on this network. Default: `true`. */
+  enabled?: boolean;
 
-	/** Configuration mode: `normal` (GUI-based) or `advanced` (raw config files). Default: `normal`. */
-	mode?: string;
+  /** Configuration mode: `normal` (GUI-based) or `advanced` (raw config files). Default: `normal`. */
+  mode?: string;
 
-	/** Raw strongswan.conf content (advanced mode only). */
-	strongswan_conf?: string;
+  /** Raw strongswan.conf content (advanced mode only). */
+  strongswan_conf?: string;
 
-	/** Raw ipsec.conf content (advanced mode only). */
-	ipsec_conf?: string;
+  /** Raw ipsec.conf content (advanced mode only). */
+  ipsec_conf?: string;
 
-	/** Raw ipsec.secrets content (advanced mode only). */
-	ipsec_secrets?: string;
+  /** Raw ipsec.secrets content (advanced mode only). */
+  ipsec_secrets?: string;
 
-	/** Unique participant ID handling: `yes`, `no`, `never`, `replace`, `keep`. Default: `yes`. */
-	uniqueids?: string;
+  /** Unique participant ID handling: `yes`, `no`, `never`, `replace`, `keep`. Default: `yes`. */
+  uniqueids?: string;
 
-	/** Whether to propose IPComp compression. Default: `false`. */
-	compress?: boolean;
+  /** Whether to propose IPComp compression. Default: `false`. */
+  compress?: boolean;
 
-	/** Whether to exclude local subnet traffic from IPSec. Default: `true`. */
-	exclude_network?: boolean;
+  /** Whether to exclude local subnet traffic from IPSec. Default: `true`. */
+  exclude_network?: boolean;
 
-	/** Send Cisco Unity vendor ID payload (IKEv1 only). Default: `false`. */
-	'charon.cisco_unity'?: boolean;
+  /** Send Cisco Unity vendor ID payload (IKEv1 only). Default: `false`. */
+  "charon.cisco_unity"?: boolean;
 
-	/** Accept unencrypted ID/HASH payloads in IKEv1 Main Mode. Default: `false`. */
-	'charon.accept_unencrypted_mainmode_messages'?: boolean;
+  /** Accept unencrypted ID/HASH payloads in IKEv1 Main Mode. Default: `false`. */
+  "charon.accept_unencrypted_mainmode_messages"?: boolean;
 
-	/** MSS to set on installed routes (0 = disabled). Default: `0`. */
-	'charon.plugins.kernel-netlink.mss'?: number;
+  /** MSS to set on installed routes (0 = disabled). Default: `0`. */
+  "charon.plugins.kernel-netlink.mss"?: number;
 
-	/** CRL validation policy: `yes`, `ifuri`, `no`. Default: `no`. */
-	strictcrlpolicy?: string;
+  /** CRL validation policy: `yes`, `ifuri`, `no`. Default: `no`. */
+  strictcrlpolicy?: string;
 
-	/** Use make-before-break reauthentication (IKEv2). Default: `false`. */
-	'charon.make_before_break'?: boolean;
+  /** Use make-before-break reauthentication (IKEv2). Default: `false`. */
+  "charon.make_before_break"?: boolean;
 
-	/** Last modification timestamp (Unix epoch). Read-only. */
-	modified?: number;
+  /** Last modification timestamp (Unix epoch). Read-only. */
+  modified?: number;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -69,32 +69,47 @@ export interface IPSec extends Resource {
  * `vnet` is required. Only one IPSec config may exist per network.
  */
 export interface IPSecCreateParams {
-	/** Parent network reference (FK to `vnets`). */
-	vnet: FlexKey;
+  /** Parent network reference (FK to `vnets`). */
+  vnet: FlexKey;
 
-	/** Whether IPSec is enabled. Default: `true`. */
-	enabled?: boolean;
+  /** Whether IPSec is enabled. Default: `true`. */
+  enabled?: boolean;
 
-	/** Configuration mode: `normal` or `advanced`. Default: `normal`. */
-	mode?: string;
+  /** Configuration mode: `normal` or `advanced`. Default: `normal`. */
+  mode?: string;
 
-	/** Raw strongswan.conf content (advanced mode). */
-	strongswan_conf?: string;
+  /** Raw strongswan.conf content (advanced mode). */
+  strongswan_conf?: string;
 
-	/** Raw ipsec.conf content (advanced mode). */
-	ipsec_conf?: string;
+  /** Raw ipsec.conf content (advanced mode). */
+  ipsec_conf?: string;
 
-	/** Raw ipsec.secrets content (advanced mode). */
-	ipsec_secrets?: string;
+  /** Raw ipsec.secrets content (advanced mode). */
+  ipsec_secrets?: string;
 
-	/** Unique participant ID handling. Default: `yes`. */
-	uniqueids?: string;
+  /** Unique participant ID handling. Default: `yes`. */
+  uniqueids?: string;
 
-	/** Whether to propose IPComp compression. */
-	compress?: boolean;
+  /** Whether to propose IPComp compression. */
+  compress?: boolean;
 
-	/** Whether to exclude local subnet traffic from IPSec. */
-	exclude_network?: boolean;
+  /** Whether to exclude local subnet traffic from IPSec. */
+  exclude_network?: boolean;
+
+  /** Send Cisco Unity vendor ID payload (IKEv1 only). */
+  "charon.cisco_unity"?: boolean;
+
+  /** Accept unencrypted ID/HASH payloads in IKEv1 Main Mode. */
+  "charon.accept_unencrypted_mainmode_messages"?: boolean;
+
+  /** MSS to set on installed routes (0 = disabled). */
+  "charon.plugins.kernel-netlink.mss"?: number;
+
+  /** CRL validation policy: `yes`, `ifuri`, `no`. */
+  strictcrlpolicy?: string;
+
+  /** Use make-before-break reauthentication (IKEv2). */
+  "charon.make_before_break"?: boolean;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
@@ -106,42 +121,42 @@ export interface IPSecCreateParams {
  * Read-only fields (`vnet`, `modified`) are excluded.
  */
 export interface IPSecUpdateParams {
-	/** Whether IPSec is enabled. */
-	enabled?: boolean;
+  /** Whether IPSec is enabled. */
+  enabled?: boolean;
 
-	/** Configuration mode: `normal` or `advanced`. */
-	mode?: string;
+  /** Configuration mode: `normal` or `advanced`. */
+  mode?: string;
 
-	/** Raw strongswan.conf content. */
-	strongswan_conf?: string;
+  /** Raw strongswan.conf content. */
+  strongswan_conf?: string;
 
-	/** Raw ipsec.conf content. */
-	ipsec_conf?: string;
+  /** Raw ipsec.conf content. */
+  ipsec_conf?: string;
 
-	/** Raw ipsec.secrets content. */
-	ipsec_secrets?: string;
+  /** Raw ipsec.secrets content. */
+  ipsec_secrets?: string;
 
-	/** Unique participant ID handling. */
-	uniqueids?: string;
+  /** Unique participant ID handling. */
+  uniqueids?: string;
 
-	/** Whether to propose IPComp compression. */
-	compress?: boolean;
+  /** Whether to propose IPComp compression. */
+  compress?: boolean;
 
-	/** Whether to exclude local subnet traffic from IPSec. */
-	exclude_network?: boolean;
+  /** Whether to exclude local subnet traffic from IPSec. */
+  exclude_network?: boolean;
 
-	/** Send Cisco Unity vendor ID payload. */
-	'charon.cisco_unity'?: boolean;
+  /** Send Cisco Unity vendor ID payload. */
+  "charon.cisco_unity"?: boolean;
 
-	/** Accept unencrypted ID/HASH in IKEv1 Main Mode. */
-	'charon.accept_unencrypted_mainmode_messages'?: boolean;
+  /** Accept unencrypted ID/HASH in IKEv1 Main Mode. */
+  "charon.accept_unencrypted_mainmode_messages"?: boolean;
 
-	/** MSS to set on installed routes. */
-	'charon.plugins.kernel-netlink.mss'?: number;
+  /** MSS to set on installed routes. */
+  "charon.plugins.kernel-netlink.mss"?: number;
 
-	/** CRL validation policy. */
-	strictcrlpolicy?: string;
+  /** CRL validation policy. */
+  strictcrlpolicy?: string;
 
-	/** Use make-before-break reauthentication. */
-	'charon.make_before_break'?: boolean;
+  /** Use make-before-break reauthentication. */
+  "charon.make_before_break"?: boolean;
 }
