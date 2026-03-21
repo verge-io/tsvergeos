@@ -1,3 +1,4 @@
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey } from '../../types.js';
 import { WritableService } from '../base.js';
@@ -60,7 +61,7 @@ export class VMRecipeService extends WritableService<VMRecipe, VMRecipeUpdatePar
 	 */
 	async getQuestions(key: FlexKey): Promise<RecipeQuestion[]> {
 		return this.http.get<RecipeQuestion[]>('/recipe_questions', {
-			params: { filter: `recipe eq 'vm_recipes/${key}'` },
+			params: { filter: `recipe eq ${quoteFilterString(`vm_recipes/${key}`)}` },
 		});
 	}
 
@@ -76,7 +77,7 @@ export class VMRecipeService extends WritableService<VMRecipe, VMRecipeUpdatePar
 	 */
 	async getSections(key: FlexKey): Promise<RecipeSection[]> {
 		return this.http.get<RecipeSection[]>('/recipe_sections', {
-			params: { filter: `recipe eq 'vm_recipes/${key}'` },
+			params: { filter: `recipe eq ${quoteFilterString(`vm_recipes/${key}`)}` },
 		});
 	}
 

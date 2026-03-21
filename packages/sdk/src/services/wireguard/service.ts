@@ -1,4 +1,5 @@
 import { NotFoundError } from '../../errors.js';
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey, ListOptions } from '../../types.js';
 import { BaseService } from '../base.js';
@@ -82,7 +83,7 @@ export class WireGuardService extends BaseService<
 		if (name !== undefined) {
 			// Scoped lookup: getByName(vnetKey, name)
 			const results = await this.list({
-				filter: `vnet eq ${vnetKeyOrName} and name eq '${name}'`,
+				filter: `vnet eq ${vnetKeyOrName} and name eq ${quoteFilterString(name)}`,
 			});
 			if (results.length === 0) {
 				throw new NotFoundError(this.displayName, name);

@@ -1,3 +1,4 @@
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey, ListOptions } from '../../types.js';
 import { BaseService } from '../base.js';
@@ -75,7 +76,7 @@ export class NetworkHostService extends BaseService<
 	 */
 	async getByHost(vnetKey: FlexKey, hostname: string): Promise<NetworkHost | undefined> {
 		const results = await this.listByNetwork(vnetKey, {
-			filter: `host eq '${hostname}'`,
+			filter: `host eq ${quoteFilterString(hostname)}`,
 		});
 		return results[0];
 	}
@@ -92,7 +93,7 @@ export class NetworkHostService extends BaseService<
 	 */
 	async getByIP(vnetKey: FlexKey, ip: string): Promise<NetworkHost | undefined> {
 		const results = await this.listByNetwork(vnetKey, {
-			filter: `ip eq '${ip}'`,
+			filter: `ip eq ${quoteFilterString(ip)}`,
 		});
 		return results[0];
 	}

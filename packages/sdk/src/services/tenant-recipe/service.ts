@@ -1,3 +1,4 @@
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey } from '../../types.js';
 import { WritableService } from '../base.js';
@@ -56,7 +57,9 @@ export class TenantRecipeService extends WritableService<TenantRecipe, TenantRec
 	 */
 	async getQuestions(key: FlexKey): Promise<RecipeQuestion[]> {
 		return this.http.get<RecipeQuestion[]>('/recipe_questions', {
-			params: { filter: `recipe eq 'tenant_recipes/${key}'` },
+			params: {
+				filter: `recipe eq ${quoteFilterString(`tenant_recipes/${key}`)}`,
+			},
 		});
 	}
 
@@ -72,7 +75,9 @@ export class TenantRecipeService extends WritableService<TenantRecipe, TenantRec
 	 */
 	async getSections(key: FlexKey): Promise<RecipeSection[]> {
 		return this.http.get<RecipeSection[]>('/recipe_sections', {
-			params: { filter: `recipe eq 'tenant_recipes/${key}'` },
+			params: {
+				filter: `recipe eq ${quoteFilterString(`tenant_recipes/${key}`)}`,
+			},
 		});
 	}
 

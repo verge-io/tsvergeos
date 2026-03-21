@@ -1,4 +1,5 @@
 import { NotFoundError } from '../../errors.js';
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey } from '../../types.js';
 import { BaseService } from '../base.js';
@@ -53,7 +54,7 @@ export class PermissionService extends BaseService<
 	 * @returns Array of permissions for the specified table
 	 */
 	async listByTable(table: string): Promise<Permission[]> {
-		return this.list({ filter: `table eq '${table}'` });
+		return this.list({ filter: `table eq ${quoteFilterString(table)}` });
 	}
 
 	/**
@@ -64,7 +65,9 @@ export class PermissionService extends BaseService<
 	 * @returns Array of permissions for the specified resource
 	 */
 	async listByResource(table: string, rowId: number): Promise<Permission[]> {
-		return this.list({ filter: `table eq '${table}' and row eq ${rowId}` });
+		return this.list({
+			filter: `table eq ${quoteFilterString(table)} and row eq ${rowId}`,
+		});
 	}
 
 	/**
@@ -82,7 +85,7 @@ export class PermissionService extends BaseService<
 		rowId: number,
 	): Promise<Permission> {
 		const results = await this.list({
-			filter: `identity eq ${identityKey} and table eq '${table}' and row eq ${rowId}`,
+			filter: `identity eq ${identityKey} and table eq ${quoteFilterString(table)} and row eq ${rowId}`,
 		});
 		if (results.length === 0) {
 			throw new NotFoundError('Permission', `${identityKey}/${table}/${rowId}`);

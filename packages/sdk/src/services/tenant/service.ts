@@ -1,5 +1,6 @@
 import { VergeClient } from '../../client.js';
 import { NotFoundError, ValidationError } from '../../errors.js';
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { ClientConfig, FlexKey, Resource } from '../../types.js';
 import { BaseService } from '../base.js';
@@ -205,7 +206,7 @@ export class TenantService extends BaseService<Tenant, TenantCreateParams, Tenan
 
 		// Find the crash cart VM
 		const vms = await this.http.get<Resource[]>('/vms', {
-			params: { filter: `name eq '${crashCartName}'` },
+			params: { filter: `name eq ${quoteFilterString(crashCartName)}` },
 		});
 
 		if (vms.length === 0) {

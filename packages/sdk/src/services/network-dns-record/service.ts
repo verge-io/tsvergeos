@@ -1,3 +1,4 @@
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey, ListOptions } from '../../types.js';
 import { BaseService } from '../base.js';
@@ -84,7 +85,7 @@ export class NetworkDnsRecordService extends BaseService<
 		recordType: DnsRecordType,
 		options?: ListOptions,
 	): Promise<NetworkDnsRecord[]> {
-		const typeFilter = `type eq '${recordType}'`;
+		const typeFilter = `type eq ${quoteFilterString(recordType)}`;
 		return this.listByZone(zoneKey, {
 			...options,
 			filter: options?.filter ? `${typeFilter} and ${options.filter}` : typeFilter,
@@ -109,7 +110,7 @@ export class NetworkDnsRecordService extends BaseService<
 		recordType: DnsRecordType,
 	): Promise<NetworkDnsRecord | undefined> {
 		const results = await this.listByZone(zoneKey, {
-			filter: `host eq '${host}' and type eq '${recordType}'`,
+			filter: `host eq ${quoteFilterString(host)} and type eq ${quoteFilterString(recordType)}`,
 		});
 		return results[0];
 	}

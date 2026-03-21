@@ -1,4 +1,5 @@
 import { NotFoundError } from '../../errors.js';
+import { quoteFilterString } from '../../filter.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey } from '../../types.js';
 import { BaseService } from '../base.js';
@@ -69,7 +70,7 @@ export class MemberService extends BaseService<Member, MemberCreateParams, Membe
 	 */
 	async remove(groupKey: FlexKey, member: string): Promise<void> {
 		const results = await this.list({
-			filter: `parent_group eq ${groupKey} and member eq '${member}'`,
+			filter: `parent_group eq ${groupKey} and member eq ${quoteFilterString(member)}`,
 		});
 		if (results.length === 0) {
 			throw new NotFoundError('Member', `${groupKey}/${member}`);
