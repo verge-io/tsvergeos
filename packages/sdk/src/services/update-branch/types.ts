@@ -11,7 +11,7 @@ import type { Resource } from '../../types.js';
  */
 export interface UpdateBranch extends Resource {
 	/** Unique branch identifier. */
-	name?: string;
+	name: string;
 
 	/** Human-readable branch description (display field). */
 	description?: string;

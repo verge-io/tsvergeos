@@ -11,7 +11,7 @@ export type CloudInitFileRender = 'no' | 'variables' | 'jinja2';
 export interface CloudInitFile extends Resource {
 	id?: string;
 	owner?: FlexKey;
-	name?: string;
+	name: string;
 	allocated_bytes?: number;
 	used_bytes?: number;
 	filesize?: number;

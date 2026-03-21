@@ -57,15 +57,15 @@ export type LogObjectType =
  */
 export interface Log extends Resource {
 	/** Log severity level. */
-	level: LogLevel;
+	level?: LogLevel;
 	/** Log message text. */
-	text: string;
+	text?: string;
 	/** Timestamp in microseconds since epoch (read-only). */
-	timestamp: number;
+	timestamp?: number;
 	/** Username associated with this log entry. */
-	user: string;
+	user?: string;
 	/** Type of object this log relates to. */
-	object_type: LogObjectType;
+	object_type?: LogObjectType;
 	/** Name of the object this log relates to. */
-	object_name: string;
+	object_name?: string;
 }

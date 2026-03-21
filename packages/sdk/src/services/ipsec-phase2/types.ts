@@ -90,7 +90,7 @@ export interface IPSecPhase2CreateParams {
 	protocol?: IPSecProtocol;
 
 	/** Cipher suites. Default: `aes128-sha256-modp2048,aes128gcm128-sha256-modp2048`. */
-	ciphers?: string;
+	ciphers: string;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
