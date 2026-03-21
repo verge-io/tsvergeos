@@ -211,6 +211,12 @@ export interface TenantUpdateParams {
 
 // ─── Action Option Types ─────────────────────────────────────────────────────
 
+/** Options for giving a file to a tenant. */
+export interface TenantGiveFileOptions {
+	/** File reference (FK to files). */
+	file: FlexKey;
+}
+
 /** Options for the tenant clone action. */
 export interface TenantCloneOptions {
 	/** Name for the cloned tenant. */
