@@ -94,34 +94,34 @@ export VERGEOS_TIMEOUT=60
 const client = await VergeClient.connectFromEnv();
 ```
 
-## Tree-Shakeable Imports
+## Service Registration
 
-Services self-register via side-effect imports. Import only what you need for minimal bundle size:
+The SDK uses tree-shakeable imports — services are registered via side-effect imports so unused services are dead-code eliminated from your bundle.
+
+### Three import levels
 
 ```typescript
+// 1. Default: ~40 most-used services (VMs, networks, tenants, storage, etc.)
 import { VergeClient } from "tsvergeos";
-import "tsvergeos/services/vm";
-import "tsvergeos/services/network";
 
-// Only VM and network services are bundled
-const client = await VergeClient.connect({ host: "...", apiKey: "..." });
-await client.vms.list();
-await client.networks.list();
+// 2. Full: all 84 services (alarms, update settings, storage tiers, etc.)
+import { VergeClient } from "tsvergeos";
+import "tsvergeos/full";
+
+// 3. Individual: pick exactly what you need
+import { VergeClient } from "tsvergeos";
+import "tsvergeos/services/alarm";
+import "tsvergeos/services/storage-tier";
 ```
 
-Or import everything at once for scripts and backend use:
+**Important:** The default import does _not_ include every service. If you access a service that isn't registered (e.g., `client.alarms` without importing it), you'll get `undefined`. For dashboards, admin tools, or backend scripts where bundle size doesn't matter, use `import 'tsvergeos/full'` to register everything.
+
+### Type-only imports
+
+Type imports have zero bundle impact regardless of which services are registered:
 
 ```typescript
-import { VergeClient } from "tsvergeos/full";
-
-// All 84 services registered
-const client = await VergeClient.connect({ host: "...", apiKey: "..." });
-```
-
-Type-only imports have zero bundle impact:
-
-```typescript
-import type { VM, Network, Tenant, Volume } from "tsvergeos/types";
+import type { VM, Alarm, Network, Tenant, Volume } from "tsvergeos/types";
 ```
 
 ## Filtering and Queries
