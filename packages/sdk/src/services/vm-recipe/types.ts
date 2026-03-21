@@ -210,7 +210,7 @@ export interface VMRecipe extends Resource {
 	description?: string;
 
 	/** Parent catalog (FK to `catalogs`). */
-	catalog?: FlexKey;
+	catalog: FlexKey;
 
 	/** Recipe status (FK to `recipe_status`). Read-only. */
 	status?: FlexKey;
@@ -273,6 +273,30 @@ export interface VMRecipeUpdateParams {
 
 	/** Recipe version string. */
 	version?: string;
+
+	/** Recipe build number. */
+	build?: number;
+
+	/** Whether the recipe has been downloaded. */
+	downloaded?: boolean;
+
+	/** Whether an update is available. */
+	update_available?: boolean;
+
+	/** Whether the recipe needs republishing. */
+	needs_republish?: boolean;
+
+	/** Recipe dependencies. */
+	dependencies?: string;
+
+	/** Total size in bytes. */
+	size?: number;
+
+	/** Recipe assets (JSON). */
+	assets?: unknown;
+
+	/** Whether the recipe has question assets. */
+	question_assets?: boolean;
 }
 
 /**

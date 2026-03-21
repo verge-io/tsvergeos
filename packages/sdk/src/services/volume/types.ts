@@ -130,6 +130,9 @@ export interface Volume extends Resource {
 
 	/** Antivirus reference (FK to `volume_antivirus`). Read-only. */
 	vol_antivirus?: FlexKey;
+
+	/** Additional setting values (JSON). */
+	additional_setting_values?: unknown;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────

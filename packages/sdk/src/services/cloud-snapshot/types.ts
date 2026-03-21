@@ -134,4 +134,10 @@ export interface CloudSnapshotUpdateParams {
 
 	/** Additional status information. */
 	status_info?: string;
+
+	/** Whether this snapshot is provided to other sites. */
+	provider?: boolean;
+
+	/** Whether this snapshot is synced to a remote site. */
+	remote_sync?: boolean;
 }

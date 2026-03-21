@@ -94,8 +94,6 @@ export interface VgFileCreateParams {
 	allocated_bytes?: number;
 	/** Preferred storage tier (1-5). */
 	preferred_tier?: FilePreferredTier;
-	/** Source URL to import the file from. */
-	url?: string;
 }
 
 /**

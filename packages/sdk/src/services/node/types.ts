@@ -116,6 +116,15 @@ export interface Node extends Resource {
 	stats?: FlexKey;
 	/** Whether a driver reload is required (read-only). */
 	reload_drivers_required?: boolean;
+
+	/** Installed packages (JSON). Locked. */
+	packages?: unknown;
+
+	/** Last processed IPMI SEL event ID. */
+	ipmi_sel_last_id?: string;
+
+	/** Last processed RAS MC timestamp (Unix epoch). */
+	ras_mc_last_timestamp?: number;
 }
 
 /**

@@ -51,6 +51,15 @@ export interface UpdateSettings extends Resource {
 	/** Whether to create a cloud snapshot before updating. */
 	snapshot_cloud_on_update?: boolean;
 
+	/** Snapshot expiration period in seconds when created before updates. Default: `21600`. */
+	snapshot_cloud_expire_seconds?: number;
+
+	/** URL for release notes. Read-only. */
+	release_notes_url?: string;
+
+	/** Whether to anonymize statistics sent to the update server. */
+	anonymize_statistics?: boolean;
+
 	/** Currently installed version. Read-only. */
 	installed?: boolean;
 
@@ -114,4 +123,10 @@ export interface UpdateSettingsUpdateParams {
 
 	/** Whether to create a cloud snapshot before updating. */
 	snapshot_cloud_on_update?: boolean;
+
+	/** Snapshot expiration period in seconds when created before updates. */
+	snapshot_cloud_expire_seconds?: number;
+
+	/** Whether to anonymize statistics sent to the update server. */
+	anonymize_statistics?: boolean;
 }

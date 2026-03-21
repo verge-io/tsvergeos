@@ -106,4 +106,7 @@ export interface AlarmUpdateParams {
 
 	/** Snooze threshold value. */
 	snooze_threshold?: number;
+
+	/** User who snoozed this alarm. */
+	snoozed_by?: string;
 }

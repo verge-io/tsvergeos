@@ -135,7 +135,7 @@ export interface MachineDrive extends Resource {
 	preserve_drive_format?: boolean;
 
 	/** Strict fsync setting. Empty = system default, `0` = off, `1` = on. */
-	fsync?: string;
+	fsync?: '' | '0' | '1';
 
 	/** Whether TRIM/discard is enabled. Default: `true`. */
 	discard?: boolean;
@@ -145,6 +145,12 @@ export interface MachineDrive extends Resource {
 
 	/** Asset tag (used for recipe/snapshot identification). */
 	asset?: string;
+
+	/** Whether the drive was skipped during creation. */
+	nocreate?: boolean;
+
+	/** Whether this is a hot-spare drive. */
+	spare?: boolean;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -199,7 +205,7 @@ export interface MachineDriveCreateParams {
 	preserve_drive_format?: boolean;
 
 	/** Strict fsync setting. Empty = system default, `0` = off, `1` = on. */
-	fsync?: string;
+	fsync?: '' | '0' | '1';
 
 	/** Whether TRIM/discard is enabled. */
 	discard?: boolean;
@@ -257,7 +263,7 @@ export interface MachineDriveUpdateParams {
 	preserve_drive_format?: boolean;
 
 	/** Strict fsync setting. Empty = system default, `0` = off, `1` = on. */
-	fsync?: string;
+	fsync?: '' | '0' | '1';
 
 	/** Whether TRIM/discard is enabled. */
 	discard?: boolean;
