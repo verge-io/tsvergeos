@@ -267,6 +267,11 @@ export type {
 } from "./services/machine-snapshot/types.js";
 export type { MachineStats } from "./services/machine-stats/types.js";
 export type {
+  MachineState,
+  MachineStatus,
+  MachineStatusValue,
+} from "./services/machine-status/types.js";
+export type {
   Member,
   MemberCreateParams,
   MemberUpdateParams,

@@ -1,9 +1,9 @@
-import type { FlexKey, Resource } from '../../types.js';
+import type { FlexKey, Resource } from "../../types.js";
 
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Behavior when the host node loses power. */
-export type TenantNodeOnPowerLoss = 'power_on' | 'last_state' | 'leave_off';
+export type TenantNodeOnPowerLoss = "power_on" | "last_state" | "leave_off";
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -17,70 +17,75 @@ export type TenantNodeOnPowerLoss = 'power_on' | 'last_state' | 'leave_off';
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface TenantNode extends Resource {
-	/** Parent tenant (FK to `tenants`). Read-only after creation. */
-	tenant: FlexKey;
+  /** Parent tenant (FK to `tenants`). Read-only after creation. */
+  tenant: FlexKey;
 
-	/** Node ID within the tenant. Min 1. */
-	nodeid?: number;
+  /** Node ID within the tenant. Min 1. */
+  nodeid?: number;
 
-	/** Node display name. Min 1, max 128 characters. Unique. */
-	name?: string;
+  /** Node display name. Min 1, max 128 characters. Unique. */
+  name?: string;
 
-	/** Human-readable description. Max 2048 characters. */
-	description?: string;
+  /** Human-readable description. Max 2048 characters. */
+  description?: string;
 
-	/** Whether the node is enabled. Default: `true`. */
-	enabled?: boolean;
+  /** Whether the node is enabled. Default: `true`. */
+  enabled?: boolean;
 
-	/** Number of CPU cores. Min 1, max 1048576. Default: `4`. */
-	cpu_cores?: number;
+  /** Number of CPU cores. Min 1, max 1048576. Default: `4`. */
+  cpu_cores?: number;
 
-	/** RAM in MB. Min 2048, max 5242880. Default: `16384`. */
-	ram?: number;
+  /** RAM in MB. Min 2048, max 5242880. Default: `16384`. */
+  ram?: number;
 
-	/** Cluster assignment (FK to `clusters`). */
-	cluster?: FlexKey;
+  /** Cluster assignment (FK to `clusters`). */
+  cluster?: FlexKey;
 
-	/** Failover cluster (FK to `clusters`). */
-	cluster_failover?: FlexKey;
+  /** Failover cluster (FK to `clusters`). */
+  cluster_failover?: FlexKey;
 
-	/** Preferred host node (FK to `nodes`). */
-	preferred_node?: FlexKey;
+  /** Preferred host node (FK to `nodes`). */
+  preferred_node?: FlexKey;
 
-	/** HA group name. */
-	ha_group?: string;
+  /** HA group name. */
+  ha_group?: string;
 
-	/** Behavior on host power loss. Default: `last_state`. */
-	on_power_loss?: TenantNodeOnPowerLoss;
+  /** Behavior on host power loss. Default: `last_state`. */
+  on_power_loss?: TenantNodeOnPowerLoss;
 
-	/** Whether the node is currently powered on. */
-	powerstate?: boolean;
+  /**
+   * Whether the node is currently powered on.
+   *
+   * **Note:** The API often omits this field. For reliable power state,
+   * use {@link MachineStatus} via `client.machineStatuses.getByMachine()`.
+   */
+  powerstate?: boolean;
 
-	/** Whether this resource is a snapshot. */
-	is_snapshot?: boolean;
+  /** Whether this resource is a snapshot. */
+  is_snapshot?: boolean;
 
-	/** Owner reference (FK). */
-	owner?: FlexKey;
+  /** Owner reference (FK). */
+  owner?: FlexKey;
 
-	/** DB version string. */
-	db_version?: string;
+  /** DB version string. */
+  db_version?: string;
 
-	// ─── Read-only fields ────────────────────────────────────────────────
+  // ─── Read-only fields ────────────────────────────────────────────────
 
-	/** Underlying machine reference (FK to `machines`). Read-only. */
-	machine?: FlexKey;
+  /** Underlying machine reference (FK to `machines`). Read-only. */
+  machine?: FlexKey;
 
-	/** Reserve owner (FK to `tenant_nodes`). Read-only. */
-	reserve_owner?: FlexKey;
+  /** Reserve owner (FK to `tenant_nodes`). Read-only. */
+  reserve_owner?: FlexKey;
 
-	/** Creation timestamp (Unix epoch). Read-only. */
-	created?: number;
+  /** Creation timestamp (Unix epoch). Read-only. */
+  created?: number;
 
-	/** Last modified timestamp (Unix epoch). Read-only. */
-	modified?: number;
+  /** Last modified timestamp (Unix epoch). Read-only. */
+  modified?: number;
 
-	/** User who created this node. Read-only. */
-	creator?: string;
+  /** User who created this node. Read-only. */
+  creator?: string;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -92,47 +97,47 @@ export interface TenantNode extends Resource {
  * `created`, `modified`, `creator`) are excluded.
  */
 export interface TenantNodeCreateParams {
-	/** Parent tenant (FK to `tenants`). Required. */
-	tenant: FlexKey;
+  /** Parent tenant (FK to `tenants`). Required. */
+  tenant: FlexKey;
 
-	/** Number of CPU cores. Min 1, max 1048576. Default: `4`. */
-	cpu_cores?: number;
+  /** Number of CPU cores. Min 1, max 1048576. Default: `4`. */
+  cpu_cores?: number;
 
-	/** RAM in MB. Min 2048, max 5242880. Default: `16384`. */
-	ram?: number;
+  /** RAM in MB. Min 2048, max 5242880. Default: `16384`. */
+  ram?: number;
 
-	/** Node ID within the tenant. Min 1. */
-	nodeid?: number;
+  /** Node ID within the tenant. Min 1. */
+  nodeid?: number;
 
-	/** Node display name. Min 1, max 128 characters. */
-	name?: string;
+  /** Node display name. Min 1, max 128 characters. */
+  name?: string;
 
-	/** Human-readable description. Max 2048 characters. */
-	description?: string;
+  /** Human-readable description. Max 2048 characters. */
+  description?: string;
 
-	/** Whether the node is enabled. Default: `true`. */
-	enabled?: boolean;
+  /** Whether the node is enabled. Default: `true`. */
+  enabled?: boolean;
 
-	/** Cluster assignment (FK to `clusters`). */
-	cluster?: FlexKey;
+  /** Cluster assignment (FK to `clusters`). */
+  cluster?: FlexKey;
 
-	/** Failover cluster (FK to `clusters`). */
-	cluster_failover?: FlexKey;
+  /** Failover cluster (FK to `clusters`). */
+  cluster_failover?: FlexKey;
 
-	/** Preferred host node (FK to `nodes`). */
-	preferred_node?: FlexKey;
+  /** Preferred host node (FK to `nodes`). */
+  preferred_node?: FlexKey;
 
-	/** HA group name. */
-	ha_group?: string;
+  /** HA group name. */
+  ha_group?: string;
 
-	/** Behavior on host power loss. Default: `last_state`. */
-	on_power_loss?: TenantNodeOnPowerLoss;
+  /** Behavior on host power loss. Default: `last_state`. */
+  on_power_loss?: TenantNodeOnPowerLoss;
 
-	/** Whether this resource is a snapshot. */
-	is_snapshot?: boolean;
+  /** Whether this resource is a snapshot. */
+  is_snapshot?: boolean;
 
-	/** Owner reference (FK). */
-	owner?: FlexKey;
+  /** Owner reference (FK). */
+  owner?: FlexKey;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
@@ -145,33 +150,33 @@ export interface TenantNodeCreateParams {
  * `modified`, `creator`) are excluded.
  */
 export interface TenantNodeUpdateParams {
-	/** Node display name. Min 1, max 128 characters. */
-	name?: string;
+  /** Node display name. Min 1, max 128 characters. */
+  name?: string;
 
-	/** Human-readable description. Max 2048 characters. */
-	description?: string;
+  /** Human-readable description. Max 2048 characters. */
+  description?: string;
 
-	/** Whether the node is enabled. */
-	enabled?: boolean;
+  /** Whether the node is enabled. */
+  enabled?: boolean;
 
-	/** Number of CPU cores. Min 1, max 1048576. */
-	cpu_cores?: number;
+  /** Number of CPU cores. Min 1, max 1048576. */
+  cpu_cores?: number;
 
-	/** RAM in MB. Min 2048, max 5242880. */
-	ram?: number;
+  /** RAM in MB. Min 2048, max 5242880. */
+  ram?: number;
 
-	/** Cluster assignment (FK to `clusters`). */
-	cluster?: FlexKey;
+  /** Cluster assignment (FK to `clusters`). */
+  cluster?: FlexKey;
 
-	/** Failover cluster (FK to `clusters`). */
-	cluster_failover?: FlexKey;
+  /** Failover cluster (FK to `clusters`). */
+  cluster_failover?: FlexKey;
 
-	/** Preferred host node (FK to `nodes`). */
-	preferred_node?: FlexKey;
+  /** Preferred host node (FK to `nodes`). */
+  preferred_node?: FlexKey;
 
-	/** HA group name. */
-	ha_group?: string;
+  /** HA group name. */
+  ha_group?: string;
 
-	/** Behavior on host power loss. */
-	on_power_loss?: TenantNodeOnPowerLoss;
+  /** Behavior on host power loss. */
+  on_power_loss?: TenantNodeOnPowerLoss;
 }

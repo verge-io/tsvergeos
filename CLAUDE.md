@@ -127,6 +127,10 @@ The dedicated endpoint is derived by convention: strip trailing `s`, append `_ac
 
 ## Testing
 
+### Non-Negotiable Rule
+
+**If we ship it, we test it — unit and live integration tests, no exceptions.** Every new service, feature, or behavioral change must have both unit tests (mocking the HTTP layer) and integration tests (hitting real VergeOS systems) before it is committed. This is not optional. Do not offer to commit without both passing.
+
 ### Philosophy
 
 - Unit tests mock the HTTP layer, never the service logic. Tests should verify that services construct the right requests and handle responses correctly.
