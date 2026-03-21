@@ -566,3 +566,55 @@ export interface VMMigrateOptions {
 	/** Target node ID to migrate to. Pass `null` to auto-select the node with the least RAM usage. */
 	preferred_node?: FlexKey | null;
 }
+
+/** Options for the VM restore action. */
+export interface VMRestoreOptions {
+	/** Snapshot reference to restore from. */
+	snapshot?: FlexKey;
+	/** Whether to preserve MAC addresses. */
+	preserve_macs?: boolean;
+	/** Name for the restored VM. */
+	name?: string;
+}
+
+/** Options for hot-plugging a drive to a running VM. */
+export interface VMHotplugDriveOptions {
+	/** Drive name. */
+	name?: string;
+	/** Disk size in GB. */
+	disksize?: number;
+	/** Drive interface type (e.g., 'virtio-blk', 'virtio-scsi'). */
+	interface?: string;
+	/** Media type. */
+	media?: string;
+	/** Preferred storage tier. */
+	preferred_tier?: string;
+}
+
+/** Options for hot-plugging a NIC to a running VM. */
+export interface VMHotplugNicOptions {
+	/** NIC name. */
+	name?: string;
+	/** Virtual network reference (FK to vnets). */
+	vnet?: FlexKey;
+	/** NIC interface type. */
+	interface?: string;
+}
+
+/** Options for pasting text to a VM console. */
+export interface VMPasteOptions {
+	/** The text to paste. */
+	text?: string;
+}
+
+/** Options for erasing a VM drive. */
+export interface VMEraseDriveOptions {
+	/** Drive reference to erase. */
+	drive?: FlexKey;
+}
+
+/** Options for executing a command on a VM. */
+export interface VMExecuteOptions {
+	/** Command to execute. */
+	[key: string]: unknown;
+}

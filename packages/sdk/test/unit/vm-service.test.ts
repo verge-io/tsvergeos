@@ -299,6 +299,264 @@ describe('VMService', () => {
 		});
 	});
 
+	describe('device actions', () => {
+		it('changeCD dispatches with action changecd', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.changeCD(42);
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'changecd' },
+			});
+		});
+
+		it('changeCD passes options in params', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.changeCD(42, { iso: 'ubuntu.iso' });
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'changecd', params: { iso: 'ubuntu.iso' } },
+			});
+		});
+
+		it('changeNet dispatches with action changenet', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.changeNet(42);
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'changenet' },
+			});
+		});
+
+		it('changeNet passes options in params', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.changeNet(42, { vnet: 5 });
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'changenet', params: { vnet: 5 } },
+			});
+		});
+
+		it('hotplugDrive dispatches with action hotplugdrive', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.hotplugDrive(42);
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'hotplugdrive' },
+			});
+		});
+
+		it('hotplugDrive passes options in params', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.hotplugDrive(42, {
+				name: 'data',
+				disksize: 100,
+				interface: 'virtio-blk',
+			});
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: {
+					vm: 42,
+					action: 'hotplugdrive',
+					params: { name: 'data', disksize: 100, interface: 'virtio-blk' },
+				},
+			});
+		});
+
+		it('hotplugNic dispatches with action hotplugnic', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.hotplugNic(42);
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'hotplugnic' },
+			});
+		});
+
+		it('hotplugNic passes options in params', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.hotplugNic(42, { name: 'eth1', vnet: 3, interface: 'virtio' });
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: {
+					vm: 42,
+					action: 'hotplugnic',
+					params: { name: 'eth1', vnet: 3, interface: 'virtio' },
+				},
+			});
+		});
+
+		it('eraseDrive dispatches with action erase_drive', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.eraseDrive(42);
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'erase_drive' },
+			});
+		});
+
+		it('eraseDrive passes options in params', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.eraseDrive(42, { drive: 7 });
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'erase_drive', params: { drive: 7 } },
+			});
+		});
+	});
+
+	describe('restore and recovery', () => {
+		it('restore dispatches with action restore', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.restore(42);
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'restore' },
+			});
+		});
+
+		it('restore passes options in params', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.restore(42, {
+				snapshot: 10,
+				preserve_macs: true,
+				name: 'restored-vm',
+			});
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: {
+					vm: 42,
+					action: 'restore',
+					params: { snapshot: 10, preserve_macs: true, name: 'restored-vm' },
+				},
+			});
+		});
+
+		it('recoverCloudSnapshot dispatches with action recover_cloudsnapshot', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.recoverCloudSnapshot(42);
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'recover_cloudsnapshot' },
+			});
+		});
+	});
+
+	describe('utility actions', () => {
+		it('paste dispatches with action paste', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.paste(42);
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'paste' },
+			});
+		});
+
+		it('paste passes options in params', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.paste(42, { text: 'hello world' });
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'paste', params: { text: 'hello world' } },
+			});
+		});
+
+		it('execute dispatches with action execute', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.execute(42);
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'execute' },
+			});
+		});
+
+		it('execute passes options in params', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.execute(42, { command: 'ls', args: ['-la'] });
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: {
+					vm: 42,
+					action: 'execute',
+					params: { command: 'ls', args: ['-la'] },
+				},
+			});
+		});
+
+		it('fsyncStrict dispatches with action fsync_strict', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.fsyncStrict(42);
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'fsync_strict' },
+			});
+		});
+
+		it('refresh dispatches with action refresh', async () => {
+			const http = mockHttp();
+			const svc = new VMService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.refresh(42);
+
+			expect(http.post).toHaveBeenCalledWith('/vm_actions', {
+				body: { vm: 42, action: 'refresh' },
+			});
+		});
+	});
+
 	describe('getConsoleURL', () => {
 		it('returns correct URL format', () => {
 			const http = mockHttp('https://verge.example.com');

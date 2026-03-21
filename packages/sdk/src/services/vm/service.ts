@@ -5,7 +5,13 @@ import type {
 	VM,
 	VMCloneOptions,
 	VMCreateParams,
+	VMEraseDriveOptions,
+	VMExecuteOptions,
+	VMHotplugDriveOptions,
+	VMHotplugNicOptions,
 	VMMigrateOptions,
+	VMPasteOptions,
+	VMRestoreOptions,
 	VMSnapshotOptions,
 	VMUpdateParams,
 } from './types.js';
@@ -138,6 +144,115 @@ export class VMService extends BaseService<VM, VMCreateParams, VMUpdateParams> {
 			key,
 			options as Record<string, unknown> | undefined,
 		);
+	}
+
+	/**
+	 * Change the CD/ISO attached to a virtual machine.
+	 *
+	 * @param key - The VM ID
+	 * @param options - Optional parameters for the CD change
+	 */
+	async changeCD(key: FlexKey, options?: Record<string, unknown>): Promise<void> {
+		await this.dispatchAction('changecd', key, options);
+	}
+
+	/**
+	 * Change the network attached to a virtual machine.
+	 *
+	 * @param key - The VM ID
+	 * @param options - Optional parameters for the network change
+	 */
+	async changeNet(key: FlexKey, options?: Record<string, unknown>): Promise<void> {
+		await this.dispatchAction('changenet', key, options);
+	}
+
+	/**
+	 * Paste text to a virtual machine's console.
+	 *
+	 * @param key - The VM ID
+	 * @param options - Paste options including the text to paste
+	 */
+	async paste(key: FlexKey, options?: VMPasteOptions): Promise<void> {
+		await this.dispatchAction('paste', key, options as Record<string, unknown> | undefined);
+	}
+
+	/**
+	 * Restore a virtual machine from a snapshot.
+	 *
+	 * @param key - The VM ID
+	 * @param options - Restore options (snapshot reference, preserve_macs, name)
+	 */
+	async restore(key: FlexKey, options?: VMRestoreOptions): Promise<void> {
+		await this.dispatchAction('restore', key, options as Record<string, unknown> | undefined);
+	}
+
+	/**
+	 * Recover a virtual machine from a cloud or system snapshot.
+	 *
+	 * @param key - The VM ID
+	 */
+	async recoverCloudSnapshot(key: FlexKey): Promise<void> {
+		await this.dispatchAction('recover_cloudsnapshot', key);
+	}
+
+	/**
+	 * Hot-plug a drive to a running virtual machine.
+	 *
+	 * @param key - The VM ID
+	 * @param options - Drive options (name, disksize, interface, media, preferred_tier)
+	 */
+	async hotplugDrive(key: FlexKey, options?: VMHotplugDriveOptions): Promise<void> {
+		await this.dispatchAction('hotplugdrive', key, options as Record<string, unknown> | undefined);
+	}
+
+	/**
+	 * Hot-plug a NIC to a running virtual machine.
+	 *
+	 * @param key - The VM ID
+	 * @param options - NIC options (name, vnet, interface)
+	 */
+	async hotplugNic(key: FlexKey, options?: VMHotplugNicOptions): Promise<void> {
+		await this.dispatchAction('hotplugnic', key, options as Record<string, unknown> | undefined);
+	}
+
+	/**
+	 * Execute a command on a virtual machine.
+	 *
+	 * Requires the QEMU guest agent to be running inside the VM.
+	 *
+	 * @param key - The VM ID
+	 * @param options - Command execution options
+	 */
+	async execute(key: FlexKey, options?: VMExecuteOptions): Promise<void> {
+		await this.dispatchAction('execute', key, options as Record<string, unknown> | undefined);
+	}
+
+	/**
+	 * Perform a strict filesystem sync on a virtual machine.
+	 *
+	 * @param key - The VM ID
+	 */
+	async fsyncStrict(key: FlexKey): Promise<void> {
+		await this.dispatchAction('fsync_strict', key);
+	}
+
+	/**
+	 * Erase a drive on a virtual machine.
+	 *
+	 * @param key - The VM ID
+	 * @param options - Options specifying which drive to erase
+	 */
+	async eraseDrive(key: FlexKey, options?: VMEraseDriveOptions): Promise<void> {
+		await this.dispatchAction('erase_drive', key, options as Record<string, unknown> | undefined);
+	}
+
+	/**
+	 * Refresh a virtual machine's state.
+	 *
+	 * @param key - The VM ID
+	 */
+	async refresh(key: FlexKey): Promise<void> {
+		await this.dispatchAction('refresh', key);
 	}
 
 	/**
