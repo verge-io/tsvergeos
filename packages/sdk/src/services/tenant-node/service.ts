@@ -81,6 +81,43 @@ export class TenantNodeService extends BaseService<
 	}
 
 	/**
+	 * Power on a tenant node and migrate it to a different host.
+	 *
+	 * @param key - The tenant node ID
+	 */
+	async powerOnMigrate(key: FlexKey): Promise<void> {
+		await this.dispatchAction('poweronmigrate', key);
+	}
+
+	/**
+	 * Power off a tenant node for maintenance.
+	 *
+	 * @param key - The tenant node ID
+	 */
+	async powerOffMaintenance(key: FlexKey): Promise<void> {
+		await this.dispatchAction('poweroffmaintenance', key);
+	}
+
+	/**
+	 * Refresh the tenant node state.
+	 *
+	 * @param key - The tenant node ID
+	 */
+	async refresh(key: FlexKey): Promise<void> {
+		await this.dispatchAction('refresh', key);
+	}
+
+	/**
+	 * Execute a command on a tenant node.
+	 *
+	 * @param key - The tenant node ID
+	 * @param params - Optional parameters for the command
+	 */
+	async execute(key: FlexKey, params?: Record<string, unknown>): Promise<void> {
+		await this.dispatchAction('execute', key, params);
+	}
+
+	/**
 	 * List tenant nodes belonging to a specific tenant.
 	 *
 	 * @param tenantKey - The tenant ID to filter by
