@@ -45,9 +45,54 @@ import type {
  * await client.vms.powerOff(vm.$key); // graceful ACPI shutdown
  * ```
  */
+/**
+ * Default fields for VM list/get requests.
+ *
+ * Includes cross-resource joins from the machine status table so that
+ * power state, running status, and node placement are reliably populated
+ * without consumers needing to manually fan out to `machineStatuses`.
+ *
+ * @internal
+ */
+const VM_DEFAULT_FIELDS = [
+	'$key',
+	'name',
+	'description',
+	'enabled',
+	'cpu_cores',
+	'ram',
+	'os_family',
+	'guest_agent',
+	'uefi',
+	'secure_boot',
+	'machine_type',
+	'created',
+	'modified',
+	'is_snapshot',
+	'machine',
+	'console',
+	'on_power_loss',
+	'cluster',
+	'cluster_failover',
+	'preferred_node',
+	'ha_group',
+	'cpu_type',
+	'boot_order',
+	'need_restart',
+	'cloudinit_datasource',
+	'allow_hotplug',
+	'uuid',
+	// Cross-resource joins for live status
+	'machine#status#status as status',
+	'machine#status#running as running',
+	'machine#status#node as node_key',
+	'machine#status#node#name as node_name',
+];
+
 export class VMService extends BaseService<VM, VMCreateParams, VMUpdateParams> {
 	constructor(http: HttpClient) {
 		super(http, '/vms', 'VM');
+		this.defaultFields = VM_DEFAULT_FIELDS;
 	}
 
 	/**

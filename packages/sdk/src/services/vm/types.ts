@@ -238,6 +238,20 @@ export interface VM extends Resource {
 
 	/** User who created this VM. Read-only. */
 	creator?: string;
+
+	// ─── Joined status fields (from machine#status) ─────────────────────
+
+	/** Machine status value (joined from machine_status). Present in default list/get responses. */
+	status?: string;
+
+	/** Whether the VM is currently running (joined from machine_status). */
+	running?: boolean;
+
+	/** Node key where this VM is running (joined from machine_status). */
+	node_key?: FlexKey;
+
+	/** Node name where this VM is running (joined from machine_status). */
+	node_name?: string;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
