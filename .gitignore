@@ -13,6 +13,7 @@
 # Secrets
 .mcp.json
 .claude/testing.md
+.env
 
 # Dependencies
 node_modules/
