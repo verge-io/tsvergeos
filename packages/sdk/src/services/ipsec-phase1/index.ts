@@ -25,6 +25,11 @@ declare module '../../client.js' {
 
 export { IPSecPhase1Service } from './service.js';
 export type {
+	IPSecAuth,
+	IPSecAuto,
+	IPSecDpdAction,
+	IPSecKeyExchange,
+	IPSecNegotiation,
 	IPSecPhase1,
 	IPSecPhase1CreateParams,
 	IPSecPhase1UpdateParams,

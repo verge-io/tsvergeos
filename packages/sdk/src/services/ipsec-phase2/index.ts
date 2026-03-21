@@ -27,5 +27,7 @@ export { IPSecPhase2Service } from './service.js';
 export type {
 	IPSecPhase2,
 	IPSecPhase2CreateParams,
+	IPSecPhase2Mode,
 	IPSecPhase2UpdateParams,
+	IPSecProtocol,
 } from './types.js';

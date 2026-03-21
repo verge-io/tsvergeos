@@ -13,7 +13,22 @@ export type AlarmLevel =
 	| 'debug';
 
 /** Alarm owner type — the type of resource that raised the alarm. */
-export type AlarmOwnerType = string;
+export type AlarmOwnerType =
+	| 'vms'
+	| 'vnets'
+	| 'tenant_nodes'
+	| 'nodes'
+	| 'users'
+	| 'system'
+	| 'cloud_snapshots';
+
+/** Alarm sub-owner type — the type of sub-resource, if applicable. */
+export type AlarmSubOwnerType =
+	| ''
+	| 'machine_drives'
+	| 'machine_nics'
+	| 'machine_devices'
+	| 'smtp_settings';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -35,7 +50,7 @@ export interface Alarm extends Resource {
 	sub_owner?: FlexKey;
 
 	/** Type of the sub-owner resource. Read-only. */
-	sub_owner_type?: string;
+	sub_owner_type?: AlarmSubOwnerType;
 
 	/** FK reference to the alarm type definition. Read-only. */
 	alarm_type?: FlexKey;

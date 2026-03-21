@@ -115,6 +115,7 @@ export type {
 	Alarm,
 	AlarmLevel,
 	AlarmOwnerType,
+	AlarmSubOwnerType,
 	AlarmUpdateParams,
 } from './services/alarm/types.js';
 export type { AlarmType } from './services/alarm-type/types.js';
@@ -198,10 +199,18 @@ export type {
 export type {
 	IPSec,
 	IPSecCreateParams,
+	IPSecMode,
+	IPSecStrictCrlPolicy,
+	IPSecUniqueIds,
 	IPSecUpdateParams,
 } from './services/ipsec/types.js';
 export type { IPSecConnection } from './services/ipsec-connection/types.js';
 export type {
+	IPSecAuth,
+	IPSecAuto,
+	IPSecDpdAction,
+	IPSecKeyExchange,
+	IPSecNegotiation,
 	IPSecPhase1,
 	IPSecPhase1CreateParams,
 	IPSecPhase1UpdateParams,
@@ -209,7 +218,9 @@ export type {
 export type {
 	IPSecPhase2,
 	IPSecPhase2CreateParams,
+	IPSecPhase2Mode,
 	IPSecPhase2UpdateParams,
+	IPSecProtocol,
 } from './services/ipsec-phase2/types.js';
 export type { Log, LogLevel, LogObjectType } from './services/log/types.js';
 export type {
@@ -223,6 +234,7 @@ export type {
 	DriveInterface,
 	DriveMedia,
 	DriveOptimize,
+	DrivePreferredTier,
 	MachineDrive,
 	MachineDriveCreateParams,
 	MachineDriveUpdateParams,

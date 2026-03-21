@@ -1,5 +1,16 @@
 import type { FlexKey, Resource } from '../../types.js';
 
+// ─── String Literal Unions ───────────────────────────────────────────────────
+
+/** IPSec configuration mode. */
+export type IPSecMode = 'advanced' | 'normal';
+
+/** IPSec unique participant ID handling policy. */
+export type IPSecUniqueIds = 'yes' | 'no' | 'never' | 'replace' | 'keep';
+
+/** IPSec CRL validation policy. */
+export type IPSecStrictCrlPolicy = 'yes' | 'ifuri' | 'no';
+
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
 /**
@@ -22,7 +33,7 @@ export interface IPSec extends Resource {
 	enabled?: boolean;
 
 	/** Configuration mode: `normal` (GUI-based) or `advanced` (raw config files). Default: `normal`. */
-	mode?: string;
+	mode?: IPSecMode;
 
 	/** Raw strongswan.conf content (advanced mode only). */
 	strongswan_conf?: string;
@@ -34,7 +45,7 @@ export interface IPSec extends Resource {
 	ipsec_secrets?: string;
 
 	/** Unique participant ID handling: `yes`, `no`, `never`, `replace`, `keep`. Default: `yes`. */
-	uniqueids?: string;
+	uniqueids?: IPSecUniqueIds;
 
 	/** Whether to propose IPComp compression. Default: `false`. */
 	compress?: boolean;
@@ -52,7 +63,7 @@ export interface IPSec extends Resource {
 	'charon.plugins.kernel-netlink.mss'?: number;
 
 	/** CRL validation policy: `yes`, `ifuri`, `no`. Default: `no`. */
-	strictcrlpolicy?: string;
+	strictcrlpolicy?: IPSecStrictCrlPolicy;
 
 	/** Use make-before-break reauthentication (IKEv2). Default: `false`. */
 	'charon.make_before_break'?: boolean;
@@ -76,7 +87,7 @@ export interface IPSecCreateParams {
 	enabled?: boolean;
 
 	/** Configuration mode: `normal` or `advanced`. Default: `normal`. */
-	mode?: string;
+	mode?: IPSecMode;
 
 	/** Raw strongswan.conf content (advanced mode). */
 	strongswan_conf?: string;
@@ -88,7 +99,7 @@ export interface IPSecCreateParams {
 	ipsec_secrets?: string;
 
 	/** Unique participant ID handling. Default: `yes`. */
-	uniqueids?: string;
+	uniqueids?: IPSecUniqueIds;
 
 	/** Whether to propose IPComp compression. */
 	compress?: boolean;
@@ -106,7 +117,7 @@ export interface IPSecCreateParams {
 	'charon.plugins.kernel-netlink.mss'?: number;
 
 	/** CRL validation policy: `yes`, `ifuri`, `no`. */
-	strictcrlpolicy?: string;
+	strictcrlpolicy?: IPSecStrictCrlPolicy;
 
 	/** Use make-before-break reauthentication (IKEv2). */
 	'charon.make_before_break'?: boolean;
@@ -125,7 +136,7 @@ export interface IPSecUpdateParams {
 	enabled?: boolean;
 
 	/** Configuration mode: `normal` or `advanced`. */
-	mode?: string;
+	mode?: IPSecMode;
 
 	/** Raw strongswan.conf content. */
 	strongswan_conf?: string;
@@ -137,7 +148,7 @@ export interface IPSecUpdateParams {
 	ipsec_secrets?: string;
 
 	/** Unique participant ID handling. */
-	uniqueids?: string;
+	uniqueids?: IPSecUniqueIds;
 
 	/** Whether to propose IPComp compression. */
 	compress?: boolean;
@@ -155,7 +166,7 @@ export interface IPSecUpdateParams {
 	'charon.plugins.kernel-netlink.mss'?: number;
 
 	/** CRL validation policy. */
-	strictcrlpolicy?: string;
+	strictcrlpolicy?: IPSecStrictCrlPolicy;
 
 	/** Use make-before-break reauthentication. */
 	'charon.make_before_break'?: boolean;

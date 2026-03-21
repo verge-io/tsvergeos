@@ -28,5 +28,6 @@ export type {
 	Alarm,
 	AlarmLevel,
 	AlarmOwnerType,
+	AlarmSubOwnerType,
 	AlarmUpdateParams,
 } from './types.js';
