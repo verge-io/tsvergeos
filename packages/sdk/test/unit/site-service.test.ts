@@ -188,6 +188,42 @@ describe('SiteService', () => {
 				body: { site: 2, action: 'clear_synced_logs' },
 			});
 		});
+
+		it('deleteRemoteTask() dispatches delete_remote_task action', async () => {
+			const http = mockHttp();
+			const svc = new SiteService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.deleteRemoteTask(3);
+
+			expect(http.post).toHaveBeenCalledWith('/site_actions', {
+				body: { site: 3, action: 'delete_remote_task' },
+			});
+		});
+
+		it('autoCreateSync() dispatches auto_create_sync action', async () => {
+			const http = mockHttp();
+			const svc = new SiteService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.autoCreateSync(4);
+
+			expect(http.post).toHaveBeenCalledWith('/site_actions', {
+				body: { site: 4, action: 'auto_create_sync' },
+			});
+		});
+
+		it('moveSync() dispatches move_sync action', async () => {
+			const http = mockHttp();
+			const svc = new SiteService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.moveSync(7);
+
+			expect(http.post).toHaveBeenCalledWith('/site_actions', {
+				body: { site: 7, action: 'move_sync' },
+			});
+		});
 	});
 
 	describe('service registration', () => {
