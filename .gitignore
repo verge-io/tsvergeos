@@ -4,6 +4,12 @@
 .claude/CLAUDE.local.md
 .claude/logs/
 
+# Agent skills (local tooling)
+.agents/
+
+# macOS
+.DS_Store
+
 # Secrets
 .mcp.json
 .claude/testing.md
