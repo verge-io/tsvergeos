@@ -181,6 +181,54 @@ describe('VolumeService', () => {
 				body: { volume: SHA1_KEY, action: 'reset' },
 			});
 		});
+
+		it('restore() dispatches restore action without restore_type by default', async () => {
+			const http = mockHttp();
+			const svc = new VolumeService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.restore(SHA1_KEY);
+
+			expect(http.post).toHaveBeenCalledWith('/volume_actions', {
+				body: { volume: SHA1_KEY, action: 'restore' },
+			});
+		});
+
+		it('restore() passes restore_type at top level when specified', async () => {
+			const http = mockHttp();
+			const svc = new VolumeService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.restore(SHA1_KEY, { restoreType: 'all' });
+
+			expect(http.post).toHaveBeenCalledWith('/volume_actions', {
+				body: { volume: SHA1_KEY, action: 'restore', restore_type: 'all' },
+			});
+		});
+
+		it('clone() dispatches to /volume_actions', async () => {
+			const http = mockHttp();
+			const svc = new VolumeService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.clone(SHA1_KEY);
+
+			expect(http.post).toHaveBeenCalledWith('/volume_actions', {
+				body: { volume: SHA1_KEY, action: 'clone' },
+			});
+		});
+
+		it('recoverCloudSnapshot() dispatches to /volume_actions', async () => {
+			const http = mockHttp();
+			const svc = new VolumeService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.recoverCloudSnapshot(SHA1_KEY);
+
+			expect(http.post).toHaveBeenCalledWith('/volume_actions', {
+				body: { volume: SHA1_KEY, action: 'recover_cloudsnapshot' },
+			});
+		});
 	});
 
 	describe('service registration', () => {

@@ -218,6 +218,17 @@ export interface VolumeCreateParams {
 	note?: string;
 }
 
+// ─── Action Types ────────────────────────────────────────────────────────────
+
+/** Restore type for volume restore operations. */
+export type VolumeRestoreType = 'data' | 'all';
+
+/** Options for the volume restore action. */
+export interface VolumeRestoreOptions {
+	/** What to restore. `'data'` restores data only, `'all'` restores data and settings. Default: `'data'`. */
+	restoreType?: VolumeRestoreType;
+}
+
 // ─── Update Params ───────────────────────────────────────────────────────────
 
 /**
