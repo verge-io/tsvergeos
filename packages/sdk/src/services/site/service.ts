@@ -81,4 +81,31 @@ export class SiteService extends BaseService<Site, SiteCreateParams, SiteUpdateP
 	async clearSyncedLogs(key: FlexKey): Promise<void> {
 		await this.dispatchAction('clear_synced_logs', key);
 	}
+
+	/**
+	 * Delete a remote task on the site.
+	 *
+	 * @param key - The site ID
+	 */
+	async deleteRemoteTask(key: FlexKey): Promise<void> {
+		await this.dispatchAction('delete_remote_task', key);
+	}
+
+	/**
+	 * Automatically create sync configuration for the site.
+	 *
+	 * @param key - The site ID
+	 */
+	async autoCreateSync(key: FlexKey): Promise<void> {
+		await this.dispatchAction('auto_create_sync', key);
+	}
+
+	/**
+	 * Move sync to this site.
+	 *
+	 * @param key - The site ID
+	 */
+	async moveSync(key: FlexKey): Promise<void> {
+		await this.dispatchAction('move_sync', key);
+	}
 }
