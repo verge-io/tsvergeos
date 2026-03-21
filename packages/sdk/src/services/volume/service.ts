@@ -1,7 +1,12 @@
 import type { HttpClient } from '../../http.js';
 import type { FlexKey } from '../../types.js';
 import { BaseService } from '../base.js';
-import type { Volume, VolumeCreateParams, VolumeUpdateParams } from './types.js';
+import type {
+	Volume,
+	VolumeCreateParams,
+	VolumeRestoreOptions,
+	VolumeUpdateParams,
+} from './types.js';
 
 /**
  * Service for managing VergeOS volumes.
@@ -58,5 +63,43 @@ export class VolumeService extends BaseService<Volume, VolumeCreateParams, Volum
 	 */
 	async reset(key: FlexKey): Promise<void> {
 		await this.dispatchAction('reset', key);
+	}
+
+	/**
+	 * Restore a volume from its snapshot.
+	 *
+	 * Uses a custom POST body because the `restore_type` field sits at the
+	 * top level of the action payload rather than inside `params`.
+	 *
+	 * @param key - The volume SHA1 key
+	 * @param options - Optional restore options (restore type)
+	 */
+	async restore(key: FlexKey, options?: VolumeRestoreOptions): Promise<void> {
+		const body: Record<string, unknown> = {
+			[this.actionConfig.key]: key,
+			action: 'restore',
+		};
+		if (options?.restoreType) {
+			body.restore_type = options.restoreType;
+		}
+		await this.http.post(`/${this.actionConfig.endpoint}`, { body });
+	}
+
+	/**
+	 * Clone a volume.
+	 *
+	 * @param key - The volume SHA1 key
+	 */
+	async clone(key: FlexKey): Promise<void> {
+		await this.dispatchAction('clone', key);
+	}
+
+	/**
+	 * Recover a volume from a cloud snapshot.
+	 *
+	 * @param key - The volume SHA1 key
+	 */
+	async recoverCloudSnapshot(key: FlexKey): Promise<void> {
+		await this.dispatchAction('recover_cloudsnapshot', key);
 	}
 }
