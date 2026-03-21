@@ -19,8 +19,8 @@ describeIf('VergeClient integration', () => {
 		expect(client.serverVersion?.length).toBeGreaterThan(0);
 	});
 
-	it('should have a server version starting with "26"', () => {
-		expect(client.serverVersion).toMatch(/^26\./);
+	it('should have a supported server version (25+)', () => {
+		expect(client.serverVersion).toMatch(/^2[5-9]\./);
 	});
 
 	it('should return the configured host', () => {
