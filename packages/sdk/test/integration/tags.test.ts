@@ -67,10 +67,10 @@ describeIf('Tags, TagCategories & TagMembers integration', () => {
 	});
 
 	it('should get a tag category by key', async () => {
-		expect(createdCategoryKey).toBeDefined();
+		if (createdCategoryKey === undefined) throw new Error('no category key');
 
 		await delay();
-		const category = await client.tagCategories.get(createdCategoryKey!);
+		const category = await client.tagCategories.get(createdCategoryKey);
 
 		expect(category.$key).toBe(createdCategoryKey);
 		expect(category.description).toBe('Integration test category');
@@ -89,10 +89,10 @@ describeIf('Tags, TagCategories & TagMembers integration', () => {
 	});
 
 	it('should update a tag category', async () => {
-		expect(createdCategoryKey).toBeDefined();
+		if (createdCategoryKey === undefined) throw new Error('no category key');
 
 		await delay();
-		const updated = await client.tagCategories.update(createdCategoryKey!, {
+		const updated = await client.tagCategories.update(createdCategoryKey, {
 			description: 'Updated integration test category',
 			single_tag_selection: true,
 		});
@@ -105,13 +105,13 @@ describeIf('Tags, TagCategories & TagMembers integration', () => {
 	// ── Tags ─────────────────────────────────────────────────────────────────
 
 	it('should create a tag in the category', async () => {
-		expect(createdCategoryKey).toBeDefined();
+		if (createdCategoryKey === undefined) throw new Error('no category key');
 
 		await delay();
 		const tag = await client.tags.create({
 			name: `ts-sdk-test-tag-${Date.now()}`,
 			description: 'Integration test tag',
-			category: createdCategoryKey!,
+			category: createdCategoryKey,
 		});
 
 		expect(tag.$key).toBeDefined();
@@ -121,21 +121,21 @@ describeIf('Tags, TagCategories & TagMembers integration', () => {
 	});
 
 	it('should get a tag by key', async () => {
-		expect(createdTagKey).toBeDefined();
+		if (createdTagKey === undefined) throw new Error('no tag key');
 
 		await delay();
-		const tag = await client.tags.get(createdTagKey!);
+		const tag = await client.tags.get(createdTagKey);
 
 		expect(tag.$key).toBe(createdTagKey);
 		expect(tag.description).toBe('Integration test tag');
 	});
 
 	it('should list tags by category', async () => {
-		expect(createdCategoryKey).toBeDefined();
-		expect(createdTagKey).toBeDefined();
+		if (createdCategoryKey === undefined) throw new Error('no category key');
+		if (createdTagKey === undefined) throw new Error('no tag key');
 
 		await delay();
-		const tags = await client.tags.listByCategory(createdCategoryKey!);
+		const tags = await client.tags.listByCategory(createdCategoryKey);
 
 		expect(Array.isArray(tags)).toBe(true);
 		expect(tags.length).toBeGreaterThanOrEqual(1);
@@ -148,10 +148,10 @@ describeIf('Tags, TagCategories & TagMembers integration', () => {
 	});
 
 	it('should update a tag', async () => {
-		expect(createdTagKey).toBeDefined();
+		if (createdTagKey === undefined) throw new Error('no tag key');
 
 		await delay();
-		const updated = await client.tags.update(createdTagKey!, {
+		const updated = await client.tags.update(createdTagKey, {
 			description: 'Updated integration test tag',
 		});
 
@@ -162,7 +162,7 @@ describeIf('Tags, TagCategories & TagMembers integration', () => {
 	// ── Tag Members ──────────────────────────────────────────────────────────
 
 	it('should assign a tag to a VM (tag member)', async () => {
-		expect(createdTagKey).toBeDefined();
+		if (createdTagKey === undefined) throw new Error('no tag key');
 
 		// Find a VM to tag
 		await delay();
@@ -177,7 +177,7 @@ describeIf('Tags, TagCategories & TagMembers integration', () => {
 		const memberRef = `vms/${vmKey}`;
 
 		await delay();
-		const tagMember = await client.tagMembers.assign(createdTagKey!, memberRef);
+		const tagMember = await client.tagMembers.assign(createdTagKey, memberRef);
 
 		expect(tagMember.$key).toBeDefined();
 		expect(String(tagMember.tag)).toBe(String(createdTagKey));
@@ -190,9 +190,10 @@ describeIf('Tags, TagCategories & TagMembers integration', () => {
 			// No VM was available to tag — skip
 			return;
 		}
+		if (createdTagKey === undefined) throw new Error('no tag key');
 
 		await delay();
-		const members = await client.tagMembers.listByTag(createdTagKey!);
+		const members = await client.tagMembers.listByTag(createdTagKey);
 
 		expect(Array.isArray(members)).toBe(true);
 		expect(members.length).toBeGreaterThanOrEqual(1);
@@ -207,7 +208,7 @@ describeIf('Tags, TagCategories & TagMembers integration', () => {
 
 		// Find the member reference from our created tag member
 		await delay();
-		const tagMember = await client.tagMembers.get(createdTagMemberKey!);
+		const tagMember = await client.tagMembers.get(createdTagMemberKey);
 		const memberRef = tagMember.member;
 
 		await delay();
@@ -223,17 +224,18 @@ describeIf('Tags, TagCategories & TagMembers integration', () => {
 		if (createdTagMemberKey === undefined) {
 			return;
 		}
+		if (createdTagKey === undefined) throw new Error('no tag key');
 
 		// Get the member ref before unassigning
 		await delay();
-		const tagMember = await client.tagMembers.get(createdTagMemberKey!);
+		const tagMember = await client.tagMembers.get(createdTagMemberKey);
 
 		await delay();
-		await client.tagMembers.unassign(createdTagKey!, tagMember.member);
+		await client.tagMembers.unassign(createdTagKey, tagMember.member);
 
 		// Verify it's gone
 		await delay();
-		const remaining = await client.tagMembers.listByTag(createdTagKey!);
+		const remaining = await client.tagMembers.listByTag(createdTagKey);
 		const found = remaining.find((m) => m.$key === createdTagMemberKey);
 		expect(found).toBeUndefined();
 
@@ -244,20 +246,20 @@ describeIf('Tags, TagCategories & TagMembers integration', () => {
 	// ── Cascade Cleanup ──────────────────────────────────────────────────────
 
 	it('should delete tag (cascades to members)', async () => {
-		expect(createdTagKey).toBeDefined();
+		if (createdTagKey === undefined) throw new Error('no tag key');
 
 		await delay();
-		await client.tags.delete(createdTagKey!);
+		await client.tags.delete(createdTagKey);
 
 		// Clear so afterAll doesn't double-delete
 		createdTagKey = undefined;
 	});
 
 	it('should delete tag category', async () => {
-		expect(createdCategoryKey).toBeDefined();
+		if (createdCategoryKey === undefined) throw new Error('no category key');
 
 		await delay();
-		await client.tagCategories.delete(createdCategoryKey!);
+		await client.tagCategories.delete(createdCategoryKey);
 
 		// Clear so afterAll doesn't double-delete
 		createdCategoryKey = undefined;
