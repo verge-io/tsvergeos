@@ -3,7 +3,7 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Publishing scope for a rule alias. Controls visibility across tenants. */
-export type PublishingScope = 'private' | 'global' | 'tenant' | 'none';
+export type PublishingScope = 'private' | 'global' | 'tenant' | 'none' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

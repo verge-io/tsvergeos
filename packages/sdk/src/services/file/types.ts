@@ -30,12 +30,13 @@ export type VgFileType =
 	| 'diagnostics'
 	| 'zip'
 	| 'lrq'
-	| 'run';
+	| 'run'
+	| (string & {});
 
 /**
  * Preferred storage tier values (1-5).
  */
-export type FilePreferredTier = '1' | '2' | '3' | '4' | '5';
+export type FilePreferredTier = '1' | '2' | '3' | '4' | '5' | (string & {});
 
 /**
  * A file resource in VergeOS.

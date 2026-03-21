@@ -3,7 +3,16 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** DNS record type. */
-export type DnsRecordType = 'A' | 'CAA' | 'CNAME' | 'MX' | 'NS' | 'PTR' | 'SRV' | 'TXT';
+export type DnsRecordType =
+	| 'A'
+	| 'CAA'
+	| 'CNAME'
+	| 'MX'
+	| 'NS'
+	| 'PTR'
+	| 'SRV'
+	| 'TXT'
+	| (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

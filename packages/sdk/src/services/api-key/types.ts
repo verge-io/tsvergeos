@@ -3,7 +3,7 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Expiration type for API keys. */
-export type ApiKeyExpiresType = 'never' | 'date';
+export type ApiKeyExpiresType = 'never' | 'date' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

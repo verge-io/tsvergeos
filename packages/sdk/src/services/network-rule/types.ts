@@ -3,10 +3,10 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Firewall rule action type. */
-export type RuleAction = 'accept' | 'drop' | 'reject' | 'translate' | 'route';
+export type RuleAction = 'accept' | 'drop' | 'reject' | 'translate' | 'route' | (string & {});
 
 /** Traffic direction for a rule. */
-export type RuleDirection = 'incoming' | 'outgoing';
+export type RuleDirection = 'incoming' | 'outgoing' | (string & {});
 
 /** Network protocol for a rule. Includes numeric protocol IDs for OSPF, IGMP, GRE, ESP, AH. */
 export type RuleProtocol =
@@ -19,13 +19,14 @@ export type RuleProtocol =
 	| '47'
 	| '50'
 	| '51'
-	| 'any';
+	| 'any'
+	| (string & {});
 
 /** Network interface for a rule. */
-export type RuleInterface = 'auto' | 'router' | 'dmz' | 'wireguard' | 'any';
+export type RuleInterface = 'auto' | 'router' | 'dmz' | 'wireguard' | 'any' | (string & {});
 
 /** Rule pinning position for ordering. */
-export type RulePin = 'no' | 'top' | 'bottom';
+export type RulePin = 'no' | 'top' | 'bottom' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

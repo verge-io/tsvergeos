@@ -3,10 +3,10 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Certificate type indicating how the certificate was provisioned. */
-export type CertificateType = 'manual' | 'letsencrypt' | 'self_signed';
+export type CertificateType = 'manual' | 'letsencrypt' | 'self_signed' | (string & {});
 
 /** Cryptographic key type for the certificate. */
-export type CertificateKeyType = 'ecdsa' | 'rsa';
+export type CertificateKeyType = 'ecdsa' | 'rsa' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

@@ -69,7 +69,7 @@ export interface CloudSnapshot extends Resource {
 // ─── String Literal Types ────────────────────────────────────────────────────
 
 /** Cloud snapshot expiration type. */
-export type CloudSnapshotExpiresType = 'never' | 'date';
+export type CloudSnapshotExpiresType = 'never' | 'date' | (string & {});
 
 /** Cloud snapshot immutability lock status. */
 export type CloudSnapshotImmutableStatus = 'unlocked' | 'unlocking' | 'locked';

@@ -3,7 +3,7 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Rendering mode for cloud-init file contents. */
-export type CloudInitFileRender = 'no' | 'variables' | 'jinja2';
+export type CloudInitFileRender = 'no' | 'variables' | 'jinja2' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

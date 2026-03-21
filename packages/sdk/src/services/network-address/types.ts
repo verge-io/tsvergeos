@@ -3,7 +3,7 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Network address type: DHCP lease, static assignment, IP alias, proxy ARP, or virtual IP. */
-export type AddressType = 'dynamic' | 'static' | 'ipalias' | 'proxy' | 'virtual';
+export type AddressType = 'dynamic' | 'static' | 'ipalias' | 'proxy' | 'virtual' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

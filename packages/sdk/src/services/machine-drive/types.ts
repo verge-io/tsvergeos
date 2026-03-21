@@ -30,7 +30,8 @@ export type DriveMedia =
 	| 'clonedir'
 	| 'nonpersistent'
 	| 'nonpersistent9p'
-	| 'nonpersistentdir';
+	| 'nonpersistentdir'
+	| (string & {});
 
 /**
  * Drive bus interface — controls how the drive is attached to the machine.
@@ -70,13 +71,14 @@ export type DriveInterface =
 	| 'pflash'
 	| 'direct'
 	| 'tpm_state'
-	| 'usb';
+	| 'usb'
+	| (string & {});
 
 /** Drive optimization setting. */
-export type DriveOptimize = 'general' | 'large';
+export type DriveOptimize = 'general' | 'large' | (string & {});
 
 /** Drive preferred storage tier. */
-export type DrivePreferredTier = '1' | '2' | '3' | '4' | '5';
+export type DrivePreferredTier = '1' | '2' | '3' | '4' | '5' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

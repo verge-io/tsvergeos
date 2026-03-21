@@ -3,10 +3,17 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** DNS zone type. */
-export type DnsZoneType = 'master' | 'slave' | 'redirect' | 'forward' | 'static-stub' | 'stub';
+export type DnsZoneType =
+	| 'master'
+	| 'slave'
+	| 'redirect'
+	| 'forward'
+	| 'static-stub'
+	| 'stub'
+	| (string & {});
 
 /** DNS zone notify setting. */
-export type DnsZoneNotify = 'yes' | 'no' | 'explicit';
+export type DnsZoneNotify = 'yes' | 'no' | 'explicit' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

@@ -12,20 +12,17 @@
  * @module
  */
 
-import { VergeClient } from "../../client.js";
-import { MachineStatsHistoryLongService } from "./service.js";
+import { VergeClient } from '../../client.js';
+import { MachineStatsHistoryLongService } from './service.js';
 
-VergeClient.registerService(
-  "machineStatsHistoryLong",
-  MachineStatsHistoryLongService,
-);
+VergeClient.registerService('machineStatsHistoryLong', MachineStatsHistoryLongService);
 
-declare module "../../client.js" {
-  interface VergeClient {
-    /** Service for querying long-term machine stats history (read-only). */
-    readonly machineStatsHistoryLong: MachineStatsHistoryLongService;
-  }
+declare module '../../client.js' {
+	interface VergeClient {
+		/** Service for querying long-term machine stats history (read-only). */
+		readonly machineStatsHistoryLong: MachineStatsHistoryLongService;
+	}
 }
 
-export { MachineStatsHistoryLongService } from "./service.js";
-export type { MachineStatsHistoryLong } from "./types.js";
+export { MachineStatsHistoryLongService } from './service.js';
+export type { MachineStatsHistoryLong } from './types.js';

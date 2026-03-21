@@ -39,10 +39,12 @@ describeIf('Machine status integration', () => {
 		expect(statuses.length).toBeGreaterThan(0);
 
 		await delay();
-		const entry = await client.machineStatuses.get(statuses[0]!.$key);
+		const first = statuses[0];
+		expect(first).toBeDefined();
+		const entry = await client.machineStatuses.get(first?.$key);
 
-		expect(entry.$key).toBe(statuses[0]!.$key);
-		expect(entry.machine).toBe(statuses[0]!.machine);
+		expect(entry.$key).toBe(first?.$key);
+		expect(entry.machine).toBe(first?.machine);
 		expect(entry.status).toBeDefined();
 	});
 
@@ -51,7 +53,7 @@ describeIf('Machine status integration', () => {
 		// Get a status entry to find a valid machine FK
 		const statuses = await client.machineStatuses.list({ limit: 1 });
 		expect(statuses.length).toBeGreaterThan(0);
-		const machineKey = statuses[0]!.machine;
+		const machineKey = statuses[0]?.machine;
 
 		await delay();
 		const entry = await client.machineStatuses.getByMachine(machineKey);
@@ -105,7 +107,8 @@ describeIf('Machine status integration', () => {
 
 		if (vms.length === 0) return; // skip if no VMs
 
-		const vm = vms[0]!;
+		const vm = vms[0];
+		if (!vm) return; // skip if no VMs
 		// VM has a machine FK we can use to look up status
 		if (!vm.machine) return; // skip if machine FK not present
 

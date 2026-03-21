@@ -22,7 +22,8 @@ export type NicInterface =
 	| 'pcnet'
 	| 'igb'
 	| 'vmxnet3'
-	| 'direct';
+	| 'direct'
+	| (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

@@ -3,10 +3,10 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** IPSec tunnel mode. */
-export type IPSecPhase2Mode = 'tunnel' | 'transport';
+export type IPSecPhase2Mode = 'tunnel' | 'transport' | (string & {});
 
 /** IPSec security protocol. */
-export type IPSecProtocol = 'esp' | 'ah';
+export type IPSecProtocol = 'esp' | 'ah' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

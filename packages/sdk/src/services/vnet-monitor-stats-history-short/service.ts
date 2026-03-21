@@ -1,7 +1,7 @@
-import type { HttpClient } from "../../http.js";
-import type { FlexKey, ListOptions } from "../../types.js";
-import { ReadOnlyService } from "../base.js";
-import type { VnetMonitorStatsHistoryShort } from "./types.js";
+import type { HttpClient } from '../../http.js';
+import type { FlexKey, ListOptions } from '../../types.js';
+import { ReadOnlyService } from '../base.js';
+import type { VnetMonitorStatsHistoryShort } from './types.js';
 
 /**
  * Service for querying VergeOS vnet monitor stats history (short-term).
@@ -23,30 +23,26 @@ import type { VnetMonitorStatsHistoryShort } from "./types.js";
  * ```
  */
 export class VnetMonitorStatsHistoryShortService extends ReadOnlyService<VnetMonitorStatsHistoryShort> {
-  constructor(http: HttpClient) {
-    super(
-      http,
-      "/vnet_monitor_stats_history_short",
-      "Vnet Monitor Stats History Short",
-    );
-  }
+	constructor(http: HttpClient) {
+		super(http, '/vnet_monitor_stats_history_short', 'Vnet Monitor Stats History Short');
+	}
 
-  /**
-   * List stats history entries for a specific vnet.
-   *
-   * Filters by `vnet eq {vnetKey}` and merges with any additional list options.
-   *
-   * @param vnetKey - The key of the vnet to look up stats for.
-   * @param options - Additional list options (fields, sort, limit, etc.).
-   * @returns An array of vnet monitor stats history entries.
-   */
-  async listByVnet(
-    vnetKey: FlexKey,
-    options?: ListOptions,
-  ): Promise<VnetMonitorStatsHistoryShort[]> {
-    return this.list({
-      ...options,
-      filter: `vnet eq ${vnetKey}`,
-    });
-  }
+	/**
+	 * List stats history entries for a specific vnet.
+	 *
+	 * Filters by `vnet eq {vnetKey}` and merges with any additional list options.
+	 *
+	 * @param vnetKey - The key of the vnet to look up stats for.
+	 * @param options - Additional list options (fields, sort, limit, etc.).
+	 * @returns An array of vnet monitor stats history entries.
+	 */
+	async listByVnet(
+		vnetKey: FlexKey,
+		options?: ListOptions,
+	): Promise<VnetMonitorStatsHistoryShort[]> {
+		return this.list({
+			...options,
+			filter: `vnet eq ${vnetKey}`,
+		});
+	}
 }

@@ -3,13 +3,13 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** IPSec configuration mode. */
-export type IPSecMode = 'advanced' | 'normal';
+export type IPSecMode = 'advanced' | 'normal' | (string & {});
 
 /** IPSec unique participant ID handling policy. */
-export type IPSecUniqueIds = 'yes' | 'no' | 'never' | 'replace' | 'keep';
+export type IPSecUniqueIds = 'yes' | 'no' | 'never' | 'replace' | 'keep' | (string & {});
 
 /** IPSec CRL validation policy. */
-export type IPSecStrictCrlPolicy = 'yes' | 'ifuri' | 'no';
+export type IPSecStrictCrlPolicy = 'yes' | 'ifuri' | 'no' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

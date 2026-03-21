@@ -3,22 +3,38 @@ import type { FlexKey, Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Volume filesystem type. */
-export type VolumeFsType = 'ext4' | 'fc_nimble' | 'cifs' | 'nfs' | 'ybfs' | 'verge_vm_export';
+export type VolumeFsType =
+	| 'ext4'
+	| 'fc_nimble'
+	| 'cifs'
+	| 'nfs'
+	| 'ybfs'
+	| 'verge_vm_export'
+	| (string & {});
 
 /** Volume storage tier preference (string digits). */
-export type VolumePreferredTier = '1' | '2' | '3' | '4' | '5';
+export type VolumePreferredTier = '1' | '2' | '3' | '4' | '5' | (string & {});
 
 /** Volume optimization strategy. */
-export type VolumeOptimize = 'general' | 'large';
+export type VolumeOptimize = 'general' | 'large' | (string & {});
 
 /** SMB protocol version for CIFS remote mounts. */
-export type CifsProtocol = '1.0' | '2.0' | '2.1' | '3.0';
+export type CifsProtocol = '1.0' | '2.0' | '2.1' | '3.0' | (string & {});
 
 /** NFS protocol version for NFS remote mounts. */
-export type NfsProtocol = '' | '2' | '3' | '4';
+export type NfsProtocol = '' | '2' | '3' | '4' | (string & {});
 
 /** Read-ahead buffer size in kilobytes (string values). */
-export type ReadAheadKb = '0' | '64' | '128' | '256' | '512' | '1024' | '2048' | '4096';
+export type ReadAheadKb =
+	| '0'
+	| '64'
+	| '128'
+	| '256'
+	| '512'
+	| '1024'
+	| '2048'
+	| '4096'
+	| (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

@@ -3,7 +3,7 @@ import type { Resource } from '../../types.js';
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Volume snapshot expiration policy. */
-export type VolumeSnapshotExpiresType = 'never' | 'date';
+export type VolumeSnapshotExpiresType = 'never' | 'date' | (string & {});
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
