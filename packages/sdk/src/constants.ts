@@ -28,8 +28,8 @@ export const TASK_WAIT_TIMEOUT = 300_000;
 /** Default polling interval for task status checks in milliseconds (2 seconds). */
 export const TASK_POLL_INTERVAL = 2_000;
 
-/** Required major version of the VergeOS server. */
-export const REQUIRED_MAJOR_VERSION = 26;
+/** Minimum supported major version of the VergeOS server. */
+export const MIN_MAJOR_VERSION = 25;
 
 /** Chunk size for file uploads in bytes (256 KB). */
 export const UPLOAD_CHUNK_SIZE = 262_144;

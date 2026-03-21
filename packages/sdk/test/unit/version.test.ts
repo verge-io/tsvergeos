@@ -97,23 +97,35 @@ describe('checkServerVersion', () => {
 		expect(result).toBe('26.0.0-beta1');
 	});
 
-	it('throws UnsupportedVersionError for version 25.x', async () => {
+	it('returns version string for supported 25.x version', async () => {
 		const config = makeConfig();
 		config.fetch.mockResolvedValueOnce(mockResponse(200, { version: '25.3.0' }));
 		const http = new HttpClient(config);
 
-		await expect(checkServerVersion(http)).rejects.toThrow(UnsupportedVersionError);
+		const result = await checkServerVersion(http);
+
+		expect(result).toBe('25.3.0');
 	});
 
-	it('throws UnsupportedVersionError for version 27.x', async () => {
+	it('returns version string for future 27.x version (forward-compatible)', async () => {
 		const config = makeConfig();
 		config.fetch.mockResolvedValueOnce(mockResponse(200, { version: '27.0.0' }));
 		const http = new HttpClient(config);
 
+		const result = await checkServerVersion(http);
+
+		expect(result).toBe('27.0.0');
+	});
+
+	it('throws UnsupportedVersionError for legacy version 4.x', async () => {
+		const config = makeConfig();
+		config.fetch.mockResolvedValueOnce(mockResponse(200, { version: '4.2.0' }));
+		const http = new HttpClient(config);
+
 		const err = await checkServerVersion(http).catch((e: unknown) => e);
 		expect(err).toBeInstanceOf(UnsupportedVersionError);
-		expect((err as UnsupportedVersionError).serverVersion).toBe('27.0.0');
-		expect((err as UnsupportedVersionError).required).toBe('26.x');
+		expect((err as UnsupportedVersionError).serverVersion).toBe('4.2.0');
+		expect((err as UnsupportedVersionError).required).toBe('25.x+');
 	});
 
 	it('fetches /version.json endpoint', async () => {

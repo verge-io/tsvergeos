@@ -151,8 +151,8 @@ describe('Public API exports', () => {
 			expect(typeof sdk.DEFAULT_RETRY_BACKOFF).toBe('number');
 		});
 
-		it('exports REQUIRED_MAJOR_VERSION as a number', () => {
-			expect(typeof sdk.REQUIRED_MAJOR_VERSION).toBe('number');
+		it('exports MIN_MAJOR_VERSION as a number', () => {
+			expect(typeof sdk.MIN_MAJOR_VERSION).toBe('number');
 		});
 
 		it('exports ENV_PREFIX as a string', () => {
@@ -219,7 +219,7 @@ describe('Public API exports', () => {
 				'MAX_PAGE_SIZE',
 				'DEFAULT_RETRIES',
 				'DEFAULT_RETRY_BACKOFF',
-				'REQUIRED_MAJOR_VERSION',
+				'MIN_MAJOR_VERSION',
 				'ENV_PREFIX',
 				'TASK_POLL_INTERVAL',
 				'TASK_WAIT_TIMEOUT',

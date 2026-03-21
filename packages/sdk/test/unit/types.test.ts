@@ -8,7 +8,7 @@ import {
 	DEFAULT_TIMEOUT,
 	ENV_PREFIX,
 	MAX_PAGE_SIZE,
-	REQUIRED_MAJOR_VERSION,
+	MIN_MAJOR_VERSION,
 	SDK_VERSION,
 	TASK_POLL_INTERVAL,
 	TASK_WAIT_TIMEOUT,
@@ -65,8 +65,8 @@ describe('Constants', () => {
 		expect(TASK_POLL_INTERVAL).toBe(2_000);
 	});
 
-	it('REQUIRED_MAJOR_VERSION is 26', () => {
-		expect(REQUIRED_MAJOR_VERSION).toBe(26);
+	it('MIN_MAJOR_VERSION is 25', () => {
+		expect(MIN_MAJOR_VERSION).toBe(25);
 	});
 
 	it('UPLOAD_CHUNK_SIZE is 256 KB', () => {

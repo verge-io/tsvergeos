@@ -1,4 +1,4 @@
-import { REQUIRED_MAJOR_VERSION } from './constants.js';
+import { MIN_MAJOR_VERSION } from './constants.js';
 import { UnsupportedVersionError } from './errors.js';
 import type { HttpClient } from './http.js';
 
@@ -36,19 +36,19 @@ export const parseVersion = (v: string): number => {
 
 /**
  * Fetch `/version.json` from the VergeOS server and validate that the
- * major version matches {@link REQUIRED_MAJOR_VERSION}.
+ * major version is at least {@link MIN_MAJOR_VERSION}.
  *
  * @param http - An authenticated {@link HttpClient} instance
  * @returns The raw version string from the server (e.g., `"26.1.0"`)
- * @throws {@link UnsupportedVersionError} if the major version is not 26
+ * @throws {@link UnsupportedVersionError} if the major version is below the minimum
  */
 export const checkServerVersion = async (http: HttpClient): Promise<string> => {
 	const resp = await http.getAbsolute<VersionResponse>('/version.json');
 	const rawVersion = resp.version;
 	const major = parseVersion(rawVersion);
 
-	if (major !== REQUIRED_MAJOR_VERSION) {
-		throw new UnsupportedVersionError(rawVersion, `${REQUIRED_MAJOR_VERSION}.x`);
+	if (major < MIN_MAJOR_VERSION) {
+		throw new UnsupportedVersionError(rawVersion, `${MIN_MAJOR_VERSION}.x+`);
 	}
 
 	return rawVersion;

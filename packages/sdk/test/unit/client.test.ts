@@ -142,12 +142,12 @@ describe('VergeClient', () => {
 			expect(client.host).toBe('https://verge.example.com');
 		});
 
-		it('throws on unsupported version', async () => {
+		it('throws on unsupported legacy version', async () => {
 			const config = makeConfig();
-			config.fetch.mockResolvedValueOnce(mockResponse(200, { version: '25.0.0' }));
+			config.fetch.mockResolvedValueOnce(mockResponse(200, { version: '4.2.0' }));
 
 			await expect(VergeClient.connect(config)).rejects.toThrow(
-				'Server version 25.0.0 is not supported',
+				'Server version 4.2.0 is not supported',
 			);
 		});
 	});
