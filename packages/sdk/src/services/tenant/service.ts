@@ -8,6 +8,7 @@ import type {
 	Tenant,
 	TenantCloneOptions,
 	TenantCreateParams,
+	TenantGiveFileOptions,
 	TenantUpdateParams,
 } from './types.js';
 
@@ -220,5 +221,55 @@ export class TenantService extends BaseService<Tenant, TenantCreateParams, Tenan
 		// biome-ignore lint: length already checked above
 		const crashCartVm = vms[0]!;
 		await this.http.del(`/vms/${crashCartVm.$key}`);
+	}
+
+	/**
+	 * Execute a command on a tenant.
+	 *
+	 * @param key - The tenant ID
+	 * @param params - Optional execution parameters
+	 */
+	async execute(key: FlexKey, params?: Record<string, unknown>): Promise<void> {
+		await this.dispatchAction('execute', key, params);
+	}
+
+	/**
+	 * Restore a tenant from a snapshot.
+	 *
+	 * @param key - The tenant ID
+	 * @param params - Optional restore parameters
+	 */
+	async restore(key: FlexKey, params?: Record<string, unknown>): Promise<void> {
+		await this.dispatchAction('restore', key, params);
+	}
+
+	/**
+	 * Convert a system/cloud snapshot for a tenant.
+	 *
+	 * @param key - The tenant ID
+	 * @param params - Optional conversion parameters
+	 */
+	async convertCloudSnapshot(key: FlexKey, params?: Record<string, unknown>): Promise<void> {
+		await this.dispatchAction('convert_cloud_snapshot', key, params);
+	}
+
+	/**
+	 * Recover a tenant from a system/cloud snapshot.
+	 *
+	 * @param key - The tenant ID
+	 * @param params - Optional recovery parameters
+	 */
+	async recoverCloudSnapshot(key: FlexKey, params?: Record<string, unknown>): Promise<void> {
+		await this.dispatchAction('recover_cloudsnapshot', key, params);
+	}
+
+	/**
+	 * Share/give a file to a tenant.
+	 *
+	 * @param key - The tenant ID
+	 * @param options - File options including the file FK reference
+	 */
+	async giveFile(key: FlexKey, options: TenantGiveFileOptions): Promise<void> {
+		await this.dispatchAction('give_file', key, options as unknown as Record<string, unknown>);
 	}
 }

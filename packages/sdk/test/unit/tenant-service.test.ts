@@ -390,6 +390,80 @@ describe('TenantService', () => {
 		});
 	});
 
+	describe('additional actions', () => {
+		it('execute dispatches execute action', async () => {
+			const http = mockHttp();
+			const svc = new TenantService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.execute(1);
+
+			expect(http.post).toHaveBeenCalledWith('/tenant_actions', {
+				body: { tenant: 1, action: 'execute' },
+			});
+		});
+
+		it('execute passes optional params', async () => {
+			const http = mockHttp();
+			const svc = new TenantService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.execute(1, { command: 'ls' });
+
+			expect(http.post).toHaveBeenCalledWith('/tenant_actions', {
+				body: { tenant: 1, action: 'execute', params: { command: 'ls' } },
+			});
+		});
+
+		it('restore dispatches restore action', async () => {
+			const http = mockHttp();
+			const svc = new TenantService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.restore(1);
+
+			expect(http.post).toHaveBeenCalledWith('/tenant_actions', {
+				body: { tenant: 1, action: 'restore' },
+			});
+		});
+
+		it('convertCloudSnapshot dispatches convert_cloud_snapshot action', async () => {
+			const http = mockHttp();
+			const svc = new TenantService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.convertCloudSnapshot(1);
+
+			expect(http.post).toHaveBeenCalledWith('/tenant_actions', {
+				body: { tenant: 1, action: 'convert_cloud_snapshot' },
+			});
+		});
+
+		it('recoverCloudSnapshot dispatches recover_cloudsnapshot action', async () => {
+			const http = mockHttp();
+			const svc = new TenantService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.recoverCloudSnapshot(1);
+
+			expect(http.post).toHaveBeenCalledWith('/tenant_actions', {
+				body: { tenant: 1, action: 'recover_cloudsnapshot' },
+			});
+		});
+
+		it('giveFile dispatches give_file action with file option', async () => {
+			const http = mockHttp();
+			const svc = new TenantService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.giveFile(1, { file: 42 });
+
+			expect(http.post).toHaveBeenCalledWith('/tenant_actions', {
+				body: { tenant: 1, action: 'give_file', params: { file: 42 } },
+			});
+		});
+	});
+
 	describe('service registration', () => {
 		it('registers on VergeClient as client.tenants', async () => {
 			await import('../../src/services/tenant/index.js');
@@ -557,6 +631,68 @@ describe('TenantNodeService', () => {
 					action: 'migrate',
 					params: { preferred_node: 3 },
 				},
+			});
+		});
+	});
+
+	describe('additional actions', () => {
+		it('powerOnMigrate dispatches poweronmigrate action', async () => {
+			const http = mockHttp();
+			const svc = new TenantNodeService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.powerOnMigrate(10);
+
+			expect(http.post).toHaveBeenCalledWith('/tenant_node_actions', {
+				body: { tenant_node: 10, action: 'poweronmigrate' },
+			});
+		});
+
+		it('powerOffMaintenance dispatches poweroffmaintenance action', async () => {
+			const http = mockHttp();
+			const svc = new TenantNodeService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.powerOffMaintenance(10);
+
+			expect(http.post).toHaveBeenCalledWith('/tenant_node_actions', {
+				body: { tenant_node: 10, action: 'poweroffmaintenance' },
+			});
+		});
+
+		it('refresh dispatches refresh action', async () => {
+			const http = mockHttp();
+			const svc = new TenantNodeService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.refresh(10);
+
+			expect(http.post).toHaveBeenCalledWith('/tenant_node_actions', {
+				body: { tenant_node: 10, action: 'refresh' },
+			});
+		});
+
+		it('execute dispatches execute action', async () => {
+			const http = mockHttp();
+			const svc = new TenantNodeService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.execute(10);
+
+			expect(http.post).toHaveBeenCalledWith('/tenant_node_actions', {
+				body: { tenant_node: 10, action: 'execute' },
+			});
+		});
+
+		it('execute passes optional params', async () => {
+			const http = mockHttp();
+			const svc = new TenantNodeService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.execute(10, { command: 'ls' });
+
+			expect(http.post).toHaveBeenCalledWith('/tenant_node_actions', {
+				body: { tenant_node: 10, action: 'execute', params: { command: 'ls' } },
 			});
 		});
 	});
