@@ -234,6 +234,64 @@ describe('NetworkService', () => {
 		});
 	});
 
+	describe('migrate', () => {
+		it('dispatches migrate action to /vnet_actions', async () => {
+			const http = mockHttp();
+			const svc = new NetworkService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.migrate(5);
+
+			expect(http.post).toHaveBeenCalledWith('/vnet_actions', {
+				body: { vnet: 5, action: 'migrate' },
+			});
+		});
+	});
+
+	describe('execute', () => {
+		it('dispatches execute action without params', async () => {
+			const http = mockHttp();
+			const svc = new NetworkService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.execute(7);
+
+			expect(http.post).toHaveBeenCalledWith('/vnet_actions', {
+				body: { vnet: 7, action: 'execute' },
+			});
+		});
+
+		it('dispatches execute action with params', async () => {
+			const http = mockHttp();
+			const svc = new NetworkService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.execute(7, { command: 'ping', target: '10.0.0.1' });
+
+			expect(http.post).toHaveBeenCalledWith('/vnet_actions', {
+				body: {
+					vnet: 7,
+					action: 'execute',
+					params: { command: 'ping', target: '10.0.0.1' },
+				},
+			});
+		});
+	});
+
+	describe('clearStatistics', () => {
+		it('dispatches clear_statistics action to /vnet_actions', async () => {
+			const http = mockHttp();
+			const svc = new NetworkService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.clearStatistics(10);
+
+			expect(http.post).toHaveBeenCalledWith('/vnet_actions', {
+				body: { vnet: 10, action: 'clear_statistics' },
+			});
+		});
+	});
+
 	describe('service registration', () => {
 		it('registers on VergeClient as client.networks', async () => {
 			await import('../../src/services/network/index.js');

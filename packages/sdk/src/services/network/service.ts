@@ -94,4 +94,32 @@ export class NetworkService extends BaseService<Network, NetworkCreateParams, Ne
 	async applyDns(key: FlexKey): Promise<void> {
 		await this.http.put(`/vnets/${key}/applydns`);
 	}
+
+	/**
+	 * Migrate a virtual network to another node.
+	 *
+	 * @param key - The network ID
+	 */
+	async migrate(key: FlexKey): Promise<void> {
+		await this.dispatchAction('migrate', key);
+	}
+
+	/**
+	 * Execute a command on a virtual network.
+	 *
+	 * @param key - The network ID
+	 * @param params - Optional command parameters
+	 */
+	async execute(key: FlexKey, params?: Record<string, unknown>): Promise<void> {
+		await this.dispatchAction('execute', key, params);
+	}
+
+	/**
+	 * Clear statistics for a virtual network.
+	 *
+	 * @param key - The network ID
+	 */
+	async clearStatistics(key: FlexKey): Promise<void> {
+		await this.dispatchAction('clear_statistics', key);
+	}
 }
