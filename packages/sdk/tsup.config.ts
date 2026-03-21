@@ -27,6 +27,10 @@ export default defineConfig({
     "services/ipsec-phase2/index": "src/services/ipsec-phase2/index.ts",
     "services/ipsec-connection/index": "src/services/ipsec-connection/index.ts",
     "services/machine-stats/index": "src/services/machine-stats/index.ts",
+    "services/machine-stats-history-short/index":
+      "src/services/machine-stats-history-short/index.ts",
+    "services/machine-stats-history-long/index":
+      "src/services/machine-stats-history-long/index.ts",
     "services/machine-status/index": "src/services/machine-status/index.ts",
     "services/machine-drive-stats/index":
       "src/services/machine-drive-stats/index.ts",
@@ -34,6 +38,10 @@ export default defineConfig({
       "src/services/machine-nic-stats/index.ts",
     "services/machine-drive-phys/index":
       "src/services/machine-drive-phys/index.ts",
+    "services/vnet-monitor-stats-history-short/index":
+      "src/services/vnet-monitor-stats-history-short/index.ts",
+    "services/vnet-monitor-stats-history-long/index":
+      "src/services/vnet-monitor-stats-history-long/index.ts",
     "services/volume/index": "src/services/volume/index.ts",
     "services/volume-cifs-share/index":
       "src/services/volume-cifs-share/index.ts",
