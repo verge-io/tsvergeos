@@ -86,4 +86,26 @@ export class VolumeSyncService extends BaseService<
 	async stopSync(key: string): Promise<void> {
 		await this.dispatchAction('stop_sync', key);
 	}
+
+	/**
+	 * Enable a volume sync.
+	 *
+	 * Dispatches the `enable` action to the `/volume_sync_actions` endpoint.
+	 *
+	 * @param key - The volume sync SHA1 key
+	 */
+	async enable(key: string): Promise<void> {
+		await this.dispatchAction('enable', key);
+	}
+
+	/**
+	 * Disable a volume sync.
+	 *
+	 * Dispatches the `disable` action to the `/volume_sync_actions` endpoint.
+	 *
+	 * @param key - The volume sync SHA1 key
+	 */
+	async disable(key: string): Promise<void> {
+		await this.dispatchAction('disable', key);
+	}
 }

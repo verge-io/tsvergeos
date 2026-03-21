@@ -85,4 +85,28 @@ export class NetworkRuleService extends BaseService<
 	async disable(key: FlexKey): Promise<void> {
 		await this.http.post(`${this.resource}/${key}/disable`);
 	}
+
+	/**
+	 * Apply a tag to a network rule.
+	 *
+	 * Uses the inline action endpoint: `POST /vnet_rules/{key}/tag`.
+	 *
+	 * @param key - The rule ID
+	 * @param tag - The tag member reference (e.g., `"tags/123"`)
+	 */
+	async tag(key: FlexKey, tag: string): Promise<void> {
+		await this.inlineAction(key, 'tag', { member: tag });
+	}
+
+	/**
+	 * Remove a tag from a network rule.
+	 *
+	 * Uses the inline action endpoint: `POST /vnet_rules/{key}/untag`.
+	 *
+	 * @param key - The rule ID
+	 * @param tag - The tag member reference (e.g., `"tags/123"`)
+	 */
+	async untag(key: FlexKey, tag: string): Promise<void> {
+		await this.inlineAction(key, 'untag', { member: tag });
+	}
 }
