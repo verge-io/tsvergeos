@@ -172,7 +172,11 @@ export class CrossSiteReadProxy {
 		const data: SiteResource<T>[] = [];
 		const errors: SiteError[] = [];
 
-		for (const result of settled) {
+		for (let i = 0; i < settled.length; i++) {
+			const result = settled[i] as PromiseSettledResult<{
+				name: string;
+				items: T[];
+			}>;
 			if (result.status === 'fulfilled') {
 				const { name, items } = result.value;
 				for (const item of items) {
@@ -180,10 +184,7 @@ export class CrossSiteReadProxy {
 				}
 				this._updateStatus(name, { connected: true, lastError: undefined });
 			} else {
-				// Find the site name from the rejection
-				// Promise.allSettled preserves order, so use index
-				const index = settled.indexOf(result);
-				const [name] = entries[index] as [string, VergeClient];
+				const [name] = entries[i] as [string, VergeClient];
 				const cause =
 					result.reason instanceof Error ? result.reason : new VergeError(String(result.reason));
 
