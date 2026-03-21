@@ -1,7 +1,7 @@
-import type { HttpClient } from "../../http.js";
-import type { FlexKey } from "../../types.js";
-import { BaseService } from "../base.js";
-import type { User, UserCreateParams, UserUpdateParams } from "./types.js";
+import type { HttpClient } from '../../http.js';
+import type { FlexKey } from '../../types.js';
+import { BaseService } from '../base.js';
+import type { User, UserCreateParams, UserUpdateParams } from './types.js';
 
 /**
  * Service for managing VergeOS users.
@@ -26,30 +26,26 @@ import type { User, UserCreateParams, UserUpdateParams } from "./types.js";
  * await client.users.disable(3);
  * ```
  */
-export class UserService extends BaseService<
-  User,
-  UserCreateParams,
-  UserUpdateParams
-> {
-  constructor(http: HttpClient) {
-    super(http, "/users", "User");
-  }
+export class UserService extends BaseService<User, UserCreateParams, UserUpdateParams> {
+	constructor(http: HttpClient) {
+		super(http, '/users', 'User');
+	}
 
-  /**
-   * Enable a user account.
-   *
-   * @param key - The user ID
-   */
-  async enable(key: FlexKey): Promise<void> {
-    await this.inlineAction(key, "enable");
-  }
+	/**
+	 * Enable a user account.
+	 *
+	 * @param key - The user ID
+	 */
+	async enable(key: FlexKey): Promise<void> {
+		await this.inlineAction(key, 'enable');
+	}
 
-  /**
-   * Disable a user account.
-   *
-   * @param key - The user ID
-   */
-  async disable(key: FlexKey): Promise<void> {
-    await this.inlineAction(key, "disable");
-  }
+	/**
+	 * Disable a user account.
+	 *
+	 * @param key - The user ID
+	 */
+	async disable(key: FlexKey): Promise<void> {
+		await this.inlineAction(key, 'disable');
+	}
 }
