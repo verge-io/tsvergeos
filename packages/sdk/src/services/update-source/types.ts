@@ -1,15 +1,15 @@
-import type { FlexKey, Resource } from '../../types.js';
+import type { FlexKey, Resource } from "../../types.js";
 
 // ─── String Literal Unions ───────────────────────────────────────────────────
 
 /** Actions available for update sources via the `/update_actions` endpoint. */
 export type UpdateSourceAction =
-	| 'refresh'
-	| 'download'
-	| 'install'
-	| 'apply'
-	| 'refresh_counts'
-	| 'all';
+  | "refresh"
+  | "download"
+  | "install"
+  | "apply"
+  | "refresh_counts"
+  | "all";
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
@@ -20,32 +20,32 @@ export type UpdateSourceAction =
  * Field names use snake_case to match the VergeOS API exactly.
  */
 export interface UpdateSource extends Resource {
-	/** Unique name of the update source. */
-	name?: string;
+  /** Unique name of the update source. */
+  name?: string;
 
-	/** Human-readable description. */
-	description?: string;
+  /** Human-readable description. */
+  description?: string;
 
-	/** URL of the update source server. */
-	url?: string;
+  /** URL of the update source server. */
+  url?: string;
 
-	/** Authentication username. */
-	user?: string;
+  /** Authentication username. */
+  user?: string;
 
-	/** Authentication password. */
-	password?: string;
+  /** Authentication password. */
+  password?: string;
 
-	/** Whether this source is enabled. */
-	enabled?: boolean;
+  /** Whether this source is enabled. */
+  enabled?: boolean;
 
-	/** Last time the source was updated (timestamp). Read-only. */
-	last_updated?: string;
+  /** Last time the source was updated (Unix epoch timestamp). Read-only. */
+  last_updated?: number;
 
-	/** Last time the source was refreshed (timestamp). Read-only. */
-	last_refreshed?: string;
+  /** Last time the source was refreshed (Unix epoch timestamp). Read-only. */
+  last_refreshed?: number;
 
-	/** Status record (FK → `update_source_status`). Read-only. */
-	status?: FlexKey;
+  /** Status record (FK → `update_source_status`). Read-only. */
+  status?: FlexKey;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────
@@ -54,23 +54,23 @@ export interface UpdateSource extends Resource {
  * Parameters for creating a new update source.
  */
 export interface UpdateSourceCreateParams {
-	/** Unique name for the update source. Required. */
-	name: string;
+  /** Unique name for the update source. Required. */
+  name: string;
 
-	/** Human-readable description. */
-	description?: string;
+  /** Human-readable description. */
+  description?: string;
 
-	/** URL of the update source server. Required. */
-	url: string;
+  /** URL of the update source server. Required. */
+  url: string;
 
-	/** Authentication username. */
-	user?: string;
+  /** Authentication username. */
+  user?: string;
 
-	/** Authentication password. */
-	password?: string;
+  /** Authentication password. */
+  password?: string;
 
-	/** Whether this source is enabled. Default: `true`. */
-	enabled?: boolean;
+  /** Whether this source is enabled. Default: `true`. */
+  enabled?: boolean;
 }
 
 // ─── Update Params ───────────────────────────────────────────────────────────
@@ -81,21 +81,21 @@ export interface UpdateSourceCreateParams {
  * All fields are optional — only provided fields are changed.
  */
 export interface UpdateSourceUpdateParams {
-	/** Unique name for the update source. */
-	name?: string;
+  /** Unique name for the update source. */
+  name?: string;
 
-	/** Human-readable description. */
-	description?: string;
+  /** Human-readable description. */
+  description?: string;
 
-	/** URL of the update source server. */
-	url?: string;
+  /** URL of the update source server. */
+  url?: string;
 
-	/** Authentication username. */
-	user?: string;
+  /** Authentication username. */
+  user?: string;
 
-	/** Authentication password. */
-	password?: string;
+  /** Authentication password. */
+  password?: string;
 
-	/** Whether this source is enabled. */
-	enabled?: boolean;
+  /** Whether this source is enabled. */
+  enabled?: boolean;
 }
