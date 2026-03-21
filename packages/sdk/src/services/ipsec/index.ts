@@ -24,4 +24,11 @@ declare module '../../client.js' {
 }
 
 export { IPSecService } from './service.js';
-export type { IPSec, IPSecCreateParams, IPSecUpdateParams } from './types.js';
+export type {
+	IPSec,
+	IPSecCreateParams,
+	IPSecMode,
+	IPSecStrictCrlPolicy,
+	IPSecUniqueIds,
+	IPSecUpdateParams,
+} from './types.js';

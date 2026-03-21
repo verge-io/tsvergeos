@@ -26,7 +26,7 @@ function mockHttp(host = 'https://verge.example.com'): HttpClient {
 const sampleAlarm: Alarm = {
 	$key: 1,
 	owner: 'vms/123',
-	owner_type: 'vm',
+	owner_type: 'vms',
 	alarm_type: 'vm_cpu_high',
 	level: 'warning',
 	status: 'active',

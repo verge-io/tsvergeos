@@ -28,6 +28,7 @@ export type {
 	DriveInterface,
 	DriveMedia,
 	DriveOptimize,
+	DrivePreferredTier,
 	MachineDrive,
 	MachineDriveCreateParams,
 	MachineDriveUpdateParams,

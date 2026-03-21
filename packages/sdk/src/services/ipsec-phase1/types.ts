@@ -1,5 +1,22 @@
 import type { FlexKey, Resource } from '../../types.js';
 
+// ─── String Literal Unions ───────────────────────────────────────────────────
+
+/** IKE version for key exchange. */
+export type IPSecKeyExchange = 'ikev1' | 'ikev2' | 'ike';
+
+/** IPSec Phase 1 authentication method. */
+export type IPSecAuth = 'psk' | 'pubkey';
+
+/** IKEv1 negotiation mode. */
+export type IPSecNegotiation = 'main' | 'aggressive';
+
+/** IPSec connection startup behavior. */
+export type IPSecAuto = 'add' | 'route' | 'start';
+
+/** Dead peer detection action. */
+export type IPSecDpdAction = 'none' | 'clear' | 'hold' | 'restart';
+
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
 /**
@@ -25,16 +42,16 @@ export interface IPSecPhase1 extends Resource {
 	description?: string;
 
 	/** IKE version: `ikev1`, `ikev2`, `ike` (auto). Default: `ike`. */
-	keyexchange?: string;
+	keyexchange?: IPSecKeyExchange;
 
 	/** Remote peer IP address or hostname. */
 	remote_gateway: string;
 
 	/** Authentication method: `psk` (mutual PSK) or `pubkey` (mutual RSA). Default: `psk`. */
-	auth?: string;
+	auth?: IPSecAuth;
 
 	/** Negotiation mode: `main` or `aggressive`. Default: `main`. */
-	negotiation?: string;
+	negotiation?: IPSecNegotiation;
 
 	/** Local identifier (blank = current IP). */
 	identifier?: string;
@@ -52,7 +69,7 @@ export interface IPSecPhase1 extends Resource {
 	ikelifetime?: number;
 
 	/** Connection behavior: `add` (responder only), `route` (on-demand), `start`. Default: `route`. */
-	auto?: string;
+	auto?: IPSecAuto;
 
 	/** Enable IKEv2 MOBIKE protocol. Default: `false`. */
 	mobike?: boolean;
@@ -76,7 +93,7 @@ export interface IPSecPhase1 extends Resource {
 	margintime?: number;
 
 	/** Dead peer detection action: `none`, `clear`, `hold`, `restart`. Default: `restart`. */
-	dpdaction?: string;
+	dpdaction?: IPSecDpdAction;
 
 	/** DPD check interval in seconds. Default: `30`. */
 	dpddelay?: number;
@@ -109,16 +126,16 @@ export interface IPSecPhase1CreateParams {
 	enabled?: boolean;
 
 	/** IKE version: `ikev1`, `ikev2`, `ike` (auto). Default: `ike`. */
-	keyexchange?: string;
+	keyexchange?: IPSecKeyExchange;
 
 	/** Remote peer IP address or hostname. */
 	remote_gateway: string;
 
 	/** Authentication method: `psk` or `pubkey`. Default: `psk`. */
-	auth?: string;
+	auth?: IPSecAuth;
 
 	/** Negotiation mode: `main` or `aggressive`. Default: `main`. */
-	negotiation?: string;
+	negotiation?: IPSecNegotiation;
 
 	/** Local identifier. */
 	identifier?: string;
@@ -136,7 +153,7 @@ export interface IPSecPhase1CreateParams {
 	ikelifetime?: number;
 
 	/** Connection behavior: `add`, `route`, `start`. Default: `route`. */
-	auto?: string;
+	auto?: IPSecAuto;
 
 	/** Enable IKEv2 MOBIKE protocol. */
 	mobike?: boolean;
@@ -160,7 +177,7 @@ export interface IPSecPhase1CreateParams {
 	margintime?: number;
 
 	/** Dead peer detection action. Default: `restart`. */
-	dpdaction?: string;
+	dpdaction?: IPSecDpdAction;
 
 	/** DPD check interval. Default: `30`. */
 	dpddelay?: number;
@@ -188,16 +205,16 @@ export interface IPSecPhase1UpdateParams {
 	enabled?: boolean;
 
 	/** IKE version. */
-	keyexchange?: string;
+	keyexchange?: IPSecKeyExchange;
 
 	/** Remote peer IP address or hostname. */
 	remote_gateway?: string;
 
 	/** Authentication method. */
-	auth?: string;
+	auth?: IPSecAuth;
 
 	/** Negotiation mode. */
-	negotiation?: string;
+	negotiation?: IPSecNegotiation;
 
 	/** Local identifier. */
 	identifier?: string;
@@ -215,7 +232,7 @@ export interface IPSecPhase1UpdateParams {
 	ikelifetime?: number;
 
 	/** Connection behavior. */
-	auto?: string;
+	auto?: IPSecAuto;
 
 	/** Enable IKEv2 MOBIKE protocol. */
 	mobike?: boolean;
@@ -239,7 +256,7 @@ export interface IPSecPhase1UpdateParams {
 	margintime?: number;
 
 	/** Dead peer detection action. */
-	dpdaction?: string;
+	dpdaction?: IPSecDpdAction;
 
 	/** DPD check interval. */
 	dpddelay?: number;

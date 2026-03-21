@@ -75,6 +75,9 @@ export type DriveInterface =
 /** Drive optimization setting. */
 export type DriveOptimize = 'general' | 'large';
 
+/** Drive preferred storage tier. */
+export type DrivePreferredTier = '1' | '2' | '3' | '4' | '5';
+
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
 /**
@@ -120,7 +123,7 @@ export interface MachineDrive extends Resource {
 	media_source?: FlexKey;
 
 	/** Preferred storage tier (`1`–`5`). */
-	preferred_tier?: string;
+	preferred_tier?: DrivePreferredTier;
 
 	/** Whether the drive is read-only. */
 	readonly?: boolean;
@@ -184,7 +187,7 @@ export interface MachineDriveCreateParams {
 	media_source?: FlexKey;
 
 	/** Preferred storage tier (`1`–`5`). */
-	preferred_tier?: string;
+	preferred_tier?: DrivePreferredTier;
 
 	/** Whether the drive is read-only. */
 	readonly?: boolean;
@@ -242,7 +245,7 @@ export interface MachineDriveUpdateParams {
 	disksize?: number;
 
 	/** Preferred storage tier (`1`–`5`). */
-	preferred_tier?: string;
+	preferred_tier?: DrivePreferredTier;
 
 	/** Whether the drive is read-only. */
 	readonly?: boolean;

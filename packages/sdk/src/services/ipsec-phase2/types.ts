@@ -1,5 +1,13 @@
 import type { FlexKey, Resource } from '../../types.js';
 
+// ─── String Literal Unions ───────────────────────────────────────────────────
+
+/** IPSec tunnel mode. */
+export type IPSecPhase2Mode = 'tunnel' | 'transport';
+
+/** IPSec security protocol. */
+export type IPSecProtocol = 'esp' | 'ah';
+
 // ─── Resource Type ───────────────────────────────────────────────────────────
 
 /**
@@ -25,7 +33,7 @@ export interface IPSecPhase2 extends Resource {
 	description?: string;
 
 	/** IPSec mode: `tunnel` (subnet-to-subnet) or `transport` (host-to-host). Default: `tunnel`. */
-	mode?: string;
+	mode?: IPSecPhase2Mode;
 
 	/** Local network/subnet in CIDR notation. */
 	local: string;
@@ -37,7 +45,7 @@ export interface IPSecPhase2 extends Resource {
 	lifetime?: number;
 
 	/** IPSec protocol: `esp` (encryption) or `ah` (auth only). Default: `esp`. */
-	protocol?: string;
+	protocol?: IPSecProtocol;
 
 	/** Cipher suites for IPSec SA. Default: `aes128-sha256-modp2048,aes128gcm128-sha256-modp2048`. */
 	ciphers: string;
@@ -67,7 +75,7 @@ export interface IPSecPhase2CreateParams {
 	enabled?: boolean;
 
 	/** IPSec mode: `tunnel` or `transport`. Default: `tunnel`. */
-	mode?: string;
+	mode?: IPSecPhase2Mode;
 
 	/** Local network/subnet in CIDR notation. */
 	local: string;
@@ -79,7 +87,7 @@ export interface IPSecPhase2CreateParams {
 	lifetime?: number;
 
 	/** IPSec protocol: `esp` or `ah`. Default: `esp`. */
-	protocol?: string;
+	protocol?: IPSecProtocol;
 
 	/** Cipher suites. Default: `aes128-sha256-modp2048,aes128gcm128-sha256-modp2048`. */
 	ciphers?: string;
@@ -104,7 +112,7 @@ export interface IPSecPhase2UpdateParams {
 	enabled?: boolean;
 
 	/** IPSec mode: `tunnel` or `transport`. */
-	mode?: string;
+	mode?: IPSecPhase2Mode;
 
 	/** Local network/subnet in CIDR notation. */
 	local?: string;
@@ -116,7 +124,7 @@ export interface IPSecPhase2UpdateParams {
 	lifetime?: number;
 
 	/** IPSec protocol: `esp` or `ah`. */
-	protocol?: string;
+	protocol?: IPSecProtocol;
 
 	/** Cipher suites. */
 	ciphers?: string;
