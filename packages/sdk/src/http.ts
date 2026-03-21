@@ -101,6 +101,19 @@ export class HttpClient {
     return this.baseUrl;
   }
 
+  /**
+   * The underlying `fetch` implementation used by this client.
+   *
+   * Exposed so that services needing non-standard requests (e.g., different
+   * auth headers or non-API paths) can reuse the same transport, including
+   * any custom TLS or proxy configuration.
+   *
+   * @internal
+   */
+  get fetchFn(): typeof globalThis.fetch {
+    return this.fetchImpl;
+  }
+
   constructor(config: ClientConfig) {
     const host = config.host.replace(/\/+$/, "");
     this.baseUrl = host.startsWith("http") ? host : `https://${host}`;
