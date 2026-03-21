@@ -94,6 +94,46 @@
         "default": "./dist/services/machine-stats/index.cjs"
       }
     },
+    "./services/machine-stats-history-short": {
+      "import": {
+        "types": "./dist/services/machine-stats-history-short/index.d.ts",
+        "default": "./dist/services/machine-stats-history-short/index.js"
+      },
+      "require": {
+        "types": "./dist/services/machine-stats-history-short/index.d.cts",
+        "default": "./dist/services/machine-stats-history-short/index.cjs"
+      }
+    },
+    "./services/machine-stats-history-long": {
+      "import": {
+        "types": "./dist/services/machine-stats-history-long/index.d.ts",
+        "default": "./dist/services/machine-stats-history-long/index.js"
+      },
+      "require": {
+        "types": "./dist/services/machine-stats-history-long/index.d.cts",
+        "default": "./dist/services/machine-stats-history-long/index.cjs"
+      }
+    },
+    "./services/vnet-monitor-stats-history-short": {
+      "import": {
+        "types": "./dist/services/vnet-monitor-stats-history-short/index.d.ts",
+        "default": "./dist/services/vnet-monitor-stats-history-short/index.js"
+      },
+      "require": {
+        "types": "./dist/services/vnet-monitor-stats-history-short/index.d.cts",
+        "default": "./dist/services/vnet-monitor-stats-history-short/index.cjs"
+      }
+    },
+    "./services/vnet-monitor-stats-history-long": {
+      "import": {
+        "types": "./dist/services/vnet-monitor-stats-history-long/index.d.ts",
+        "default": "./dist/services/vnet-monitor-stats-history-long/index.js"
+      },
+      "require": {
+        "types": "./dist/services/vnet-monitor-stats-history-long/index.d.cts",
+        "default": "./dist/services/vnet-monitor-stats-history-long/index.cjs"
+      }
+    },
     "./services/machine-snapshot": {
       "import": {
         "types": "./dist/services/machine-snapshot/index.d.ts",
