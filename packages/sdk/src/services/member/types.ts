@@ -52,5 +52,4 @@ export interface MemberCreateParams {
  * and `system` is a locked field. No mutable fields remain, but the
  * interface is kept for type compatibility with {@link BaseService}.
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export type MemberUpdateParams = {};
+export type MemberUpdateParams = Record<string, never>;
