@@ -147,7 +147,7 @@ export interface IPSecPhase1CreateParams {
 	psk?: string;
 
 	/** IKE encryption algorithm(s). Default: `aes256-sha256-modp2048`. */
-	ike?: string;
+	ike: string;
 
 	/** IKE SA lifetime in seconds. Min: 60. Default: `10800`. */
 	ikelifetime?: number;

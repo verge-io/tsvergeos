@@ -7,45 +7,45 @@ import type { FlexKey, Resource } from '../../types.js';
  */
 export interface System extends Resource {
 	/** Unique system key (always `'self'`). */
-	key: string;
+	key?: string;
 	/** 40-character unique system ID. */
-	id: string;
+	id?: string;
 	/** Display name of this VergeOS cloud. */
-	cloud_name: string;
+	cloud_name?: string;
 	/** VergeOS application version (e.g., `"6.1.2"`). */
-	yb_version: string;
+	yb_version?: string;
 	/** Underlying OS version. */
-	os_version: string;
+	os_version?: string;
 	/** Release branch (e.g., `"stable"`, `"beta"`). */
-	branch: string;
-	/** Whether this system is running as a tenant. */
-	is_tenant: boolean;
+	branch?: string;
+	/** Whether this system is running as a tenant. Read-only. */
+	is_tenant?: boolean;
 	/** System description. */
-	description: string;
+	description?: string;
 	/** Configured domain name. */
-	domain: string;
+	domain?: string;
 	/** City location. */
-	city: string;
+	city?: string;
 	/** ISO 3166-1 alpha-2 country code (e.g., `"US"`). */
-	country: string;
+	country?: string;
 	/** IANA timezone identifier (e.g., `"America/New_York"`). */
-	timezone: string;
+	timezone?: string;
 	/** System URL. */
-	url: string;
+	url?: string;
 	/** Geographic latitude (-90 to 90). */
-	latitude: number;
+	latitude?: number;
 	/** Geographic longitude (-180 to 180). */
-	longitude: number;
+	longitude?: number;
 	/** vSAN host address. */
-	vsan_host: string;
+	vsan_host?: string;
 	/** vSAN port (0–65535, default 14201). */
-	vsan_port: number;
+	vsan_port?: number;
 	/** Map pin color for multi-site dashboards. */
-	map_color: string;
-	/** UI branding FK. */
-	ui_branding: FlexKey;
+	map_color?: string;
+	/** UI branding FK. Read-only. */
+	ui_branding?: FlexKey;
 	/** Default system theme FK. */
-	theme: FlexKey;
+	theme?: FlexKey;
 }
 
 /**

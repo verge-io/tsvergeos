@@ -10,19 +10,19 @@ import type { FlexKey, Resource } from '../../types.js';
  */
 export interface UpdateSourcePackage extends Resource {
 	/** Package name. */
-	name?: string;
+	name: string;
 
 	/** Human-readable description. */
 	description?: string;
 
 	/** Branch this package belongs to (FK → `update_branches`). */
-	branch?: FlexKey;
+	branch: FlexKey;
 
 	/** Update source this package comes from (FK → `update_sources`). */
-	source?: FlexKey;
+	source: FlexKey;
 
 	/** Package version string. */
-	version?: string;
+	version: string;
 
 	/** Whether the package has been downloaded. */
 	downloaded?: boolean;

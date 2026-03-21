@@ -29,7 +29,7 @@ export interface Webhook extends Resource {
 	last_attempt?: number;
 
 	/** The message payload that was delivered. */
-	message?: string;
+	message: string;
 
 	/** Current delivery status. Default: `'queued'`. */
 	status?: WebhookStatus;

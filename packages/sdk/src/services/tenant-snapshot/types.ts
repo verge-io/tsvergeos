@@ -16,7 +16,7 @@ export interface TenantSnapshot extends Resource {
 	tenant: FlexKey;
 
 	/** Snapshot name. Read-only. */
-	name?: string;
+	name: string;
 
 	/** Snapshot profile name. */
 	profile?: string;

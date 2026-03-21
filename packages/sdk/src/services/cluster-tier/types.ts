@@ -16,10 +16,10 @@ import type { FlexKey, Resource } from '../../types.js';
  */
 export interface ClusterTier extends Resource {
 	/** FK to the parent cluster. */
-	cluster?: FlexKey;
+	cluster: FlexKey;
 
 	/** Tier number (0-5). */
-	tier?: number;
+	tier: number;
 
 	/** Human-readable tier description. */
 	description?: string;
@@ -29,4 +29,13 @@ export interface ClusterTier extends Resource {
 
 	/** Price per GB for this tier. */
 	price_per_gb?: number;
+
+	/** Tier status FK (to `cluster_tier_status`). Read-only. */
+	status?: FlexKey;
+
+	/** Tier stats FK (to `cluster_tier_stats`). Read-only. */
+	stats?: FlexKey;
+
+	/** Tier dashboard FK (to `cluster_tier_dashboards`). Read-only. */
+	dashboard?: FlexKey;
 }

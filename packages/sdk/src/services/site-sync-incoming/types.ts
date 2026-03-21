@@ -29,7 +29,7 @@ export type SiteSyncIncomingForceTier = 'unspecified' | '1' | '2' | '3' | '4' | 
  */
 export interface SiteSyncIncoming extends Resource {
 	/** Sync name. */
-	name?: string;
+	name: string;
 
 	/** Human-readable description. */
 	description?: string;
@@ -38,7 +38,7 @@ export interface SiteSyncIncoming extends Resource {
 	enabled?: boolean;
 
 	/** Foreign key to the parent site. */
-	site?: FlexKey;
+	site: FlexKey;
 
 	/** 40-character unique sync identifier. Read-only. */
 	sync_id?: string;
@@ -90,6 +90,9 @@ export interface SiteSyncIncoming extends Resource {
 
 	/** vSAN user ID. Read-only. */
 	vsan_userid?: string;
+
+	/** Whether this sync has been verified. */
+	verified?: boolean;
 }
 
 // ─── Create Params ───────────────────────────────────────────────────────────

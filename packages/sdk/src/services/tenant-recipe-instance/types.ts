@@ -15,7 +15,7 @@ import type { FlexKey, Resource } from '../../types.js';
  */
 export interface TenantRecipeInstance extends Resource {
 	/** Parent recipe (FK to `tenant_recipes`). Read-only. */
-	recipe?: FlexKey;
+	recipe: FlexKey;
 
 	/** Associated tenant (FK to `tenants`). Read-only. */
 	tenant?: FlexKey;
@@ -63,4 +63,10 @@ export interface TenantRecipeInstanceCreateParams {
 export interface TenantRecipeInstanceUpdateParams {
 	/** Instance name. */
 	name?: string;
+
+	/** Recipe version string. */
+	version?: string;
+
+	/** Recipe build number. */
+	build?: number;
 }

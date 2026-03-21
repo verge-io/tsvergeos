@@ -32,7 +32,7 @@ export type SiteSyncOutgoingRemoteSnapsStatus =
  */
 export interface SiteSyncOutgoing extends Resource {
 	/** Sync name. */
-	name?: string;
+	name: string;
 
 	/** Human-readable description. */
 	description?: string;
@@ -41,7 +41,7 @@ export interface SiteSyncOutgoing extends Resource {
 	enabled?: boolean;
 
 	/** Foreign key to the parent site. */
-	site?: FlexKey;
+	site: FlexKey;
 
 	/** Current sync status. */
 	status?: SiteSyncOutgoingStatus;
@@ -208,6 +208,9 @@ export interface SiteSyncOutgoingCreateParams {
 	/** Whether to multiply retry interval on each attempt. */
 	queue_retry_interval_multiplier?: boolean;
 
+	/** Remote site ID. */
+	remote_site_id?: string;
+
 	/** User-defined note. */
 	note?: string;
 }
@@ -279,6 +282,9 @@ export interface SiteSyncOutgoingUpdateParams {
 
 	/** Foreign key to the sync-back incoming sync. */
 	sync_back?: FlexKey;
+
+	/** Remote site ID. */
+	remote_site_id?: string;
 
 	/** User-defined note. */
 	note?: string;

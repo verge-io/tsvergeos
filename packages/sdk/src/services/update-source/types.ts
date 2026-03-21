@@ -21,13 +21,13 @@ export type UpdateSourceAction =
  */
 export interface UpdateSource extends Resource {
 	/** Unique name of the update source. */
-	name?: string;
+	name: string;
 
 	/** Human-readable description. */
 	description?: string;
 
 	/** URL of the update source server. */
-	url?: string;
+	url: string;
 
 	/** Authentication username. */
 	user?: string;

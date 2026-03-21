@@ -11,7 +11,7 @@ import type { FlexKey, Resource } from '../../types.js';
  */
 export interface VMRecipeInstance extends Resource {
 	/** Parent recipe (FK to `vm_recipes`). Read-only. */
-	recipe?: FlexKey;
+	recipe: FlexKey;
 
 	/** Associated VM (FK to `vms`). Read-only. */
 	vm?: FlexKey;
