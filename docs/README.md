@@ -75,6 +75,8 @@
 - [services/tenant-recipe-instance](services/tenant-recipe-instance.md)
 - [services/tenant-recipe](services/tenant-recipe.md)
 - [services/tenant-snapshot](services/tenant-snapshot.md)
+- [services/tenant-stats-history-long](services/tenant-stats-history-long.md)
+- [services/tenant-stats-history-short](services/tenant-stats-history-short.md)
 - [services/tenant-storage](services/tenant-storage.md)
 - [services/tenant](services/tenant.md)
 - [services/update-branch](services/update-branch.md)

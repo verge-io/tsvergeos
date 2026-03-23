@@ -19,7 +19,7 @@ import 'tsvergeos/services/node';
 
 ### NodeService
 
-Defined in: [services/node/service.ts:31](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L31)
+Defined in: [services/node/service.ts:31](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L31)
 
 Service for managing VergeOS nodes.
 
@@ -56,7 +56,7 @@ await client.nodes.enableMaintenance(node.$key);
 
 > **new NodeService**(`http`): [`NodeService`](#nodeservice)
 
-Defined in: [services/node/service.ts:32](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L32)
+Defined in: [services/node/service.ts:32](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L32)
 
 ###### Parameters
 
@@ -76,10 +76,10 @@ Defined in: [services/node/service.ts:32](https://github.com/verge-io/tsvergeos/
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`WritableService`](../index.md#writableservice).[`resource`](../index.md#property-resource-3) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`WritableService`](../index.md#writableservice).[`displayName`](../index.md#property-displayname-1) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`WritableService`](../index.md#writableservice).[`defaultFields`](../index.md#property-defaultfields-1) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L138) |
-| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`WritableService`](../index.md#writableservice).[`actionConfig`](../index.md#property-actionconfig) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L256) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`WritableService`](../index.md#writableservice).[`resource`](../index.md#property-resource-3) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L123) |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`WritableService`](../index.md#writableservice).[`displayName`](../index.md#property-displayname-1) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L126) |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`WritableService`](../index.md#writableservice).[`defaultFields`](../index.md#property-defaultfields-1) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`WritableService`](../index.md#writableservice).[`actionConfig`](../index.md#property-actionconfig) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L256) |
 
 #### Methods
 
@@ -87,7 +87,7 @@ Defined in: [services/node/service.ts:32](https://github.com/verge-io/tsvergeos/
 
 > **list**(`options?`): `Promise`\<[`Node`](../types.md#node)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L157)
+Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L157)
 
 List resources matching the given options.
 
@@ -111,7 +111,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`Node`](../types.md#node)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L174)
+Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L174)
 
 Get a single resource by its key (ID).
 
@@ -139,7 +139,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`Node`](../types.md#node)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L198)
+Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L198)
 
 Get a single resource by its `name` field.
 
@@ -169,7 +169,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`Node`](../types.md#node)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L217)
+Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L217)
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -198,7 +198,7 @@ Individual resources across all pages
 
 > **update**(`key`, `params`, `options?`): `Promise`\<[`Node`](../types.md#node)\>
 
-Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L293)
+Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L293)
 
 Update an existing resource.
 
@@ -226,7 +226,7 @@ The updated resource (or the resource with just `$key` if `readBack` is false)
 
 > **delete**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L309)
+Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L309)
 
 Delete a resource by its key (ID).
 
@@ -252,7 +252,7 @@ NotFoundError if the resource does not exist
 
 > `protected` **inlineAction**(`key`, `action`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L330)
+Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L330)
 
 Execute an inline action on a specific resource.
 
@@ -279,7 +279,7 @@ Used for record-level actions (e.g., `POST /users/3/enable`).
 
 > `protected` **dispatchAction**(`action`, `key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L356)
+Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L356)
 
 Dispatch an action to the dedicated `_actions` endpoint.
 
@@ -308,7 +308,7 @@ Sends a POST to `/{actionEndpoint}` with the body:
 
 > **listByCluster**(`clusterKey`, `options?`): `Promise`\<[`Node`](../types.md#node)[]\>
 
-Defined in: [services/node/service.ts:43](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L43)
+Defined in: [services/node/service.ts:43](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L43)
 
 List nodes belonging to a specific cluster.
 
@@ -329,7 +329,7 @@ Array of nodes in the cluster
 
 > **listPhysical**(`options?`): `Promise`\<[`Node`](../types.md#node)[]\>
 
-Defined in: [services/node/service.ts:55](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L55)
+Defined in: [services/node/service.ts:55](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L55)
 
 List only physical nodes.
 
@@ -349,7 +349,7 @@ Array of physical nodes
 
 > **enableMaintenance**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:66](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L66)
+Defined in: [services/node/service.ts:66](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L66)
 
 Enable maintenance mode on a node.
 
@@ -367,7 +367,7 @@ Enable maintenance mode on a node.
 
 > **disableMaintenance**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:75](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L75)
+Defined in: [services/node/service.ts:75](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L75)
 
 Disable maintenance mode on a node.
 
@@ -385,7 +385,7 @@ Disable maintenance mode on a node.
 
 > **maintenanceReboot**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:84](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L84)
+Defined in: [services/node/service.ts:84](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L84)
 
 Reboot a node that is in maintenance mode.
 
@@ -403,7 +403,7 @@ Reboot a node that is in maintenance mode.
 
 > **powerOn**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:93](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L93)
+Defined in: [services/node/service.ts:93](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L93)
 
 Power on a node.
 
@@ -421,7 +421,7 @@ Power on a node.
 
 > **powerOff**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:102](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L102)
+Defined in: [services/node/service.ts:102](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L102)
 
 Power off a node.
 
@@ -439,7 +439,7 @@ Power off a node.
 
 > **reset**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:111](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L111)
+Defined in: [services/node/service.ts:111](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L111)
 
 Reset a node.
 
@@ -457,7 +457,7 @@ Reset a node.
 
 > **refresh**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:120](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L120)
+Defined in: [services/node/service.ts:120](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L120)
 
 Refresh node state.
 
@@ -475,7 +475,7 @@ Refresh node state.
 
 > **kill**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:129](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L129)
+Defined in: [services/node/service.ts:129](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L129)
 
 Force kill a node.
 
@@ -493,7 +493,7 @@ Force kill a node.
 
 > **refreshStatus**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:138](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L138)
+Defined in: [services/node/service.ts:138](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L138)
 
 Refresh cluster status for a node.
 
@@ -511,7 +511,7 @@ Refresh cluster status for a node.
 
 > **receiveFile**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:147](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L147)
+Defined in: [services/node/service.ts:147](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L147)
 
 Receive file from provider.
 
@@ -529,7 +529,7 @@ Receive file from provider.
 
 > **getInterfaces**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:156](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L156)
+Defined in: [services/node/service.ts:156](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L156)
 
 Get network interfaces for a node.
 
@@ -547,7 +547,7 @@ Get network interfaces for a node.
 
 > **testIpmi**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:165](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L165)
+Defined in: [services/node/service.ts:165](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L165)
 
 Test IPMI connectivity for a node.
 
@@ -565,7 +565,7 @@ Test IPMI connectivity for a node.
 
 > **clearSel**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:174](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L174)
+Defined in: [services/node/service.ts:174](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L174)
 
 Clear IPMI System Event Log for a node.
 
@@ -583,7 +583,7 @@ Clear IPMI System Event Log for a node.
 
 > **refreshFabricStatus**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/node/service.ts:183](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/node/service.ts#L183)
+Defined in: [services/node/service.ts:183](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/node/service.ts#L183)
 
 Refresh fabric status for a node.
 

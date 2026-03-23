@@ -19,7 +19,7 @@ import 'tsvergeos/services/volume-browser';
 
 ### VolumeBrowserService
 
-Defined in: [services/volume-browser/service.ts:46](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/volume-browser/service.ts#L46)
+Defined in: [services/volume-browser/service.ts:46](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/volume-browser/service.ts#L46)
 
 Service for browsing and manipulating files within VergeOS volumes.
 
@@ -51,7 +51,7 @@ await client.volumeBrowser.rename('abc123sha1', 'subdir', 'old.txt', 'new.txt');
 
 > **new VolumeBrowserService**(`http`): [`VolumeBrowserService`](#volumebrowserservice)
 
-Defined in: [services/volume-browser/service.ts:50](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/volume-browser/service.ts#L50)
+Defined in: [services/volume-browser/service.ts:50](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/volume-browser/service.ts#L50)
 
 ###### Parameters
 
@@ -69,7 +69,7 @@ Defined in: [services/volume-browser/service.ts:50](https://github.com/verge-io/
 
 > **browse**(`volumeKey`, `dir`, `options?`, `waitOptions?`): `Promise`\<[`VolumeBrowserEntry`](../types.md#volumebrowserentry)[]\>
 
-Defined in: [services/volume-browser/service.ts:66](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/volume-browser/service.ts#L66)
+Defined in: [services/volume-browser/service.ts:66](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/volume-browser/service.ts#L66)
 
 Browse a directory in a volume and return the file/directory entries.
 
@@ -95,7 +95,7 @@ Array of file/directory entries
 
 > **createJob**(`request`): `Promise`\<[`VolumeBrowserJob`](../types.md#volumebrowserjob)\>
 
-Defined in: [services/volume-browser/service.ts:96](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/volume-browser/service.ts#L96)
+Defined in: [services/volume-browser/service.ts:96](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/volume-browser/service.ts#L96)
 
 Create a volume browser job.
 
@@ -117,7 +117,7 @@ The created job with its SHA1 ID
 
 > **getJob**(`id`): `Promise`\<[`VolumeBrowserJob`](../types.md#volumebrowserjob)\>
 
-Defined in: [services/volume-browser/service.ts:124](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/volume-browser/service.ts#L124)
+Defined in: [services/volume-browser/service.ts:124](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/volume-browser/service.ts#L124)
 
 Get a volume browser job by ID.
 
@@ -140,7 +140,7 @@ The job record including result data
 
 > **waitForResult**(`jobId`, `options?`): `Promise`\<[`VolumeBrowserEntry`](../types.md#volumebrowserentry)[]\>
 
-Defined in: [services/volume-browser/service.ts:140](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/volume-browser/service.ts#L140)
+Defined in: [services/volume-browser/service.ts:140](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/volume-browser/service.ts#L140)
 
 Poll a volume browser job until it completes or times out.
 
@@ -164,7 +164,7 @@ Array of file/directory entries
 
 > **list**(`options?`): `Promise`\<[`VolumeBrowserJob`](../types.md#volumebrowserjob)[]\>
 
-Defined in: [services/volume-browser/service.ts:173](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/volume-browser/service.ts#L173)
+Defined in: [services/volume-browser/service.ts:173](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/volume-browser/service.ts#L173)
 
 List volume browser jobs with optional filtering.
 
@@ -184,7 +184,7 @@ Array of job records
 
 > **rename**(`volumeKey`, `dir`, `oldName`, `newName`, `waitOptions?`): `Promise`\<[`VolumeBrowserEntry`](../types.md#volumebrowserentry)[]\>
 
-Defined in: [services/volume-browser/service.ts:189](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/volume-browser/service.ts#L189)
+Defined in: [services/volume-browser/service.ts:189](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/volume-browser/service.ts#L189)
 
 Rename a file or directory within a volume.
 
@@ -208,7 +208,7 @@ Parsed result entries (typically empty for rename)
 
 > **deleteFiles**(`volumeKey`, `dir`, `items`, `waitOptions?`): `Promise`\<[`VolumeBrowserEntry`](../types.md#volumebrowserentry)[]\>
 
-Defined in: [services/volume-browser/service.ts:218](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/volume-browser/service.ts#L218)
+Defined in: [services/volume-browser/service.ts:218](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/volume-browser/service.ts#L218)
 
 Delete files or directories within a volume.
 
@@ -231,7 +231,7 @@ Parsed result entries (typically empty for delete)
 
 > **paste**(`volumeKey`, `sourceDir`, `items`, `destDir`, `mode`, `waitOptions?`): `Promise`\<[`VolumeBrowserEntry`](../types.md#volumebrowserentry)[]\>
 
-Defined in: [services/volume-browser/service.ts:247](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/volume-browser/service.ts#L247)
+Defined in: [services/volume-browser/service.ts:247](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/volume-browser/service.ts#L247)
 
 Copy or move files/directories within a volume.
 

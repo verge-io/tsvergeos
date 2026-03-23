@@ -2,56 +2,56 @@
 
 ***
 
-[tsvergeos](../README.md) / services/machine-stats-history-short
+[tsvergeos](../README.md) / services/tenant-stats-history-long
 
-# services/machine-stats-history-short
+# services/tenant-stats-history-long
 
-Machine Stats History Short service registration module.
+Tenant Stats History Long service registration module.
 
-Importing this module registers the [MachineStatsHistoryShortService](#machinestatshistoryshortservice) on
-[VergeClient](../index.md#vergeclient), making `client.machineStatsHistoryShort` available.
+Importing this module registers the [TenantStatsHistoryLongService](#tenantstatshistorylongservice) on
+[VergeClient](../index.md#vergeclient), making `client.tenantStatsHistoryLong` available.
 This is a side-effect import:
 
 ```typescript
-import 'tsvergeos/services/machine-stats-history-short';
+import 'tsvergeos/services/tenant-stats-history-long';
 ```
 
 ## Classes
 
-### MachineStatsHistoryShortService
+### TenantStatsHistoryLongService
 
-Defined in: [services/machine-stats-history-short/service.ts:25](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-stats-history-short/service.ts#L25)
+Defined in: [services/tenant-stats-history-long/service.ts:25](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/tenant-stats-history-long/service.ts#L25)
 
-Service for querying short-term machine stats history.
+Service for querying long-term tenant stats history.
 
-Provides access to short-term historical CPU and RAM utilization
-metrics per machine. This is a **read-only** service — history entries
-are managed by the system and cannot be created, updated, or deleted
-via the API.
+Provides access to long-term historical CPU, RAM, storage tier, and GPU
+utilization metrics per tenant. This is a **read-only** service — history
+entries are managed by the system and cannot be created, updated, or
+deleted via the API.
 
 #### Example
 
 ```typescript
-import 'tsvergeos/services/machine-stats-history-short';
+import 'tsvergeos/services/tenant-stats-history-long';
 
-// Get short-term history for a specific machine
-const history = await client.machineStatsHistoryShort.listByMachine(42);
+// Get long-term history for a specific tenant
+const history = await client.tenantStatsHistoryLong.listByTenant(42);
 for (const snapshot of history) {
-  console.log(`CPU: ${snapshot.total_cpu}% at ${snapshot.timestamp}`);
+  console.log(`CPU: ${snapshot.total_cpu}%, RAM used: ${snapshot.ram_used} at ${snapshot.timestamp}`);
 }
 ```
 
 #### Extends
 
-- [`ReadOnlyService`](../index.md#readonlyservice)\<[`MachineStatsHistoryShort`](../types.md#machinestatshistoryshort)\>
+- [`ReadOnlyService`](../index.md#readonlyservice)\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)\>
 
 #### Constructors
 
 ##### Constructor
 
-> **new MachineStatsHistoryShortService**(`http`): [`MachineStatsHistoryShortService`](#machinestatshistoryshortservice)
+> **new TenantStatsHistoryLongService**(`http`): [`TenantStatsHistoryLongService`](#tenantstatshistorylongservice)
 
-Defined in: [services/machine-stats-history-short/service.ts:26](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-stats-history-short/service.ts#L26)
+Defined in: [services/tenant-stats-history-long/service.ts:26](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/tenant-stats-history-long/service.ts#L26)
 
 ###### Parameters
 
@@ -61,7 +61,7 @@ Defined in: [services/machine-stats-history-short/service.ts:26](https://github.
 
 ###### Returns
 
-[`MachineStatsHistoryShortService`](#machinestatshistoryshortservice)
+[`TenantStatsHistoryLongService`](#tenantstatshistorylongservice)
 
 ###### Overrides
 
@@ -79,7 +79,7 @@ Defined in: [services/machine-stats-history-short/service.ts:26](https://github.
 
 ##### list()
 
-> **list**(`options?`): `Promise`\<[`MachineStatsHistoryShort`](../types.md#machinestatshistoryshort)[]\>
+> **list**(`options?`): `Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)[]\>
 
 Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L157)
 
@@ -93,7 +93,7 @@ List resources matching the given options.
 
 ###### Returns
 
-`Promise`\<[`MachineStatsHistoryShort`](../types.md#machinestatshistoryshort)[]\>
+`Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)[]\>
 
 Array of matching resources
 
@@ -103,7 +103,7 @@ Array of matching resources
 
 ##### get()
 
-> **get**(`key`): `Promise`\<[`MachineStatsHistoryShort`](../types.md#machinestatshistoryshort)\>
+> **get**(`key`): `Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)\>
 
 Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L174)
 
@@ -117,7 +117,7 @@ Get a single resource by its key (ID).
 
 ###### Returns
 
-`Promise`\<[`MachineStatsHistoryShort`](../types.md#machinestatshistoryshort)\>
+`Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)\>
 
 The matching resource
 
@@ -131,7 +131,7 @@ NotFoundError if the resource does not exist
 
 ##### getByName()
 
-> **getByName**(`name`): `Promise`\<[`MachineStatsHistoryShort`](../types.md#machinestatshistoryshort)\>
+> **getByName**(`name`): `Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)\>
 
 Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L198)
 
@@ -147,7 +147,7 @@ Performs a filtered list and returns the first match.
 
 ###### Returns
 
-`Promise`\<[`MachineStatsHistoryShort`](../types.md#machinestatshistoryshort)\>
+`Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)\>
 
 The matching resource
 
@@ -161,7 +161,7 @@ NotFoundError if no resource with that name exists
 
 ##### listAll()
 
-> **listAll**(`options?`): `AsyncGenerator`\<[`MachineStatsHistoryShort`](../types.md#machinestatshistoryshort)\>
+> **listAll**(`options?`): `AsyncGenerator`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)\>
 
 Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L217)
 
@@ -178,7 +178,7 @@ Stops when a page returns fewer items than the page size.
 
 ###### Returns
 
-`AsyncGenerator`\<[`MachineStatsHistoryShort`](../types.md#machinestatshistoryshort)\>
+`AsyncGenerator`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)\>
 
 ###### Yields
 
@@ -188,32 +188,32 @@ Individual resources across all pages
 
 [`ReadOnlyService`](../index.md#readonlyservice).[`listAll`](../index.md#listall)
 
-##### listByMachine()
+##### listByTenant()
 
-> **listByMachine**(`machineKey`, `options?`): `Promise`\<[`MachineStatsHistoryShort`](../types.md#machinestatshistoryshort)[]\>
+> **listByTenant**(`tenantKey`, `options?`): `Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)[]\>
 
-Defined in: [services/machine-stats-history-short/service.ts:40](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-stats-history-short/service.ts#L40)
+Defined in: [services/tenant-stats-history-long/service.ts:40](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/tenant-stats-history-long/service.ts#L40)
 
-List short-term stats history for a specific machine.
+List long-term stats history for a specific tenant.
 
-Filters by `machine eq {machineKey}` and returns all matching history entries.
+Filters by `tenant eq {tenantKey}` and returns all matching history entries.
 Additional list options (fields, sort, limit, etc.) are merged with the filter.
 
 ###### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `machineKey` | [`FlexKey`](../types.md#flexkey) | The key of the machine to retrieve history for. |
-| `options?` | [`ListOptions`](../types.md#listoptions) | Optional list parameters to merge with the machine filter. |
+| `tenantKey` | [`FlexKey`](../types.md#flexkey) | The key of the tenant to retrieve history for. |
+| `options?` | [`ListOptions`](../types.md#listoptions) | Optional list parameters to merge with the tenant filter. |
 
 ###### Returns
 
-`Promise`\<[`MachineStatsHistoryShort`](../types.md#machinestatshistoryshort)[]\>
+`Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)[]\>
 
-An array of short-term stats history entries for the machine.
+An array of long-term stats history entries for the tenant.
 
 ## References
 
-### MachineStatsHistoryShort
+### TenantStatsHistoryLong
 
-Re-exports [MachineStatsHistoryShort](../types.md#machinestatshistoryshort)
+Re-exports [TenantStatsHistoryLong](../types.md#tenantstatshistorylong)
