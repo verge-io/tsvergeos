@@ -11,6 +11,24 @@ import type {
  *
  * Resource groups define collections of physical hardware (GPUs, SR-IOV NICs,
  * USB devices) that can be assigned to virtual machines.
+ *
+ * @example
+ * ```typescript
+ * import { VergeClient } from 'tsvergeos';
+ * import 'tsvergeos/services/resource-group';
+ *
+ * const client = await VergeClient.connect({ host: '...', apiKey: '...' });
+ *
+ * // List all resource groups
+ * const groups = await client.resourceGroups.list();
+ *
+ * // Create a GPU passthrough group
+ * const group = await client.resourceGroups.create({
+ *   name: 'gpu-pool',
+ *   class: 'pci',
+ *   type: 'gpu',
+ * });
+ * ```
  */
 export class ResourceGroupService extends BaseService<
 	ResourceGroup,

@@ -11,6 +11,24 @@ import type {
  *
  * Cloud-init files are templates used by VM recipes and manual VM creation
  * to configure guest operating systems on first boot.
+ *
+ * @example
+ * ```typescript
+ * import { VergeClient } from 'tsvergeos';
+ * import 'tsvergeos/services/cloud-init';
+ *
+ * const client = await VergeClient.connect({ host: '...', apiKey: '...' });
+ *
+ * // List all cloud-init templates
+ * const files = await client.cloudInitFiles.list();
+ *
+ * // Create a new cloud-init user-data template
+ * const file = await client.cloudInitFiles.create({
+ *   name: 'ubuntu-defaults',
+ *   type: 'user-data',
+ *   body: '#cloud-config\npackage_update: true',
+ * });
+ * ```
  */
 export class CloudInitFileService extends BaseService<
 	CloudInitFile,
