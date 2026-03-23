@@ -476,6 +476,8 @@ export type {
 	TenantSnapshot,
 	TenantSnapshotUpdateParams,
 } from './services/tenant-snapshot/types.js';
+export type { TenantStatsHistoryLong } from './services/tenant-stats-history-long/types.js';
+export type { TenantStatsHistoryShort } from './services/tenant-stats-history-short/types.js';
 export type {
 	TenantStorage,
 	TenantStorageCreateParams,
