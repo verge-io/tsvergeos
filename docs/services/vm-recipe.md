@@ -19,7 +19,7 @@ import 'tsvergeos/services/vm-recipe';
 
 ### VMRecipeService
 
-Defined in: [services/vm-recipe/service.ts:47](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm-recipe/service.ts#L47)
+Defined in: [services/vm-recipe/service.ts:47](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm-recipe/service.ts#L47)
 
 Service for managing VergeOS VM recipes.
 
@@ -64,7 +64,7 @@ await client.vmRecipes.download(recipes[0].$key);
 
 > **new VMRecipeService**(`http`): [`VMRecipeService`](#vmrecipeservice)
 
-Defined in: [services/vm-recipe/service.ts:48](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm-recipe/service.ts#L48)
+Defined in: [services/vm-recipe/service.ts:48](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm-recipe/service.ts#L48)
 
 ###### Parameters
 
@@ -84,10 +84,10 @@ Defined in: [services/vm-recipe/service.ts:48](https://github.com/verge-io/tsver
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`WritableService`](../index.md#writableservice).[`resource`](../index.md#property-resource-3) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`WritableService`](../index.md#writableservice).[`displayName`](../index.md#property-displayname-1) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`WritableService`](../index.md#writableservice).[`defaultFields`](../index.md#property-defaultfields-1) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L138) |
-| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`WritableService`](../index.md#writableservice).[`actionConfig`](../index.md#property-actionconfig) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L256) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`WritableService`](../index.md#writableservice).[`resource`](../index.md#property-resource-3) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L123) |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`WritableService`](../index.md#writableservice).[`displayName`](../index.md#property-displayname-1) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L126) |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`WritableService`](../index.md#writableservice).[`defaultFields`](../index.md#property-defaultfields-1) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`WritableService`](../index.md#writableservice).[`actionConfig`](../index.md#property-actionconfig) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L256) |
 
 #### Methods
 
@@ -95,7 +95,7 @@ Defined in: [services/vm-recipe/service.ts:48](https://github.com/verge-io/tsver
 
 > **list**(`options?`): `Promise`\<[`VMRecipe`](../types.md#vmrecipe)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L157)
+Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L157)
 
 List resources matching the given options.
 
@@ -119,7 +119,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`VMRecipe`](../types.md#vmrecipe)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L174)
+Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L174)
 
 Get a single resource by its key (ID).
 
@@ -147,7 +147,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`VMRecipe`](../types.md#vmrecipe)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L198)
+Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L198)
 
 Get a single resource by its `name` field.
 
@@ -177,7 +177,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`VMRecipe`](../types.md#vmrecipe)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L217)
+Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L217)
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -206,7 +206,7 @@ Individual resources across all pages
 
 > **update**(`key`, `params`, `options?`): `Promise`\<[`VMRecipe`](../types.md#vmrecipe)\>
 
-Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L293)
+Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L293)
 
 Update an existing resource.
 
@@ -234,7 +234,7 @@ The updated resource (or the resource with just `$key` if `readBack` is false)
 
 > **delete**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L309)
+Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L309)
 
 Delete a resource by its key (ID).
 
@@ -260,7 +260,7 @@ NotFoundError if the resource does not exist
 
 > `protected` **inlineAction**(`key`, `action`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L330)
+Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L330)
 
 Execute an inline action on a specific resource.
 
@@ -287,7 +287,7 @@ Used for record-level actions (e.g., `POST /users/3/enable`).
 
 > `protected` **dispatchAction**(`action`, `key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L356)
+Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L356)
 
 Dispatch an action to the dedicated `_actions` endpoint.
 
@@ -316,7 +316,7 @@ Sends a POST to `/{actionEndpoint}` with the body:
 
 > **getQuestions**(`key`): `Promise`\<[`RecipeQuestion`](../types.md#recipequestion)[]\>
 
-Defined in: [services/vm-recipe/service.ts:62](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm-recipe/service.ts#L62)
+Defined in: [services/vm-recipe/service.ts:62](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm-recipe/service.ts#L62)
 
 Get the questions defined for a VM recipe.
 
@@ -340,7 +340,7 @@ Array of recipe questions
 
 > **getSections**(`key`): `Promise`\<[`RecipeSection`](../types.md#recipesection)[]\>
 
-Defined in: [services/vm-recipe/service.ts:78](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm-recipe/service.ts#L78)
+Defined in: [services/vm-recipe/service.ts:78](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm-recipe/service.ts#L78)
 
 Get the sections defined for a VM recipe.
 
@@ -364,7 +364,7 @@ Array of recipe sections
 
 > **deploy**(`key`, `options`): `Promise`\<`void`\>
 
-Defined in: [services/vm-recipe/service.ts:93](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm-recipe/service.ts#L93)
+Defined in: [services/vm-recipe/service.ts:93](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm-recipe/service.ts#L93)
 
 Deploy a VM recipe, creating a new recipe instance.
 
@@ -386,7 +386,7 @@ answers to recipe questions.
 
 > **recipeAction**(`key`, `action`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/vm-recipe/service.ts:119](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm-recipe/service.ts#L119)
+Defined in: [services/vm-recipe/service.ts:119](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm-recipe/service.ts#L119)
 
 Dispatch an action on a VM recipe.
 
@@ -408,7 +408,7 @@ Valid actions: `clone`, `download`, `remove`, `republish`.
 
 > **download**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm-recipe/service.ts:143](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm-recipe/service.ts#L143)
+Defined in: [services/vm-recipe/service.ts:143](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm-recipe/service.ts#L143)
 
 Download a VM recipe from its catalog.
 
@@ -428,7 +428,7 @@ Convenience method that dispatches the `download` action.
 
 > **clone**(`key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/vm-recipe/service.ts:153](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm-recipe/service.ts#L153)
+Defined in: [services/vm-recipe/service.ts:153](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm-recipe/service.ts#L153)
 
 Clone a VM recipe.
 
@@ -447,7 +447,7 @@ Clone a VM recipe.
 
 > **remove**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm-recipe/service.ts:162](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm-recipe/service.ts#L162)
+Defined in: [services/vm-recipe/service.ts:162](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm-recipe/service.ts#L162)
 
 Remove a VM recipe.
 
@@ -465,7 +465,7 @@ Remove a VM recipe.
 
 > **republish**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm-recipe/service.ts:171](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm-recipe/service.ts#L171)
+Defined in: [services/vm-recipe/service.ts:171](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm-recipe/service.ts#L171)
 
 Republish a VM recipe.
 

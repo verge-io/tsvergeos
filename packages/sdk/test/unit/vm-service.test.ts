@@ -650,7 +650,9 @@ describe("VMService", () => {
         port: 5900,
         consoleKey: 7,
         websocketUrl: `wss://verge.example.com/api/v4/machine_console/7?token=${mockToken}`,
+        authMethod: "token",
         token: mockToken,
+        apiKey: null,
         webUrl: "https://verge.example.com/#/vm-console/42",
         isPasswordProtected: false,
         isAvailable: true,
@@ -698,11 +700,13 @@ describe("VMService", () => {
       const info = await svc.getConsoleInfo(42, creds);
 
       expect(info.isAvailable).toBe(false);
+      expect(info.authMethod).toBeNull();
       expect(info.host).toBeNull();
       expect(info.port).toBeNull();
       expect(info.consoleKey).toBeNull();
       expect(info.websocketUrl).toBeNull();
       expect(info.token).toBeNull();
+      expect(info.apiKey).toBeNull();
       expect(fetchFn).not.toHaveBeenCalled();
     });
 
@@ -838,11 +842,60 @@ describe("VMService", () => {
       });
 
       expect(fetchFn).not.toHaveBeenCalled();
+      expect(info.authMethod).toBe("token");
       expect(info.token).toBe("oidc-session-token-xyz");
+      expect(info.apiKey).toBeNull();
       expect(info.websocketUrl).toBe(
         "wss://verge.example.com/api/v4/machine_console/7?token=oidc-session-token-xyz",
       );
       expect(info.isAvailable).toBe(true);
+    });
+
+    it("returns bearer auth info with API key without acquiring token", async () => {
+      const http = mockHttp("https://verge.example.com");
+      const svc = new VMService(http);
+      vi.mocked(http.get).mockResolvedValueOnce({
+        console: "vnc",
+        console_pass_enabled: false,
+        console_key: 7,
+        console_host: "10.0.0.5",
+        console_port: 5900,
+      });
+      const fetchFn = vi.fn();
+      (http as unknown as Record<string, unknown>).fetchFn = fetchFn;
+
+      const info = await svc.getConsoleInfo(42, {
+        apiKey: "my-verge-api-key",
+      });
+
+      // Should NOT call /api/sys/tokens
+      expect(fetchFn).not.toHaveBeenCalled();
+      expect(info.isAvailable).toBe(true);
+      expect(info.authMethod).toBe("bearer");
+      expect(info.apiKey).toBe("my-verge-api-key");
+      expect(info.token).toBeNull();
+      // URL should NOT contain ?token=
+      expect(info.websocketUrl).toBe(
+        "wss://verge.example.com/api/v4/machine_console/7",
+      );
+    });
+
+    it("returns null authMethod and apiKey when console unavailable with apiKey auth", async () => {
+      const http = mockHttp("https://verge.example.com");
+      const svc = new VMService(http);
+      vi.mocked(http.get).mockResolvedValueOnce({
+        console: "vnc",
+        console_pass_enabled: false,
+      });
+
+      const info = await svc.getConsoleInfo(42, {
+        apiKey: "my-verge-api-key",
+      });
+
+      expect(info.isAvailable).toBe(false);
+      expect(info.authMethod).toBeNull();
+      expect(info.apiKey).toBeNull();
+      expect(info.websocketUrl).toBeNull();
     });
   });
 

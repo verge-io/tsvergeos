@@ -33,6 +33,8 @@
 - [services/machine-drive-stats](services/machine-drive-stats.md)
 - [services/machine-drive](services/machine-drive.md)
 - [services/machine-log](services/machine-log.md)
+- [services/machine-nic-stats-history-long](services/machine-nic-stats-history-long.md)
+- [services/machine-nic-stats-history-short](services/machine-nic-stats-history-short.md)
 - [services/machine-nic-stats](services/machine-nic-stats.md)
 - [services/machine-nic](services/machine-nic.md)
 - [services/machine-snapshot](services/machine-snapshot.md)

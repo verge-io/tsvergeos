@@ -19,7 +19,7 @@ import 'tsvergeos/services/file';
 
 ### FileService
 
-Defined in: [services/file/service.ts:43](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/file/service.ts#L43)
+Defined in: [services/file/service.ts:43](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/file/service.ts#L43)
 
 Service for managing files in VergeOS.
 
@@ -64,7 +64,7 @@ const blob = await response.blob();
 
 > **new FileService**(`http`): [`FileService`](#fileservice)
 
-Defined in: [services/file/service.ts:44](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/file/service.ts#L44)
+Defined in: [services/file/service.ts:44](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/file/service.ts#L44)
 
 ###### Parameters
 
@@ -84,10 +84,10 @@ Defined in: [services/file/service.ts:44](https://github.com/verge-io/tsvergeos/
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`BaseService`](../index.md#baseservice).[`resource`](../index.md#property-resource-4) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`BaseService`](../index.md#baseservice).[`displayName`](../index.md#property-displayname-2) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`BaseService`](../index.md#baseservice).[`defaultFields`](../index.md#property-defaultfields-2) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L138) |
-| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`BaseService`](../index.md#baseservice).[`actionConfig`](../index.md#property-actionconfig-1) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L256) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`BaseService`](../index.md#baseservice).[`resource`](../index.md#property-resource-4) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L123) |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`BaseService`](../index.md#baseservice).[`displayName`](../index.md#property-displayname-2) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L126) |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`BaseService`](../index.md#baseservice).[`defaultFields`](../index.md#property-defaultfields-2) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`BaseService`](../index.md#baseservice).[`actionConfig`](../index.md#property-actionconfig-1) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L256) |
 
 #### Methods
 
@@ -95,7 +95,7 @@ Defined in: [services/file/service.ts:44](https://github.com/verge-io/tsvergeos/
 
 > **list**(`options?`): `Promise`\<[`VgFile`](../types.md#vgfile)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L157)
+Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L157)
 
 List resources matching the given options.
 
@@ -119,7 +119,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`VgFile`](../types.md#vgfile)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L174)
+Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L174)
 
 Get a single resource by its key (ID).
 
@@ -147,7 +147,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`VgFile`](../types.md#vgfile)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L198)
+Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L198)
 
 Get a single resource by its `name` field.
 
@@ -177,7 +177,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`VgFile`](../types.md#vgfile)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L217)
+Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L217)
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -206,7 +206,7 @@ Individual resources across all pages
 
 > **update**(`key`, `params`, `options?`): `Promise`\<[`VgFile`](../types.md#vgfile)\>
 
-Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L293)
+Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L293)
 
 Update an existing resource.
 
@@ -234,7 +234,7 @@ The updated resource (or the resource with just `$key` if `readBack` is false)
 
 > **delete**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L309)
+Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L309)
 
 Delete a resource by its key (ID).
 
@@ -260,7 +260,7 @@ NotFoundError if the resource does not exist
 
 > `protected` **inlineAction**(`key`, `action`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L330)
+Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L330)
 
 Execute an inline action on a specific resource.
 
@@ -287,7 +287,7 @@ Used for record-level actions (e.g., `POST /users/3/enable`).
 
 > `protected` **dispatchAction**(`action`, `key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L356)
+Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L356)
 
 Dispatch an action to the dedicated `_actions` endpoint.
 
@@ -316,7 +316,7 @@ Sends a POST to `/{actionEndpoint}` with the body:
 
 > **create**(`params`, `options?`): `Promise`\<[`VgFile`](../types.md#vgfile)\>
 
-Defined in: [services/base.ts:395](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L395)
+Defined in: [services/base.ts:395](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L395)
 
 Create a new resource.
 
@@ -344,7 +344,7 @@ The created resource (or a partial with just `$key` if `readBack` is false)
 
 > **upload**(`key`, `data`, `size`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/file/service.ts:61](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/file/service.ts#L61)
+Defined in: [services/file/service.ts:61](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/file/service.ts#L61)
 
 Upload file content to a previously created file entry.
 
@@ -370,7 +370,7 @@ between chunks.
 
 > **download**(`key`): `Promise`\<`Response`\>
 
-Defined in: [services/file/service.ts:86](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/file/service.ts#L86)
+Defined in: [services/file/service.ts:86](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/file/service.ts#L86)
 
 Download a file's content from VergeOS.
 
@@ -394,7 +394,7 @@ Raw `Response` with file content
 
 > **listISOs**(): `Promise`\<[`VgFile`](../types.md#vgfile)[]\>
 
-Defined in: [services/file/service.ts:97](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/file/service.ts#L97)
+Defined in: [services/file/service.ts:97](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/file/service.ts#L97)
 
 List ISO files. Convenience method that filters by `type eq 'iso'`.
 
@@ -408,7 +408,7 @@ Array of ISO file resources
 
 > **overwrite**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/file/service.ts:106](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/file/service.ts#L106)
+Defined in: [services/file/service.ts:106](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/file/service.ts#L106)
 
 Overwrite an existing file's content.
 
@@ -426,7 +426,7 @@ Overwrite an existing file's content.
 
 > **addLink**(`key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/file/service.ts:116](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/file/service.ts#L116)
+Defined in: [services/file/service.ts:116](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/file/service.ts#L116)
 
 Add a link to a file.
 
@@ -445,7 +445,7 @@ Add a link to a file.
 
 > **deleteLink**(`key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/file/service.ts:126](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/file/service.ts#L126)
+Defined in: [services/file/service.ts:126](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/file/service.ts#L126)
 
 Delete a link from a file.
 
@@ -464,7 +464,7 @@ Delete a link from a file.
 
 > **deleteReference**(`key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/file/service.ts:136](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/file/service.ts#L136)
+Defined in: [services/file/service.ts:136](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/file/service.ts#L136)
 
 Delete a reference from a file.
 
@@ -483,7 +483,7 @@ Delete a reference from a file.
 
 > **makeISO**(`key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/file/service.ts:146](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/file/service.ts#L146)
+Defined in: [services/file/service.ts:146](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/file/service.ts#L146)
 
 Create an ISO image from files.
 
@@ -504,7 +504,7 @@ Create an ISO image from files.
 
 > `const` **DEFAULT\_CHUNK\_SIZE**: `262144` = `262_144`
 
-Defined in: [services/file/service.ts:8](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/file/service.ts#L8)
+Defined in: [services/file/service.ts:8](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/file/service.ts#L8)
 
 Default chunk size for file uploads (256KB). Matches verge-cli and other SDKs.
 

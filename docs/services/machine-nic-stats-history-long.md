@@ -2,57 +2,57 @@
 
 ***
 
-[tsvergeos](../README.md) / services/alarm-type
+[tsvergeos](../README.md) / services/machine-nic-stats-history-long
 
-# services/alarm-type
+# services/machine-nic-stats-history-long
 
-Alarm type service registration module.
+Machine NIC Stats History Long service registration module.
 
-Importing this module registers the [AlarmTypeService](#alarmtypeservice) on [VergeClient](../index.md#vergeclient),
-making `client.alarmTypes` available. This is a side-effect import:
+Importing this module registers the [MachineNicStatsHistoryLongService](#machinenicstatshistorylongservice) on
+[VergeClient](../index.md#vergeclient), making `client.machineNicStatsHistoryLong` available.
+This is a side-effect import:
 
 ```typescript
-import 'tsvergeos/services/alarm-type';
+import 'tsvergeos/services/machine-nic-stats-history-long';
 ```
 
 ## Classes
 
-### AlarmTypeService
+### MachineNicStatsHistoryLongService
 
-Defined in: [services/alarm-type/service.ts:26](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/alarm-type/service.ts#L26)
+Defined in: [services/machine-nic-stats-history-long/service.ts:26](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/machine-nic-stats-history-long/service.ts#L26)
 
-Service for querying VergeOS alarm type definitions.
+Service for querying long-term machine NIC stats history.
 
-Alarm types are read-only reference data that define the categories
-of alarms the system can raise. Each alarm type has a unique string
-`key` field as its primary identifier.
+Provides access to long-term historical per-NIC network traffic
+metrics including aggregate averages and peaks for packet rates
+and data rates. This is a **read-only** service — history entries
+are managed by the system and cannot be created, updated, or
+deleted via the API.
 
 #### Example
 
 ```typescript
-import { VergeClient } from 'tsvergeos';
-import 'tsvergeos/services/alarm-type';
+import 'tsvergeos/services/machine-nic-stats-history-long';
 
-const client = await VergeClient.connect({ host: '...', apiKey: '...' });
-
-// List all alarm types
-const types = await client.alarmTypes.list();
-
-// Get a specific alarm type
-const cpuHigh = await client.alarmTypes.get('vm_cpu_high');
+// Get long-term NIC history for a specific NIC
+const history = await client.machineNicStatsHistoryLong.listByNic(10);
+for (const snapshot of history) {
+  console.log(`TX avg: ${snapshot.txbps_avg} bps (peak: ${snapshot.txbps_peak}) at ${snapshot.timestamp}`);
+}
 ```
 
 #### Extends
 
-- [`ReadOnlyService`](../index.md#readonlyservice)\<[`AlarmType`](../types.md#alarmtype)\>
+- [`ReadOnlyService`](../index.md#readonlyservice)\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)\>
 
 #### Constructors
 
 ##### Constructor
 
-> **new AlarmTypeService**(`http`): [`AlarmTypeService`](#alarmtypeservice)
+> **new MachineNicStatsHistoryLongService**(`http`): [`MachineNicStatsHistoryLongService`](#machinenicstatshistorylongservice)
 
-Defined in: [services/alarm-type/service.ts:27](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/alarm-type/service.ts#L27)
+Defined in: [services/machine-nic-stats-history-long/service.ts:27](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/machine-nic-stats-history-long/service.ts#L27)
 
 ###### Parameters
 
@@ -62,7 +62,7 @@ Defined in: [services/alarm-type/service.ts:27](https://github.com/verge-io/tsve
 
 ###### Returns
 
-[`AlarmTypeService`](#alarmtypeservice)
+[`MachineNicStatsHistoryLongService`](#machinenicstatshistorylongservice)
 
 ###### Overrides
 
@@ -80,7 +80,7 @@ Defined in: [services/alarm-type/service.ts:27](https://github.com/verge-io/tsve
 
 ##### list()
 
-> **list**(`options?`): `Promise`\<[`AlarmType`](../types.md#alarmtype)[]\>
+> **list**(`options?`): `Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)[]\>
 
 Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L157)
 
@@ -94,7 +94,7 @@ List resources matching the given options.
 
 ###### Returns
 
-`Promise`\<[`AlarmType`](../types.md#alarmtype)[]\>
+`Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)[]\>
 
 Array of matching resources
 
@@ -104,7 +104,7 @@ Array of matching resources
 
 ##### get()
 
-> **get**(`key`): `Promise`\<[`AlarmType`](../types.md#alarmtype)\>
+> **get**(`key`): `Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)\>
 
 Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L174)
 
@@ -118,7 +118,7 @@ Get a single resource by its key (ID).
 
 ###### Returns
 
-`Promise`\<[`AlarmType`](../types.md#alarmtype)\>
+`Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)\>
 
 The matching resource
 
@@ -132,7 +132,7 @@ NotFoundError if the resource does not exist
 
 ##### getByName()
 
-> **getByName**(`name`): `Promise`\<[`AlarmType`](../types.md#alarmtype)\>
+> **getByName**(`name`): `Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)\>
 
 Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L198)
 
@@ -148,7 +148,7 @@ Performs a filtered list and returns the first match.
 
 ###### Returns
 
-`Promise`\<[`AlarmType`](../types.md#alarmtype)\>
+`Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)\>
 
 The matching resource
 
@@ -162,7 +162,7 @@ NotFoundError if no resource with that name exists
 
 ##### listAll()
 
-> **listAll**(`options?`): `AsyncGenerator`\<[`AlarmType`](../types.md#alarmtype)\>
+> **listAll**(`options?`): `AsyncGenerator`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)\>
 
 Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L217)
 
@@ -179,7 +179,7 @@ Stops when a page returns fewer items than the page size.
 
 ###### Returns
 
-`AsyncGenerator`\<[`AlarmType`](../types.md#alarmtype)\>
+`AsyncGenerator`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)\>
 
 ###### Yields
 
@@ -189,8 +189,32 @@ Individual resources across all pages
 
 [`ReadOnlyService`](../index.md#readonlyservice).[`listAll`](../index.md#listall)
 
+##### listByNic()
+
+> **listByNic**(`nicKey`, `options?`): `Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)[]\>
+
+Defined in: [services/machine-nic-stats-history-long/service.ts:41](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/machine-nic-stats-history-long/service.ts#L41)
+
+List long-term NIC stats history for a specific NIC.
+
+Filters by `parent_nic eq {nicKey}` and returns all matching history entries.
+Additional list options (fields, sort, limit, etc.) are merged with the filter.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `nicKey` | [`FlexKey`](../types.md#flexkey) | The key of the machine NIC to retrieve history for. |
+| `options?` | [`ListOptions`](../types.md#listoptions) | Optional list parameters to merge with the NIC filter. |
+
+###### Returns
+
+`Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)[]\>
+
+An array of long-term NIC stats history entries for the NIC.
+
 ## References
 
-### AlarmType
+### MachineNicStatsHistoryLong
 
-Re-exports [AlarmType](../types.md#alarmtype)
+Re-exports [MachineNicStatsHistoryLong](../types.md#machinenicstatshistorylong)
