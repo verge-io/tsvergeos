@@ -33,5 +33,7 @@ export type {
 	VolumeFsType,
 	VolumeOptimize,
 	VolumePreferredTier,
+	VolumeRestoreOptions,
+	VolumeRestoreType,
 	VolumeUpdateParams,
 } from './types.js';
