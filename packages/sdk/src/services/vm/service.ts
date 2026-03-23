@@ -354,6 +354,9 @@ export class VMService extends BaseService<VM, VMCreateParams, VMUpdateParams> {
    * The returned `websocketUrl` includes a session token for authentication,
    * tying the console session to a specific user for audit logging.
    *
+   * **Note:** API key authentication is not sufficient for console access.
+   * Console sessions require a user-scoped session token for audit logging.
+   *
    * Authentication can be provided as either:
    * - `{ username, password }` — for local VergeOS users (exchanged for a session token)
    * - `{ token }` — a pre-existing session token (e.g., from an OIDC login flow)
