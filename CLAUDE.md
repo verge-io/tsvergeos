@@ -146,3 +146,7 @@ Two systems available (credentials in `.claude/testing.md`, gitignored):
 - **Dev System 2** (`asgard.subether.me`) — valid cert, production-like
 
 Conventions (from Go SDK): rate limit between requests (~50ms), 2-minute timeout per test, clean up everything you create in `afterEach`/`finally`. Tests must be idempotent and safe to run repeatedly.
+
+### Commit After Every Task
+
+**Commit your work after completing each task — do not accumulate uncommitted changes across tasks.** When a feature, fix, or logical unit of work is done (tests passing), commit it immediately with an atomic commit before moving on. Uncommitted changes from prior sessions are a liability — they lose context, risk conflicts, and make it harder to review or revert.
