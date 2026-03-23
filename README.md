@@ -8,6 +8,16 @@ TypeScript SDK for the VergeOS ultraconverged infrastructure platform.
 
 Zero runtime dependencies. Tree-shakeable ESM-first output with CJS fallback. Full type coverage. 84 services covering every VergeOS API endpoint.
 
+**[API Reference](./docs/README.md)** · Part of the [VergeOS SDK family](#sdk-family)
+
+### Why tsvergeos?
+
+- **Zero dependencies** — nothing to audit, nothing to break
+- **Tree-shakeable** — import only the services you use; unused services are dead-code eliminated
+- **Full type coverage** — every resource, parameter, and response is typed with TSDoc documentation
+- **Multi-site built in** — query and manage multiple VergeOS deployments from a single `SiteManager`
+- **Cross-platform** — works in Node.js 18+, Deno, Bun, and modern browsers
+
 ## Installation
 
 ```bash
@@ -283,12 +293,16 @@ interface ClientConfig {
 }
 ```
 
-## Platform Support
+## Compatibility
+
+**Server:** VergeOS 6.x (API v4)
+
+**Runtime:**
 
 - Node.js 18+
-- Modern browsers (via custom `fetch`)
 - Deno
 - Bun
+- Modern browsers (via custom `fetch`)
 
 ## SDK Family
 
@@ -297,6 +311,16 @@ interface ClientConfig {
 | TypeScript | `tsvergeos` | [verge-io/tsvergeos](https://github.com/verge-io/tsvergeos) |
 | Python     | `pyvergeos` | [verge-io/pyvergeos](https://github.com/verge-io/pyvergeos) |
 | Go         | `govergeos` | [verge-io/govergeos](https://github.com/verge-io/govergeos) |
+
+## API Documentation
+
+Full API reference is available in the [`docs/`](./docs/README.md) directory, generated from TSDoc comments via [TypeDoc](https://typedoc.org/).
+
+Regenerate after changes:
+
+```bash
+pnpm -F tsvergeos docs
+```
 
 ## Contributing
 

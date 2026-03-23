@@ -304,6 +304,26 @@
 				"default": "./dist/services/machine-nic-stats/index.cjs"
 			}
 		},
+		"./services/machine-nic-stats-history-short": {
+			"import": {
+				"types": "./dist/services/machine-nic-stats-history-short/index.d.ts",
+				"default": "./dist/services/machine-nic-stats-history-short/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-nic-stats-history-short/index.d.cts",
+				"default": "./dist/services/machine-nic-stats-history-short/index.cjs"
+			}
+		},
+		"./services/machine-nic-stats-history-long": {
+			"import": {
+				"types": "./dist/services/machine-nic-stats-history-long/index.d.ts",
+				"default": "./dist/services/machine-nic-stats-history-long/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-nic-stats-history-long/index.d.cts",
+				"default": "./dist/services/machine-nic-stats-history-long/index.cjs"
+			}
+		},
 		"./services/machine-drive-phys": {
 			"import": {
 				"types": "./dist/services/machine-drive-phys/index.d.ts",
@@ -927,12 +947,15 @@
 		"test:integration": "vitest run --config vitest.integration.config.ts",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write .",
-		"typecheck": "tsc --noEmit"
+		"typecheck": "tsc --noEmit",
+		"docs": "typedoc"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.0",
 		"@types/node": "^22.0.0",
 		"tsup": "^8.5.0",
+		"typedoc": "^0.28.17",
+		"typedoc-plugin-markdown": "^4.11.0",
 		"typescript": "^5.8.0",
 		"undici": "^7.24.5",
 		"vitest": "^4.1.0"
@@ -941,11 +964,22 @@
 		"node": ">=18"
 	},
 	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/verge-io/tsvergeos.git",
+		"directory": "packages/sdk"
+	},
+	"homepage": "https://github.com/verge-io/tsvergeos#readme",
+	"bugs": {
+		"url": "https://github.com/verge-io/tsvergeos/issues"
+	},
 	"keywords": [
 		"vergeos",
 		"verge",
 		"sdk",
 		"infrastructure",
-		"hyperconverged"
+		"hyperconverged",
+		"virtualization",
+		"api-client"
 	]
 }
