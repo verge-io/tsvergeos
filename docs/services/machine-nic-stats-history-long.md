@@ -20,7 +20,7 @@ import 'tsvergeos/services/machine-nic-stats-history-long';
 
 ### MachineNicStatsHistoryLongService
 
-Defined in: [services/machine-nic-stats-history-long/service.ts:26](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/machine-nic-stats-history-long/service.ts#L26)
+Defined in: [services/machine-nic-stats-history-long/service.ts:26](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-nic-stats-history-long/service.ts#L26)
 
 Service for querying long-term machine NIC stats history.
 
@@ -52,7 +52,7 @@ for (const snapshot of history) {
 
 > **new MachineNicStatsHistoryLongService**(`http`): [`MachineNicStatsHistoryLongService`](#machinenicstatshistorylongservice)
 
-Defined in: [services/machine-nic-stats-history-long/service.ts:27](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/machine-nic-stats-history-long/service.ts#L27)
+Defined in: [services/machine-nic-stats-history-long/service.ts:27](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-nic-stats-history-long/service.ts#L27)
 
 ###### Parameters
 
@@ -72,9 +72,9 @@ Defined in: [services/machine-nic-stats-history-long/service.ts:27](https://gith
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L123) |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L126) |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L138) |
 
 #### Methods
 
@@ -82,7 +82,7 @@ Defined in: [services/machine-nic-stats-history-long/service.ts:27](https://gith
 
 > **list**(`options?`): `Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L157)
+Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L157)
 
 List resources matching the given options.
 
@@ -106,7 +106,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L174)
+Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L174)
 
 Get a single resource by its key (ID).
 
@@ -134,7 +134,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L198)
+Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L198)
 
 Get a single resource by its `name` field.
 
@@ -164,7 +164,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L217)
+Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L217)
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -193,7 +193,7 @@ Individual resources across all pages
 
 > **listByNic**(`nicKey`, `options?`): `Promise`\<[`MachineNicStatsHistoryLong`](../types.md#machinenicstatshistorylong)[]\>
 
-Defined in: [services/machine-nic-stats-history-long/service.ts:41](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/machine-nic-stats-history-long/service.ts#L41)
+Defined in: [services/machine-nic-stats-history-long/service.ts:41](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-nic-stats-history-long/service.ts#L41)
 
 List long-term NIC stats history for a specific NIC.
 

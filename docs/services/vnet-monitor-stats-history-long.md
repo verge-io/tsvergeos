@@ -19,7 +19,7 @@ import 'tsvergeos/services/vnet-monitor-stats-history-long';
 
 ### VnetMonitorStatsHistoryLongService
 
-Defined in: [services/vnet-monitor-stats-history-long/service.ts:25](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vnet-monitor-stats-history-long/service.ts#L25)
+Defined in: [services/vnet-monitor-stats-history-long/service.ts:25](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/vnet-monitor-stats-history-long/service.ts#L25)
 
 Service for querying VergeOS vnet monitor stats history (long-term).
 
@@ -50,7 +50,7 @@ for (const entry of stats) {
 
 > **new VnetMonitorStatsHistoryLongService**(`http`): [`VnetMonitorStatsHistoryLongService`](#vnetmonitorstatshistorylongservice)
 
-Defined in: [services/vnet-monitor-stats-history-long/service.ts:26](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vnet-monitor-stats-history-long/service.ts#L26)
+Defined in: [services/vnet-monitor-stats-history-long/service.ts:26](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/vnet-monitor-stats-history-long/service.ts#L26)
 
 ###### Parameters
 
@@ -70,9 +70,9 @@ Defined in: [services/vnet-monitor-stats-history-long/service.ts:26](https://git
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L123) |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L126) |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L138) |
 
 #### Methods
 
@@ -80,7 +80,7 @@ Defined in: [services/vnet-monitor-stats-history-long/service.ts:26](https://git
 
 > **list**(`options?`): `Promise`\<[`VnetMonitorStatsHistoryLong`](../types.md#vnetmonitorstatshistorylong)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L157)
+Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L157)
 
 List resources matching the given options.
 
@@ -104,7 +104,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`VnetMonitorStatsHistoryLong`](../types.md#vnetmonitorstatshistorylong)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L174)
+Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L174)
 
 Get a single resource by its key (ID).
 
@@ -132,7 +132,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`VnetMonitorStatsHistoryLong`](../types.md#vnetmonitorstatshistorylong)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L198)
+Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L198)
 
 Get a single resource by its `name` field.
 
@@ -162,7 +162,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`VnetMonitorStatsHistoryLong`](../types.md#vnetmonitorstatshistorylong)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L217)
+Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L217)
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -191,7 +191,7 @@ Individual resources across all pages
 
 > **listByVnet**(`vnetKey`, `options?`): `Promise`\<[`VnetMonitorStatsHistoryLong`](../types.md#vnetmonitorstatshistorylong)[]\>
 
-Defined in: [services/vnet-monitor-stats-history-long/service.ts:39](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vnet-monitor-stats-history-long/service.ts#L39)
+Defined in: [services/vnet-monitor-stats-history-long/service.ts:39](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/vnet-monitor-stats-history-long/service.ts#L39)
 
 List stats history entries for a specific vnet.
 

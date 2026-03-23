@@ -19,7 +19,7 @@ import 'tsvergeos/services/site-sync-outgoing';
 
 ### SiteSyncOutgoingService
 
-Defined in: [services/site-sync-outgoing/service.ts:37](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/site-sync-outgoing/service.ts#L37)
+Defined in: [services/site-sync-outgoing/service.ts:37](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/site-sync-outgoing/service.ts#L37)
 
 Service for managing VergeOS outgoing site syncs.
 
@@ -58,7 +58,7 @@ await client.siteSyncsOutgoing.enable(1);
 
 > **new SiteSyncOutgoingService**(`http`): [`SiteSyncOutgoingService`](#sitesyncoutgoingservice)
 
-Defined in: [services/site-sync-outgoing/service.ts:42](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/site-sync-outgoing/service.ts#L42)
+Defined in: [services/site-sync-outgoing/service.ts:42](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/site-sync-outgoing/service.ts#L42)
 
 ###### Parameters
 
@@ -78,10 +78,10 @@ Defined in: [services/site-sync-outgoing/service.ts:42](https://github.com/verge
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`BaseService`](../index.md#baseservice).[`resource`](../index.md#property-resource-4) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`BaseService`](../index.md#baseservice).[`displayName`](../index.md#property-displayname-2) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`BaseService`](../index.md#baseservice).[`defaultFields`](../index.md#property-defaultfields-2) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L138) |
-| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`BaseService`](../index.md#baseservice).[`actionConfig`](../index.md#property-actionconfig-1) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L256) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`BaseService`](../index.md#baseservice).[`resource`](../index.md#property-resource-4) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L123) |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`BaseService`](../index.md#baseservice).[`displayName`](../index.md#property-displayname-2) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L126) |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`BaseService`](../index.md#baseservice).[`defaultFields`](../index.md#property-defaultfields-2) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`BaseService`](../index.md#baseservice).[`actionConfig`](../index.md#property-actionconfig-1) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L256) |
 
 #### Methods
 
@@ -89,7 +89,7 @@ Defined in: [services/site-sync-outgoing/service.ts:42](https://github.com/verge
 
 > **list**(`options?`): `Promise`\<[`SiteSyncOutgoing`](../types.md#sitesyncoutgoing)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L157)
+Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L157)
 
 List resources matching the given options.
 
@@ -113,7 +113,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`SiteSyncOutgoing`](../types.md#sitesyncoutgoing)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L174)
+Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L174)
 
 Get a single resource by its key (ID).
 
@@ -141,7 +141,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`SiteSyncOutgoing`](../types.md#sitesyncoutgoing)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L198)
+Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L198)
 
 Get a single resource by its `name` field.
 
@@ -171,7 +171,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`SiteSyncOutgoing`](../types.md#sitesyncoutgoing)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L217)
+Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L217)
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -200,7 +200,7 @@ Individual resources across all pages
 
 > **update**(`key`, `params`, `options?`): `Promise`\<[`SiteSyncOutgoing`](../types.md#sitesyncoutgoing)\>
 
-Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L293)
+Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L293)
 
 Update an existing resource.
 
@@ -228,7 +228,7 @@ The updated resource (or the resource with just `$key` if `readBack` is false)
 
 > **delete**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L309)
+Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L309)
 
 Delete a resource by its key (ID).
 
@@ -254,7 +254,7 @@ NotFoundError if the resource does not exist
 
 > `protected` **inlineAction**(`key`, `action`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L330)
+Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L330)
 
 Execute an inline action on a specific resource.
 
@@ -281,7 +281,7 @@ Used for record-level actions (e.g., `POST /users/3/enable`).
 
 > `protected` **dispatchAction**(`action`, `key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L356)
+Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L356)
 
 Dispatch an action to the dedicated `_actions` endpoint.
 
@@ -310,7 +310,7 @@ Sends a POST to `/{actionEndpoint}` with the body:
 
 > **create**(`params`, `options?`): `Promise`\<[`SiteSyncOutgoing`](../types.md#sitesyncoutgoing)\>
 
-Defined in: [services/base.ts:395](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L395)
+Defined in: [services/base.ts:395](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L395)
 
 Create a new resource.
 
@@ -338,7 +338,7 @@ The created resource (or a partial with just `$key` if `readBack` is false)
 
 > **listBySite**(`siteKey`, `options?`): `Promise`\<[`SiteSyncOutgoing`](../types.md#sitesyncoutgoing)[]\>
 
-Defined in: [services/site-sync-outgoing/service.ts:53](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/site-sync-outgoing/service.ts#L53)
+Defined in: [services/site-sync-outgoing/service.ts:53](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/site-sync-outgoing/service.ts#L53)
 
 List outgoing syncs belonging to a specific site.
 
@@ -359,7 +359,7 @@ Array of outgoing syncs for the given site
 
 > **enable**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/site-sync-outgoing/service.ts:64](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/site-sync-outgoing/service.ts#L64)
+Defined in: [services/site-sync-outgoing/service.ts:64](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/site-sync-outgoing/service.ts#L64)
 
 Enable an outgoing sync.
 
@@ -377,7 +377,7 @@ Enable an outgoing sync.
 
 > **disable**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/site-sync-outgoing/service.ts:73](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/site-sync-outgoing/service.ts#L73)
+Defined in: [services/site-sync-outgoing/service.ts:73](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/site-sync-outgoing/service.ts#L73)
 
 Disable an outgoing sync.
 
@@ -395,7 +395,7 @@ Disable an outgoing sync.
 
 > **throttleSync**(`key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/site-sync-outgoing/service.ts:83](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/site-sync-outgoing/service.ts#L83)
+Defined in: [services/site-sync-outgoing/service.ts:83](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/site-sync-outgoing/service.ts#L83)
 
 Throttle an outgoing sync.
 
@@ -414,7 +414,7 @@ Throttle an outgoing sync.
 
 > **addToQueue**(`key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/site-sync-outgoing/service.ts:93](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/site-sync-outgoing/service.ts#L93)
+Defined in: [services/site-sync-outgoing/service.ts:93](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/site-sync-outgoing/service.ts#L93)
 
 Add a snapshot to the transfer queue.
 
@@ -433,7 +433,7 @@ Add a snapshot to the transfer queue.
 
 > **refresh**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/site-sync-outgoing/service.ts:102](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/site-sync-outgoing/service.ts#L102)
+Defined in: [services/site-sync-outgoing/service.ts:102](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/site-sync-outgoing/service.ts#L102)
 
 Refresh remote snapshots.
 
@@ -451,7 +451,7 @@ Refresh remote snapshots.
 
 > **setupSyncBack**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/site-sync-outgoing/service.ts:111](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/site-sync-outgoing/service.ts#L111)
+Defined in: [services/site-sync-outgoing/service.ts:111](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/site-sync-outgoing/service.ts#L111)
 
 Set up a sync-back incoming sync on the remote system.
 
@@ -469,7 +469,7 @@ Set up a sync-back incoming sync on the remote system.
 
 > **createRepairServer**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/site-sync-outgoing/service.ts:120](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/site-sync-outgoing/service.ts#L120)
+Defined in: [services/site-sync-outgoing/service.ts:120](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/site-sync-outgoing/service.ts#L120)
 
 Create a repair server for this outgoing sync.
 
@@ -487,7 +487,7 @@ Create a repair server for this outgoing sync.
 
 > **updateRemoteConfig**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/site-sync-outgoing/service.ts:129](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/site-sync-outgoing/service.ts#L129)
+Defined in: [services/site-sync-outgoing/service.ts:129](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/site-sync-outgoing/service.ts#L129)
 
 Update the remote configuration for this outgoing sync.
 
