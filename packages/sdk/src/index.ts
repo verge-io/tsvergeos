@@ -46,6 +46,8 @@ import './services/storage-tier-stats/index.js';
 import './services/cluster-tier/index.js';
 import './services/cluster-tier-stats/index.js';
 import './services/cluster-tier-status/index.js';
+import './services/tenant-stats-history-short/index.js';
+import './services/tenant-stats-history-long/index.js';
 import './services/machine-log/index.js';
 
 export { VergeClient } from './client.js';

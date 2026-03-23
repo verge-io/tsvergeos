@@ -50,6 +50,8 @@ import './services/tenant/index.js';
 import './services/tenant-node/index.js';
 import './services/tenant-storage/index.js';
 import './services/tenant-snapshot/index.js';
+import './services/tenant-stats-history-short/index.js';
+import './services/tenant-stats-history-long/index.js';
 import './services/tenant-layer2/index.js';
 import './services/vm-recipe/index.js';
 import './services/vm-recipe-instance/index.js';

@@ -524,6 +524,26 @@
 				"default": "./dist/services/tenant-snapshot/index.cjs"
 			}
 		},
+		"./services/tenant-stats-history-short": {
+			"import": {
+				"types": "./dist/services/tenant-stats-history-short/index.d.ts",
+				"default": "./dist/services/tenant-stats-history-short/index.js"
+			},
+			"require": {
+				"types": "./dist/services/tenant-stats-history-short/index.d.cts",
+				"default": "./dist/services/tenant-stats-history-short/index.cjs"
+			}
+		},
+		"./services/tenant-stats-history-long": {
+			"import": {
+				"types": "./dist/services/tenant-stats-history-long/index.d.ts",
+				"default": "./dist/services/tenant-stats-history-long/index.js"
+			},
+			"require": {
+				"types": "./dist/services/tenant-stats-history-long/index.d.cts",
+				"default": "./dist/services/tenant-stats-history-long/index.cjs"
+			}
+		},
 		"./services/tenant-layer2": {
 			"import": {
 				"types": "./dist/services/tenant-layer2/index.d.ts",
