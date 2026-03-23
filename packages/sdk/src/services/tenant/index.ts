@@ -28,6 +28,7 @@ export type {
 	Tenant,
 	TenantCloneOptions,
 	TenantCreateParams,
+	TenantGiveFileOptions,
 	TenantUpdateParams,
 	ThemeAccess,
 } from './types.js';
