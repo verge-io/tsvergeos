@@ -19,7 +19,7 @@ import 'tsvergeos/services/tenant';
 
 ### TenantService
 
-Defined in: [services/tenant/service.ts:40](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L40)
+Defined in: [services/tenant/service.ts:47](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L47)
 
 Service for managing VergeOS tenants.
 
@@ -56,7 +56,7 @@ const tenantClient = await client.tenants.connect(1, {
 
 > **new TenantService**(`http`): [`TenantService`](#tenantservice)
 
-Defined in: [services/tenant/service.ts:41](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L41)
+Defined in: [services/tenant/service.ts:52](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L52)
 
 ###### Parameters
 
@@ -76,10 +76,10 @@ Defined in: [services/tenant/service.ts:41](https://github.com/verge-io/tsvergeo
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`BaseService`](../index.md#baseservice).[`resource`](../index.md#property-resource-4) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`BaseService`](../index.md#baseservice).[`displayName`](../index.md#property-displayname-2) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`BaseService`](../index.md#baseservice).[`defaultFields`](../index.md#property-defaultfields-2) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L138) |
-| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`BaseService`](../index.md#baseservice).[`actionConfig`](../index.md#property-actionconfig-1) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L256) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`BaseService`](../index.md#baseservice).[`resource`](../index.md#property-resource-4) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L123) |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`BaseService`](../index.md#baseservice).[`displayName`](../index.md#property-displayname-2) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L126) |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`BaseService`](../index.md#baseservice).[`defaultFields`](../index.md#property-defaultfields-2) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`BaseService`](../index.md#baseservice).[`actionConfig`](../index.md#property-actionconfig-1) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L256) |
 
 #### Methods
 
@@ -87,7 +87,7 @@ Defined in: [services/tenant/service.ts:41](https://github.com/verge-io/tsvergeo
 
 > **list**(`options?`): `Promise`\<[`Tenant`](../types.md#tenant)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L157)
+Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L157)
 
 List resources matching the given options.
 
@@ -111,7 +111,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`Tenant`](../types.md#tenant)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L174)
+Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L174)
 
 Get a single resource by its key (ID).
 
@@ -139,7 +139,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`Tenant`](../types.md#tenant)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L198)
+Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L198)
 
 Get a single resource by its `name` field.
 
@@ -169,7 +169,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`Tenant`](../types.md#tenant)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L217)
+Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L217)
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -198,7 +198,7 @@ Individual resources across all pages
 
 > **update**(`key`, `params`, `options?`): `Promise`\<[`Tenant`](../types.md#tenant)\>
 
-Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L293)
+Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L293)
 
 Update an existing resource.
 
@@ -226,7 +226,7 @@ The updated resource (or the resource with just `$key` if `readBack` is false)
 
 > **delete**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L309)
+Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L309)
 
 Delete a resource by its key (ID).
 
@@ -252,7 +252,7 @@ NotFoundError if the resource does not exist
 
 > `protected` **inlineAction**(`key`, `action`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L330)
+Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L330)
 
 Execute an inline action on a specific resource.
 
@@ -279,7 +279,7 @@ Used for record-level actions (e.g., `POST /users/3/enable`).
 
 > `protected` **dispatchAction**(`action`, `key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L356)
+Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L356)
 
 Dispatch an action to the dedicated `_actions` endpoint.
 
@@ -308,7 +308,7 @@ Sends a POST to `/{actionEndpoint}` with the body:
 
 > **create**(`params`, `options?`): `Promise`\<[`Tenant`](../types.md#tenant)\>
 
-Defined in: [services/base.ts:395](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L395)
+Defined in: [services/base.ts:395](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L395)
 
 Create a new resource.
 
@@ -336,7 +336,7 @@ The created resource (or a partial with just `$key` if `readBack` is false)
 
 > **powerOn**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:50](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L50)
+Defined in: [services/tenant/service.ts:61](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L61)
 
 Power on a tenant.
 
@@ -354,7 +354,7 @@ Power on a tenant.
 
 > **powerOff**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:59](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L59)
+Defined in: [services/tenant/service.ts:70](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L70)
 
 Power off a tenant.
 
@@ -372,7 +372,7 @@ Power off a tenant.
 
 > **reset**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:68](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L68)
+Defined in: [services/tenant/service.ts:79](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L79)
 
 Restart a tenant.
 
@@ -390,7 +390,7 @@ Restart a tenant.
 
 > **clone**(`key`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:78](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L78)
+Defined in: [services/tenant/service.ts:89](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L89)
 
 Clone a tenant.
 
@@ -409,7 +409,7 @@ Clone a tenant.
 
 > **isolateOn**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:89](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L89)
+Defined in: [services/tenant/service.ts:104](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L104)
 
 Enable network isolation for a tenant.
 
@@ -429,7 +429,7 @@ When isolated, the tenant's network is disconnected from the host network.
 
 > **isolateOff**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:98](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L98)
+Defined in: [services/tenant/service.ts:113](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L113)
 
 Disable network isolation for a tenant.
 
@@ -447,7 +447,7 @@ Disable network isolation for a tenant.
 
 > **refreshStatus**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:107](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L107)
+Defined in: [services/tenant/service.ts:122](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L122)
 
 Refresh the cluster status of a tenant.
 
@@ -465,13 +465,17 @@ Refresh the cluster status of a tenant.
 
 > **connect**(`key`, `config?`): `Promise`\<[`VergeClient`](../index.md#vergeclient)\>
 
-Defined in: [services/tenant/service.ts:132](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L132)
+Defined in: [services/tenant/service.ts:151](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L151)
 
 Connect to a tenant's own VergeOS instance.
 
-Fetches the tenant record to read its `url` field, then creates a new
-[VergeClient](../index.md#vergeclient) targeting that URL. The caller must provide
-authentication credentials via the `config` parameter since the parent
+Resolves the tenant's reachable address using a priority chain:
+1. `url` — explicitly configured URL (e.g., `https://tenant.example.com`)
+2. `ui_fqdn` — reverse-proxy FQDN from `vnet_proxy_tenants`
+3. `ui_address` — IP from the tenant's `vnet_addresses` entry (fallback)
+
+Validates the tenant is running before attempting connection. The caller
+must provide authentication credentials via `config` since the parent
 system cannot derive tenant credentials.
 
 ###### Parameters
@@ -489,7 +493,7 @@ A new VergeClient scoped to the tenant's VergeOS instance
 
 ###### Throws
 
-ValidationError if the tenant has no URL configured
+ValidationError if the tenant is not running or has no reachable address
 
 ###### Example
 
@@ -504,7 +508,7 @@ const tenantClient = await client.tenants.connect(1, {
 
 > **deployCrashCart**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:163](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L163)
+Defined in: [services/tenant/service.ts:213](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L213)
 
 Deploy a crash cart VM for emergency tenant access.
 
@@ -540,7 +544,7 @@ await client.tenants.deployCrashCart(1);
 
 > **deleteCrashCart**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:203](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L203)
+Defined in: [services/tenant/service.ts:253](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L253)
 
 Delete a crash cart VM for a tenant.
 
@@ -571,7 +575,7 @@ await client.tenants.deleteCrashCart(1);
 
 > **execute**(`key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:232](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L232)
+Defined in: [services/tenant/service.ts:282](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L282)
 
 Execute a command on a tenant.
 
@@ -590,7 +594,7 @@ Execute a command on a tenant.
 
 > **restore**(`key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:242](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L242)
+Defined in: [services/tenant/service.ts:292](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L292)
 
 Restore a tenant from a snapshot.
 
@@ -609,7 +613,7 @@ Restore a tenant from a snapshot.
 
 > **convertCloudSnapshot**(`key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:252](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L252)
+Defined in: [services/tenant/service.ts:302](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L302)
 
 Convert a system/cloud snapshot for a tenant.
 
@@ -628,7 +632,7 @@ Convert a system/cloud snapshot for a tenant.
 
 > **recoverCloudSnapshot**(`key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:262](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L262)
+Defined in: [services/tenant/service.ts:315](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L315)
 
 Recover a tenant from a system/cloud snapshot.
 
@@ -647,7 +651,7 @@ Recover a tenant from a system/cloud snapshot.
 
 > **giveFile**(`key`, `options`): `Promise`\<`void`\>
 
-Defined in: [services/tenant/service.ts:272](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/service.ts#L272)
+Defined in: [services/tenant/service.ts:328](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/service.ts#L328)
 
 Share/give a file to a tenant.
 
@@ -666,7 +670,7 @@ Share/give a file to a tenant.
 
 ### TenantGiveFileOptions
 
-Defined in: [services/tenant/types.ts:218](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/types.ts#L218)
+Defined in: [services/tenant/types.ts:218](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/types.ts#L218)
 
 Options for giving a file to a tenant.
 
@@ -674,7 +678,7 @@ Options for giving a file to a tenant.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="property-file"></a> `file` | [`FlexKey`](../types.md#flexkey) | File reference (FK to files). | [services/tenant/types.ts:220](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/tenant/types.ts#L220) |
+| <a id="property-file"></a> `file` | [`FlexKey`](../types.md#flexkey) | File reference (FK to files). | [services/tenant/types.ts:220](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/tenant/types.ts#L220) |
 
 ## References
 

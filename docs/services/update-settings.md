@@ -19,7 +19,7 @@ import 'tsvergeos/services/update-settings';
 
 ### UpdateSettingsService
 
-Defined in: [services/update-settings/service.ts:35](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-settings/service.ts#L35)
+Defined in: [services/update-settings/service.ts:35](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/update-settings/service.ts#L35)
 
 Service for managing VergeOS update settings.
 
@@ -54,7 +54,7 @@ await client.updateSettings.checkForUpdates();
 
 > **new UpdateSettingsService**(`http`): [`UpdateSettingsService`](#updatesettingsservice)
 
-Defined in: [services/update-settings/service.ts:45](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-settings/service.ts#L45)
+Defined in: [services/update-settings/service.ts:45](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/update-settings/service.ts#L45)
 
 ###### Parameters
 
@@ -70,7 +70,7 @@ Defined in: [services/update-settings/service.ts:45](https://github.com/verge-io
 
 | Property | Modifier | Type | Default value | Description | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `"/update_settings"` | `'/update_settings'` | API resource path. | [services/update-settings/service.ts:40](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-settings/service.ts#L40) |
+| <a id="property-resource"></a> `resource` | `readonly` | `"/update_settings"` | `'/update_settings'` | API resource path. | [services/update-settings/service.ts:40](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/update-settings/service.ts#L40) |
 
 #### Methods
 
@@ -78,7 +78,7 @@ Defined in: [services/update-settings/service.ts:45](https://github.com/verge-io
 
 > **get**(): `Promise`\<[`UpdateSettings`](../types.md#updatesettings)\>
 
-Defined in: [services/update-settings/service.ts:54](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-settings/service.ts#L54)
+Defined in: [services/update-settings/service.ts:54](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/update-settings/service.ts#L54)
 
 Get the current update settings.
 
@@ -92,7 +92,7 @@ The singleton update settings resource
 
 > **update**(`params`, `options?`): `Promise`\<[`UpdateSettings`](../types.md#updatesettings)\>
 
-Defined in: [services/update-settings/service.ts:67](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-settings/service.ts#L67)
+Defined in: [services/update-settings/service.ts:67](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/update-settings/service.ts#L67)
 
 Update the system update settings.
 
@@ -113,7 +113,7 @@ The updated settings (or partial if `readBack` is false)
 
 > **checkForUpdates**(): `Promise`\<`void`\>
 
-Defined in: [services/update-settings/service.ts:85](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-settings/service.ts#L85)
+Defined in: [services/update-settings/service.ts:85](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/update-settings/service.ts#L85)
 
 Check for available updates.
 
@@ -127,7 +127,7 @@ Dispatched as inline action: `POST /update_settings/1/check`.
 
 > **downloadUpdates**(): `Promise`\<`void`\>
 
-Defined in: [services/update-settings/service.ts:94](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-settings/service.ts#L94)
+Defined in: [services/update-settings/service.ts:94](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/update-settings/service.ts#L94)
 
 Download available updates.
 
@@ -141,7 +141,7 @@ Dispatched as inline action: `POST /update_settings/1/download`.
 
 > **installUpdates**(): `Promise`\<`void`\>
 
-Defined in: [services/update-settings/service.ts:103](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-settings/service.ts#L103)
+Defined in: [services/update-settings/service.ts:103](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/update-settings/service.ts#L103)
 
 Install downloaded updates.
 
@@ -155,7 +155,7 @@ Dispatched as inline action: `POST /update_settings/1/install`.
 
 > **updateAll**(): `Promise`\<`void`\>
 
-Defined in: [services/update-settings/service.ts:112](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-settings/service.ts#L112)
+Defined in: [services/update-settings/service.ts:112](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/update-settings/service.ts#L112)
 
 Perform all update steps: check, download, and install.
 

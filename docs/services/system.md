@@ -19,7 +19,7 @@ import 'tsvergeos/services/system';
 
 ### SystemService
 
-Defined in: [services/system/service.ts:27](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/system/service.ts#L27)
+Defined in: [services/system/service.ts:27](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/system/service.ts#L27)
 
 Service for accessing VergeOS system information.
 
@@ -50,7 +50,7 @@ console.log(system.cloud_name);
 
 > **new SystemService**(`http`): [`SystemService`](#systemservice)
 
-Defined in: [services/system/service.ts:31](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/system/service.ts#L31)
+Defined in: [services/system/service.ts:31](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/system/service.ts#L31)
 
 ###### Parameters
 
@@ -68,7 +68,7 @@ Defined in: [services/system/service.ts:31](https://github.com/verge-io/tsvergeo
 
 > **getInfo**(): `Promise`\<[`VersionInfo`](../types.md#versioninfo)\>
 
-Defined in: [services/system/service.ts:43](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/system/service.ts#L43)
+Defined in: [services/system/service.ts:43](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/system/service.ts#L43)
 
 Get lightweight version information from `/version.json`.
 
@@ -85,7 +85,7 @@ Version information
 
 > **get**(): `Promise`\<[`System`](../types.md#system)\>
 
-Defined in: [services/system/service.ts:54](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/system/service.ts#L54)
+Defined in: [services/system/service.ts:54](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/system/service.ts#L54)
 
 Get the full system record.
 
@@ -101,7 +101,7 @@ The system record with all fields
 
 > **update**(`params`): `Promise`\<[`System`](../types.md#system)\>
 
-Defined in: [services/system/service.ts:64](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/system/service.ts#L64)
+Defined in: [services/system/service.ts:64](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/system/service.ts#L64)
 
 Update the system record.
 
@@ -121,7 +121,7 @@ The updated system record
 
 > **geoip**(): `Promise`\<`void`\>
 
-Defined in: [services/system/service.ts:74](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/system/service.ts#L74)
+Defined in: [services/system/service.ts:74](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/system/service.ts#L74)
 
 Query the system's public IP for geographic location information.
 

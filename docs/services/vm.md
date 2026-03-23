@@ -19,7 +19,7 @@ import 'tsvergeos/services/vm';
 
 ### VMService
 
-Defined in: [services/vm/service.ts:92](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L92)
+Defined in: [services/vm/service.ts:93](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L93)
 
 Full CRUD service base class that adds resource creation.
 
@@ -36,7 +36,7 @@ that supports create, read, update, delete, and actions.
 
 > **new VMService**(`http`): [`VMService`](#vmservice)
 
-Defined in: [services/vm/service.ts:93](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L93)
+Defined in: [services/vm/service.ts:94](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L94)
 
 ###### Parameters
 
@@ -56,10 +56,10 @@ Defined in: [services/vm/service.ts:93](https://github.com/verge-io/tsvergeos/bl
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`BaseService`](../index.md#baseservice).[`resource`](../index.md#property-resource-4) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`BaseService`](../index.md#baseservice).[`displayName`](../index.md#property-displayname-2) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`BaseService`](../index.md#baseservice).[`defaultFields`](../index.md#property-defaultfields-2) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L138) |
-| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`BaseService`](../index.md#baseservice).[`actionConfig`](../index.md#property-actionconfig-1) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L256) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`BaseService`](../index.md#baseservice).[`resource`](../index.md#property-resource-4) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L123) |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`BaseService`](../index.md#baseservice).[`displayName`](../index.md#property-displayname-2) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L126) |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`BaseService`](../index.md#baseservice).[`defaultFields`](../index.md#property-defaultfields-2) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`BaseService`](../index.md#baseservice).[`actionConfig`](../index.md#property-actionconfig-1) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L256) |
 
 #### Methods
 
@@ -67,7 +67,7 @@ Defined in: [services/vm/service.ts:93](https://github.com/verge-io/tsvergeos/bl
 
 > **list**(`options?`): `Promise`\<[`VM`](../types.md#vm)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L157)
+Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L157)
 
 List resources matching the given options.
 
@@ -91,7 +91,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`VM`](../types.md#vm)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L174)
+Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L174)
 
 Get a single resource by its key (ID).
 
@@ -119,7 +119,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`VM`](../types.md#vm)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L198)
+Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L198)
 
 Get a single resource by its `name` field.
 
@@ -149,7 +149,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`VM`](../types.md#vm)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L217)
+Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L217)
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -178,7 +178,7 @@ Individual resources across all pages
 
 > **update**(`key`, `params`, `options?`): `Promise`\<[`VM`](../types.md#vm)\>
 
-Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L293)
+Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L293)
 
 Update an existing resource.
 
@@ -206,7 +206,7 @@ The updated resource (or the resource with just `$key` if `readBack` is false)
 
 > **delete**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L309)
+Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L309)
 
 Delete a resource by its key (ID).
 
@@ -232,7 +232,7 @@ NotFoundError if the resource does not exist
 
 > `protected` **inlineAction**(`key`, `action`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L330)
+Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L330)
 
 Execute an inline action on a specific resource.
 
@@ -259,7 +259,7 @@ Used for record-level actions (e.g., `POST /users/3/enable`).
 
 > `protected` **dispatchAction**(`action`, `key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L356)
+Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L356)
 
 Dispatch an action to the dedicated `_actions` endpoint.
 
@@ -288,7 +288,7 @@ Sends a POST to `/{actionEndpoint}` with the body:
 
 > **create**(`params`, `options?`): `Promise`\<[`VM`](../types.md#vm)\>
 
-Defined in: [services/base.ts:395](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L395)
+Defined in: [services/base.ts:395](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L395)
 
 Create a new resource.
 
@@ -316,7 +316,7 @@ The created resource (or a partial with just `$key` if `readBack` is false)
 
 > **powerOn**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:103](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L103)
+Defined in: [services/vm/service.ts:104](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L104)
 
 Power on a virtual machine.
 
@@ -334,7 +334,7 @@ Power on a virtual machine.
 
 > **powerOff**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:114](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L114)
+Defined in: [services/vm/service.ts:115](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L115)
 
 Gracefully power off a virtual machine via ACPI shutdown signal.
 
@@ -354,7 +354,7 @@ Sends an ACPI shutdown signal at the hardware level.
 
 > **kill**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:125](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L125)
+Defined in: [services/vm/service.ts:126](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L126)
 
 Force power off a virtual machine (like pulling the plug).
 
@@ -374,7 +374,7 @@ Use [powerOff](#poweroff) for a graceful ACPI shutdown instead.
 
 > **reset**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:136](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L136)
+Defined in: [services/vm/service.ts:137](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L137)
 
 Hard reset a virtual machine (equivalent to pressing the reset button).
 
@@ -394,7 +394,7 @@ For a graceful ACPI reboot, use [gracefulReboot](#gracefulreboot) instead.
 
 > **gracefulReboot**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:148](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L148)
+Defined in: [services/vm/service.ts:149](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L149)
 
 Gracefully reboot a virtual machine via ACPI.
 
@@ -415,7 +415,7 @@ reset button), use [reset](#reset) instead.
 
 > **hibernate**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:159](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L159)
+Defined in: [services/vm/service.ts:160](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L160)
 
 Hibernate a virtual machine via ACPI.
 
@@ -435,7 +435,7 @@ The guest OS must support ACPI hibernate.
 
 > **migrate**(`key`, `options`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:171](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L171)
+Defined in: [services/vm/service.ts:172](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L172)
 
 Migrate a virtual machine to another node.
 
@@ -454,7 +454,7 @@ Migrate a virtual machine to another node.
 
 > **clone**(`key`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:181](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L181)
+Defined in: [services/vm/service.ts:186](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L186)
 
 Clone a virtual machine.
 
@@ -473,7 +473,7 @@ Clone a virtual machine.
 
 > **snapshot**(`key`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:191](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L191)
+Defined in: [services/vm/service.ts:200](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L200)
 
 Create a quiesced snapshot of a virtual machine.
 
@@ -492,7 +492,7 @@ Create a quiesced snapshot of a virtual machine.
 
 > **changeCD**(`key`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:205](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L205)
+Defined in: [services/vm/service.ts:214](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L214)
 
 Change the CD/ISO attached to a virtual machine.
 
@@ -511,7 +511,7 @@ Change the CD/ISO attached to a virtual machine.
 
 > **changeNet**(`key`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:215](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L215)
+Defined in: [services/vm/service.ts:227](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L227)
 
 Change the network attached to a virtual machine.
 
@@ -530,7 +530,7 @@ Change the network attached to a virtual machine.
 
 > **paste**(`key`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:225](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L225)
+Defined in: [services/vm/service.ts:240](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L240)
 
 Paste text to a virtual machine's console.
 
@@ -549,7 +549,7 @@ Paste text to a virtual machine's console.
 
 > **restore**(`key`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:235](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L235)
+Defined in: [services/vm/service.ts:254](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L254)
 
 Restore a virtual machine from a snapshot.
 
@@ -568,7 +568,7 @@ Restore a virtual machine from a snapshot.
 
 > **recoverCloudSnapshot**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:244](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L244)
+Defined in: [services/vm/service.ts:267](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L267)
 
 Recover a virtual machine from a cloud or system snapshot.
 
@@ -586,7 +586,7 @@ Recover a virtual machine from a cloud or system snapshot.
 
 > **hotplugDrive**(`key`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:254](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L254)
+Defined in: [services/vm/service.ts:277](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L277)
 
 Hot-plug a drive to a running virtual machine.
 
@@ -605,7 +605,7 @@ Hot-plug a drive to a running virtual machine.
 
 > **hotplugNic**(`key`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:264](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L264)
+Defined in: [services/vm/service.ts:294](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L294)
 
 Hot-plug a NIC to a running virtual machine.
 
@@ -624,7 +624,7 @@ Hot-plug a NIC to a running virtual machine.
 
 > **execute**(`key`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:276](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L276)
+Defined in: [services/vm/service.ts:310](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L310)
 
 Execute a command on a virtual machine.
 
@@ -645,7 +645,7 @@ Requires the QEMU guest agent to be running inside the VM.
 
 > **fsyncStrict**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:285](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L285)
+Defined in: [services/vm/service.ts:323](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L323)
 
 Perform a strict filesystem sync on a virtual machine.
 
@@ -663,7 +663,7 @@ Perform a strict filesystem sync on a virtual machine.
 
 > **eraseDrive**(`key`, `options?`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:295](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L295)
+Defined in: [services/vm/service.ts:333](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L333)
 
 Erase a drive on a virtual machine.
 
@@ -682,7 +682,7 @@ Erase a drive on a virtual machine.
 
 > **refresh**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/vm/service.ts:304](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L304)
+Defined in: [services/vm/service.ts:346](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L346)
 
 Refresh a virtual machine's state.
 
@@ -700,52 +700,70 @@ Refresh a virtual machine's state.
 
 > **getConsoleInfo**(`key`, `auth`): `Promise`\<[`VMConsoleInfo`](../types.md#vmconsoleinfo)\>
 
-Defined in: [services/vm/service.ts:343](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L343)
+Defined in: [services/vm/service.ts:404](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L404)
 
 Get console connection details for a virtual machine.
 
 Fetches the console type, host, port, and a ready-to-use WebSocket URL
 for establishing a direct console connection from a custom frontend.
-The returned `websocketUrl` includes a session token for authentication,
-tying the console session to a specific user for audit logging.
 
-Authentication can be provided as either:
-- `{ username, password }` — for local VergeOS users (exchanged for a session token)
-- `{ token }` — a pre-existing session token (e.g., from an OIDC login flow)
+Three authentication methods are supported:
+
+- `{ username, password }` — exchanged for a session token via
+  `POST /api/sys/tokens`. The token is embedded in the WebSocket URL
+  as `?token=`. Works in all environments including browsers.
+- `{ token }` — a pre-existing session token (e.g., from OIDC).
+  Embedded in the WebSocket URL as `?token=`.
+- `{ apiKey }` — a VergeOS API key. The console endpoint accepts
+  `Authorization: Bearer <apiKey>` directly. The WebSocket URL is
+  returned **without** an embedded token — the caller must set the
+  `Authorization` header during the WebSocket handshake.
+
+Check `authMethod` on the result to determine how to connect:
+- `'token'` — `websocketUrl` is ready to use as-is
+- `'bearer'` — set `Authorization: Bearer <apiKey>` header on the WebSocket
+
+**Browser limitation:** The browser `WebSocket` API does not support
+custom headers. Use `{ username, password }` or `{ token }` for
+browser-based consoles.
 
 ###### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `key` | [`FlexKey`](../types.md#flexkey) | The VM ID |
-| `auth` | [`ConsoleAuth`](../types.md#consoleauth) | User credentials or a pre-existing session token |
+| `auth` | [`ConsoleAuth`](../types.md#consoleauth) | Authentication credentials (username/password, token, or API key) |
 
 ###### Returns
 
 `Promise`\<[`VMConsoleInfo`](../types.md#vmconsoleinfo)\>
 
-Console connection info including authenticated WebSocket URL
+Console connection info including WebSocket URL and auth method
 
 ###### Throws
 
-AuthError if the credentials are invalid
+AuthError if username/password credentials are invalid
 
-###### Example
+###### Examples
 
 ```typescript
-// Local user
 const info = await client.vms.getConsoleInfo(42, {
   username: 'admin',
   password: 'secret',
 });
-
-// OIDC user (pass existing session token)
-const info = await client.vms.getConsoleInfo(42, {
-  token: sessionToken,
-});
-
 if (info.isAvailable) {
-  const rfb = new RFB(container, info.websocketUrl);
+  const rfb = new RFB(container, info.websocketUrl!);
+}
+```
+
+```typescript
+const info = await client.vms.getConsoleInfo(42, {
+  apiKey: 'my-api-key',
+});
+if (info.isAvailable) {
+  const ws = new WebSocket(info.websocketUrl!, {
+    headers: { Authorization: `Bearer ${info.apiKey}` },
+  });
 }
 ```
 
@@ -753,7 +771,7 @@ if (info.isAvailable) {
 
 > **getConsoleURL**(`key`): `string`
 
-Defined in: [services/vm/service.ts:439](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/service.ts#L439)
+Defined in: [services/vm/service.ts:536](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/service.ts#L536)
 
 Get the web console URL for a virtual machine.
 
@@ -775,7 +793,7 @@ The full console URL (e.g., `https://host/#/vm-console/42`)
 
 ### VMRestoreOptions
 
-Defined in: [services/vm/types.ts:592](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L592)
+Defined in: [services/vm/types.ts:621](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L621)
 
 Options for the VM restore action.
 
@@ -783,15 +801,15 @@ Options for the VM restore action.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="property-snapshot"></a> `snapshot?` | [`FlexKey`](../types.md#flexkey) | Snapshot reference to restore from. | [services/vm/types.ts:594](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L594) |
-| <a id="property-preserve_macs"></a> `preserve_macs?` | `boolean` | Whether to preserve MAC addresses. | [services/vm/types.ts:596](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L596) |
-| <a id="property-name"></a> `name?` | `string` | Name for the restored VM. | [services/vm/types.ts:598](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L598) |
+| <a id="property-snapshot"></a> `snapshot?` | [`FlexKey`](../types.md#flexkey) | Snapshot reference to restore from. | [services/vm/types.ts:623](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L623) |
+| <a id="property-preserve_macs"></a> `preserve_macs?` | `boolean` | Whether to preserve MAC addresses. | [services/vm/types.ts:625](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L625) |
+| <a id="property-name"></a> `name?` | `string` | Name for the restored VM. | [services/vm/types.ts:627](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L627) |
 
 ***
 
 ### VMHotplugDriveOptions
 
-Defined in: [services/vm/types.ts:602](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L602)
+Defined in: [services/vm/types.ts:631](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L631)
 
 Options for hot-plugging a drive to a running VM.
 
@@ -799,17 +817,17 @@ Options for hot-plugging a drive to a running VM.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="property-name-1"></a> `name?` | `string` | Drive name. | [services/vm/types.ts:604](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L604) |
-| <a id="property-disksize"></a> `disksize?` | `number` | Disk size in GB. | [services/vm/types.ts:606](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L606) |
-| <a id="property-interface"></a> `interface?` | `string` | Drive interface type (e.g., 'virtio-blk', 'virtio-scsi'). | [services/vm/types.ts:608](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L608) |
-| <a id="property-media"></a> `media?` | `string` | Media type. | [services/vm/types.ts:610](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L610) |
-| <a id="property-preferred_tier"></a> `preferred_tier?` | `string` | Preferred storage tier. | [services/vm/types.ts:612](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L612) |
+| <a id="property-name-1"></a> `name?` | `string` | Drive name. | [services/vm/types.ts:633](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L633) |
+| <a id="property-disksize"></a> `disksize?` | `number` | Disk size in GB. | [services/vm/types.ts:635](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L635) |
+| <a id="property-interface"></a> `interface?` | `string` | Drive interface type (e.g., 'virtio-blk', 'virtio-scsi'). | [services/vm/types.ts:637](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L637) |
+| <a id="property-media"></a> `media?` | `string` | Media type. | [services/vm/types.ts:639](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L639) |
+| <a id="property-preferred_tier"></a> `preferred_tier?` | `string` | Preferred storage tier. | [services/vm/types.ts:641](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L641) |
 
 ***
 
 ### VMHotplugNicOptions
 
-Defined in: [services/vm/types.ts:616](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L616)
+Defined in: [services/vm/types.ts:645](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L645)
 
 Options for hot-plugging a NIC to a running VM.
 
@@ -817,15 +835,15 @@ Options for hot-plugging a NIC to a running VM.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="property-name-2"></a> `name?` | `string` | NIC name. | [services/vm/types.ts:618](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L618) |
-| <a id="property-vnet"></a> `vnet?` | [`FlexKey`](../types.md#flexkey) | Virtual network reference (FK to vnets). | [services/vm/types.ts:620](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L620) |
-| <a id="property-interface-1"></a> `interface?` | `string` | NIC interface type. | [services/vm/types.ts:622](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L622) |
+| <a id="property-name-2"></a> `name?` | `string` | NIC name. | [services/vm/types.ts:647](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L647) |
+| <a id="property-vnet"></a> `vnet?` | [`FlexKey`](../types.md#flexkey) | Virtual network reference (FK to vnets). | [services/vm/types.ts:649](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L649) |
+| <a id="property-interface-1"></a> `interface?` | `string` | NIC interface type. | [services/vm/types.ts:651](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L651) |
 
 ***
 
 ### VMPasteOptions
 
-Defined in: [services/vm/types.ts:626](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L626)
+Defined in: [services/vm/types.ts:655](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L655)
 
 Options for pasting text to a VM console.
 
@@ -833,13 +851,13 @@ Options for pasting text to a VM console.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="property-text"></a> `text?` | `string` | The text to paste. | [services/vm/types.ts:628](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L628) |
+| <a id="property-text"></a> `text?` | `string` | The text to paste. | [services/vm/types.ts:657](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L657) |
 
 ***
 
 ### VMEraseDriveOptions
 
-Defined in: [services/vm/types.ts:632](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L632)
+Defined in: [services/vm/types.ts:661](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L661)
 
 Options for erasing a VM drive.
 
@@ -847,13 +865,13 @@ Options for erasing a VM drive.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="property-drive"></a> `drive?` | [`FlexKey`](../types.md#flexkey) | Drive reference to erase. | [services/vm/types.ts:634](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L634) |
+| <a id="property-drive"></a> `drive?` | [`FlexKey`](../types.md#flexkey) | Drive reference to erase. | [services/vm/types.ts:663](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L663) |
 
 ***
 
 ### VMExecuteOptions
 
-Defined in: [services/vm/types.ts:638](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/vm/types.ts#L638)
+Defined in: [services/vm/types.ts:667](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L667)
 
 Options for executing a command on a VM.
 
@@ -862,6 +880,28 @@ Options for executing a command on a VM.
 > \[`key`: `string`\]: `unknown`
 
 Command to execute.
+
+***
+
+### ConsoleApiKey
+
+Defined in: [services/vm/types.ts:717](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L717)
+
+API key authentication for console sessions.
+
+The console endpoint accepts `Authorization: Bearer <apiKey>` directly,
+bypassing the need for a session token. The caller is responsible for
+setting the `Authorization` header on the WebSocket handshake.
+
+**Browser limitation:** The browser `WebSocket` API does not support
+custom headers. Use [ConsoleCredentials](../types.md#consolecredentials) or [ConsoleToken](../types.md#consoletoken)
+for browser-based console connections.
+
+#### Properties
+
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| <a id="property-apikey"></a> `apiKey` | `string` | A valid VergeOS API key. | [services/vm/types.ts:719](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/vm/types.ts#L719) |
 
 ## References
 

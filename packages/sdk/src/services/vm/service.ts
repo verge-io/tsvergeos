@@ -4,6 +4,7 @@ import type { HttpClient } from "../../http.js";
 import type { FlexKey } from "../../types.js";
 import { BaseService } from "../base.js";
 import type {
+  ConsoleApiKey,
   ConsoleAuth,
   ConsoleCredentials,
   VM,
@@ -351,36 +352,52 @@ export class VMService extends BaseService<VM, VMCreateParams, VMUpdateParams> {
    *
    * Fetches the console type, host, port, and a ready-to-use WebSocket URL
    * for establishing a direct console connection from a custom frontend.
-   * The returned `websocketUrl` includes a session token for authentication,
-   * tying the console session to a specific user for audit logging.
    *
-   * **Note:** API key authentication is not sufficient for console access.
-   * Console sessions require a user-scoped session token for audit logging.
+   * Three authentication methods are supported:
    *
-   * Authentication can be provided as either:
-   * - `{ username, password }` — for local VergeOS users (exchanged for a session token)
-   * - `{ token }` — a pre-existing session token (e.g., from an OIDC login flow)
+   * - `{ username, password }` — exchanged for a session token via
+   *   `POST /api/sys/tokens`. The token is embedded in the WebSocket URL
+   *   as `?token=`. Works in all environments including browsers.
+   * - `{ token }` — a pre-existing session token (e.g., from OIDC).
+   *   Embedded in the WebSocket URL as `?token=`.
+   * - `{ apiKey }` — a VergeOS API key. The console endpoint accepts
+   *   `Authorization: Bearer <apiKey>` directly. The WebSocket URL is
+   *   returned **without** an embedded token — the caller must set the
+   *   `Authorization` header during the WebSocket handshake.
+   *
+   * Check `authMethod` on the result to determine how to connect:
+   * - `'token'` — `websocketUrl` is ready to use as-is
+   * - `'bearer'` — set `Authorization: Bearer <apiKey>` header on the WebSocket
+   *
+   * **Browser limitation:** The browser `WebSocket` API does not support
+   * custom headers. Use `{ username, password }` or `{ token }` for
+   * browser-based consoles.
    *
    * @param key - The VM ID
-   * @param auth - User credentials or a pre-existing session token
-   * @returns Console connection info including authenticated WebSocket URL
-   * @throws {@link AuthError} if the credentials are invalid
+   * @param auth - Authentication credentials (username/password, token, or API key)
+   * @returns Console connection info including WebSocket URL and auth method
+   * @throws {@link AuthError} if username/password credentials are invalid
    *
-   * @example
+   * @example Token auth (browser-compatible)
    * ```typescript
-   * // Local user
    * const info = await client.vms.getConsoleInfo(42, {
    *   username: 'admin',
    *   password: 'secret',
    * });
-   *
-   * // OIDC user (pass existing session token)
-   * const info = await client.vms.getConsoleInfo(42, {
-   *   token: sessionToken,
-   * });
-   *
    * if (info.isAvailable) {
-   *   const rfb = new RFB(container, info.websocketUrl);
+   *   const rfb = new RFB(container, info.websocketUrl!);
+   * }
+   * ```
+   *
+   * @example Bearer auth (Node.js / Deno / Bun)
+   * ```typescript
+   * const info = await client.vms.getConsoleInfo(42, {
+   *   apiKey: 'my-api-key',
+   * });
+   * if (info.isAvailable) {
+   *   const ws = new WebSocket(info.websocketUrl!, {
+   *     headers: { Authorization: `Bearer ${info.apiKey}` },
+   *   });
    * }
    * ```
    */
@@ -413,14 +430,27 @@ export class VMService extends BaseService<VM, VMCreateParams, VMUpdateParams> {
 
     let websocketUrl: string | null = null;
     let token: string | null = null;
+    let returnedApiKey: string | null = null;
+    let authMethod: VMConsoleInfo["authMethod"] = null;
 
     if (isAvailable) {
-      token = this.isTokenAuth(auth)
-        ? auth.token
-        : await this.acquireSessionToken(auth);
       const wsScheme = this.http.host.startsWith("https") ? "wss" : "ws";
       const origin = this.http.host.replace(/^https?/, wsScheme);
-      websocketUrl = `${origin}${API_BASE_PATH}/machine_console/${consoleKey}?token=${token}`;
+      const basePath = `${origin}${API_BASE_PATH}/machine_console/${consoleKey}`;
+
+      if (this.isApiKeyAuth(auth)) {
+        // API key: caller will set Authorization header on the WebSocket
+        websocketUrl = basePath;
+        returnedApiKey = auth.apiKey;
+        authMethod = "bearer";
+      } else {
+        // Token or credentials: embed token in the URL
+        token = this.isTokenAuth(auth)
+          ? auth.token
+          : await this.acquireSessionToken(auth);
+        websocketUrl = `${basePath}?token=${token}`;
+        authMethod = "token";
+      }
     }
 
     return {
@@ -429,7 +459,9 @@ export class VMService extends BaseService<VM, VMCreateParams, VMUpdateParams> {
       port,
       consoleKey,
       websocketUrl,
+      authMethod,
       token,
+      apiKey: returnedApiKey,
       webUrl: `${this.http.host}/#/vm-console/${key}`,
       isPasswordProtected,
       isAvailable,
@@ -442,6 +474,14 @@ export class VMService extends BaseService<VM, VMCreateParams, VMUpdateParams> {
    */
   private isTokenAuth(auth: ConsoleAuth): auth is { token: string } {
     return "token" in auth;
+  }
+
+  /**
+   * Type guard to distinguish API key auth from other auth types.
+   * @internal
+   */
+  private isApiKeyAuth(auth: ConsoleAuth): auth is ConsoleApiKey {
+    return "apiKey" in auth;
   }
 
   /**

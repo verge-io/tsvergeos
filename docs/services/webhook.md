@@ -19,7 +19,7 @@ import 'tsvergeos/services/webhook';
 
 ### WebhookService
 
-Defined in: [services/webhook/service.ts:36](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/webhook/service.ts#L36)
+Defined in: [services/webhook/service.ts:36](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/webhook/service.ts#L36)
 
 Service for querying VergeOS webhook delivery logs.
 
@@ -59,7 +59,7 @@ await client.webhooks.delete(42);
 
 > **new WebhookService**(`http`): [`WebhookService`](#webhookservice)
 
-Defined in: [services/webhook/service.ts:37](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/webhook/service.ts#L37)
+Defined in: [services/webhook/service.ts:37](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/webhook/service.ts#L37)
 
 ###### Parameters
 
@@ -79,9 +79,9 @@ Defined in: [services/webhook/service.ts:37](https://github.com/verge-io/tsverge
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L123) |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L126) |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L138) |
 
 #### Methods
 
@@ -89,7 +89,7 @@ Defined in: [services/webhook/service.ts:37](https://github.com/verge-io/tsverge
 
 > **list**(`options?`): `Promise`\<[`Webhook`](../types.md#webhook)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L157)
+Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L157)
 
 List resources matching the given options.
 
@@ -113,7 +113,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`Webhook`](../types.md#webhook)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L174)
+Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L174)
 
 Get a single resource by its key (ID).
 
@@ -141,7 +141,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`Webhook`](../types.md#webhook)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L198)
+Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L198)
 
 Get a single resource by its `name` field.
 
@@ -171,7 +171,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`Webhook`](../types.md#webhook)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L217)
+Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/base.ts#L217)
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -200,7 +200,7 @@ Individual resources across all pages
 
 > **delete**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/webhook/service.ts:47](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/webhook/service.ts#L47)
+Defined in: [services/webhook/service.ts:47](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/webhook/service.ts#L47)
 
 Delete a webhook delivery record.
 
@@ -222,7 +222,7 @@ NotFoundError if the record does not exist
 
 > **listByWebhookURL**(`webhookURLKey`, `options?`): `Promise`\<[`Webhook`](../types.md#webhook)[]\>
 
-Defined in: [services/webhook/service.ts:65](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/webhook/service.ts#L65)
+Defined in: [services/webhook/service.ts:65](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/webhook/service.ts#L65)
 
 List webhook deliveries for a specific webhook URL.
 
@@ -243,7 +243,7 @@ Array of matching delivery records
 
 > **listByStatus**(`status`, `options?`): `Promise`\<[`Webhook`](../types.md#webhook)[]\>
 
-Defined in: [services/webhook/service.ts:79](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/webhook/service.ts#L79)
+Defined in: [services/webhook/service.ts:79](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/webhook/service.ts#L79)
 
 List webhook deliveries with a specific status.
 
@@ -264,7 +264,7 @@ Array of matching delivery records
 
 > **listPending**(`options?`): `Promise`\<[`Webhook`](../types.md#webhook)[]\>
 
-Defined in: [services/webhook/service.ts:92](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/webhook/service.ts#L92)
+Defined in: [services/webhook/service.ts:92](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/webhook/service.ts#L92)
 
 List webhook deliveries that are pending (queued or running).
 
@@ -284,7 +284,7 @@ Array of pending delivery records
 
 > **listFailed**(`options?`): `Promise`\<[`Webhook`](../types.md#webhook)[]\>
 
-Defined in: [services/webhook/service.ts:105](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/webhook/service.ts#L105)
+Defined in: [services/webhook/service.ts:105](https://github.com/verge-io/tsvergeos/blob/062717088bda09370ccf0807d21fafeb6b471b69/packages/sdk/src/services/webhook/service.ts#L105)
 
 List webhook deliveries that failed.
 
