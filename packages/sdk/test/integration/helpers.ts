@@ -1,7 +1,7 @@
-import { describe } from 'vitest';
-import { HttpClient } from '../../src/http.js';
-import type { SiteConfig } from '../../src/site-manager.js';
-import type { ClientConfig } from '../../src/types.js';
+import { describe } from "vitest";
+import { HttpClient } from "../../src/http.js";
+import type { SiteConfig } from "../../src/site-manager.js";
+import type { ClientConfig } from "../../src/types.js";
 
 /**
  * Rate-limiting delay between integration test requests.
@@ -10,15 +10,19 @@ import type { ClientConfig } from '../../src/types.js';
  * @param ms - Milliseconds to wait (defaults to 50)
  */
 export function delay(ms = 50): Promise<void> {
-	return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 /**
  * Check whether single-site integration test credentials are configured.
- * Returns true if VERGEOS_HOST and VERGEOS_API_KEY are set.
+ * Returns true if VERGEOS_HOST is set with either API key or username+password.
  */
 export function hasCredentials(): boolean {
-	return Boolean(process.env.VERGEOS_HOST && process.env.VERGEOS_API_KEY);
+  if (!process.env.VERGEOS_HOST) return false;
+  return Boolean(
+    process.env.VERGEOS_API_KEY ||
+    (process.env.VERGEOS_USERNAME && process.env.VERGEOS_PASSWORD),
+  );
 }
 
 /**
@@ -26,7 +30,7 @@ export function hasCredentials(): boolean {
  * Returns true if at least 2 systems have credentials.
  */
 export function hasMultiSiteCredentials(): boolean {
-	return discoverSites().length >= 2;
+  return discoverSites().length >= 2;
 }
 
 /**
@@ -34,15 +38,17 @@ export function hasMultiSiteCredentials(): boolean {
  * Use as: `const describeIf = skipIfNoCredentials();` then `describeIf(...)`.
  */
 export function skipIfNoCredentials(): typeof describe | typeof describe.skip {
-	return hasCredentials() ? describe : describe.skip;
+  return hasCredentials() ? describe : describe.skip;
 }
 
 /**
  * Skip a test suite if multi-site credentials are not configured.
  * Use as: `const describeIf = skipIfNoMultiSiteCredentials();` then `describeIf(...)`.
  */
-export function skipIfNoMultiSiteCredentials(): typeof describe | typeof describe.skip {
-	return hasMultiSiteCredentials() ? describe : describe.skip;
+export function skipIfNoMultiSiteCredentials():
+  | typeof describe
+  | typeof describe.skip {
+  return hasMultiSiteCredentials() ? describe : describe.skip;
 }
 
 /**
@@ -59,18 +65,26 @@ export function skipIfNoMultiSiteCredentials(): typeof describe | typeof describ
  * @returns A ClientConfig ready for use with HttpClient or VergeClient
  */
 export async function createClientConfig(): Promise<ClientConfig> {
-	const host = process.env.VERGEOS_HOST;
-	const apiKey = process.env.VERGEOS_API_KEY;
+  const host = process.env.VERGEOS_HOST;
+  if (!host) {
+    throw new Error(
+      "Integration test credentials not configured. Set VERGEOS_HOST environment variable.",
+    );
+  }
 
-	if (!host || !apiKey) {
-		throw new Error(
-			'Integration test credentials not configured. Set VERGEOS_HOST and VERGEOS_API_KEY environment variables.',
-		);
-	}
+  const apiKey = process.env.VERGEOS_API_KEY;
+  const username = process.env.VERGEOS_USERNAME;
+  const password = process.env.VERGEOS_PASSWORD;
 
-	const verifySsl = process.env.VERGEOS_VERIFY_SSL?.toLowerCase() !== 'false';
+  if (!apiKey && !(username && password)) {
+    throw new Error(
+      "Integration test auth not configured. Set VERGEOS_API_KEY or VERGEOS_USERNAME + VERGEOS_PASSWORD.",
+    );
+  }
 
-	return buildConfig(host, apiKey, verifySsl);
+  const verifySsl = process.env.VERGEOS_VERIFY_SSL?.toLowerCase() !== "false";
+
+  return buildConfig({ host, apiKey, username, password, verifySsl });
 }
 
 /**
@@ -80,75 +94,88 @@ export async function createClientConfig(): Promise<ClientConfig> {
  * @returns An HttpClient ready for integration testing
  */
 export async function createTestHttpClient(): Promise<HttpClient> {
-	const config = await createClientConfig();
-	return new HttpClient(config);
+  const config = await createClientConfig();
+  return new HttpClient(config);
 }
 
 // ─── Multi-Site Helpers ──────────────────────────────────────────────────────
 
 /**
  * Discovered site credentials from environment variables.
+ * Supports both API key and basic (username/password) authentication.
  */
 export interface SiteEnv {
-	/** Numeric suffix (1 for VERGEOS_HOST, 2 for VERGEOS_HOST_2, etc.) */
-	index: number;
-	host: string;
-	apiKey: string;
-	verifySsl: boolean;
+  /** Numeric suffix (1 for VERGEOS_HOST, 2 for VERGEOS_HOST_2, etc.) */
+  index: number;
+  host: string;
+  apiKey?: string;
+  username?: string;
+  password?: string;
+  verifySsl: boolean;
 }
 
 /**
  * Discover all configured test sites from environment variables.
  *
- * Looks for VERGEOS_HOST + VERGEOS_API_KEY (site 1),
- * then VERGEOS_HOST_2 + VERGEOS_API_KEY_2, VERGEOS_HOST_3, etc.
+ * Looks for VERGEOS_HOST + auth (site 1), then VERGEOS_HOST_2, etc.
+ * Each site needs either VERGEOS_API_KEY_N or VERGEOS_USERNAME_N + VERGEOS_PASSWORD_N.
  *
  * @returns Array of discovered site credentials, sorted by index
  */
 export function discoverSites(): SiteEnv[] {
-	const sites: SiteEnv[] = [];
+  const sites: SiteEnv[] = [];
 
-	// Site 1: no suffix
-	if (process.env.VERGEOS_HOST && process.env.VERGEOS_API_KEY) {
-		sites.push({
-			index: 1,
-			host: process.env.VERGEOS_HOST,
-			apiKey: process.env.VERGEOS_API_KEY,
-			verifySsl: process.env.VERGEOS_VERIFY_SSL?.toLowerCase() !== 'false',
-		});
-	}
+  // Site 1: no suffix
+  const host1 = process.env.VERGEOS_HOST;
+  if (host1) {
+    const env = discoverSiteAuth(host1, 1, "");
+    if (env) sites.push(env);
+  }
 
-	// Sites 2+: numbered suffix
-	for (let i = 2; i <= 10; i++) {
-		const host = process.env[`VERGEOS_HOST_${i}`];
-		const apiKey = process.env[`VERGEOS_API_KEY_${i}`];
-		if (host && apiKey) {
-			const verifySsl = process.env[`VERGEOS_VERIFY_SSL_${i}`]?.toLowerCase() !== 'false';
-			sites.push({ index: i, host, apiKey, verifySsl });
-		}
-	}
+  // Sites 2+: numbered suffix
+  for (let i = 2; i <= 10; i++) {
+    const host = process.env[`VERGEOS_HOST_${i}`];
+    if (host) {
+      const env = discoverSiteAuth(host, i, `_${i}`);
+      if (env) sites.push(env);
+    }
+  }
 
-	return sites;
+  return sites;
+}
+
+/** @internal Resolve auth for a single site from env vars. */
+function discoverSiteAuth(
+  host: string,
+  index: number,
+  suffix: string,
+): SiteEnv | null {
+  const apiKey = process.env[`VERGEOS_API_KEY${suffix}`];
+  const username = process.env[`VERGEOS_USERNAME${suffix}`];
+  const password = process.env[`VERGEOS_PASSWORD${suffix}`];
+  const verifySsl =
+    process.env[`VERGEOS_VERIFY_SSL${suffix}`]?.toLowerCase() !== "false";
+
+  // Need either API key or username+password
+  if (!apiKey && !(username && password)) return null;
+
+  return { index, host, apiKey, username, password, verifySsl };
 }
 
 /**
  * Build a SiteConfig for a named site with custom fetch for self-signed certs.
  *
  * @param name - Unique site name for SiteManager registration
- * @param host - Server URL
- * @param apiKey - API key
- * @param verifySsl - Whether to verify SSL certificates
+ * @param env - Site environment credentials
  * @param tags - Optional tags for grouping
  */
 export async function createSiteConfig(
-	name: string,
-	host: string,
-	apiKey: string,
-	verifySsl: boolean,
-	tags?: string[],
+  name: string,
+  env: SiteEnv,
+  tags?: string[],
 ): Promise<SiteConfig> {
-	const base = await buildConfig(host, apiKey, verifySsl);
-	return { ...base, name, tags };
+  const base = await buildConfig(env);
+  return { ...base, name, tags };
 }
 
 /**
@@ -158,53 +185,67 @@ export async function createSiteConfig(
  * @param tagger - Function to generate tags for a site from its index (default: ["dev"])
  */
 export async function createAllSiteConfigs(
-	namer?: (env: SiteEnv) => string,
-	tagger?: (env: SiteEnv) => string[],
+  namer?: (env: SiteEnv) => string,
+  tagger?: (env: SiteEnv) => string[],
 ): Promise<SiteConfig[]> {
-	const sites = discoverSites();
-	const defaultNamer = (env: SiteEnv) => `site-${env.index}`;
-	const defaultTagger = (_env: SiteEnv) => ['dev'];
+  const sites = discoverSites();
+  const defaultNamer = (env: SiteEnv) => `site-${env.index}`;
+  const defaultTagger = (_env: SiteEnv) => ["dev"];
 
-	const configs: SiteConfig[] = [];
-	for (const site of sites) {
-		const name = (namer ?? defaultNamer)(site);
-		const tags = (tagger ?? defaultTagger)(site);
-		configs.push(await createSiteConfig(name, site.host, site.apiKey, site.verifySsl, tags));
-	}
-	return configs;
+  const configs: SiteConfig[] = [];
+  for (const site of sites) {
+    const name = (namer ?? defaultNamer)(site);
+    const tags = (tagger ?? defaultTagger)(site);
+    configs.push(await createSiteConfig(name, site, tags));
+  }
+  return configs;
 }
 
 // ─── Internal ────────────────────────────────────────────────────────────────
 
 /**
  * Build a ClientConfig with optional custom fetch for self-signed certs.
+ * Supports both API key and basic (username/password) authentication.
  */
-async function buildConfig(
-	host: string,
-	apiKey: string,
-	verifySsl: boolean,
-): Promise<ClientConfig> {
-	const config: ClientConfig = {
-		host,
-		apiKey,
-		verifySsl,
-		retries: 0,
-	};
+async function buildConfig(env: {
+  host: string;
+  apiKey?: string;
+  username?: string;
+  password?: string;
+  verifySsl: boolean;
+}): Promise<ClientConfig> {
+  const config: ClientConfig = {
+    host: env.host,
+    verifySsl: env.verifySsl,
+    retries: 0,
+  };
 
-	if (!verifySsl) {
-		const { Agent, fetch: undiciFetch } = await import('undici');
-		const dispatcher = new Agent({
-			connect: { rejectUnauthorized: false },
-		});
-		config.fetch = (input: RequestInfo | URL, init?: RequestInit) =>
-			undiciFetch(
-				input as Parameters<typeof undiciFetch>[0],
-				{
-					...init,
-					dispatcher,
-				} as Parameters<typeof undiciFetch>[1],
-			) as unknown as Promise<Response>;
-	}
+  if (env.apiKey) {
+    config.apiKey = env.apiKey;
+  }
+  if (env.username) {
+    config.username = env.username;
+  }
+  if (env.password) {
+    config.password = env.password;
+  }
 
-	return config;
+  const verifySsl = env.verifySsl;
+
+  if (!verifySsl) {
+    const { Agent, fetch: undiciFetch } = await import("undici");
+    const dispatcher = new Agent({
+      connect: { rejectUnauthorized: false },
+    });
+    config.fetch = (input: RequestInfo | URL, init?: RequestInit) =>
+      undiciFetch(
+        input as Parameters<typeof undiciFetch>[0],
+        {
+          ...init,
+          dispatcher,
+        } as Parameters<typeof undiciFetch>[1],
+      ) as unknown as Promise<Response>;
+  }
+
+  return config;
 }
