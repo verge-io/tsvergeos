@@ -1,3 +1,16 @@
+/**
+ * Resource Group service registration module.
+ *
+ * Importing this module registers the {@link ResourceGroupService} on {@link VergeClient},
+ * making `client.resourceGroups` available. This is a side-effect import:
+ *
+ * ```typescript
+ * import 'tsvergeos/services/resource-group';
+ * ```
+ *
+ * @module
+ */
+
 import { VergeClient } from '../../client.js';
 import { ResourceGroupService } from './service.js';
 

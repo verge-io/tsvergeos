@@ -1,3 +1,16 @@
+/**
+ * Cloud-init file service registration module.
+ *
+ * Importing this module registers the {@link CloudInitFileService} on {@link VergeClient},
+ * making `client.cloudInitFiles` available. This is a side-effect import:
+ *
+ * ```typescript
+ * import 'tsvergeos/services/cloud-init';
+ * ```
+ *
+ * @module
+ */
+
 import { VergeClient } from '../../client.js';
 import { CloudInitFileService } from './service.js';
 

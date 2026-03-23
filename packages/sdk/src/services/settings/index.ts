@@ -1,3 +1,16 @@
+/**
+ * Settings service registration module.
+ *
+ * Importing this module registers the {@link SettingsService} on {@link VergeClient},
+ * making `client.settings` available. This is a side-effect import:
+ *
+ * ```typescript
+ * import 'tsvergeos/services/settings';
+ * ```
+ *
+ * @module
+ */
+
 import { VergeClient } from '../../client.js';
 import { SettingsService } from './service.js';
 
