@@ -259,6 +259,8 @@ export type {
 	NicInterface,
 } from './services/machine-nic/types.js';
 export type { MachineNicStats } from './services/machine-nic-stats/types.js';
+export type { MachineNicStatsHistoryLong } from './services/machine-nic-stats-history-long/types.js';
+export type { MachineNicStatsHistoryShort } from './services/machine-nic-stats-history-short/types.js';
 export type {
 	ExpiresType,
 	MachineSnapshot,

@@ -27,6 +27,8 @@ import './services/machine-stats-history-long/index.js';
 import './services/machine-status/index.js';
 import './services/machine-drive-stats/index.js';
 import './services/machine-nic-stats/index.js';
+import './services/machine-nic-stats-history-short/index.js';
+import './services/machine-nic-stats-history-long/index.js';
 import './services/machine-drive-phys/index.js';
 import './services/vnet-monitor-stats-history-short/index.js';
 import './services/vnet-monitor-stats-history-long/index.js';
