@@ -1,0 +1,259 @@
+[**tsvergeos**](../README.md)
+
+***
+
+[tsvergeos](../README.md) / services/update-source-package
+
+# services/update-source-package
+
+Update source package service registration module.
+
+Importing this module registers the [UpdateSourcePackageService](#updatesourcepackageservice) on [VergeClient](../index.md#vergeclient),
+making `client.updateSourcePackages` available. This is a side-effect import:
+
+```typescript
+import 'tsvergeos/services/update-source-package';
+```
+
+## Classes
+
+### UpdateSourcePackageService
+
+Defined in: [services/update-source-package/service.ts:26](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-source-package/service.ts#L26)
+
+Service for querying VergeOS update source packages.
+
+Update source packages are read-only records of available packages
+from update sources, organized by branch.
+
+#### Example
+
+```typescript
+import { VergeClient } from 'tsvergeos';
+import 'tsvergeos/services/update-source-package';
+
+const client = await VergeClient.connect({ host: '...', apiKey: '...' });
+
+// List all available packages
+const packages = await client.updateSourcePackages.list();
+
+// List packages for a specific branch and source
+const filtered = await client.updateSourcePackages.listByBranchAndSource(1, 2);
+```
+
+#### Extends
+
+- [`ReadOnlyService`](../index.md#readonlyservice)\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)\>
+
+#### Constructors
+
+##### Constructor
+
+> **new UpdateSourcePackageService**(`http`): [`UpdateSourcePackageService`](#updatesourcepackageservice)
+
+Defined in: [services/update-source-package/service.ts:27](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-source-package/service.ts#L27)
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `http` | [`HttpClient`](../index.md#httpclient) |
+
+###### Returns
+
+[`UpdateSourcePackageService`](#updatesourcepackageservice)
+
+###### Overrides
+
+[`ReadOnlyService`](../index.md#readonlyservice).[`constructor`](../index.md#constructor-13)
+
+#### Properties
+
+| Property | Modifier | Type | Description | Inherited from | Defined in |
+| ------ | ------ | ------ | ------ | ------ | ------ |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L123) |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L126) |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L138) |
+
+#### Methods
+
+##### list()
+
+> **list**(`options?`): `Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)[]\>
+
+Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L157)
+
+List resources matching the given options.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options?` | [`ListOptions`](../types.md#listoptions) | Filter, sort, fields, and pagination options |
+
+###### Returns
+
+`Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)[]\>
+
+Array of matching resources
+
+###### Inherited from
+
+[`ReadOnlyService`](../index.md#readonlyservice).[`list`](../index.md#list)
+
+##### get()
+
+> **get**(`key`): `Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)\>
+
+Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L174)
+
+Get a single resource by its key (ID).
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `key` | [`FlexKey`](../types.md#flexkey) | The resource ID |
+
+###### Returns
+
+`Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)\>
+
+The matching resource
+
+###### Throws
+
+NotFoundError if the resource does not exist
+
+###### Inherited from
+
+[`ReadOnlyService`](../index.md#readonlyservice).[`get`](../index.md#get-1)
+
+##### getByName()
+
+> **getByName**(`name`): `Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)\>
+
+Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L198)
+
+Get a single resource by its `name` field.
+
+Performs a filtered list and returns the first match.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The resource name to search for |
+
+###### Returns
+
+`Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)\>
+
+The matching resource
+
+###### Throws
+
+NotFoundError if no resource with that name exists
+
+###### Inherited from
+
+[`ReadOnlyService`](../index.md#readonlyservice).[`getByName`](../index.md#getbyname)
+
+##### listAll()
+
+> **listAll**(`options?`): `AsyncGenerator`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)\>
+
+Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/base.ts#L217)
+
+Iterate over all resources matching the given options, auto-paginating.
+
+Fetches pages internally using `limit`/`offset` and yields individual items.
+Stops when a page returns fewer items than the page size.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options?` | [`ListAllOptions`](../types.md#listalloptions) | Filter, sort, fields, and page size options |
+
+###### Returns
+
+`AsyncGenerator`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)\>
+
+###### Yields
+
+Individual resources across all pages
+
+###### Inherited from
+
+[`ReadOnlyService`](../index.md#readonlyservice).[`listAll`](../index.md#listall)
+
+##### listByBranchAndSource()
+
+> **listByBranchAndSource**(`branchKey`, `sourceKey`, `options?`): `Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)[]\>
+
+Defined in: [services/update-source-package/service.ts:39](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-source-package/service.ts#L39)
+
+List packages for a specific branch and source.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `branchKey` | [`FlexKey`](../types.md#flexkey) | The branch ID to filter by |
+| `sourceKey` | [`FlexKey`](../types.md#flexkey) | The update source ID to filter by |
+| `options?` | [`ListOptions`](../types.md#listoptions) | Additional list options |
+
+###### Returns
+
+`Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)[]\>
+
+Array of matching packages
+
+##### listByBranch()
+
+> **listByBranch**(`branchKey`, `options?`): `Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)[]\>
+
+Defined in: [services/update-source-package/service.ts:57](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-source-package/service.ts#L57)
+
+List packages for a specific branch.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `branchKey` | [`FlexKey`](../types.md#flexkey) | The branch ID to filter by |
+| `options?` | [`ListOptions`](../types.md#listoptions) | Additional list options |
+
+###### Returns
+
+`Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)[]\>
+
+Array of matching packages
+
+##### listBySource()
+
+> **listBySource**(`sourceKey`, `options?`): `Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)[]\>
+
+Defined in: [services/update-source-package/service.ts:71](https://github.com/verge-io/tsvergeos/blob/1053cf975fe1bacd1ca9d53743740ae63a601a08/packages/sdk/src/services/update-source-package/service.ts#L71)
+
+List packages for a specific source.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sourceKey` | [`FlexKey`](../types.md#flexkey) | The update source ID to filter by |
+| `options?` | [`ListOptions`](../types.md#listoptions) | Additional list options |
+
+###### Returns
+
+`Promise`\<[`UpdateSourcePackage`](../types.md#updatesourcepackage)[]\>
+
+Array of matching packages
+
+## References
+
+### UpdateSourcePackage
+
+Re-exports [UpdateSourcePackage](../types.md#updatesourcepackage)

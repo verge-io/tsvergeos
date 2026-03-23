@@ -1,0 +1,44 @@
+{
+	"$schema": "https://typedoc.org/schema.json",
+	"plugin": ["typedoc-plugin-markdown"],
+	"entryPoints": ["src/index.ts", "src/types.ts", "src/services/*/index.ts"],
+	"tsconfig": "tsconfig.json",
+	"out": "../../docs",
+	"name": "tsvergeos",
+	"readme": "none",
+	"router": "module",
+	"entryFileName": "README",
+	"excludePrivate": true,
+	"excludeInternal": true,
+	"excludeExternals": true,
+	"sort": ["source-order"],
+	"categoryOrder": [
+		"Client",
+		"Services",
+		"Filters",
+		"Errors",
+		"Types",
+		"Multi-Site",
+		"Constants",
+		"*"
+	],
+	"hidePageHeader": false,
+	"hideBreadcrumbs": false,
+	"parametersFormat": "table",
+	"interfacePropertiesFormat": "table",
+	"classPropertiesFormat": "table",
+	"enumMembersFormat": "table",
+	"typeAliasPropertiesFormat": "table",
+	"expandObjects": true,
+	"useCodeBlocks": false,
+	"fileExtension": ".md",
+	"intentionallyNotExported": [
+		"ServiceKeys",
+		"FilterOperator",
+		"ServiceConstructor",
+		"RequestOptions"
+	],
+	"validation": {
+		"invalidLink": false
+	}
+}
