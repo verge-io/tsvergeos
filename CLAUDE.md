@@ -43,8 +43,8 @@ declare module "tsvergeos" {
 
 Users opt in to services: `import 'tsvergeos/services/vm'`. Unused services are dead code eliminated. Two convenience barrels exist:
 
-- `import 'tsvergeos'` — curated core (~40 most-used services). Recommended default for dashboards, SPAs, and most apps.
-- `import 'tsvergeos/full'` — all ~84 services. For Node scripts, CLIs, and "I don't care about bundle size" cases.
+- `import 'tsvergeos'` — curated core of the most-used services. Recommended default for dashboards, SPAs, and most apps.
+- `import 'tsvergeos/full'` — every service. For Node scripts, CLIs, and "I don't care about bundle size" cases.
 
 All resource types are re-exported from a top-level barrel for type-only imports with zero bundle impact:
 
