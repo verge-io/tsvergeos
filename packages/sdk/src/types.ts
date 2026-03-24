@@ -253,6 +253,10 @@ export type {
 } from './services/machine-drive-phys/types.js';
 export type { MachineDriveStats } from './services/machine-drive-stats/types.js';
 export type {
+	MachineLog,
+	MachineLogLevel,
+} from './services/machine-log/types.js';
+export type {
 	MachineNIC,
 	MachineNICCreateParams,
 	MachineNICUpdateParams,
@@ -505,6 +509,7 @@ export type {
 export type {
 	BootOrder,
 	CloudInitDatasource,
+	ConsoleApiKey,
 	ConsoleAuth,
 	ConsoleCredentials,
 	ConsoleToken,
@@ -520,7 +525,13 @@ export type {
 	VMCloneOptions,
 	VMConsoleInfo,
 	VMCreateParams,
+	VMEraseDriveOptions,
+	VMExecuteOptions,
+	VMHotplugDriveOptions,
+	VMHotplugNicOptions,
 	VMMigrateOptions,
+	VMPasteOptions,
+	VMRestoreOptions,
 	VMSnapshotOptions,
 	VMUpdateParams,
 } from './services/vm/types.js';

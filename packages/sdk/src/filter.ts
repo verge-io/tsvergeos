@@ -232,8 +232,8 @@ const buildFilter = (conditions: Record<string, BuildFilterValue>): string => {
 	const parts: string[] = [];
 
 	for (const [field, value] of Object.entries(conditions)) {
-		// Skip null values
-		if (value === null) continue;
+		// Skip null/undefined values
+		if (value === null || value === undefined) continue;
 
 		if (Array.isArray(value)) {
 			// IN query

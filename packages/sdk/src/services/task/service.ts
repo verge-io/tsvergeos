@@ -1,14 +1,9 @@
+import { TASK_POLL_INTERVAL, TASK_WAIT_TIMEOUT } from '../../constants.js';
 import { TaskTimeoutError } from '../../errors.js';
 import type { HttpClient } from '../../http.js';
 import type { FlexKey, MutationOptions } from '../../types.js';
 import { BaseService } from '../base.js';
 import type { Task, TaskCreateParams, TaskUpdateParams, TaskWaitOptions } from './types.js';
-
-/** Default timeout for waitForCompletion in milliseconds (5 minutes). */
-const DEFAULT_WAIT_TIMEOUT = 300_000;
-
-/** Default polling interval for waitForCompletion in milliseconds (5 seconds). */
-const DEFAULT_WAIT_INTERVAL = 5_000;
 
 /**
  * Service for managing VergeOS tasks.
@@ -63,8 +58,8 @@ export class TaskService extends BaseService<Task, TaskCreateParams, TaskUpdateP
 	 * @throws {@link TaskTimeoutError} if the timeout is exceeded
 	 */
 	async waitForCompletion(key: FlexKey, options?: TaskWaitOptions): Promise<Task> {
-		const timeout = options?.timeout ?? DEFAULT_WAIT_TIMEOUT;
-		const interval = options?.interval ?? DEFAULT_WAIT_INTERVAL;
+		const timeout = options?.timeout ?? TASK_WAIT_TIMEOUT;
+		const interval = options?.interval ?? TASK_POLL_INTERVAL;
 		const deadline = Date.now() + timeout;
 
 		while (true) {
