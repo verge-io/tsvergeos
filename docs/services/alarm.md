@@ -19,7 +19,7 @@ import 'tsvergeos/services/alarm';
 
 ### AlarmService
 
-Defined in: [services/alarm/service.ts:36](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/alarm/service.ts#L36)
+Defined in: services/alarm/service.ts:36
 
 Service for managing VergeOS alarms.
 
@@ -58,7 +58,7 @@ await client.alarms.unsnooze(42);
 
 > **new AlarmService**(`http`): [`AlarmService`](#alarmservice)
 
-Defined in: [services/alarm/service.ts:37](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/alarm/service.ts#L37)
+Defined in: services/alarm/service.ts:37
 
 ###### Parameters
 
@@ -78,10 +78,10 @@ Defined in: [services/alarm/service.ts:37](https://github.com/verge-io/tsvergeos
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`WritableService`](../index.md#writableservice).[`resource`](../index.md#property-resource-3) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`WritableService`](../index.md#writableservice).[`displayName`](../index.md#property-displayname-1) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`WritableService`](../index.md#writableservice).[`defaultFields`](../index.md#property-defaultfields-1) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L138) |
-| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`WritableService`](../index.md#writableservice).[`actionConfig`](../index.md#property-actionconfig) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L256) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`WritableService`](../index.md#writableservice).[`resource`](../index.md#property-resource-3) | services/base.ts:123 |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`WritableService`](../index.md#writableservice).[`displayName`](../index.md#property-displayname-1) | services/base.ts:126 |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`WritableService`](../index.md#writableservice).[`defaultFields`](../index.md#property-defaultfields-1) | services/base.ts:138 |
+| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`WritableService`](../index.md#writableservice).[`actionConfig`](../index.md#property-actionconfig) | services/base.ts:256 |
 
 #### Methods
 
@@ -89,7 +89,7 @@ Defined in: [services/alarm/service.ts:37](https://github.com/verge-io/tsvergeos
 
 > **resolve**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/alarm/service.ts:49](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/alarm/service.ts#L49)
+Defined in: services/alarm/service.ts:49
 
 Resolve an alarm.
 
@@ -110,7 +110,7 @@ Only works on alarms where `resolvable` is `true`.
 
 > **snooze**(`key`, `seconds?`, `options?`): `Promise`\<[`Alarm`](../types.md#alarm)\>
 
-Defined in: [services/alarm/service.ts:64](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/alarm/service.ts#L64)
+Defined in: services/alarm/service.ts:64
 
 Snooze an alarm for a specified duration.
 
@@ -135,7 +135,7 @@ The updated alarm
 
 > **unsnooze**(`key`, `options?`): `Promise`\<[`Alarm`](../types.md#alarm)\>
 
-Defined in: [services/alarm/service.ts:77](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/alarm/service.ts#L77)
+Defined in: services/alarm/service.ts:77
 
 Unsnooze an alarm by setting the `snooze` field to 0.
 
@@ -156,7 +156,7 @@ The updated alarm
 
 > **list**(`options?`): `Promise`\<[`Alarm`](../types.md#alarm)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L157)
+Defined in: services/base.ts:157
 
 List resources matching the given options.
 
@@ -180,7 +180,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`Alarm`](../types.md#alarm)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L174)
+Defined in: services/base.ts:174
 
 Get a single resource by its key (ID).
 
@@ -208,7 +208,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`Alarm`](../types.md#alarm)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L198)
+Defined in: services/base.ts:198
 
 Get a single resource by its `name` field.
 
@@ -238,7 +238,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`Alarm`](../types.md#alarm)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L217)
+Defined in: services/base.ts:217
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -267,7 +267,7 @@ Individual resources across all pages
 
 > **update**(`key`, `params`, `options?`): `Promise`\<[`Alarm`](../types.md#alarm)\>
 
-Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L293)
+Defined in: services/base.ts:293
 
 Update an existing resource.
 
@@ -295,7 +295,7 @@ The updated resource (or the resource with just `$key` if `readBack` is false)
 
 > **delete**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L309)
+Defined in: services/base.ts:309
 
 Delete a resource by its key (ID).
 
@@ -321,7 +321,7 @@ NotFoundError if the resource does not exist
 
 > `protected` **inlineAction**(`key`, `action`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L330)
+Defined in: services/base.ts:330
 
 Execute an inline action on a specific resource.
 
@@ -348,7 +348,7 @@ Used for record-level actions (e.g., `POST /users/3/enable`).
 
 > `protected` **dispatchAction**(`action`, `key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L356)
+Defined in: services/base.ts:356
 
 Dispatch an action to the dedicated `_actions` endpoint.
 

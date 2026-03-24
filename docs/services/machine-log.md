@@ -19,7 +19,7 @@ import 'tsvergeos/services/machine-log';
 
 ### MachineLogService
 
-Defined in: [services/machine-log/service.ts:25](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-log/service.ts#L25)
+Defined in: services/machine-log/service.ts:25
 
 Service for querying VergeOS machine logs.
 
@@ -42,7 +42,7 @@ for (const log of logs) {
 
 #### Extends
 
-- [`ReadOnlyService`](../index.md#readonlyservice)\<[`MachineLog`](#machinelog)\>
+- [`ReadOnlyService`](../index.md#readonlyservice)\<[`MachineLog`](../types.md#machinelog)\>
 
 #### Constructors
 
@@ -50,7 +50,7 @@ for (const log of logs) {
 
 > **new MachineLogService**(`http`): [`MachineLogService`](#machinelogservice)
 
-Defined in: [services/machine-log/service.ts:26](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-log/service.ts#L26)
+Defined in: services/machine-log/service.ts:26
 
 ###### Parameters
 
@@ -70,17 +70,17 @@ Defined in: [services/machine-log/service.ts:26](https://github.com/verge-io/tsv
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | services/base.ts:123 |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | services/base.ts:126 |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | services/base.ts:138 |
 
 #### Methods
 
 ##### list()
 
-> **list**(`options?`): `Promise`\<[`MachineLog`](#machinelog)[]\>
+> **list**(`options?`): `Promise`\<[`MachineLog`](../types.md#machinelog)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L157)
+Defined in: services/base.ts:157
 
 List resources matching the given options.
 
@@ -92,7 +92,7 @@ List resources matching the given options.
 
 ###### Returns
 
-`Promise`\<[`MachineLog`](#machinelog)[]\>
+`Promise`\<[`MachineLog`](../types.md#machinelog)[]\>
 
 Array of matching resources
 
@@ -102,9 +102,9 @@ Array of matching resources
 
 ##### get()
 
-> **get**(`key`): `Promise`\<[`MachineLog`](#machinelog)\>
+> **get**(`key`): `Promise`\<[`MachineLog`](../types.md#machinelog)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L174)
+Defined in: services/base.ts:174
 
 Get a single resource by its key (ID).
 
@@ -116,7 +116,7 @@ Get a single resource by its key (ID).
 
 ###### Returns
 
-`Promise`\<[`MachineLog`](#machinelog)\>
+`Promise`\<[`MachineLog`](../types.md#machinelog)\>
 
 The matching resource
 
@@ -130,9 +130,9 @@ NotFoundError if the resource does not exist
 
 ##### getByName()
 
-> **getByName**(`name`): `Promise`\<[`MachineLog`](#machinelog)\>
+> **getByName**(`name`): `Promise`\<[`MachineLog`](../types.md#machinelog)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L198)
+Defined in: services/base.ts:198
 
 Get a single resource by its `name` field.
 
@@ -146,7 +146,7 @@ Performs a filtered list and returns the first match.
 
 ###### Returns
 
-`Promise`\<[`MachineLog`](#machinelog)\>
+`Promise`\<[`MachineLog`](../types.md#machinelog)\>
 
 The matching resource
 
@@ -160,9 +160,9 @@ NotFoundError if no resource with that name exists
 
 ##### listAll()
 
-> **listAll**(`options?`): `AsyncGenerator`\<[`MachineLog`](#machinelog)\>
+> **listAll**(`options?`): `AsyncGenerator`\<[`MachineLog`](../types.md#machinelog)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L217)
+Defined in: services/base.ts:217
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -177,7 +177,7 @@ Stops when a page returns fewer items than the page size.
 
 ###### Returns
 
-`AsyncGenerator`\<[`MachineLog`](#machinelog)\>
+`AsyncGenerator`\<[`MachineLog`](../types.md#machinelog)\>
 
 ###### Yields
 
@@ -189,9 +189,9 @@ Individual resources across all pages
 
 ##### listByMachine()
 
-> **listByMachine**(`machineKey`, `options?`): `Promise`\<[`MachineLog`](#machinelog)[]\>
+> **listByMachine**(`machineKey`, `options?`): `Promise`\<[`MachineLog`](../types.md#machinelog)[]\>
 
-Defined in: [services/machine-log/service.ts:40](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-log/service.ts#L40)
+Defined in: services/machine-log/service.ts:40
 
 List log entries for a specific machine.
 
@@ -207,55 +207,18 @@ Additional list options (limit, sort, filter) can be passed to refine results.
 
 ###### Returns
 
-`Promise`\<[`MachineLog`](#machinelog)[]\>
+`Promise`\<[`MachineLog`](../types.md#machinelog)[]\>
 
 Array of machine log entries.
 
-## Interfaces
+## References
 
 ### MachineLog
 
-Defined in: [services/machine-log/types.ts:39](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-log/types.ts#L39)
+Re-exports [MachineLog](../types.md#machinelog)
 
-A VergeOS machine log resource.
-
-Machine logs are system-generated entries that record events, errors,
-and audit activity for machines. Each log entry is associated with a
-parent machine and auto-expires after ~31 days.
-
-This is a **read-only** resource — log entries are created by the system.
-
-Field names use snake_case to match the VergeOS API exactly.
-
-#### Extends
-
-- [`Resource`](../types.md#resource)
-
-#### Properties
-
-| Property | Type | Description | Inherited from | Defined in |
-| ------ | ------ | ------ | ------ | ------ |
-| <a id="property-machine"></a> `machine` | [`FlexKey`](../types.md#flexkey) | Parent machine reference (FK to `machines`). | - | [services/machine-log/types.ts:41](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-log/types.ts#L41) |
-| <a id="property-level"></a> `level?` | [`MachineLogLevel`](#machineloglevel) | Log severity level. Default: `message`. | - | [services/machine-log/types.ts:44](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-log/types.ts#L44) |
-| <a id="property-text"></a> `text?` | `string` | Log message text. | - | [services/machine-log/types.ts:47](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-log/types.ts#L47) |
-| <a id="property-timestamp"></a> `timestamp?` | `number` | Creation timestamp (Unix epoch, microseconds). Read-only, auto-expires ~31 days. | - | [services/machine-log/types.ts:50](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-log/types.ts#L50) |
-| <a id="property-user"></a> `user?` | `string` | User or source that generated the log entry. | - | [services/machine-log/types.ts:53](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-log/types.ts#L53) |
-| <a id="property-key"></a> `$key` | [`FlexKey`](../types.md#flexkey) | - | [`Resource`](../types.md#resource).[`$key`](../types.md#property-key-97) | [types.ts:12](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/types.ts#L12) |
-
-## Type Aliases
+***
 
 ### MachineLogLevel
 
-> **MachineLogLevel** = `"audit"` \| `"message"` \| `"warning"` \| `"error"` \| `"critical"` \| `"summary"` \| `"debug"` \| `string` & \{ \}
-
-Defined in: [services/machine-log/types.ts:16](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-log/types.ts#L16)
-
-Machine log severity level.
-
-- `audit` — audit trail entries
-- `message` — informational messages (default)
-- `warning` — warning conditions
-- `error` — error conditions
-- `critical` — critical failures
-- `summary` — summary entries
-- `debug` — debug-level messages
+Re-exports [MachineLogLevel](../types.md#machineloglevel)

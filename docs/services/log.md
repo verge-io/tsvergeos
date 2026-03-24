@@ -19,7 +19,7 @@ import 'tsvergeos/services/log';
 
 ### LogService
 
-Defined in: [services/log/service.ts:32](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/log/service.ts#L32)
+Defined in: services/log/service.ts:32
 
 Service for querying VergeOS system logs.
 
@@ -57,7 +57,7 @@ const recent = await client.logs.listSince(1700000000000000);
 
 > **new LogService**(`http`): [`LogService`](#logservice)
 
-Defined in: [services/log/service.ts:33](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/log/service.ts#L33)
+Defined in: services/log/service.ts:33
 
 ###### Parameters
 
@@ -77,9 +77,9 @@ Defined in: [services/log/service.ts:33](https://github.com/verge-io/tsvergeos/b
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | services/base.ts:123 |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | services/base.ts:126 |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | services/base.ts:138 |
 
 #### Methods
 
@@ -87,7 +87,7 @@ Defined in: [services/log/service.ts:33](https://github.com/verge-io/tsvergeos/b
 
 > **get**(`key`): `Promise`\<[`Log`](../types.md#log)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L174)
+Defined in: services/base.ts:174
 
 Get a single resource by its key (ID).
 
@@ -115,7 +115,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`Log`](../types.md#log)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L198)
+Defined in: services/base.ts:198
 
 Get a single resource by its `name` field.
 
@@ -145,7 +145,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`Log`](../types.md#log)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L217)
+Defined in: services/base.ts:217
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -174,7 +174,7 @@ Individual resources across all pages
 
 > **list**(`options?`): `Promise`\<[`Log`](../types.md#log)[]\>
 
-Defined in: [services/log/service.ts:47](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/log/service.ts#L47)
+Defined in: services/log/service.ts:47
 
 List logs with default sort by `-timestamp` (newest first).
 
@@ -203,7 +203,7 @@ a filter or limit to avoid large result sets.
 
 > **listByLevel**(`level`, `options?`): `Promise`\<[`Log`](../types.md#log)[]\>
 
-Defined in: [services/log/service.ts:59](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/log/service.ts#L59)
+Defined in: services/log/service.ts:59
 
 List logs filtered by severity level.
 
@@ -224,7 +224,7 @@ Array of log entries matching the level
 
 > **listByObjectType**(`objectType`, `options?`): `Promise`\<[`Log`](../types.md#log)[]\>
 
-Defined in: [services/log/service.ts:72](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/log/service.ts#L72)
+Defined in: services/log/service.ts:72
 
 List logs filtered by object type.
 
@@ -245,7 +245,7 @@ Array of log entries for the object type
 
 > **listErrors**(`options?`): `Promise`\<[`Log`](../types.md#log)[]\>
 
-Defined in: [services/log/service.ts:84](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/log/service.ts#L84)
+Defined in: services/log/service.ts:84
 
 List error and critical log entries.
 
@@ -265,7 +265,7 @@ Array of error and critical log entries
 
 > **listByUser**(`username`, `options?`): `Promise`\<[`Log`](../types.md#log)[]\>
 
-Defined in: [services/log/service.ts:97](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/log/service.ts#L97)
+Defined in: services/log/service.ts:97
 
 List logs filtered by username.
 
@@ -286,7 +286,7 @@ Array of log entries from the user
 
 > **listSince**(`timestampMicros`, `options?`): `Promise`\<[`Log`](../types.md#log)[]\>
 
-Defined in: [services/log/service.ts:110](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/log/service.ts#L110)
+Defined in: services/log/service.ts:110
 
 List logs since a given timestamp.
 
@@ -307,7 +307,7 @@ Array of log entries newer than the timestamp
 
 > **search**(`pattern`, `options?`): `Promise`\<[`Log`](../types.md#log)[]\>
 
-Defined in: [services/log/service.ts:125](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/log/service.ts#L125)
+Defined in: services/log/service.ts:125
 
 Search logs by text content.
 
