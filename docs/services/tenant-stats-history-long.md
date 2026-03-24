@@ -20,7 +20,7 @@ import 'tsvergeos/services/tenant-stats-history-long';
 
 ### TenantStatsHistoryLongService
 
-Defined in: [services/tenant-stats-history-long/service.ts:25](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/tenant-stats-history-long/service.ts#L25)
+Defined in: services/tenant-stats-history-long/service.ts:25
 
 Service for querying long-term tenant stats history.
 
@@ -51,7 +51,7 @@ for (const snapshot of history) {
 
 > **new TenantStatsHistoryLongService**(`http`): [`TenantStatsHistoryLongService`](#tenantstatshistorylongservice)
 
-Defined in: [services/tenant-stats-history-long/service.ts:26](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/tenant-stats-history-long/service.ts#L26)
+Defined in: services/tenant-stats-history-long/service.ts:26
 
 ###### Parameters
 
@@ -71,9 +71,9 @@ Defined in: [services/tenant-stats-history-long/service.ts:26](https://github.co
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L138) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`resource`](../index.md#property-resource-2) | services/base.ts:123 |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`ReadOnlyService`](../index.md#readonlyservice).[`displayName`](../index.md#property-displayname) | services/base.ts:126 |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`ReadOnlyService`](../index.md#readonlyservice).[`defaultFields`](../index.md#property-defaultfields) | services/base.ts:138 |
 
 #### Methods
 
@@ -81,7 +81,7 @@ Defined in: [services/tenant-stats-history-long/service.ts:26](https://github.co
 
 > **list**(`options?`): `Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L157)
+Defined in: services/base.ts:157
 
 List resources matching the given options.
 
@@ -105,7 +105,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L174)
+Defined in: services/base.ts:174
 
 Get a single resource by its key (ID).
 
@@ -133,7 +133,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L198)
+Defined in: services/base.ts:198
 
 Get a single resource by its `name` field.
 
@@ -163,7 +163,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L217)
+Defined in: services/base.ts:217
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -192,7 +192,7 @@ Individual resources across all pages
 
 > **listByTenant**(`tenantKey`, `options?`): `Promise`\<[`TenantStatsHistoryLong`](../types.md#tenantstatshistorylong)[]\>
 
-Defined in: [services/tenant-stats-history-long/service.ts:40](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/tenant-stats-history-long/service.ts#L40)
+Defined in: services/tenant-stats-history-long/service.ts:40
 
 List long-term stats history for a specific tenant.
 

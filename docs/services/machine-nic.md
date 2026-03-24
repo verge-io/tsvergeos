@@ -19,7 +19,7 @@ import 'tsvergeos/services/machine-nic';
 
 ### MachineNicService
 
-Defined in: [services/machine-nic/service.ts:27](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-nic/service.ts#L27)
+Defined in: services/machine-nic/service.ts:27
 
 Service for managing VergeOS machine NICs.
 
@@ -52,7 +52,7 @@ const nic = await client.machineNics.get(1);
 
 > **new MachineNicService**(`http`): [`MachineNicService`](#machinenicservice)
 
-Defined in: [services/machine-nic/service.ts:32](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-nic/service.ts#L32)
+Defined in: services/machine-nic/service.ts:32
 
 ###### Parameters
 
@@ -72,10 +72,10 @@ Defined in: [services/machine-nic/service.ts:32](https://github.com/verge-io/tsv
 
 | Property | Modifier | Type | Description | Inherited from | Defined in |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`BaseService`](../index.md#baseservice).[`resource`](../index.md#property-resource-4) | [services/base.ts:123](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L123) |
-| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`BaseService`](../index.md#baseservice).[`displayName`](../index.md#property-displayname-2) | [services/base.ts:126](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L126) |
-| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`BaseService`](../index.md#baseservice).[`defaultFields`](../index.md#property-defaultfields-2) | [services/base.ts:138](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L138) |
-| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`BaseService`](../index.md#baseservice).[`actionConfig`](../index.md#property-actionconfig-1) | [services/base.ts:256](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L256) |
+| <a id="property-resource"></a> `resource` | `readonly` | `string` | API resource path (e.g., `'/vms'`). | [`BaseService`](../index.md#baseservice).[`resource`](../index.md#property-resource-4) | services/base.ts:123 |
+| <a id="property-displayname"></a> `displayName` | `readonly` | `string` | Human-readable resource name for error messages (e.g., `'VM'`). | [`BaseService`](../index.md#baseservice).[`displayName`](../index.md#property-displayname-2) | services/base.ts:126 |
+| <a id="property-defaultfields"></a> `defaultFields?` | `protected` | `string`[] | Per-service default fields for API requests. When set by a subclass, these fields are used instead of `'most'` for `list()` and `get()` calls where the caller does not provide explicit `fields`. This enables cross-resource joins (e.g., `machine#status#status`) so that derived fields like power state are reliably populated. User-provided `fields` always take precedence. | [`BaseService`](../index.md#baseservice).[`defaultFields`](../index.md#property-defaultfields-2) | services/base.ts:138 |
+| <a id="property-actionconfig"></a> `actionConfig` | `readonly` | [`ActionConfig`](../index.md#actionconfig) | Derived or overridden action endpoint configuration. | [`BaseService`](../index.md#baseservice).[`actionConfig`](../index.md#property-actionconfig-1) | services/base.ts:256 |
 
 #### Methods
 
@@ -83,7 +83,7 @@ Defined in: [services/machine-nic/service.ts:32](https://github.com/verge-io/tsv
 
 > **list**(`options?`): `Promise`\<[`MachineNIC`](../types.md#machinenic)[]\>
 
-Defined in: [services/base.ts:157](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L157)
+Defined in: services/base.ts:157
 
 List resources matching the given options.
 
@@ -107,7 +107,7 @@ Array of matching resources
 
 > **get**(`key`): `Promise`\<[`MachineNIC`](../types.md#machinenic)\>
 
-Defined in: [services/base.ts:174](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L174)
+Defined in: services/base.ts:174
 
 Get a single resource by its key (ID).
 
@@ -135,7 +135,7 @@ NotFoundError if the resource does not exist
 
 > **getByName**(`name`): `Promise`\<[`MachineNIC`](../types.md#machinenic)\>
 
-Defined in: [services/base.ts:198](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L198)
+Defined in: services/base.ts:198
 
 Get a single resource by its `name` field.
 
@@ -165,7 +165,7 @@ NotFoundError if no resource with that name exists
 
 > **listAll**(`options?`): `AsyncGenerator`\<[`MachineNIC`](../types.md#machinenic)\>
 
-Defined in: [services/base.ts:217](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L217)
+Defined in: services/base.ts:217
 
 Iterate over all resources matching the given options, auto-paginating.
 
@@ -194,7 +194,7 @@ Individual resources across all pages
 
 > **update**(`key`, `params`, `options?`): `Promise`\<[`MachineNIC`](../types.md#machinenic)\>
 
-Defined in: [services/base.ts:293](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L293)
+Defined in: services/base.ts:293
 
 Update an existing resource.
 
@@ -222,7 +222,7 @@ The updated resource (or the resource with just `$key` if `readBack` is false)
 
 > **delete**(`key`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:309](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L309)
+Defined in: services/base.ts:309
 
 Delete a resource by its key (ID).
 
@@ -248,7 +248,7 @@ NotFoundError if the resource does not exist
 
 > `protected` **inlineAction**(`key`, `action`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:330](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L330)
+Defined in: services/base.ts:330
 
 Execute an inline action on a specific resource.
 
@@ -275,7 +275,7 @@ Used for record-level actions (e.g., `POST /users/3/enable`).
 
 > `protected` **dispatchAction**(`action`, `key`, `params?`): `Promise`\<`void`\>
 
-Defined in: [services/base.ts:356](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L356)
+Defined in: services/base.ts:356
 
 Dispatch an action to the dedicated `_actions` endpoint.
 
@@ -304,7 +304,7 @@ Sends a POST to `/{actionEndpoint}` with the body:
 
 > **create**(`params`, `options?`): `Promise`\<[`MachineNIC`](../types.md#machinenic)\>
 
-Defined in: [services/base.ts:395](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/base.ts#L395)
+Defined in: services/base.ts:395
 
 Create a new resource.
 
@@ -332,7 +332,7 @@ The created resource (or a partial with just `$key` if `readBack` is false)
 
 > **listByMachine**(`machineKey`, `options?`): `Promise`\<[`MachineNIC`](../types.md#machinenic)[]\>
 
-Defined in: [services/machine-nic/service.ts:45](https://github.com/verge-io/tsvergeos/blob/c133d655c3866a221a89ec91a350542833cb46f6/packages/sdk/src/services/machine-nic/service.ts#L45)
+Defined in: services/machine-nic/service.ts:45
 
 List NICs belonging to a specific machine.
 
