@@ -474,6 +474,16 @@
 				"default": "./dist/services/cluster-tier-status/index.cjs"
 			}
 		},
+		"./services/machine-status": {
+			"import": {
+				"types": "./dist/services/machine-status/index.d.ts",
+				"default": "./dist/services/machine-status/index.js"
+			},
+			"require": {
+				"types": "./dist/services/machine-status/index.d.cts",
+				"default": "./dist/services/machine-status/index.cjs"
+			}
+		},
 		"./services/wireguard-peer-status": {
 			"import": {
 				"types": "./dist/services/wireguard-peer-status/index.d.ts",
