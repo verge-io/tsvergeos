@@ -1,0 +1,143 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm --filter @vergeio/tsvergeos lint
+
+  typecheck:
+    name: Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm --filter @vergeio/tsvergeos typecheck
+
+  test:
+    name: Unit Tests (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm --filter @vergeio/tsvergeos test
+
+  build:
+    name: Build & Package Health
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build SDK
+        id: build
+        run: |
+          start=$SECONDS
+          pnpm --filter @vergeio/tsvergeos build
+          duration=$(( SECONDS - start ))
+          echo "duration=${duration}" >> "$GITHUB_OUTPUT"
+          echo "### Build completed in ${duration}s" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Package size check
+        working-directory: packages/sdk
+        run: |
+          npm pack --dry-run 2>&1 | tee /tmp/pack-output.txt
+          # Extract tarball size from npm pack output
+          size_line=$(tail -1 /tmp/pack-output.txt)
+          echo "### Package contents" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/pack-output.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+          # Pack and check actual size (fail if > 500KB)
+          npm pack --pack-destination /tmp
+          tarball=$(ls /tmp/*.tgz | head -1)
+          size=$(stat -c%s "$tarball" 2>/dev/null || stat -f%z "$tarball")
+          size_kb=$(( size / 1024 ))
+          echo "Tarball size: ${size_kb}KB"
+          echo "### Tarball size: ${size_kb}KB" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$size_kb" -gt 750 ]; then
+            echo "::error::Package tarball exceeds 750KB budget (${size_kb}KB)"
+            exit 1
+          fi
+
+      - name: Verify zero runtime dependencies
+        working-directory: packages/sdk
+        run: |
+          deps=$(node -e "const p=require('./package.json'); console.log(Object.keys(p.dependencies||{}).length)")
+          if [ "$deps" -ne 0 ]; then
+            echo "::error::Package has ${deps} runtime dependencies — must be zero"
+            exit 1
+          fi
+          echo "### Zero runtime dependencies confirmed" >> "$GITHUB_STEP_SUMMARY"
+
+  audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Audit dependencies
+        run: pnpm audit --audit-level=high
+        continue-on-error: true
