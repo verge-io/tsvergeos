@@ -28,7 +28,7 @@ jobs:
 
       - name: Lint source and unit tests
         working-directory: packages/sdk
-        run: biome check src/ test/unit/
+        run: pnpm exec biome check src/ test/unit/
 
   typecheck:
     name: Type Check
