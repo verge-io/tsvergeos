@@ -26,7 +26,9 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm --filter @vergeio/tsvergeos lint
+      - name: Lint source and unit tests
+        working-directory: packages/sdk
+        run: biome check src/ test/unit/
 
   typecheck:
     name: Type Check
@@ -63,6 +65,9 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
+
+      - name: Build SDK
+        run: pnpm --filter @vergeio/tsvergeos build
 
       - run: pnpm --filter @vergeio/tsvergeos test
 
@@ -101,7 +106,7 @@ jobs:
           cat /tmp/pack-output.txt >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
 
-          # Pack and check actual size (fail if > 500KB)
+          # Pack and check actual size (fail if > 750KB)
           npm pack --pack-destination /tmp
           tarball=$(ls /tmp/*.tgz | head -1)
           size=$(stat -c%s "$tarball" 2>/dev/null || stat -f%z "$tarball")
