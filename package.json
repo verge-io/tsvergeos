@@ -3,7 +3,10 @@
   "type": "module",
   "packageManager": "pnpm@10.11.0",
   "scripts": {
-    "docs": "pnpm -F tsvergeos docs"
+    "docs": "pnpm --filter @vergeio/tsvergeos docs",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:status": "changeset status"
   },
   "engines": {
     "node": ">=18"
@@ -12,5 +15,9 @@
     "onlyBuiltDependencies": [
       "esbuild"
     ]
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.6.0",
+    "@changesets/cli": "^2.30.0"
   }
 }

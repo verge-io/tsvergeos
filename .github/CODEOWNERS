@@ -1,0 +1,12 @@
+# Default owner for everything
+* @lludlow
+
+# SDK source — require review
+packages/sdk/src/ @lludlow
+packages/sdk/package.json @lludlow
+
+# CI/CD — require review
+.github/ @lludlow
+
+# Release config
+.changeset/ @lludlow

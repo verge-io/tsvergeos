@@ -15,7 +15,7 @@ import { join } from 'node:path';
 
 const DIST_DIR = new URL('../dist', import.meta.url).pathname;
 const PATTERN = /declare module ['"]\.\.\/\.\.\/client\.js['"]/g;
-const REPLACEMENT = "declare module 'tsvergeos'";
+const REPLACEMENT = "declare module '@vergeio/tsvergeos'";
 
 let count = 0;
 
