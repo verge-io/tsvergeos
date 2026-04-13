@@ -2,7 +2,7 @@
 
 TypeScript SDK for the VergeOS ultraconverged infrastructure platform.
 
-[![npm version](https://img.shields.io/npm/v/tsvergeos)](https://www.npmjs.com/package/tsvergeos)
+[![npm version](https://img.shields.io/npm/v/@vergeio/tsvergeos)](https://www.npmjs.com/package/@vergeio/tsvergeos)
 [![Node.js 18+](https://img.shields.io/badge/node-18+-blue.svg)](https://nodejs.org/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -21,17 +21,17 @@ Zero runtime dependencies. Tree-shakeable ESM-first output with CJS fallback. Fu
 ## Installation
 
 ```bash
-npm install tsvergeos
+npm install @vergeio/tsvergeos
 
 # Or with pnpm / yarn / bun
-pnpm add tsvergeos
+pnpm add @vergeio/tsvergeos
 ```
 
 ## Quick Start
 
 ```typescript
-import { VergeClient } from "tsvergeos";
-import "tsvergeos/services/vm";
+import { VergeClient } from "@vergeio/tsvergeos";
+import "@vergeio/tsvergeos/services/vm";
 
 const client = await VergeClient.connect({
   host: "192.168.1.100",
@@ -112,33 +112,39 @@ The SDK uses tree-shakeable imports — services are registered via side-effect 
 
 ```typescript
 // 1. Default: ~40 most-used services (VMs, networks, tenants, storage, etc.)
-import { VergeClient } from "tsvergeos";
+import { VergeClient } from "@vergeio/tsvergeos";
 
 // 2. Full: all 84 services (alarms, update settings, storage tiers, etc.)
-import { VergeClient } from "tsvergeos";
-import "tsvergeos/full";
+import { VergeClient } from "@vergeio/tsvergeos";
+import "@vergeio/tsvergeos/full";
 
 // 3. Individual: pick exactly what you need
-import { VergeClient } from "tsvergeos";
-import "tsvergeos/services/alarm";
-import "tsvergeos/services/storage-tier";
+import { VergeClient } from "@vergeio/tsvergeos";
+import "@vergeio/tsvergeos/services/alarm";
+import "@vergeio/tsvergeos/services/storage-tier";
 ```
 
-**Important:** The default import does _not_ include every service. If you access a service that isn't registered (e.g., `client.alarms` without importing it), you'll get `undefined`. For dashboards, admin tools, or backend scripts where bundle size doesn't matter, use `import 'tsvergeos/full'` to register everything.
+**Important:** The default import does _not_ include every service. If you access a service that isn't registered (e.g., `client.alarms` without importing it), you'll get `undefined`. For dashboards, admin tools, or backend scripts where bundle size doesn't matter, use `import '@vergeio/tsvergeos/full'` to register everything.
 
 ### Type-only imports
 
 Type imports have zero bundle impact regardless of which services are registered:
 
 ```typescript
-import type { VM, Alarm, Network, Tenant, Volume } from "tsvergeos/types";
+import type {
+  VM,
+  Alarm,
+  Network,
+  Tenant,
+  Volume,
+} from "@vergeio/tsvergeos/types";
 ```
 
 ## Filtering and Queries
 
 ```typescript
-import { Filter, buildFilter } from "tsvergeos";
-import "tsvergeos/services/vm";
+import { Filter, buildFilter } from "@vergeio/tsvergeos";
+import "@vergeio/tsvergeos/services/vm";
 
 // Fluent API
 const filter = new Filter()
@@ -175,8 +181,8 @@ const allVms = await client.vms.listAll();
 Manage multiple VergeOS deployments from a single entry point:
 
 ```typescript
-import { SiteManager } from "tsvergeos";
-import "tsvergeos/services/vm";
+import { SiteManager } from "@vergeio/tsvergeos";
+import "@vergeio/tsvergeos/services/vm";
 
 const manager = new SiteManager();
 
@@ -217,7 +223,7 @@ import {
   isAuthError,
   isApiError,
   isValidationError,
-} from "tsvergeos";
+} from "@vergeio/tsvergeos";
 
 try {
   const vm = await client.vms.get(999);
@@ -306,11 +312,11 @@ interface ClientConfig {
 
 ## SDK Family
 
-| Language   | Package     | Repository                                                  |
-| ---------- | ----------- | ----------------------------------------------------------- |
-| TypeScript | `tsvergeos` | [verge-io/tsvergeos](https://github.com/verge-io/tsvergeos) |
-| Python     | `pyvergeos` | [verge-io/pyvergeos](https://github.com/verge-io/pyvergeos) |
-| Go         | `govergeos` | [verge-io/govergeos](https://github.com/verge-io/govergeos) |
+| Language   | Package              | Repository                                                  |
+| ---------- | -------------------- | ----------------------------------------------------------- |
+| TypeScript | `@vergeio/tsvergeos` | [verge-io/tsvergeos](https://github.com/verge-io/tsvergeos) |
+| Python     | `pyvergeos`          | [verge-io/pyvergeos](https://github.com/verge-io/pyvergeos) |
+| Go         | `govergeos`          | [verge-io/govergeos](https://github.com/verge-io/govergeos) |
 
 ## API Documentation
 
@@ -319,7 +325,7 @@ Full API reference is available in the [`docs/`](./docs/README.md) directory, ge
 Regenerate after changes:
 
 ```bash
-pnpm -F tsvergeos docs
+pnpm --filter @vergeio/tsvergeos docs
 ```
 
 ## Contributing
