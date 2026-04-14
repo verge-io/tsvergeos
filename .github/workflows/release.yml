@@ -10,6 +10,7 @@ concurrency:
 
 permissions:
   contents: write
+  pull-requests: write
   id-token: write
 
 jobs:
@@ -29,48 +30,27 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Check for pending changesets
-        id: check
-        run: |
-          if pnpm changeset status 2>&1 | grep -q "No changesets present"; then
-            echo "has_changesets=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "has_changesets=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Version packages
-        if: steps.check.outputs.has_changesets == 'true'
-        run: |
-          pnpm changeset version
-          echo "new_version=$(node -e "console.log(require('./packages/sdk/package.json').version)")" >> "$GITHUB_OUTPUT"
-        id: version
-
       - name: Quality gate
-        if: steps.check.outputs.has_changesets == 'true'
         run: |
           pnpm --filter @vergeio/tsvergeos exec biome check src/ test/unit/
           pnpm --filter @vergeio/tsvergeos typecheck
           pnpm --filter @vergeio/tsvergeos build
           pnpm --filter @vergeio/tsvergeos test
 
-      - name: Publish to npm
-        if: steps.check.outputs.has_changesets == 'true'
-        run: pnpm --filter @vergeio/tsvergeos publish --no-git-checks --provenance --access public
-
-      - name: Create GitHub Release
-        if: steps.check.outputs.has_changesets == 'true'
+      - name: Create release PR or publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: pnpm changeset version
+          title: "chore: version packages"
+          commit: "chore: version packages"
+          publish: pnpm --filter @vergeio/tsvergeos publish --no-git-checks --provenance --access public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          version="v${{ steps.version.outputs.new_version }}"
-          changelog=$(cat packages/sdk/CHANGELOG.md 2>/dev/null || echo "Initial release")
-          gh release create "$version" \
-            --title "$version" \
-            --notes "$changelog" \
-            --target main
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Post-publish verification
-        if: steps.check.outputs.has_changesets == 'true'
+        if: steps.changesets.outputs.published == 'true'
         run: |
           echo "### Published packages" >> "$GITHUB_STEP_SUMMARY"
           sleep 15
