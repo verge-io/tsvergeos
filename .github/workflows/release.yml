@@ -32,10 +32,10 @@ jobs:
 
       - name: Quality gate
         run: |
-          pnpm --filter @vergeio/tsvergeos lint
+          pnpm --filter @vergeio/tsvergeos exec biome check src/ test/unit/
           pnpm --filter @vergeio/tsvergeos typecheck
-          pnpm --filter @vergeio/tsvergeos test
           pnpm --filter @vergeio/tsvergeos build
+          pnpm --filter @vergeio/tsvergeos test
 
       - name: Create release PR or publish
         id: changesets
