@@ -9,7 +9,7 @@
     "changeset:status": "changeset status"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
