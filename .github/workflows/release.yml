@@ -46,6 +46,7 @@ jobs:
           publish: pnpm --filter @vergeio/tsvergeos publish --no-git-checks --provenance --access public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Post-publish verification
         if: steps.changesets.outputs.published == 'true'
@@ -60,7 +61,6 @@ jobs:
           cat /tmp/npm-view.json >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
 
-          # Verify zero runtime deps in published package
           dep_count=$(node -e "const d=require('/tmp/npm-view.json'); console.log(Object.keys(d.dependencies||{}).length)")
           if [ "$dep_count" -ne 0 ]; then
             echo "::warning::Published package has ${dep_count} runtime dependencies"
