@@ -46,7 +46,7 @@ jobs:
           commit: "chore: version packages"
           publish: cd packages/sdk && npm publish --access public
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CHANGESETS_GITHUB_TOKEN }}
 
       - name: Post-publish verification
         if: steps.changesets.outputs.published == 'true'
