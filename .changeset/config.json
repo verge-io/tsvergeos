@@ -1,6 +1,9 @@
 {
   "$schema": "https://github.com/changesets/changesets/blob/main/packages/config/schema.json",
-  "changelog": "@changesets/changelog-github",
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "verge-io/tsvergeos" }
+  ],
   "commit": false,
   "fixed": [],
   "linked": [],
