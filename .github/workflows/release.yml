@@ -42,7 +42,11 @@ jobs:
           commit: "chore: version packages"
           commitMode: github-api
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Use a dedicated PAT so the Version Packages PR is authored by a
+          # user (not GITHUB_TOKEN) and thus triggers pull_request workflows.
+          # Without this, required status checks never run on the release PR
+          # and it becomes unmergeable under branch protection.
+          GITHUB_TOKEN: ${{ secrets.CHANGESETS_GITHUB_TOKEN }}
 
       - name: Publish with npm trusted publishing
         if: steps.changesets.outputs.hasChangesets == 'false'
