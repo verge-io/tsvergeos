@@ -1,8 +1,6 @@
 
 # Claude Code local files
-.claude/settings.local.json
-.claude/CLAUDE.local.md
-.claude/logs/
+.claude/
 
 # Agent skills (local tooling)
 .agents/
@@ -12,7 +10,6 @@
 
 # Secrets
 .mcp.json
-.claude/testing.md
 .env
 
 # Dependencies
