@@ -70,11 +70,14 @@ Conventional commits with emoji prefix:
 ## How Releases Work
 
 1. PRs with changesets merge to `main`
-2. The Release workflow detects pending changesets and creates a **Version Packages** PR
-3. That PR bumps `package.json` version and updates `CHANGELOG.md`
-4. Merging the Version Packages PR triggers `npm publish` with provenance attestation
+2. The Release workflow runs `changesets/action` and creates or updates a **Version Packages** PR
+3. That PR runs `changeset version`, which bumps `package.json` and updates `CHANGELOG.md`
+4. Merging the Version Packages PR triggers `pnpm release`, which builds the SDK and runs `changeset publish`
+5. npm publishing uses GitHub Actions OIDC trusted publishing, so no `NPM_TOKEN` secret is required
 
 Maintainers control when releases ship by merging the Version Packages PR.
+
+For npm trusted publishing to work, the package must be configured on npmjs.com with this repository and the exact workflow filename `.github/workflows/release.yml`.
 
 ## CI Checks
 
@@ -84,7 +87,7 @@ Every PR runs:
 | -------------------------- | ------------------------------------------------------------ |
 | **Lint & Format**          | Biome check (lint + formatting)                              |
 | **Type Check**             | `tsc --noEmit`                                               |
-| **Unit Tests**             | Vitest across Node 18, 20, 22                                |
+| **Unit Tests**             | Vitest across Node 20 and 22                                 |
 | **Build & Package Health** | tsup build, tarball size budget (< 500KB), zero runtime deps |
 | **Security Audit**         | `pnpm audit` (non-blocking)                                  |
 
@@ -92,7 +95,6 @@ Every PR runs:
 
 Recommended GitHub settings for `main`:
 
-- Require status checks: `Lint & Format`, `Type Check`, `Unit Tests (Node 18)`, `Unit Tests (Node 20)`, `Unit Tests (Node 22)`, `Build & Package Health`
+- Require status checks: `Lint & Format`, `Type Check`, `Unit Tests (Node 20)`, `Unit Tests (Node 22)`, `Build & Package Health`
 - Require branches to be up to date before merging
 - Require CODEOWNERS review
-- Do not allow force pushes (except via the filtered push script)
