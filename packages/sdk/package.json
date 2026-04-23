@@ -985,7 +985,7 @@
     "@biomejs/biome": "^2.4.0",
     "@types/node": "^22.0.0",
     "tsup": "^8.5.0",
-    "typedoc": "^0.28.17",
+    "typedoc": "^0.28.19",
     "typedoc-plugin-markdown": "^4.11.0",
     "typescript": "^5.8.0",
     "undici": "^7.24.5",
