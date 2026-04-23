@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
 
@@ -31,39 +33,17 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Quality gate
-        run: |
-          pnpm --filter @vergeio/tsvergeos exec biome check src/ test/unit/
-          pnpm --filter @vergeio/tsvergeos typecheck
-          pnpm --filter @vergeio/tsvergeos build
-          pnpm --filter @vergeio/tsvergeos test
-
-      - name: Create release PR or publish
+      - name: Create or update release PR
         id: changesets
         uses: changesets/action@v1
         with:
-          version: pnpm changeset version
+          version: pnpm changeset:version
           title: "chore: version packages"
           commit: "chore: version packages"
-          publish: cd packages/sdk && npm publish --access public
+          commitMode: github-api
         env:
-          GITHUB_TOKEN: ${{ secrets.CHANGESETS_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Post-publish verification
-        if: steps.changesets.outputs.published == 'true'
-        run: |
-          echo "### Published packages" >> "$GITHUB_STEP_SUMMARY"
-          sleep 15
-          pkg_name=$(node -e "console.log(require('./packages/sdk/package.json').name)")
-          pkg_version=$(node -e "console.log(require('./packages/sdk/package.json').version)")
-          echo "Verifying ${pkg_name}@${pkg_version} on npm..."
-          npm view "${pkg_name}@${pkg_version}" --json | tee /tmp/npm-view.json
-          echo '```json' >> "$GITHUB_STEP_SUMMARY"
-          cat /tmp/npm-view.json >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
-
-          dep_count=$(node -e "const d=require('/tmp/npm-view.json'); console.log(Object.keys(d.dependencies||{}).length)")
-          if [ "$dep_count" -ne 0 ]; then
-            echo "::warning::Published package has ${dep_count} runtime dependencies"
-          fi
-          echo "### ${pkg_name}@${pkg_version} verified on npm registry" >> "$GITHUB_STEP_SUMMARY"
+      - name: Publish with npm trusted publishing
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: pnpm release

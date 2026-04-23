@@ -6,7 +6,9 @@
     "docs": "pnpm --filter @vergeio/tsvergeos docs",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:status": "changeset status"
+    "changeset:status": "changeset status",
+    "release": "pnpm --filter @vergeio/tsvergeos build && changeset publish",
+    "release:publish": "pnpm release"
   },
   "engines": {
     "node": ">=20"
