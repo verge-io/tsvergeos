@@ -138,14 +138,9 @@ The dedicated endpoint is derived by convention: strip trailing `s`, append `_ac
 - Tests document behavior. A test name should read as a spec: `"returns NotFoundError when VM does not exist"`, not `"test get error"`.
 - Test the contract, not the implementation. Assert on return values and side effects, not internal method calls.
 
-### Integration Test Systems
+### Integration Test Conventions
 
-Two systems available (credentials in `.claude/testing.md`, gitignored):
-
-- **Dev System 1** (`verge.example.com`) — self-signed cert, tests `verifySsl: false`
-- **Dev System 2** (`verge.example.com`) — valid cert, production-like
-
-Conventions (from Go SDK): rate limit between requests (~50ms), 2-minute timeout per test, clean up everything you create in `afterEach`/`finally`. Tests must be idempotent and safe to run repeatedly.
+Rate limit between requests (~50ms), 2-minute timeout per test, clean up everything you create in `afterEach`/`finally`. Tests must be idempotent and safe to run repeatedly. Credentials and host details are stored out-of-tree; configure via `VERGEOS_HOST` / `VERGEOS_API_KEY` environment variables.
 
 ### Commit After Every Task
 
