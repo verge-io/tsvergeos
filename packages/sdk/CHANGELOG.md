@@ -1,5 +1,13 @@
 # @vergeio/tsvergeos
 
+## 0.2.1
+
+### Patch Changes
+
+- [#10](https://github.com/verge-io/tsvergeos/pull/10) [`83111aa`](https://github.com/verge-io/tsvergeos/commit/83111aa3ec7c2476857d50190b89807bdc502945) Thanks [@lludlow](https://github.com/lludlow)! - Switch release pipeline to npm trusted publishing (OIDC). Release workflow now uses `changesets/action` with `commitMode: github-api` to create the Version Packages PR, and `pnpm release` (build + `changeset publish`) for publication. No `NPM_TOKEN` secret is required.
+
+- Bump safe development and CI dependencies: typedoc 0.28.17→0.28.19, vitest 4.1.0→4.1.5, actions/checkout 4→7, and actions/setup-node 4→7. TypeScript 6 and related major bumps remain held.
+
 ## 0.2.0
 
 ### Minor Changes
