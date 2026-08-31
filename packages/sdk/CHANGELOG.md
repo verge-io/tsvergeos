@@ -1,5 +1,11 @@
 # @vergeio/tsvergeos
 
+## 0.2.2
+
+### Patch Changes
+
+- Bump safe development and CI dependencies: typedoc 0.28.17→0.28.19, vitest 4.1.0→4.1.5, actions/checkout 4→7, and actions/setup-node 4→7. TypeScript 6 and related major bumps remain held.
+
 ## 0.2.1
 
 ### Patch Changes
