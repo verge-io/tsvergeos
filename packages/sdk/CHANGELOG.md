@@ -1,5 +1,11 @@
 # @vergeio/tsvergeos
 
+## 0.3.0
+
+### Minor Changes
+
+- [#24](https://github.com/verge-io/tsvergeos/pull/24) [`e32467e`](https://github.com/verge-io/tsvergeos/commit/e32467eaa6d42a4f4bec7b9c01cf4e59c2aff476) Thanks [@lludlow](https://github.com/lludlow)! - Add VergeOS 26.1 support for applying Microsoft 2023 Secure Boot variables to EFI drives, expose their applied state, and recognize tag audit log object types.
+
 ## 0.2.2
 
 ### Patch Changes
