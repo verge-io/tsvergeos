@@ -1,6 +1,5 @@
 import { afterEach, beforeAll, expect, it } from 'vitest';
 import { VergeClient } from '../../src/client.js';
-import { isApiError } from '../../src/errors.js';
 import '../../src/services/vm/index.js';
 import '../../src/services/machine-snapshot/index.js';
 import '../../src/services/machine-drive/index.js';
@@ -77,30 +76,38 @@ describeIf('Machine sub-resource integration', () => {
 		}
 	});
 
-	it('should expose Secure Boot KEK state and use the inline action route', async () => {
-		await delay();
-		const drives = await client.machineDrives.list({
-			fields: ['$key', 'media', 'ms_2023_kek_applied'],
-			filter: "media ne 'efidisk'",
-			limit: 1,
+	it('should apply Secure Boot variables to an eligible EFI drive', async () => {
+		const name = uniqueName('tsvergeos-secure-boot');
+		const vm = await client.vms.create({
+			name,
+			uefi: true,
+			secure_boot: true,
 		});
-
-		expect(drives.length).toBeGreaterThan(0);
-		const drive = drives[0];
-		expect(typeof drive.ms_2023_kek_applied).toBe('boolean');
+		createdVmKeys.push(vm.$key as number);
+		expect(vm.machine).toBeDefined();
 
 		await delay();
-		const caught = await client.machineDrives.applyUniversalVars(drive.$key).then<unknown>(
-			() => undefined,
-			(error: unknown) => error,
-		);
+		const efiDrive = await client.machineDrives.create({
+			machine: vm.machine,
+			name: 'efidisk',
+			media: 'efidisk',
+			interface: 'pflash',
+			disksize: 0,
+		});
+		expect(efiDrive.media).toBe('efidisk');
+		expect(efiDrive.ms_2023_kek_applied).toBe(false);
 
-		expect(isApiError(caught)).toBe(true);
-		if (!isApiError(caught)) return;
-		expect(caught.statusCode).toBe(405);
-		expect(caught.endpoint).toBe(
-			`/api/v4/machine_drives/${drive.$key}/apply_universal_vars`,
-		);
-		expect(caught.message).toContain('Action is only valid for EFI disks');
+		await delay();
+		await client.machineDrives.applyUniversalVars(efiDrive.$key);
+
+		let applied = false;
+		for (let attempt = 0; attempt < 20; attempt++) {
+			await delay(250);
+			const refreshed = await client.machineDrives.get(efiDrive.$key);
+			applied = refreshed.ms_2023_kek_applied === true;
+			if (applied) break;
+		}
+
+		expect(applied).toBe(true);
 	});
 });
