@@ -44,7 +44,9 @@ export type LogObjectType =
 	| 'system'
 	| 'snapshot_profile'
 	| 'import_export'
-	| 'task';
+	| 'task'
+	| 'tag'
+	| 'tag_category';
 
 // ─── Resource Type ───────────────────────────────────────────────────────────
 

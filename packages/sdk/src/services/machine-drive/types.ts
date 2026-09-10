@@ -109,6 +109,9 @@ export interface MachineDrive extends Resource {
 	/** Media type. Default: `disk`. Read-only. */
 	media?: DriveMedia;
 
+	/** Whether the Microsoft 2023 Secure Boot KEK has been applied. Read-only. */
+	ms_2023_kek_applied?: boolean;
+
 	/** Whether the drive is enabled. Default: `true`. */
 	enabled?: boolean;
 

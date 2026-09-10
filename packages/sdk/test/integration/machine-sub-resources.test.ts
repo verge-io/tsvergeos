@@ -1,5 +1,6 @@
 import { afterEach, beforeAll, expect, it } from 'vitest';
 import { VergeClient } from '../../src/client.js';
+import { isApiError } from '../../src/errors.js';
 import '../../src/services/vm/index.js';
 import '../../src/services/machine-snapshot/index.js';
 import '../../src/services/machine-drive/index.js';
@@ -74,5 +75,32 @@ describeIf('Machine sub-resource integration', () => {
 			expect(drive.$key).toBeDefined();
 			expect(drive.machine).toBeDefined();
 		}
+	});
+
+	it('should expose Secure Boot KEK state and use the inline action route', async () => {
+		await delay();
+		const drives = await client.machineDrives.list({
+			fields: ['$key', 'media', 'ms_2023_kek_applied'],
+			filter: "media ne 'efidisk'",
+			limit: 1,
+		});
+
+		expect(drives.length).toBeGreaterThan(0);
+		const drive = drives[0];
+		expect(typeof drive.ms_2023_kek_applied).toBe('boolean');
+
+		await delay();
+		const caught = await client.machineDrives.applyUniversalVars(drive.$key).then<unknown>(
+			() => undefined,
+			(error: unknown) => error,
+		);
+
+		expect(isApiError(caught)).toBe(true);
+		if (!isApiError(caught)) return;
+		expect(caught.statusCode).toBe(405);
+		expect(caught.endpoint).toBe(
+			`/api/v4/machine_drives/${drive.$key}/apply_universal_vars`,
+		);
+		expect(caught.message).toContain('Action is only valid for EFI disks');
 	});
 });

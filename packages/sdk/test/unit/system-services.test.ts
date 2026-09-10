@@ -739,6 +739,25 @@ describe('LogService', () => {
 			expect(result).toEqual([sampleLog]);
 		});
 
+		it.each([
+			'tag',
+			'tag_category',
+		] as const)('listByObjectType accepts the %s object type', async (objectType) => {
+			const http = mockHttp();
+			const svc = new LogService(http);
+			vi.mocked(http.get).mockResolvedValueOnce([]);
+
+			await svc.listByObjectType(objectType);
+
+			expect(http.get).toHaveBeenCalledWith('/logs', {
+				params: {
+					fields: 'most',
+					sort: '-timestamp',
+					filter: `object_type eq '${objectType}'`,
+				},
+			});
+		});
+
 		it('listErrors filters for error or critical', async () => {
 			const http = mockHttp();
 			const svc = new LogService(http);
