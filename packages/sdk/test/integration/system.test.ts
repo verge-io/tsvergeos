@@ -137,6 +137,19 @@ describeIf('System, Settings, Clusters, Nodes & Logs integration', () => {
 		}
 	});
 
+	it.each([
+		'tag',
+		'tag_category',
+	] as const)('should accept the %s log object type', async (objectType) => {
+		await delay();
+		const logs = await client.logs.listByObjectType(objectType, { limit: 10 });
+
+		expect(Array.isArray(logs)).toBe(true);
+		for (const log of logs) {
+			expect(log.object_type).toBe(objectType);
+		}
+	});
+
 	it('should list logs with timestamp filter', async () => {
 		await delay();
 		// Get the most recent log to find a reasonable timestamp

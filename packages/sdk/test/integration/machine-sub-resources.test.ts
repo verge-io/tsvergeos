@@ -75,4 +75,39 @@ describeIf('Machine sub-resource integration', () => {
 			expect(drive.machine).toBeDefined();
 		}
 	});
+
+	it('should apply Secure Boot variables to an eligible EFI drive', async () => {
+		const name = uniqueName('tsvergeos-secure-boot');
+		const vm = await client.vms.create({
+			name,
+			uefi: true,
+			secure_boot: true,
+		});
+		createdVmKeys.push(vm.$key as number);
+		expect(vm.machine).toBeDefined();
+
+		await delay();
+		const efiDrive = await client.machineDrives.create({
+			machine: vm.machine,
+			name: 'efidisk',
+			media: 'efidisk',
+			interface: 'pflash',
+			disksize: 0,
+		});
+		expect(efiDrive.media).toBe('efidisk');
+		expect(efiDrive.ms_2023_kek_applied).toBe(false);
+
+		await delay();
+		await client.machineDrives.applyUniversalVars(efiDrive.$key);
+
+		let applied = false;
+		for (let attempt = 0; attempt < 20; attempt++) {
+			await delay(250);
+			const refreshed = await client.machineDrives.get(efiDrive.$key);
+			applied = refreshed.ms_2023_kek_applied === true;
+			if (applied) break;
+		}
+
+		expect(applied).toBe(true);
+	});
 });

@@ -54,4 +54,16 @@ export class MachineDriveService extends BaseService<
 			filter: combinedFilter,
 		});
 	}
+
+	/**
+	 * Apply the Microsoft 2023 Secure Boot certificate authority variables to an EFI disk.
+	 *
+	 * VergeOS requires the drive to be an EFI disk owned by an offline virtual machine
+	 * with Secure Boot enabled.
+	 *
+	 * @param key - The machine drive ID
+	 */
+	async applyUniversalVars(key: FlexKey): Promise<void> {
+		await this.inlineAction(key, 'apply_universal_vars');
+	}
 }

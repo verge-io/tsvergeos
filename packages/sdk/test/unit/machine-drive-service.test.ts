@@ -28,6 +28,7 @@ const sampleDrive: MachineDrive = {
 	description: 'Primary disk',
 	interface: 'virtio-scsi',
 	media: 'disk',
+	ms_2023_kek_applied: false,
 	enabled: true,
 	disksize: 107374182400, // 100 GB
 	used_bytes: 53687091200,
@@ -190,6 +191,28 @@ describe('MachineDriveService', () => {
 					limit: 5,
 				},
 			});
+		});
+	});
+
+	describe('applyUniversalVars', () => {
+		it('POSTs to the inline apply_universal_vars action', async () => {
+			const http = mockHttp();
+			const svc = new MachineDriveService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.applyUniversalVars(5);
+
+			expect(http.post).toHaveBeenCalledWith('/machine_drives/5/apply_universal_vars');
+		});
+
+		it('accepts string keys', async () => {
+			const http = mockHttp();
+			const svc = new MachineDriveService(http);
+			vi.mocked(http.post).mockResolvedValueOnce(undefined);
+
+			await svc.applyUniversalVars('5');
+
+			expect(http.post).toHaveBeenCalledWith('/machine_drives/5/apply_universal_vars');
 		});
 	});
 
